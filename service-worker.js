@@ -1,6 +1,6 @@
 // Network-first: always try the network so quotes.json edits reach returning
 // users without a version bump; fall back to cache when offline.
-const CACHE = "stillpoint-cache";
+const CACHE = "hitaarth-cache";
 const ASSETS = [
   "./", "./index.html", "./styles.css", "./app.js", "./quotes.json",
   "./manifest.webmanifest",

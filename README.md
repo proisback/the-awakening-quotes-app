@@ -1,4 +1,4 @@
-# Stillpoint — Daily Wisdom (PWA)
+# Hitaarth — Daily Wisdom (PWA)
 
 A lightweight, installable quotes web app. Pure HTML/CSS/JS, no build step.
 

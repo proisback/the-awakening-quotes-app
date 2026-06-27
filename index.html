@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Stillpoint — Daily Wisdom</title>
+  <title>Hitaarth — Daily Wisdom</title>
   <meta name="theme-color" content="#000000" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -82,7 +82,7 @@
     </div>
 
     <button id="resetBtn" class="reset">↺ Reset to defaults</button>
-    <p class="muted small center">Stillpoint · your data stays on this device</p>
+    <p class="muted small center">Hitaarth · your data stays on this device</p>
   </section>
 
   <!-- BOTTOM TAB BAR -->
@@ -99,6 +99,16 @@
       <textarea id="noteText" rows="4" placeholder="A thought on this quote…"></textarea>
       <div class="sheet-actions"><button value="cancel">Cancel</button><button value="save" id="noteSave">Save</button></div>
     </form>
+  </dialog>
+
+  <!-- Share sheet -->
+  <dialog id="shareSheet">
+    <h3>Share quote</h3>
+    <div class="share-opts">
+      <button type="button" id="shareImageBtn" class="share-opt"><span class="share-ic">🖼</span> Save as image</button>
+      <button type="button" id="shareTextBtn" class="share-opt"><span class="share-ic">✎</span> Share as text</button>
+    </div>
+    <form method="dialog" class="sheet-actions"><button value="cancel">Cancel</button></form>
   </dialog>
 
   <div id="toast" class="toast" hidden></div>

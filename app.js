@@ -1,4 +1,4 @@
-// Stillpoint — vanilla-JS PWA. No frameworks, no build step. Keeps it tiny + fast.
+// Hitaarth — vanilla-JS PWA. No frameworks, no build step. Keeps it tiny + fast.
 "use strict";
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -94,7 +94,7 @@ function bindReaderGestures() {
 // ---------- actions ----------
 function bindActions() {
   $("#favBtn").onclick = favoriteWithPop;
-  $("#shareBtn").onclick = shareQuote;
+  $("#shareBtn").onclick = openShareMenu;
   $("#noteBtn").onclick = toggleNote;
 }
 function refreshActionBar() {
@@ -122,7 +122,37 @@ function copyQuote() {
   navigator.clipboard?.writeText(`${q.text}\n— ${q.author}`);
   toast("Copied"); haptic();
 }
-async function shareQuote() {
+// ---------- share ----------
+function openShareMenu() {
+  const q = currentQuote(); if (!q) return;
+  const dlg = $("#shareSheet");
+  $("#shareImageBtn").onclick = () => { dlg.close(); saveQuoteImage(); };
+  $("#shareTextBtn").onclick = () => { dlg.close(); shareText(); };
+  dlg.showModal();
+}
+async function saveQuoteImage() {
+  const q = currentQuote(); if (!q) return;
+  toast("Rendering image…");
+  let blob;
+  try { blob = await renderQuoteImage(q); } catch { blob = null; }
+  if (!blob) { toast("Couldn't make image"); return; }
+  const file = new File([blob], `hitaarth-${q.id}.png`, { type: "image/png" });
+  const text = `${q.text}\n— ${q.author}`;
+  // Phones / supported browsers: native share sheet WITH the image file
+  // (lets the user Save Image to Photos, or post to Instagram / LinkedIn directly).
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], text }); return; }
+    catch (e) { if (e && e.name === "AbortError") return; }
+  }
+  // Desktop fallback: download the PNG.
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = file.name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast("Image saved");
+}
+async function shareText() {
   const q = currentQuote(); if (!q) return;
   const text = `${q.text}\n— ${q.author}`;
   const data = { text };
@@ -141,6 +171,80 @@ async function shareQuote() {
     catch { toast("Couldn't share"); }
     ta.remove();
   }
+}
+
+// ---------- quote -> shareable PNG (1080x1350, vanilla canvas) ----------
+function renderQuoteImage(q) {
+  return new Promise((resolve) => {
+    const W = 1080, H = 1350, PAD = 96;
+    const SERIF = 'Georgia, "Times New Roman", serif';
+    const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
+    const canvas = document.createElement("canvas");
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext("2d");
+
+    // background (always the dark brand look, regardless of app theme)
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 0, W, H);
+
+    // opening quote mark
+    ctx.fillStyle = "#FF5F6D";
+    ctx.globalAlpha = 0.5;
+    ctx.textBaseline = "alphabetic";
+    ctx.font = `700 220px ${SERIF}`;
+    ctx.fillText("“", PAD - 8, PAD + 150);
+    ctx.globalAlpha = 1;
+
+    // quote text — auto-fit into the available box
+    const maxW = W - PAD * 2;
+    const topY = PAD + 210;
+    const footerReserve = 230;                 // author + rule + wordmark
+    const maxTextH = H - topY - footerReserve;
+    const fit = fitText(ctx, q.text, maxW, maxTextH, 66, 30, 1.32, SERIF, 600);
+    ctx.fillStyle = "#F4F4F2";
+    ctx.font = `600 ${fit.size}px ${SERIF}`;
+    ctx.textBaseline = "top";
+    let y = topY;
+    fit.lines.forEach(line => { ctx.fillText(line, PAD, y); y += fit.lineH; });
+
+    // author
+    ctx.fillStyle = "#FFA63D";
+    ctx.font = `700 38px ${SANS}`;
+    ctx.fillText(`— ${q.author}`, PAD, y + 38);
+
+    // accent rule + brand wordmark (bottom)
+    ctx.strokeStyle = "rgba(244,244,242,0.18)";
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(PAD, H - PAD - 34); ctx.lineTo(W - PAD, H - PAD - 34); ctx.stroke();
+    ctx.fillStyle = "#9a9aa0";
+    ctx.textBaseline = "alphabetic";
+    ctx.font = `700 30px ${SANS}`;
+    ctx.fillText("Hitaarth", PAD, H - PAD + 6);
+
+    canvas.toBlob(b => resolve(b), "image/png");
+  });
+}
+// Shrink font until wrapped text fits the box; returns { size, lineH, lines }.
+function fitText(ctx, text, maxW, maxH, startSize, minSize, lineRatio, family, weight) {
+  for (let size = startSize; size >= minSize; size -= 2) {
+    ctx.font = `${weight} ${size}px ${family}`;
+    const lines = wrapText(ctx, text, maxW);
+    const lineH = size * lineRatio;
+    if (lines.length * lineH <= maxH) return { size, lineH, lines };
+  }
+  ctx.font = `${weight} ${minSize}px ${family}`;
+  return { size: minSize, lineH: minSize * lineRatio, lines: wrapText(ctx, text, maxW) };
+}
+function wrapText(ctx, text, maxW) {
+  const words = String(text).split(/\s+/);
+  const lines = []; let line = "";
+  for (const w of words) {
+    const test = line ? line + " " + w : w;
+    if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = w; }
+    else line = test;
+  }
+  if (line) lines.push(line);
+  return lines;
 }
 function toggleNote() {
   const q = currentQuote(); if (!q) return;
@@ -255,7 +359,7 @@ function fireReminder() {
   if (typeof Notification === "undefined" || Notification.permission !== "granted") return;
   const q = state.quotes.length ? state.quotes[Math.floor(Math.random() * state.quotes.length)] : null;
   const body = q ? `${q.text} — ${q.author}` : "A moment of stillness is waiting.";
-  try { new Notification("Stillpoint", { body, icon: "icons/icon-192.png" }); } catch {}
+  try { new Notification("Hitaarth", { body, icon: "icons/icon-192.png" }); } catch {}
 }
 
 // ---------- streak ----------

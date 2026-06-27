@@ -1,6 +1,6 @@
 {
-  "name": "Stillpoint — Daily Wisdom",
-  "short_name": "Stillpoint",
+  "name": "Hitaarth — Daily Wisdom",
+  "short_name": "Hitaarth",
   "description": "A calm, distraction-free reader for quotes and reflections.",
   "start_url": "./index.html",
   "scope": "./",

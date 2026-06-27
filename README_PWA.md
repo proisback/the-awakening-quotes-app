@@ -1,10 +1,10 @@
-# Stillpoint — Quotes PWA (Windows-friendly)
+# Hitaarth — Quotes PWA (Windows-friendly)
 
-A lightweight installable web app that works on **iPhone, Android, and your Windows laptop** — no Mac, no app store needed to start. Rename "Stillpoint" to whatever you like (edit `index.html` title + `manifest.webmanifest`).
+A lightweight installable web app that works on **iPhone, Android, and your Windows laptop** — no Mac, no app store needed to start. Rename "Hitaarth" to whatever you like (edit `index.html` title + `manifest.webmanifest`).
 
 ## What's inside
 ```
-StillpointPWA/
+HitaarthPWA/
   index.html            screens: reader, saved, settings, tab bar
   styles.css            black/white minimalist theme (light/dark/system)
   app.js                gestures, favorites, notes, streak, settings (vanilla JS)
@@ -25,7 +25,7 @@ StillpointPWA/
 A service worker + `fetch` won't work from a double-clicked `file://` page, so serve it locally:
 
 1. Install Python (if needed) from python.org.
-2. Open a terminal in the `StillpointPWA` folder and run:
+2. Open a terminal in the `HitaarthPWA` folder and run:
    ```
    python -m http.server 8000
    ```
@@ -38,7 +38,7 @@ Easiest is to deploy free (below) and open the URL on your phone. To install:
 It then launches full-screen like a native app.
 
 ## Deploy free (pick one, all work from Windows)
-- **Netlify Drop:** go to app.netlify.com/drop and drag the `StillpointPWA` folder in. Instant HTTPS URL.
+- **Netlify Drop:** go to app.netlify.com/drop and drag the `HitaarthPWA` folder in. Instant HTTPS URL.
 - **GitHub Pages:** push the folder to a repo → Settings → Pages → deploy from branch.
 - **Vercel:** `vercel` CLI or drag-drop import.
 HTTPS is required for PWA install — all three give it automatically.
