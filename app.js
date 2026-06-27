@@ -120,8 +120,24 @@ function copyQuote() {
 async function shareQuote() {
   const q = currentQuote(); if (!q) return;
   const text = `${q.text}\n— ${q.author}`;
-  if (navigator.share) { try { await navigator.share({ text }); } catch {} }
-  else { navigator.clipboard?.writeText(text); toast("Copied"); }
+  // Try the native share sheet first (mobile / supported browsers).
+  if (navigator.share) {
+    try { await navigator.share({ title: "Stillpoint", text }); return; }
+    catch (e) { if (e && e.name === "AbortError") return; } // user dismissed: do nothing
+  }
+  // Fallback (most desktops): copy to clipboard with visible feedback.
+  try {
+    await navigator.clipboard.writeText(text);
+    toast("Copied to clipboard");
+  } catch {
+    // Last resort if clipboard API is blocked.
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); toast("Copied to clipboard"); }
+    catch { toast("Couldn't share"); }
+    ta.remove();
+  }
 }
 function moreMenu() {
   const q = currentQuote(); if (!q) return;
