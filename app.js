@@ -30,6 +30,7 @@ async function init() {
   bindActions();
   bindSettings();
   computeStreak();
+  scheduleReminder();
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js").catch(() => {});
 }
 
@@ -69,6 +70,11 @@ function bindReaderGestures() {
     startX = e.clientX; startY = e.clientY;
     pressTimer = setTimeout(() => { pressTimer = null; copyQuote(); }, 500); // long-press = copy
   });
+  feed.addEventListener("pointermove", (e) => {                    // movement means scroll/rest, not a long-press
+    if (pressTimer && (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10)) {
+      clearTimeout(pressTimer); pressTimer = null;
+    }
+  });
   feed.addEventListener("pointerup", (e) => {
     if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; } else return;
     const dx = e.clientX - startX, dy = e.clientY - startY;
@@ -82,7 +88,7 @@ function bindReaderGestures() {
       else { lastTap = now; setTimeout(() => { if (lastTap) { document.body.classList.toggle("immersive"); lastTap = 0; } }, 280); }
     }
   });
-  feed.addEventListener("pointercancel", () => { if (pressTimer) clearTimeout(pressTimer); });
+  feed.addEventListener("pointercancel", () => { if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; } });
 }
 
 // ---------- actions ----------
@@ -90,13 +96,12 @@ function bindActions() {
   $("#favBtn").onclick = favoriteWithPop;
   $("#shareBtn").onclick = shareQuote;
   $("#noteBtn").onclick = toggleNote;
-  $("#moreBtn").onclick = moreMenu;
 }
 function refreshActionBar() {
   const q = currentQuote(); if (!q) return;
   $("#favBtn").textContent = state.favorites.has(q.id) ? "♥" : "♡";
   $("#favBtn").classList.toggle("on", state.favorites.has(q.id));
-  $("#noteBtn").classList.toggle("on", !!state.notes[q.id]);
+  $("#noteBtn").classList.toggle("on", hasNote(q.id));
 }
 function toggleFavorite() {
   const q = currentQuote(); if (!q) return;
@@ -137,16 +142,12 @@ async function shareQuote() {
     ta.remove();
   }
 }
-function moreMenu() {
-  const q = currentQuote(); if (!q) return;
-  copyQuote();
-}
 function toggleNote() {
   const q = currentQuote(); if (!q) return;
   const dlg = $("#noteSheet"), ta = $("#noteText");
   ta.value = state.notes[q.id] || "";
   dlg.showModal();
-  $("#noteSave").onclick = () => { state.notes[q.id] = ta.value.trim(); store.set("notes", state.notes); refreshActionBar(); };
+  $("#noteSave").onclick = () => { state.notes[q.id] = ta.value.trim(); store.set("notes", state.notes); refreshActionBar(); renderSaved(); };
 }
 
 // ---------- tabs / screens ----------
@@ -161,11 +162,25 @@ function showScreen(name, tabEl) {
   if (name === "saved") renderSaved();
 }
 
-// ---------- saved ----------
+// ---------- saved (favorites + notes) ----------
+function hasNote(id) { return !!(state.notes[id] && state.notes[id].trim()); }
 function renderSaved() {
-  const wrap = $("#savedList"); const favs = state.quotes.filter(q => state.favorites.has(q.id));
-  $("#savedEmpty").hidden = favs.length > 0;
-  wrap.innerHTML = favs.map(q => `<div class="item"><div class="t">${escapeHTML(q.text)}</div><div class="a">— ${escapeHTML(q.author)}</div></div>`).join("");
+  const wrap = $("#savedList");
+  // Show anything the user has acted on: a favorite, a note, or both.
+  const items = state.quotes.filter(q => state.favorites.has(q.id) || hasNote(q.id));
+  $("#savedEmpty").hidden = items.length > 0;
+  wrap.innerHTML = items.map(q => {
+    const note = hasNote(q.id)
+      ? `<div class="note"><span class="kicker">Note</span><span class="note-text">${escapeHTML(state.notes[q.id])}</span><button class="note-del" data-del="${escapeHTML(q.id)}" aria-label="Delete note">✕</button></div>`
+      : "";
+    return `<div class="item"><div class="t">${escapeHTML(q.text)}</div><div class="a">— ${escapeHTML(q.author)}</div>${note}</div>`;
+  }).join("");
+  $$(".note-del", wrap).forEach(b => b.onclick = () => deleteNote(b.dataset.del));
+}
+function deleteNote(id) {
+  delete state.notes[id];
+  store.set("notes", state.notes);
+  refreshActionBar(); renderSaved(); haptic();
 }
 
 // ---------- settings ----------
@@ -182,17 +197,25 @@ function bindSettings() {
   // reminders
   $("#remToggle").onchange = async (e) => {
     if (e.target.checked) {
-      const ok = await Notification.requestPermission?.();
+      if (typeof Notification === "undefined") {                  // older iOS Safari: no Notification API
+        e.target.checked = false; state.settings.reminders = false;
+        toast("Reminders aren't supported on this browser");
+        saveSettings(); return;
+      }
+      const ok = await Notification.requestPermission();
       state.settings.reminders = ok === "granted";
-      if (ok !== "granted") { e.target.checked = false; }
-    } else state.settings.reminders = false;
+      if (ok !== "granted") e.target.checked = false;
+    } else {
+      state.settings.reminders = false;
+    }
     saveSettings();
+    scheduleReminder();
   };
-  $("#remTime").onchange = (e) => { state.settings.remTime = e.target.value; saveSettings(); };
+  $("#remTime").onchange = (e) => { state.settings.remTime = e.target.value; saveSettings(); scheduleReminder(); };
   // premium (placeholder)
   $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); toast("Premium / widgets: coming soon"); };
   // reset
-  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false }; saveSettings(); };
+  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false }; saveSettings(); scheduleReminder(); };
 
   syncSettingsUI();
 }
@@ -212,7 +235,27 @@ function syncSettingsUI() {
   $$(".font-opt").forEach(b => b.classList.toggle("on", b.dataset.font === s.font));
   $("#sizeRange").value = s.size; $("#sizeVal").textContent = s.size;
   $("#remToggle").checked = s.reminders; $("#remTime").value = s.remTime;
-  $("#remNote").textContent = "Note: web reminders fire only while the app is open or installed; reliable daily alerts need a native build.";
+  $("#remNote").textContent = "Reminders only fire while the app is open or running in the background — the browser may not deliver them once it's fully closed.";
+}
+
+// ---------- reminders (in-app, best-effort; no backend) ----------
+let reminderTimer = null;
+function scheduleReminder() {
+  clearTimeout(reminderTimer); reminderTimer = null;
+  if (!state.settings.reminders) return;
+  if (typeof Notification === "undefined" || Notification.permission !== "granted") return;
+  const [h, m] = (state.settings.remTime || "08:00").split(":").map(Number);
+  const now = new Date();
+  const next = new Date();
+  next.setHours(h || 0, m || 0, 0, 0);
+  if (next <= now) next.setDate(next.getDate() + 1);             // already past today → tomorrow
+  reminderTimer = setTimeout(() => { fireReminder(); scheduleReminder(); }, next - now);
+}
+function fireReminder() {
+  if (typeof Notification === "undefined" || Notification.permission !== "granted") return;
+  const q = state.quotes.length ? state.quotes[Math.floor(Math.random() * state.quotes.length)] : null;
+  const body = q ? `${q.text} — ${q.author}` : "A moment of stillness is waiting.";
+  try { new Notification("Stillpoint", { body, icon: "icons/icon-192.png" }); } catch {}
 }
 
 // ---------- streak ----------
@@ -240,5 +283,6 @@ function computeStreak() {
 }
 
 // ---------- utils ----------
-function escapeHTML(s) { return s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function escapeHTML(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function haptic() { try { navigator.vibrate?.(8); } catch {} }
 function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 1300); }

@@ -96,6 +96,12 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .tab{opacity:.5;padding:10px 24px}
 .tab.active{opacity:1}
 
+/* notes in saved */
+.list .item .note{display:flex;align-items:flex-start;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.list .item .note .kicker{margin:3px 0 0}
+.list .item .note-text{flex:1;font-size:14px;font-style:italic;line-height:1.4}
+.note-del{color:var(--muted);font-size:15px;padding:0 6px;line-height:1.3}
+
 /* sheets + toast */
 dialog{border:none;border-radius:18px;background:var(--card);color:var(--fg);width:min(92vw,420px);padding:20px}
 dialog::backdrop{background:rgba(0,0,0,.5)}

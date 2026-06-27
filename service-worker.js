@@ -1,5 +1,5 @@
-// Network-first: always fresh when online, falls back to cache offline.
-// No manual version bumps needed for content updates.
+// Network-first: always try the network so quotes.json edits reach returning
+// users without a version bump; fall back to cache when offline.
 const CACHE = "stillpoint-cache";
 const ASSETS = [
   "./", "./index.html", "./styles.css", "./app.js", "./quotes.json",
@@ -26,8 +26,11 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     fetch(req)
       .then(res => {
-        const copy = res.clone();
-        caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+        // Only cache successful responses — never 404s, 5xx, or opaque errors.
+        if (res && res.ok) {
+          const copy = res.clone();
+          caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+        }
         return res;
       })
       .catch(() => caches.match(req).then(hit => hit || caches.match("./index.html")))

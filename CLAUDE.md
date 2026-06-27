@@ -17,12 +17,12 @@ An installable PWA quotes reader. Vanilla HTML/CSS/JS. **No build step, no frame
 
 - `index.html` — three screens (reader feed, saved, settings) + bottom tab bar, a note `<dialog>`, and a `#toast` element.
 - `styles.css` — black/white minimalist theme; light/dark/system via `html[data-theme=...]` and a `prefers-color-scheme` media query. Ends with `.sheet-actions button` and `.toast` rules (file was once truncated here — keep it complete).
-- `app.js` — all logic, vanilla, single `state` object. Reader is a vertical scroll-snap feed of quote cards tracked by `IntersectionObserver`. Persists favorites / notes / streak / settings in `localStorage`. HTML is injected, so all quote fields pass through `escapeHTML()` — keep it that way (XSS safety).
+- `app.js` — all logic, vanilla, single `state` object. Reader is a vertical scroll-snap feed of quote cards tracked by `IntersectionObserver`. Persists favorites / notes / streak / settings in `localStorage`. HTML is injected, so all quote fields pass through `escapeHTML()` (coerces with `String(s ?? "")`) — keep it that way (XSS safety). The Saved screen lists anything favorited **or** noted; notes show inline with a delete control. Reminders are best-effort and **in-app only**: a `setTimeout`-scheduled `Notification` that fires while the app is open/backgrounded — no backend, not guaranteed once fully closed (guarded with `typeof Notification !== "undefined"` for older iOS Safari).
 - `quotes.json` — array of `{ id, text, author, source, lesson, category }`. Every item needs all six fields. `id` must be unique and stable (favorites/notes key off it).
-- `service-worker.js` — network-first cache (fresh when online, cache fallback offline). Caches all core assets + icons in its `ASSETS` array. No version bumps needed for content updates; if you rename/move an asset, update `ASSETS`.
+- `service-worker.js` — network-first (fresh when online, cache fallback offline, then `index.html`). Only caches `res.ok` responses — never 404s/5xx. Precaches core assets + icons in its `ASSETS` array. No version bumps needed for content updates; if you rename/move an asset, update `ASSETS`.
 - `manifest.webmanifest` — PWA manifest. Icons live in `icons/`.
 - `icons/` — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`. Paths in `manifest.webmanifest`, `index.html`, and `service-worker.js` must match these exactly.
-- `netlify.toml` — static config: publish dir = repo root, no build command, `no-cache` header on the service worker.
+- `netlify.toml` — static config: publish dir = repo root, no build command, `no-cache` header on the service worker, and `Content-Type: application/manifest+json` on `manifest.webmanifest`.
 
 ## Gestures (reader)
 
