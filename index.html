@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <title>Stillpoint — Daily Wisdom</title>
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- READER -->
+  <main id="reader" class="screen active" aria-label="Quotes">
+    <div id="feed" class="feed"><!-- quote sections injected here --></div>
+
+    <!-- per-quote actions (toggle with a tap) -->
+    <div class="actions" id="actions">
+      <button class="act" id="favBtn" aria-label="Favorite">♡</button>
+      <button class="act" id="noteBtn" aria-label="Add note">✎</button>
+      <button class="act" id="shareBtn" aria-label="Share">➤</button>
+      <button class="act" id="moreBtn" aria-label="More">⋯</button>
+    </div>
+  </main>
+
+  <!-- SAVED -->
+  <section id="saved" class="screen list-screen" hidden>
+    <h1>Saved</h1>
+    <div id="savedList" class="list"></div>
+    <p id="savedEmpty" class="empty">Double-tap a quote, or tap ♡, to save it here.</p>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="settings" class="screen list-screen" hidden>
+    <h1>Settings</h1>
+
+    <div class="card streak">
+      <div class="streak-top">
+        <div><span class="flame">🔥</span> STREAK<br /><strong id="streakDays">1 day</strong></div>
+        <div class="streak-pct"><strong id="streakPct">14%</strong><br /><span id="streakLevel" class="muted">Level 1 — to 7</span></div>
+      </div>
+      <div class="bar"><div id="streakBar" class="bar-fill"></div></div>
+      <div class="muted small" id="streakNext">Next milestone in 6 days</div>
+    </div>
+
+    <div class="card">
+      <div class="row" data-toggle="appearance"><span class="ic">☀︎</span><div class="row-main"><strong>Appearance</strong><div class="muted small">Light / Dark / System</div></div><span class="chev">⌄</span></div>
+      <div class="expand" id="appearance">
+        <div class="seg" role="tablist">
+          <button data-appearance="system">SYSTEM</button>
+          <button data-appearance="light">LIGHT</button>
+          <button data-appearance="dark">DARK</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row" data-toggle="typography"><span class="ic">A</span><div class="row-main"><strong>Typography</strong><div class="muted small">Font and size</div></div><span class="chev">⌄</span></div>
+      <div class="expand" id="typography">
+        <label class="slider-row">Aa <input type="range" id="sizeRange" min="14" max="34" step="1" /> <span id="sizeVal">20</span></label>
+        <div class="fonts">
+          <button class="font-opt" data-font="system">System</button>
+          <button class="font-opt" data-font="mono">Monospaced</button>
+          <button class="font-opt" data-font="cursive">Snell&nbsp;Roundhand</button>
+        </div>
+        <div class="preview" id="fontPreview">The quick brown fox jumps over the lazy dog.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row" data-toggle="reminders"><span class="ic">🔔</span><div class="row-main"><strong>Reminders</strong><div class="muted small">Daily quote reminder</div></div><span class="chev">⌄</span></div>
+      <div class="expand" id="reminders">
+        <label class="switch-row">Enable reminders <input type="checkbox" id="remToggle" /></label>
+        <label class="time-row">Time <input type="time" id="remTime" value="08:00" /></label>
+        <p class="muted small" id="remNote"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <label class="row switch-row"><span class="ic">◰</span><div class="row-main"><strong>Get Premium</strong><div class="muted small">Unlock widgets &amp; packs</div></div><button id="premiumBtn" class="pill">Unlock</button></label>
+    </div>
+
+    <button id="resetBtn" class="reset">↺ Reset to defaults</button>
+    <p class="muted small center">Stillpoint · your data stays on this device</p>
+  </section>
+
+  <!-- BOTTOM TAB BAR -->
+  <nav id="tabbar" class="tabbar">
+    <button class="tab active" data-screen="reader" aria-label="Read">▤</button>
+    <button class="tab" data-screen="saved" aria-label="Saved">★</button>
+    <button class="tab" data-screen="settings" aria-label="Settings">⚙︎</button>
+  </nav>
+
+  <!-- Note sheet -->
+  <dialog id="noteSheet">
+    <form method="dialog">
+      <h3>Your note</h3>
+      <textarea id="noteText" rows="4" placeholder="A thought on this quote…"></textarea>
+      <div class="sheet-actions"><button value="cancel">Cancel</button><button value="save" id="noteSave">Save</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

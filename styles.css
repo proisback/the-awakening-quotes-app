@@ -1,0 +1,104 @@
+:root{
+  --bg:#000; --fg:#fff; --muted:#8a8a8e; --card:#111114; --line:#26262b;
+  --accent1:#FFA63D; --accent2:#FF5F6D;
+  --quote-size:20px; --quote-font:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;
+  --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px);
+}
+html[data-theme="light"]{ --bg:#fff; --fg:#111; --muted:#8a8a8e; --card:#f3f3f5; --line:#e5e5ea; }
+@media (prefers-color-scheme: light){ html[data-theme="system"]{ --bg:#fff; --fg:#111; --card:#f3f3f5; --line:#e5e5ea; } }
+
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
+  font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:none;}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+.muted{color:var(--muted)} .small{font-size:13px} .center{text-align:center}
+
+.screen{display:none}
+.screen.active{display:block}
+
+/* READER */
+.feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
+.feed::-webkit-scrollbar{display:none}
+.quote{height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
+  padding:0 28px;padding-top:var(--safe-top);padding-bottom:calc(var(--safe-bottom) + 150px)}
+.quote .inner{width:100%;max-width:640px;margin:0 auto}
+.qmark{font-family:Georgia,'Times New Roman',serif;font-size:calc(var(--quote-size) * 2.6);line-height:.5;height:.5em;color:var(--accent2);opacity:.5;margin-bottom:12px}
+.quote .text{font-family:var(--quote-font);font-size:var(--quote-size);line-height:1.45;font-weight:600;letter-spacing:.2px}
+.meta{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.byline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.byline .author{font-weight:700;font-size:calc(var(--quote-size) * 0.72)}
+.chip{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--accent2);border:1px solid color-mix(in srgb,var(--accent2) 45%, transparent);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.lesson{padding:2px 0 2px 14px;border-left:2px solid var(--accent2);font-style:italic;font-size:calc(var(--quote-size) * 0.68);opacity:.95}
+.source{font-size:calc(var(--quote-size) * 0.54);color:var(--muted)}
+.kicker{display:block;font-style:normal;font-weight:800;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+
+.actions{position:fixed;left:0;right:0;bottom:calc(64px + var(--safe-bottom));display:flex;justify-content:space-around;
+  padding:0 36px;transition:opacity .25s;font-size:24px}
+.act.on{color:var(--accent2)}
+
+/* distraction-free: a tap hides chrome */
+body.immersive .actions,
+body.immersive .tabbar,
+body.immersive .meta{opacity:0;pointer-events:none}
+
+/* heart pop on double-tap */
+.heart-pop{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font-size:120px;color:#fff;
+  pointer-events:none;opacity:0;transform:scale(.4)}
+.heart-pop.show{animation:pop .7s ease}
+@keyframes pop{0%{opacity:0;transform:scale(.4)}30%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.2)}}
+
+/* LIST SCREENS */
+.list-screen{padding:calc(var(--safe-top) + 16px) 18px calc(96px + var(--safe-bottom))}
+.list-screen h1{font-size:30px;margin:8px 4px 18px}
+.list .item{padding:16px;border-radius:16px;background:var(--card);margin-bottom:12px}
+.list .item .t{font-size:16px} .list .item .a{color:var(--muted);font-size:13px;margin-top:6px}
+.empty{color:var(--muted);text-align:center;margin-top:60px}
+
+/* SETTINGS */
+.card{background:var(--card);border-radius:18px;margin-bottom:14px;overflow:hidden}
+.row{display:flex;align-items:center;gap:14px;padding:18px}
+.row .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(127,127,127,.18);font-weight:700}
+.row-main{flex:1}
+.chev{color:var(--muted);transition:transform .2s}
+.card.open .chev{transform:rotate(180deg)}
+.expand{max-height:0;overflow:hidden;transition:max-height .28s ease;padding:0 18px}
+.card.open .expand{max-height:420px;padding:0 18px 18px}
+
+.streak{padding:18px;background:linear-gradient(120deg,var(--card),var(--card))}
+.streak-top{display:flex;justify-content:space-between;align-items:flex-start;line-height:1.5}
+.streak-top strong{font-size:22px}
+.streak-pct{text-align:right}
+.bar{height:8px;border-radius:8px;background:rgba(127,127,127,.25);margin:14px 0 8px;overflow:hidden}
+.bar-fill{height:100%;width:14%;border-radius:8px;background:linear-gradient(90deg,var(--accent1),var(--accent2))}
+
+.seg{display:flex;gap:10px;justify-content:center;padding-top:6px}
+.seg button{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600}
+.seg button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+.slider-row{display:flex;align-items:center;gap:12px;padding:6px 0 14px;font-size:20px}
+.slider-row input[type=range]{flex:1;accent-color:#0a84ff}
+.fonts{display:flex;flex-direction:column;gap:2px}
+.font-opt{text-align:left;padding:12px 4px;border-bottom:1px solid var(--line)}
+.font-opt[data-font="cursive"]{font-family:"Snell Roundhand","Brush Script MT",cursive;font-size:20px}
+.font-opt.on::after{content:"  ✓";color:#0a84ff}
+.preview{margin-top:14px;padding:14px;border-radius:12px;background:rgba(127,127,127,.12);font-family:var(--quote-font);font-size:var(--quote-size)}
+
+.switch-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0}
+.time-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.time-row input,.switch-row input{accent-color:#0a84ff}
+.pill{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:600}
+.reset{display:block;width:100%;padding:16px;border-radius:16px;background:var(--card);color:var(--accent2);font-weight:600;margin:4px 0 14px}
+
+/* TAB BAR */
+.tabbar{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;
+  height:calc(60px + var(--safe-bottom));padding-bottom:var(--safe-bottom);
+  background:color-mix(in srgb,var(--bg) 86%, transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);font-size:22px}
+.tab{opacity:.5;padding:10px 24px}
+.tab.active{opacity:1}
+
+/* sheets + toast */
+dialog{border:none;border-radius:18px;background:var(--card);color:var(--fg);width:min(92vw,420px);padding:20px}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog textarea{width:100%;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:10px;margin-top:8px}
+.sheet-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
+.sheet-actions button{padding:8px 16px;border-radius:10px;background:rgba(127,1

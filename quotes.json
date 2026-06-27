@@ -1,0 +1,434 @@
+[
+ {
+  "id": "chanakya-friend",
+  "text": "There is some self-interest behind every friendship. There is no friendship without self-interests. This is a bitter truth.",
+  "author": "Chanakya",
+  "source": "Attributed to Chanakya (Chanakya Niti), ancient India",
+  "lesson": "See the incentives clearly, even inside relationships.",
+  "category": "Practical Wisdom"
+ },
+ {
+  "id": "osho-sky",
+  "text": "Your being is vast like the sky; don't identify with the passing clouds.",
+  "author": "Osho (Rajneesh)",
+  "source": "Attributed to Osho (Rajneesh)",
+  "lesson": "You are the awareness, not the passing moods.",
+  "category": "Consciousness"
+ },
+ {
+  "id": "vivekananda-arise",
+  "text": "Arise, awake, and stop not till the goal is reached.",
+  "author": "Swami Vivekananda",
+  "source": "Swami Vivekananda's rallying call (from the Katha Upanishad)",
+  "lesson": "Commit fully and persist until it's done.",
+  "category": "Resolve"
+ },
+ {
+  "id": "meadows-dance",
+  "text": "We can't control systems or figure them out. But we can dance with them.",
+  "author": "Donella Meadows",
+  "source": "'Dancing with Systems' (Whole Earth Review, 2001); Thinking in Systems, ch. 7",
+  "lesson": "Work with a system's feedback instead of trying to dominate it.",
+  "category": "Systems Thinking"
+ },
+ {
+  "id": "bateson-difference",
+  "text": "Information is a difference that makes a difference.",
+  "author": "Gregory Bateson",
+  "source": "Steps to an Ecology of Mind (1972), 'Form, Substance and Difference'",
+  "lesson": "Meaning comes from contrast and context, not raw data.",
+  "category": "Systems Thinking"
+ },
+ {
+  "id": "boulding-growth",
+  "text": "Anyone who believes exponential growth can go on forever in a finite world is either a madman or an economist.",
+  "author": "Kenneth Boulding",
+  "source": "Attributed; popularized via Mancur Olson, Daedalus (1973); exact origin disputed",
+  "lesson": "Nothing compounds forever in a bounded system.",
+  "category": "Systems Thinking"
+ },
+ {
+  "id": "daly-liquidation",
+  "text": "There is something fundamentally wrong in treating the Earth as if it were a business in liquidation.",
+  "author": "Herman E. Daly",
+  "source": "Steady-State Economics, 2nd ed. (1991), p. 248",
+  "lesson": "Don't burn your capital base for short-term flow.",
+  "category": "Systems Thinking"
+ },
+ {
+  "id": "einstein-curiosity",
+  "text": "The important thing is not to stop questioning. Curiosity has its own reason for existing.",
+  "author": "Albert Einstein",
+  "source": "Quoted by William Miller, LIFE magazine, 2 May 1955",
+  "lesson": "Protect your 'holy curiosity'; never stop asking why.",
+  "category": "Curiosity"
+ },
+ {
+  "id": "hardin-commons",
+  "text": "Freedom in a commons brings ruin to all.",
+  "author": "Garrett Hardin",
+  "source": "'The Tragedy of the Commons,' Science (1968)",
+  "lesson": "Shared resources need shared rules.",
+  "category": "Systems Thinking"
+ },
+ {
+  "id": "havel-hope",
+  "text": "Hope is not the conviction that something will turn out well, but the certainty that something makes sense, regardless of how it turns out.",
+  "author": "Vaclav Havel",
+  "source": "Disturbing the Peace (1990), pp. 181-182",
+  "lesson": "Hope is about meaning, not optimism about outcomes.",
+  "category": "Hope"
+ },
+ {
+  "id": "mumford-clock",
+  "text": "The clock, not the steam-engine, is the key-machine of the modern industrial age.",
+  "author": "Lewis Mumford",
+  "source": "Technics and Civilization (1934)",
+  "lesson": "The tools we adopt quietly reshape how we live.",
+  "category": "Technology & Society"
+ },
+ {
+  "id": "myrdal-softstate",
+  "text": "A 'soft state' is undone not by bad laws but by laws no one enforces.",
+  "author": "Gunnar Myrdal",
+  "source": "Paraphrase of Myrdal's thesis in Asian Drama (1968) - concept, not a verbatim quote",
+  "lesson": "Rules without enforcement are theater.",
+  "category": "Development"
+ },
+ {
+  "id": "schumacher-small",
+  "text": "Small is beautiful.",
+  "author": "E. F. Schumacher",
+  "source": "Small Is Beautiful: Economics as if People Mattered (1973); phrase from Leopold Kohr",
+  "lesson": "Human-scale often beats relentless bigness.",
+  "category": "Economics"
+ },
+ {
+  "id": "marcus-mind",
+  "text": "You have power over your mind, not outside events. Realize this, and you will find strength.",
+  "author": "Marcus Aurelius",
+  "source": "Meditations (popular translation)",
+  "lesson": "Control the controllable: your own response.",
+  "category": "Stoicism"
+ },
+ {
+  "id": "seneca-imagination",
+  "text": "We suffer more often in imagination than in reality.",
+  "author": "Seneca",
+  "source": "Letters from a Stoic (Letters to Lucilius)",
+  "lesson": "Don't pre-pay suffering for things that never happen.",
+  "category": "Stoicism"
+ },
+ {
+  "id": "laotzu-journey",
+  "text": "The journey of a thousand miles begins with a single step.",
+  "author": "Lao Tzu",
+  "source": "Tao Te Ching, ch. 64",
+  "lesson": "Start. Momentum compounds.",
+  "category": "Action"
+ },
+ {
+  "id": "socrates-examined",
+  "text": "The unexamined life is not worth living.",
+  "author": "Socrates",
+  "source": "Plato's Apology (38a)",
+  "lesson": "Reflection is what makes a life your own.",
+  "category": "Philosophy"
+ },
+ {
+  "id": "durant-excellence",
+  "text": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+  "author": "Will Durant",
+  "source": "The Story of Philosophy (1926), summarizing Aristotle (commonly misattributed to Aristotle)",
+  "lesson": "Excellence is a routine, not a one-off moment.",
+  "category": "Habits"
+ },
+ {
+  "id": "roosevelt-arena",
+  "text": "The credit belongs to the man who is actually in the arena, whose face is marred by dust and sweat and blood.",
+  "author": "Theodore Roosevelt",
+  "source": "'Citizenship in a Republic,' Paris (1910)",
+  "lesson": "Doers, not critics, earn the credit.",
+  "category": "Courage"
+ },
+ {
+  "id": "mandela-impossible",
+  "text": "It always seems impossible until it's done.",
+  "author": "Nelson Mandela",
+  "source": "Widely attributed to Nelson Mandela",
+  "lesson": "Big goals look unreachable until reached.",
+  "category": "Perseverance"
+ },
+ {
+  "id": "angelou-feel",
+  "text": "People will never forget how you made them feel.",
+  "author": "Maya Angelou",
+  "source": "Maya Angelou (widely attributed)",
+  "lesson": "Emotional impact outlasts words and deeds.",
+  "category": "Leadership"
+ },
+ {
+  "id": "frankl-change",
+  "text": "When we are no longer able to change a situation, we are challenged to change ourselves.",
+  "author": "Viktor Frankl",
+  "source": "Man's Search for Meaning (1946)",
+  "lesson": "Change your response when you can't change the world.",
+  "category": "Resilience"
+ },
+ {
+  "id": "nietzsche-why",
+  "text": "He who has a why to live for can bear almost any how.",
+  "author": "Friedrich Nietzsche",
+  "source": "Twilight of the Idols (1888)",
+  "lesson": "A strong purpose makes hard means bearable.",
+  "category": "Purpose"
+ },
+ {
+  "id": "mlk-right",
+  "text": "The time is always right to do what is right.",
+  "author": "Martin Luther King Jr.",
+  "source": "Oberlin College address (1965)",
+  "lesson": "Don't wait for a convenient moment to act rightly.",
+  "category": "Ethics"
+ },
+ {
+  "id": "curie-understood",
+  "text": "Nothing in life is to be feared, it is only to be understood.",
+  "author": "Marie Curie",
+  "source": "Marie Curie (widely attributed)",
+  "lesson": "Understanding dissolves fear.",
+  "category": "Courage"
+ },
+ {
+  "id": "jung-unconscious",
+  "text": "Until you make the unconscious conscious, it will direct your life and you will call it fate.",
+  "author": "Carl Jung",
+  "source": "Attributed to Carl Jung (exact source debated)",
+  "lesson": "Examine your patterns or be ruled by them.",
+  "category": "Psychology"
+ },
+ {
+  "id": "thoreau-dreams",
+  "text": "If one advances confidently in the direction of his dreams, he will meet with a success unexpected in common hours.",
+  "author": "Henry David Thoreau",
+  "source": "Walden (1854)",
+  "lesson": "Move toward what you want; ordinary limits bend.",
+  "category": "Action"
+ },
+ {
+  "id": "sagan-starstuff",
+  "text": "We are made of star-stuff.",
+  "author": "Carl Sagan",
+  "source": "Cosmos (1980)",
+  "lesson": "Zoom out: you're part of something vast.",
+  "category": "Wonder"
+ },
+ {
+  "id": "gandhi-forgive",
+  "text": "The weak can never forgive. Forgiveness is the attribute of the strong.",
+  "author": "Mahatma Gandhi",
+  "source": "Attributed to Mahatma Gandhi",
+  "lesson": "Forgiveness is strength, not surrender.",
+  "category": "Character"
+ },
+ {
+  "id": "jobs-time",
+  "text": "Your time is limited, so don't waste it living someone else's life.",
+  "author": "Steve Jobs",
+  "source": "Stanford commencement (2005)",
+  "lesson": "Live by conviction, not others' expectations.",
+  "category": "Focus"
+ },
+ {
+  "id": "buffett-value",
+  "text": "Price is what you pay. Value is what you get.",
+  "author": "Warren Buffett",
+  "source": "Berkshire Hathaway shareholder letter (2008)",
+  "lesson": "Worth and price are not the same thing.",
+  "category": "Money"
+ },
+ {
+  "id": "munger-compound",
+  "text": "The first rule of compounding: never interrupt it unnecessarily.",
+  "author": "Charlie Munger",
+  "source": "Attributed to Charlie Munger",
+  "lesson": "Let good things compound; stop tinkering.",
+  "category": "Patience"
+ },
+ {
+  "id": "gates-success",
+  "text": "Success is a lousy teacher. It seduces smart people into thinking they can't lose.",
+  "author": "Bill Gates",
+  "source": "The Road Ahead (1995)",
+  "lesson": "Winning breeds complacency; stay alert.",
+  "category": "Mindset"
+ },
+ {
+  "id": "musk-odds",
+  "text": "When something is important enough, you do it even if the odds are not in your favor.",
+  "author": "Elon Musk",
+  "source": "60 Minutes interview (2012)",
+  "lesson": "Let importance, not odds, drive big bets.",
+  "category": "Courage"
+ },
+ {
+  "id": "naval-wealth",
+  "text": "Seek wealth, not money or status.",
+  "author": "Naval Ravikant",
+  "source": "'How to Get Rich' thread (2018)",
+  "lesson": "Build assets that earn while you sleep.",
+  "category": "Wealth"
+ },
+ {
+  "id": "graham-want",
+  "text": "Make something people want.",
+  "author": "Paul Graham",
+  "source": "Y Combinator motto, from Paul Graham's essays",
+  "lesson": "Nothing else matters if the thing isn't wanted.",
+  "category": "Building"
+ },
+ {
+  "id": "thiel-competition",
+  "text": "Competition is for losers.",
+  "author": "Peter Thiel",
+  "source": "Peter Thiel, WSJ essay (2014), from Zero to One",
+  "lesson": "Differentiate until you're irreplaceable.",
+  "category": "Strategy"
+ },
+ {
+  "id": "hoffman-launch",
+  "text": "If you're not embarrassed by the first version of your product, you've launched too late.",
+  "author": "Reid Hoffman",
+  "source": "Reid Hoffman (widely cited and confirmed by him)",
+  "lesson": "Ship early; real feedback beats polish.",
+  "category": "Shipping"
+ },
+ {
+  "id": "horowitz-bullets",
+  "text": "There are no silver bullets, only lead bullets.",
+  "author": "Ben Horowitz",
+  "source": "The Hard Thing About Hard Things (2014)",
+  "lesson": "Hard problems need direct work, not shortcuts.",
+  "category": "Execution"
+ },
+ {
+  "id": "nadella-innov",
+  "text": "Our industry does not respect tradition. It only respects innovation.",
+  "author": "Satya Nadella",
+  "source": "On becoming Microsoft CEO (2014)",
+  "lesson": "Reinvent before you're forced to.",
+  "category": "Change"
+ },
+ {
+  "id": "zuck-risk",
+  "text": "The biggest risk is not taking any risk.",
+  "author": "Mark Zuckerberg",
+  "source": "Y Combinator Startup School (2011)",
+  "lesson": "In fast change, standing still is riskiest.",
+  "category": "Risk"
+ },
+ {
+  "id": "cuban-work",
+  "text": "Work like there is someone working 24 hours a day to take it all away from you.",
+  "author": "Mark Cuban",
+  "source": "How to Win at the Sport of Business (2011)",
+  "lesson": "Treat your edge as always under threat.",
+  "category": "Hustle"
+ },
+ {
+  "id": "dalio-progress",
+  "text": "Pain plus reflection equals progress.",
+  "author": "Ray Dalio",
+  "source": "Principles (2017)",
+  "lesson": "Reflect on pain to convert it into growth.",
+  "category": "Growth"
+ },
+ {
+  "id": "clear-systems",
+  "text": "You do not rise to the level of your goals. You fall to the level of your systems.",
+  "author": "James Clear",
+  "source": "Atomic Habits (2018)",
+  "lesson": "Design the process, not just the target.",
+  "category": "Habits"
+ },
+ {
+  "id": "sinek-why",
+  "text": "People don't buy what you do; they buy why you do it.",
+  "author": "Simon Sinek",
+  "source": "Start With Why (2009) / TED talk",
+  "lesson": "Purpose creates loyalty.",
+  "category": "Purpose"
+ },
+ {
+  "id": "ferriss-uncomf",
+  "text": "A person's success in life can usually be measured by the number of uncomfortable conversations they're willing to have.",
+  "author": "Tim Ferriss",
+  "source": "The 4-Hour Workweek (2007)",
+  "lesson": "Growth hides behind the conversation you're avoiding.",
+  "category": "Courage"
+ },
+ {
+  "id": "branson-train",
+  "text": "Train people well enough so they can leave, treat them well enough so they don't want to.",
+  "author": "Richard Branson",
+  "source": "Richard Branson, posted on X (2014)",
+  "lesson": "Invest in people; retention follows.",
+  "category": "Leadership"
+ },
+ {
+  "id": "huang-character",
+  "text": "Greatness comes from character, and character is formed out of people who suffered.",
+  "author": "Jensen Huang",
+  "source": "Jensen Huang, Stanford talk (2024)",
+  "lesson": "Hardship builds the character behind greatness.",
+  "category": "Resilience"
+ },
+ {
+  "id": "godin-stories",
+  "text": "Marketing is no longer about the stuff you make, but the stories you tell.",
+  "author": "Seth Godin",
+  "source": "Seth Godin (theme of All Marketers Are Liars)",
+  "lesson": "A believed story beats a feature list.",
+  "category": "Marketing"
+ },
+ {
+  "id": "altman-love",
+  "text": "It's better to have a small number of users that love you than a large number that like you.",
+  "author": "Sam Altman",
+  "source": "Sam Altman, Startup Playbook (Y Combinator)",
+  "lesson": "Depth of love beats breadth of mild interest.",
+  "category": "Building"
+ },
+ {
+  "id": "hormozi-hard",
+  "text": "Everything worth doing is hard. The greater the payoff, the greater the hardship.",
+  "author": "Alex Hormozi",
+  "source": "Alex Hormozi, posted on X / $100M series",
+  "lesson": "Difficulty filters out the competition.",
+  "category": "Discipline"
+ },
+ {
+  "id": "andreessen-soft",
+  "text": "Software is eating the world.",
+  "author": "Marc Andreessen",
+  "source": "Marc Andreessen, WSJ essay (2011)",
+  "lesson": "Build on software or be absorbed by it.",
+  "category": "Tech"
+ },
+ {
+  "id": "bezos-brand",
+  "text": "Your brand is what other people say about you when you're not in the room.",
+  "author": "Jeff Bezos",
+  "source": "Attributed to Jeff Bezos",
+  "lesson": "Reputation forms in your absence.",
+  "category": "Branding"
+ },
+ {
+  "id": "karpathy-english",
+  "text": "The hottest new programming language is English.",
+  "author": "Andrej Karpathy",
+  "source": "Andrej Karpathy, posted on X (January 2023)",
+  "lesson": "Clear language is now real leverage.",
+  "category": "AI"
+ }
+]
