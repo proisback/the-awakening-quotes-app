@@ -54,9 +54,10 @@ function dayKey(d) {
 function renderFeed() {
   const feed = $("#feed");
   const di = dayIndex();
-  // Rotate so today's idea is first, but keep each card's ORIGINAL index (favorites/notes key off it).
-  const ordered = state.quotes.map((q, i) => ({ q, i }));
-  const rotated = ordered.slice(di).concat(ordered.slice(0, di));
+  // Today's idea is pinned first (the daily anchor); the rest are shuffled for fresh browsing.
+  const rest = state.quotes.map((q, i) => ({ q, i })).filter(x => x.i !== di);
+  shuffle(rest);
+  const rotated = state.quotes.length ? [{ q: state.quotes[di], i: di }, ...rest] : [];
   feed.innerHTML = rotated.map(({ q, i }) => `
     <article class="quote" data-i="${i}">
       <div class="inner">
@@ -151,6 +152,7 @@ function bindActions() {
   $("#favBtn").onclick = favoriteWithPop;
   $("#shareBtn").onclick = openShareMenu;
   $("#noteBtn").onclick = toggleNote;
+  const sb = $("#surpriseBtn"); if (sb) sb.onclick = surpriseMe;
 }
 function refreshActionBar() {
   const q = currentQuote(); if (!q) return;
@@ -524,6 +526,18 @@ function computeStreak() {
     ? `❄ ${data.freezes} streak freeze${data.freezes === 1 ? "" : "s"} banked — protects you if you miss a day`
     : "Earn a streak freeze every 7 days — it saves your streak if you miss a day";
   updateActionsStat();
+}
+
+// ---------- browse: shuffle + surprise ----------
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function surpriseMe() {
+  const feed = $("#feed"); const cards = $$(".quote", feed);
+  if (cards.length < 2) return;
+  const curPos = cards.findIndex(c => +c.dataset.i === state.current);
+  let pos; do { pos = Math.floor(Math.random() * cards.length); } while (pos === curPos);
+  feed.scrollTo({ top: pos * feed.clientHeight, behavior: "smooth" });
+  state.current = +cards[pos].dataset.i; refreshActionBar();
+  haptic();
 }
 
 // ---------- utils ----------
