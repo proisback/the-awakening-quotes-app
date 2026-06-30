@@ -55,6 +55,7 @@ const I18N = {
     tRendering: "Rendering image…", tCantImage: "Couldn't make image",
     tCopiedClip: "Copied to clipboard", tCantShare: "Couldn't share",
     tRemUnsupported: "Reminders aren't supported on this browser",
+    tNoTTS: "Read aloud isn't supported on this browser",
     tPremiumSoon: "Premium / widgets: coming soon",
     browseTitle: "Browse", byGenre: "By genre", byAuthor: "By author", browseBack: "← Back", searchPh: "Search quotes, authors…", resultOne: "result", resultMany: "results", noResults: "No matches"
   }
@@ -114,6 +115,16 @@ async function init() {
   applyStaticI18n();
   scheduleReminder();
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js").catch(() => {});
+  // Ask the browser to keep our data — stops eviction of localStorage/cache under storage pressure.
+  if (navigator.storage?.persist) {
+    navigator.storage.persisted().then(p => { if (!p) navigator.storage.persist().catch(() => {}); }).catch(() => {});
+  }
+  // App-shortcut / deep-link routing (?go=…) — feed + screens already exist at this point.
+  const go = new URLSearchParams(location.search).get("go");
+  if (go === "saved") showScreen("saved");
+  else if (go === "browse") showScreen("browse");
+  else if (go === "surprise") surpriseMe();
+  // "today"/absent → default reader screen, no action
 }
 
 // Deterministic "idea of the day": same idea all day, a different one tomorrow.
@@ -156,7 +167,11 @@ function renderFeed() {
   // Track which quote is centered, to drive the action bar state.
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) { state.current = +e.target.dataset.i; refreshActionBar(); }
+      if (e.isIntersecting) {
+        const i = +e.target.dataset.i;
+        if (i !== state.current) stopSpeech();   // never read a stale quote
+        state.current = i; refreshActionBar();
+      }
     });
   }, { threshold: 0.6 });
   $$(".quote", feed).forEach(el => io.observe(el));
@@ -230,6 +245,7 @@ function bindActions() {
   $("#favBtn").onclick = favoriteWithPop;
   $("#shareBtn").onclick = openShareMenu;
   $("#noteBtn").onclick = toggleNote;
+  const spk = $("#speakBtn"); if (spk) spk.onclick = toggleSpeak;
   const sb = $("#surpriseBtn"); if (sb) sb.onclick = surpriseMe;
 }
 function refreshActionBar() {
@@ -256,6 +272,50 @@ function copyQuote() {
   const q = currentQuote(); if (!q) return;
   navigator.clipboard?.writeText(`${tq(q, "text")}\n— ${q.author}`);
   toast(t("tCopied")); haptic();
+}
+
+// ---------- read aloud (Web Speech, 100% client-side) ----------
+const TTS_LANG = { en: "en-US", hi: "hi-IN", es: "es-ES", fr: "fr-FR" };
+let _speaking = false;
+function setSpeakBtn(on) {
+  const b = $("#speakBtn"); if (!b) return;
+  b.textContent = on ? "⏹" : "🔊";
+  b.classList.toggle("on", on);
+}
+// Stop any ongoing speech (called on quote change / screen change / re-tap).
+function stopSpeech() {
+  if (!("speechSynthesis" in window)) return;
+  try { speechSynthesis.cancel(); } catch {}
+  _speaking = false; setSpeakBtn(false);
+}
+function toggleSpeak() {
+  if (!("speechSynthesis" in window)) { toast(t("tNoTTS")); return; }
+  if (_speaking) { stopSpeech(); haptic(); return; }
+  const q = currentQuote(); if (!q) return;
+  let text = `${tq(q, "text")} — ${q.author}`;
+  if (q.action) text += `. ${t("moveLabel")}: ${tq(q, "action")}`;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = TTS_LANG[lang()] || "en-US";
+  u.onend = () => { _speaking = false; setSpeakBtn(false); };
+  u.onerror = () => { _speaking = false; setSpeakBtn(false); };
+  try { speechSynthesis.cancel(); speechSynthesis.speak(u); } catch { return; }
+  _speaking = true; setSpeakBtn(true); haptic();
+  setMediaSession(q);
+}
+// Progressive enhancement: lock-screen / headset controls. Never let this break TTS.
+function setMediaSession(q) {
+  if (!("mediaSession" in navigator)) return;
+  try {
+    const snippet = tq(q, "text");
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: snippet.length > 80 ? snippet.slice(0, 77) + "…" : snippet,
+      artist: q.author,
+      album: "Hitaarth"
+    });
+    navigator.mediaSession.setActionHandler("play", () => { if (!_speaking) toggleSpeak(); });
+    navigator.mediaSession.setActionHandler("pause", () => stopSpeech());
+    navigator.mediaSession.setActionHandler("stop", () => stopSpeech());
+  } catch {}
 }
 
 // ---------- share ----------
@@ -603,6 +663,7 @@ function bindTabs() {
   $$(".tab").forEach(tb => tb.onclick = () => showScreen(tb.dataset.screen, tb));
 }
 function showScreen(name, tabEl) {
+  stopSpeech();                                   // don't keep reading after leaving the reader
   $$(".screen").forEach(s => { s.hidden = (s.id !== name); s.classList.toggle("active", s.id === name); });
   $$(".tab").forEach(tb => tb.classList.remove("active"));
   (tabEl || $(`.tab[data-screen="${name}"]`)).classList.add("active");
@@ -822,5 +883,10 @@ function computeStreak() {
 
 // ---------- utils ----------
 function escapeHTML(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-function haptic() { try { navigator.vibrate?.(8); } catch {} }
+function haptic() {
+  // Skip if there's been no user gesture yet (e.g. ?go=surprise on load) — the browser
+  // blocks vibrate without activation and logs a console intervention otherwise.
+  if (navigator.userActivation && !navigator.userActivation.hasBeenActive) return;
+  try { navigator.vibrate?.(8); } catch {}
+}
 function toast(msg) { const el = $("#toast"); el.textContent = msg; el.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => el.hidden = true, 1300); }
