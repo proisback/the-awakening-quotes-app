@@ -102,6 +102,11 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .list .item .note-text{flex:1;font-size:14px;font-style:italic;line-height:1.4}
 .note-del{color:var(--muted);font-size:15px;padding:0 6px;line-height:1.3}
 
+/* translated badge + language selector */
+.tr-badge{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.lang-seg{flex-wrap:wrap}
+#langNote{margin-top:10px}
+
 /* surprise me */
 .surprise{position:fixed;top:calc(var(--safe-top) + 14px);right:14px;z-index:6;width:42px;height:42px;border-radius:50%;background:color-mix(in srgb,var(--bg) 68%, transparent);backdrop-filter:blur(10px);border:1px solid var(--line);font-size:20px;line-height:1;color:var(--fg);display:grid;place-items:center;transition:opacity .25s,transform .2s}
 .surprise:active{transform:rotate(180deg)}

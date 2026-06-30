@@ -16,8 +16,81 @@ const state = {
   favorites: new Set(store.get("favorites", [])),
   notes: store.get("notes", {}),
   actions: store.get("actions", {}),   // "id::YYYY-MM-DD" -> ISO timestamp of the move
-  settings: store.get("settings", { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false })
+  settings: store.get("settings", { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false, lang: "en" })
 };
+if (!state.settings.lang) state.settings.lang = "en";
+
+// ---------- i18n ----------
+// English UI strings live here; other languages load from i18n/<lang>.json (_ui + per-quote).
+let localeData = null;
+const I18N = {
+  en: {
+    savedTitle: "Saved", savedEmpty: "Double-tap a quote, or tap ♡, to save it here.",
+    settingsTitle: "Settings", streak: "STREAK", shareStreak: "Share streak ↗",
+    language: "Language", languageSub: "App language",
+    appearance: "Appearance", appearanceSub: "Light / Dark / System",
+    segSystem: "SYSTEM", segLight: "LIGHT", segDark: "DARK",
+    typography: "Typography", typographySub: "Font and size",
+    fontSystem: "System", fontMono: "Monospaced",
+    reminders: "Reminders", remindersSub: "Daily quote reminder",
+    enableReminders: "Enable reminders", timeLabel: "Time",
+    premium: "Get Premium", premiumSub: "Unlock widgets & packs", unlock: "Unlock",
+    reset: "↺ Reset to defaults", privacy: "Hitaarth · your data stays on this device",
+    noteTitle: "Your note", notePh: "A thought on this quote…", cancel: "Cancel", save: "Save",
+    shareTitle: "Share quote", saveImage: "Save as image", shareTextOpt: "Share as text",
+    lessonLabel: "Lesson", moveLabel: "Today's move", sourceLabel: "Source", noteLabel: "Note",
+    todayBadge: "Today's idea", didIt: "Did it", doneToday: "✓ Done today", translated: "translated",
+    dayOne: "{n} day", dayMany: "{n} days",
+    levelTo: "Level {level} — to {m}",
+    nextMilestone: "Next milestone in {n} day", nextMilestoneN: "Next milestone in {n} days",
+    milestoneReached: "Milestone reached! 🎉",
+    freezeBanked: "❄ {n} streak freeze banked — protects you if you miss a day",
+    freezeBankedN: "❄ {n} streak freezes banked — protects you if you miss a day",
+    freezeEarn: "Earn a streak freeze every 7 days — it saves your streak if you miss a day",
+    movesTaken: "{t} move taken · {w} this week", movesTakenN: "{t} moves taken · {w} this week",
+    noMoves: "No moves yet — do today's one move.",
+    remNote: "Reminders only fire while the app is open or running in the background — the browser may not deliver them once it's fully closed.",
+    langNote: "Quotes in another language are machine-translated and marked.",
+    tCopied: "Copied", tMoveLogged: "Move logged ✓", tImageSaved: "Image saved",
+    tRendering: "Rendering image…", tCantImage: "Couldn't make image",
+    tCopiedClip: "Copied to clipboard", tCantShare: "Couldn't share",
+    tRemUnsupported: "Reminders aren't supported on this browser",
+    tPremiumSoon: "Premium / widgets: coming soon"
+  }
+};
+function lang() { return state.settings.lang || "en"; }
+function t(k) {
+  if (lang() !== "en" && localeData && localeData._ui && k in localeData._ui) return localeData._ui[k];
+  return (k in I18N.en) ? I18N.en[k] : k;
+}
+function tq(q, field) {                       // translated quote field, falling back to English
+  if (lang() === "en" || !localeData) return q[field];
+  const tr = localeData[q.id];
+  return (tr && tr[field]) || q[field];
+}
+function isTranslated(q) {
+  return lang() !== "en" && !!(localeData && localeData[q.id] && localeData[q.id].text);
+}
+async function loadLocale(lng) {
+  if (lng === "en") { localeData = null; return; }
+  try { const r = await fetch(`i18n/${lng}.json`); localeData = await r.json(); }
+  catch { localeData = null; }
+}
+function applyStaticI18n() {
+  $$("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+  $$("[data-i18n-ph]").forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.documentElement.lang = lang();
+}
+async function applyLanguage(lng) {
+  state.settings.lang = lng;
+  store.set("settings", state.settings);
+  await loadLocale(lng);
+  applyStaticI18n();
+  renderFeed();
+  renderSaved();
+  computeStreak();
+  syncSettingsUI();
+}
 
 // ---------- boot ----------
 init();
@@ -28,12 +101,14 @@ async function init() {
     state.quotes = await res.json();
   } catch { state.quotes = []; }
   state.current = dayIndex();           // open on today's idea
+  await loadLocale(lang());
   renderFeed();
   bindReaderGestures();
   bindTabs();
   bindActions();
   bindSettings();
   computeStreak();
+  applyStaticI18n();
   scheduleReminder();
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js").catch(() => {});
 }
@@ -61,14 +136,14 @@ function renderFeed() {
   feed.innerHTML = rotated.map(({ q, i }) => `
     <article class="quote" data-i="${i}">
       <div class="inner">
-        ${i === di ? `<span class="today-badge">Today's idea</span>` : ""}
+        ${i === di ? `<span class="today-badge">${t("todayBadge")}</span>` : ""}
         <div class="qmark">&#8220;</div>
-        <p class="text">${escapeHTML(q.text)}</p>
+        <p class="text">${escapeHTML(tq(q, "text"))}</p>
         <div class="meta">
-          <div class="byline"><span class="author">${escapeHTML(q.author)}</span>${q.category ? `<span class="chip">${escapeHTML(q.category)}</span>` : ""}</div>
-          ${q.lesson ? `<div class="lesson"><span class="kicker">Lesson</span>${escapeHTML(q.lesson)}</div>` : ""}
-          ${q.action ? `<div class="todo"><span class="kicker">Today's move</span><span class="todo-text">${escapeHTML(q.action)}</span><button type="button" class="todo-done${isActionDone(q.id) ? " on" : ""}" data-done="${escapeHTML(q.id)}">${isActionDone(q.id) ? "✓ Done today" : "Did it"}</button></div>` : ""}
-          ${q.source ? `<div class="source"><span class="kicker">Source</span>${escapeHTML(q.source)}</div>` : ""}
+          <div class="byline"><span class="author">${escapeHTML(q.author)}</span>${q.category ? `<span class="chip">${escapeHTML(q.category)}</span>` : ""}${isTranslated(q) ? `<span class="tr-badge">${t("translated")}</span>` : ""}</div>
+          ${q.lesson ? `<div class="lesson"><span class="kicker">${t("lessonLabel")}</span>${escapeHTML(tq(q, "lesson"))}</div>` : ""}
+          ${q.action ? `<div class="todo"><span class="kicker">${t("moveLabel")}</span><span class="todo-text">${escapeHTML(tq(q, "action"))}</span><button type="button" class="todo-done${isActionDone(q.id) ? " on" : ""}" data-done="${escapeHTML(q.id)}">${isActionDone(q.id) ? t("doneToday") : t("didIt")}</button></div>` : ""}
+          ${q.source ? `<div class="source"><span class="kicker">${t("sourceLabel")}</span>${escapeHTML(q.source)}</div>` : ""}
         </div>
       </div>
     </article>`).join("");
@@ -93,11 +168,11 @@ function toggleActionDone(btn) {
   const key = `${id}::${dayKey()}`;
   if (state.actions[key]) {
     delete state.actions[key];
-    btn.classList.remove("on"); btn.textContent = "Did it";
+    btn.classList.remove("on"); btn.textContent = t("didIt");
   } else {
     state.actions[key] = new Date().toISOString();
-    btn.classList.add("on"); btn.textContent = "✓ Done today";
-    toast("Move logged ✓");
+    btn.classList.add("on"); btn.textContent = t("doneToday");
+    toast(t("tMoveLogged"));
   }
   store.set("actions", state.actions);
   updateActionsStat(); haptic();
@@ -106,15 +181,15 @@ function actionStats() {
   const keys = Object.keys(state.actions);
   const weekAgo = Date.now() - 7 * 86400000;
   let week = 0;
-  for (const k of keys) { const t = Date.parse(state.actions[k]); if (t && t >= weekAgo) week++; }
+  for (const k of keys) { const ts = Date.parse(state.actions[k]); if (ts && ts >= weekAgo) week++; }
   return { total: keys.length, week };
 }
 function updateActionsStat() {
   const el = $("#actionsStat"); if (!el) return;
   const { total, week } = actionStats();
   el.textContent = total
-    ? `${total} move${total === 1 ? "" : "s"} taken · ${week} this week`
-    : "No moves yet — do today's one move.";
+    ? (total === 1 ? t("movesTaken") : t("movesTakenN")).replace("{t}", total).replace("{w}", week)
+    : t("noMoves");
 }
 
 // ---------- gestures ----------
@@ -176,12 +251,12 @@ function favoriteWithPop() {
 }
 function copyQuote() {
   const q = currentQuote(); if (!q) return;
-  navigator.clipboard?.writeText(`${q.text}\n— ${q.author}`);
-  toast("Copied"); haptic();
+  navigator.clipboard?.writeText(`${tq(q, "text")}\n— ${q.author}`);
+  toast(t("tCopied")); haptic();
 }
 
 // ---------- share ----------
-function quoteShareText(q) { return `${q.text}\n— ${q.author}\n\nvia Hitaarth · ${SITE}/?s=card`; }
+function quoteShareText(q) { return `${tq(q, "text")}\n— ${q.author}\n\nvia Hitaarth · ${SITE}/?s=card`; }
 
 function openShareMenu() {
   const q = currentQuote(); if (!q) return;
@@ -192,9 +267,9 @@ function openShareMenu() {
 }
 async function saveQuoteImage() {
   const q = currentQuote(); if (!q) return;
-  toast("Rendering image…");
+  toast(t("tRendering"));
   let blob; try { blob = await renderQuoteImage(q); } catch { blob = null; }
-  if (!blob) { toast("Couldn't make image"); return; }
+  if (!blob) { toast(t("tCantImage")); return; }
   await shareCanvasBlob(blob, `hitaarth-${q.id}`, quoteShareText(q));
 }
 async function shareText() {
@@ -207,13 +282,13 @@ async function shareText() {
   }
   try {
     await navigator.clipboard.writeText(text);
-    toast("Copied to clipboard");
+    toast(t("tCopiedClip"));
   } catch {
     const ta = document.createElement("textarea");
     ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
     document.body.appendChild(ta); ta.select();
-    try { document.execCommand("copy"); toast("Copied to clipboard"); }
-    catch { toast("Couldn't share"); }
+    try { document.execCommand("copy"); toast(t("tCopiedClip")); }
+    catch { toast(t("tCantShare")); }
     ta.remove();
   }
 }
@@ -229,7 +304,7 @@ async function shareCanvasBlob(blob, base, text) {
   a.href = url; a.download = file.name;
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  toast("Image saved");
+  toast(t("tImageSaved"));
 }
 
 function toggleNote() {
@@ -295,7 +370,7 @@ async function renderQuoteImage(q) {
     const topY = PAD + 200;
     const footY = H - 210;
     const maxTextH = footY - topY - 150;       // leave room for the author line
-    const fit = fitText(ctx, q.text, maxW, maxTextH, 64, 28, 1.32, SERIF, 600);
+    const fit = fitText(ctx, tq(q, "text"), maxW, maxTextH, 64, 28, 1.32, SERIF, 600);
     ctx.fillStyle = "#F4F4F2";
     ctx.font = `600 ${fit.size}px ${SERIF}`;
     ctx.textBaseline = "top";
@@ -345,9 +420,9 @@ async function renderStreakImage(count) {
 }
 async function shareStreak() {
   const n = (store.get("streak", { count: 1 }).count) || 1;
-  toast("Rendering image…");
+  toast(t("tRendering"));
   let blob; try { blob = await renderStreakImage(n); } catch { blob = null; }
-  if (!blob) { toast("Couldn't make image"); return; }
+  if (!blob) { toast(t("tCantImage")); return; }
   await shareCanvasBlob(blob, `hitaarth-day-${n}`, `Day ${n} of my practice.\n\nvia Hitaarth · ${SITE}/?s=streak`);
 }
 // Shrink font until wrapped text fits the box; returns { size, lineH, lines }.
@@ -373,13 +448,25 @@ function wrapText(ctx, text, maxW) {
   return lines;
 }
 
+// ---------- browse: shuffle + surprise ----------
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function surpriseMe() {
+  const feed = $("#feed"); const cards = $$(".quote", feed);
+  if (cards.length < 2) return;
+  const curPos = cards.findIndex(c => +c.dataset.i === state.current);
+  let pos; do { pos = Math.floor(Math.random() * cards.length); } while (pos === curPos);
+  feed.scrollTo({ top: pos * feed.clientHeight, behavior: "smooth" });
+  state.current = +cards[pos].dataset.i; refreshActionBar();
+  haptic();
+}
+
 // ---------- tabs / screens ----------
 function bindTabs() {
-  $$(".tab").forEach(t => t.onclick = () => showScreen(t.dataset.screen, t));
+  $$(".tab").forEach(tb => tb.onclick = () => showScreen(tb.dataset.screen, tb));
 }
 function showScreen(name, tabEl) {
   $$(".screen").forEach(s => { s.hidden = (s.id !== name); s.classList.toggle("active", s.id === name); });
-  $$(".tab").forEach(t => t.classList.remove("active"));
+  $$(".tab").forEach(tb => tb.classList.remove("active"));
   (tabEl || $(`.tab[data-screen="${name}"]`)).classList.add("active");
   $("#actions").style.display = name === "reader" ? "flex" : "none";
   if (name === "saved") renderSaved();
@@ -388,15 +475,15 @@ function showScreen(name, tabEl) {
 // ---------- saved (favorites + notes) ----------
 function hasNote(id) { return !!(state.notes[id] && state.notes[id].trim()); }
 function renderSaved() {
-  const wrap = $("#savedList");
+  const wrap = $("#savedList"); if (!wrap) return;
   // Show anything the user has acted on: a favorite, a note, or both.
   const items = state.quotes.filter(q => state.favorites.has(q.id) || hasNote(q.id));
   $("#savedEmpty").hidden = items.length > 0;
   wrap.innerHTML = items.map(q => {
     const note = hasNote(q.id)
-      ? `<div class="note"><span class="kicker">Note</span><span class="note-text">${escapeHTML(state.notes[q.id])}</span><button class="note-del" data-del="${escapeHTML(q.id)}" aria-label="Delete note">✕</button></div>`
+      ? `<div class="note"><span class="kicker">${t("noteLabel")}</span><span class="note-text">${escapeHTML(state.notes[q.id])}</span><button class="note-del" data-del="${escapeHTML(q.id)}" aria-label="Delete note">✕</button></div>`
       : "";
-    return `<div class="item"><div class="t">${escapeHTML(q.text)}</div><div class="a">— ${escapeHTML(q.author)}</div>${note}</div>`;
+    return `<div class="item"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div>${note}</div>`;
   }).join("");
   $$(".note-del", wrap).forEach(b => b.onclick = () => deleteNote(b.dataset.del));
 }
@@ -411,6 +498,8 @@ function bindSettings() {
   // expandable cards
   $$(".row[data-toggle]").forEach(r => r.onclick = () => r.closest(".card").classList.toggle("open"));
 
+  // language
+  $$("[data-lang]").forEach(b => b.onclick = () => applyLanguage(b.dataset.lang));
   // appearance
   $$("[data-appearance]").forEach(b => b.onclick = () => { state.settings.appearance = b.dataset.appearance; saveSettings(); });
   // fonts
@@ -422,7 +511,7 @@ function bindSettings() {
     if (e.target.checked) {
       if (typeof Notification === "undefined") {                  // older iOS Safari: no Notification API
         e.target.checked = false; state.settings.reminders = false;
-        toast("Reminders aren't supported on this browser");
+        toast(t("tRemUnsupported"));
         saveSettings(); return;
       }
       const ok = await Notification.requestPermission();
@@ -438,9 +527,9 @@ function bindSettings() {
   // share streak
   const ssb = $("#shareStreakBtn"); if (ssb) ssb.onclick = shareStreak;
   // premium (placeholder)
-  $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); toast("Premium / widgets: coming soon"); };
+  $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); toast(t("tPremiumSoon")); };
   // reset
-  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false }; saveSettings(); scheduleReminder(); };
+  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false, lang: lang() }; saveSettings(); scheduleReminder(); };
 
   syncSettingsUI();
 }
@@ -456,11 +545,13 @@ function applySettings() {
 }
 function syncSettingsUI() {
   const s = state.settings;
+  $$("[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang === lang()));
   $$("[data-appearance]").forEach(b => b.classList.toggle("on", b.dataset.appearance === s.appearance));
   $$(".font-opt").forEach(b => b.classList.toggle("on", b.dataset.font === s.font));
   $("#sizeRange").value = s.size; $("#sizeVal").textContent = s.size;
   $("#remToggle").checked = s.reminders; $("#remTime").value = s.remTime;
-  $("#remNote").textContent = "Reminders only fire while the app is open or running in the background — the browser may not deliver them once it's fully closed.";
+  $("#remNote").textContent = t("remNote");
+  const ln = $("#langNote"); if (ln) ln.textContent = t("langNote");
 }
 
 // ---------- reminders (in-app, best-effort; no backend) ----------
@@ -479,7 +570,7 @@ function scheduleReminder() {
 function fireReminder() {
   if (typeof Notification === "undefined" || Notification.permission !== "granted") return;
   const q = state.quotes.length ? state.quotes[dayIndex()] : null;   // today's idea, not random
-  const body = q ? `${q.text} — ${q.author}` : "A moment of stillness is waiting.";
+  const body = q ? `${tq(q, "text")} — ${q.author}` : "A moment of stillness is waiting.";
   try { new Notification("Hitaarth · Today's idea", { body, icon: "icons/icon-192.png" }); } catch {}
 }
 
@@ -503,7 +594,6 @@ function computeStreak() {
       data.count = 1;                                      // streak broke
     }
     if (data.count === 0) data.count = 1;
-    // award a freeze on each 7-day milestone (cap 3)
     if (diff === 1 && data.count % 7 === 0) data.freezes = Math.min(3, data.freezes + 1);
   } else {
     data.count = 1;
@@ -515,32 +605,22 @@ function computeStreak() {
   const dayInLevel = ((data.count - 1) % milestone) + 1;
   const level = Math.floor((data.count - 1) / milestone) + 1;
   const pct = Math.round((dayInLevel / milestone) * 100);
-  $("#streakDays").textContent = data.count + (data.count === 1 ? " day" : " days");
+  const dEl = $("#streakDays"); if (!dEl) return;
+  dEl.textContent = (data.count === 1 ? t("dayOne") : t("dayMany")).replace("{n}", data.count);
   $("#streakPct").textContent = pct + "%";
-  $("#streakLevel").textContent = `Level ${level} — to ${milestone}`;
+  $("#streakLevel").textContent = t("levelTo").replace("{level}", level).replace("{m}", milestone);
   $("#streakBar").style.width = pct + "%";
   const left = milestone - dayInLevel;
-  $("#streakNext").textContent = left === 0 ? "Milestone reached! 🎉" : `Next milestone in ${left} day${left === 1 ? "" : "s"}`;
+  $("#streakNext").textContent = left === 0 ? t("milestoneReached")
+    : (left === 1 ? t("nextMilestone") : t("nextMilestoneN")).replace("{n}", left);
   const fz = $("#streakFreeze");
   if (fz) fz.textContent = data.freezes
-    ? `❄ ${data.freezes} streak freeze${data.freezes === 1 ? "" : "s"} banked — protects you if you miss a day`
-    : "Earn a streak freeze every 7 days — it saves your streak if you miss a day";
+    ? (data.freezes === 1 ? t("freezeBanked") : t("freezeBankedN")).replace("{n}", data.freezes)
+    : t("freezeEarn");
   updateActionsStat();
-}
-
-// ---------- browse: shuffle + surprise ----------
-function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
-function surpriseMe() {
-  const feed = $("#feed"); const cards = $$(".quote", feed);
-  if (cards.length < 2) return;
-  const curPos = cards.findIndex(c => +c.dataset.i === state.current);
-  let pos; do { pos = Math.floor(Math.random() * cards.length); } while (pos === curPos);
-  feed.scrollTo({ top: pos * feed.clientHeight, behavior: "smooth" });
-  state.current = +cards[pos].dataset.i; refreshActionBar();
-  haptic();
 }
 
 // ---------- utils ----------
 function escapeHTML(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 function haptic() { try { navigator.vibrate?.(8); } catch {} }
-function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 1300); }
+function toast(msg) { const el = $("#toast"); el.textContent = msg; el.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => el.hidden = true, 1300); }

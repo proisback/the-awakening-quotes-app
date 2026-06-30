@@ -28,45 +28,58 @@
 
   <!-- SAVED -->
   <section id="saved" class="screen list-screen" hidden>
-    <h1>Saved</h1>
+    <h1 data-i18n="savedTitle">Saved</h1>
     <div id="savedList" class="list"></div>
-    <p id="savedEmpty" class="empty">Double-tap a quote, or tap ♡, to save it here.</p>
+    <p id="savedEmpty" class="empty" data-i18n="savedEmpty">Double-tap a quote, or tap ♡, to save it here.</p>
   </section>
 
   <!-- SETTINGS -->
   <section id="settings" class="screen list-screen" hidden>
-    <h1>Settings</h1>
+    <h1 data-i18n="settingsTitle">Settings</h1>
 
     <div class="card streak">
       <div class="streak-top">
-        <div><span class="flame">🔥</span> STREAK<br /><strong id="streakDays">1 day</strong></div>
+        <div><span class="flame">🔥</span> <span data-i18n="streak">STREAK</span><br /><strong id="streakDays">1 day</strong></div>
         <div class="streak-pct"><strong id="streakPct">14%</strong><br /><span id="streakLevel" class="muted">Level 1 — to 7</span></div>
       </div>
       <div class="bar"><div id="streakBar" class="bar-fill"></div></div>
       <div class="muted small" id="streakNext">Next milestone in 6 days</div>
       <div class="muted small" id="streakFreeze"></div>
       <div class="muted small" id="actionsStat"></div>
-      <button type="button" id="shareStreakBtn" class="pill streak-share">Share streak ↗</button>
+      <button type="button" id="shareStreakBtn" class="pill streak-share" data-i18n="shareStreak">Share streak ↗</button>
     </div>
 
     <div class="card">
-      <div class="row" data-toggle="appearance"><span class="ic">☀︎</span><div class="row-main"><strong>Appearance</strong><div class="muted small">Light / Dark / System</div></div><span class="chev">⌄</span></div>
+      <div class="row" data-toggle="language"><span class="ic">🌐</span><div class="row-main"><strong data-i18n="language">Language</strong><div class="muted small" data-i18n="languageSub">App language</div></div><span class="chev">⌄</span></div>
+      <div class="expand" id="language">
+        <div class="seg lang-seg" role="tablist">
+          <button data-lang="en">EN</button>
+          <button data-lang="hi">हिं</button>
+          <button data-lang="es">ES</button>
+          <button data-lang="fr">FR</button>
+        </div>
+        <p class="muted small" id="langNote"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row" data-toggle="appearance"><span class="ic">☀︎</span><div class="row-main"><strong data-i18n="appearance">Appearance</strong><div class="muted small" data-i18n="appearanceSub">Light / Dark / System</div></div><span class="chev">⌄</span></div>
       <div class="expand" id="appearance">
         <div class="seg" role="tablist">
-          <button data-appearance="system">SYSTEM</button>
-          <button data-appearance="light">LIGHT</button>
-          <button data-appearance="dark">DARK</button>
+          <button data-appearance="system" data-i18n="segSystem">SYSTEM</button>
+          <button data-appearance="light" data-i18n="segLight">LIGHT</button>
+          <button data-appearance="dark" data-i18n="segDark">DARK</button>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="row" data-toggle="typography"><span class="ic">A</span><div class="row-main"><strong>Typography</strong><div class="muted small">Font and size</div></div><span class="chev">⌄</span></div>
+      <div class="row" data-toggle="typography"><span class="ic">A</span><div class="row-main"><strong data-i18n="typography">Typography</strong><div class="muted small" data-i18n="typographySub">Font and size</div></div><span class="chev">⌄</span></div>
       <div class="expand" id="typography">
         <label class="slider-row">Aa <input type="range" id="sizeRange" min="14" max="34" step="1" /> <span id="sizeVal">20</span></label>
         <div class="fonts">
-          <button class="font-opt" data-font="system">System</button>
-          <button class="font-opt" data-font="mono">Monospaced</button>
+          <button class="font-opt" data-font="system" data-i18n="fontSystem">System</button>
+          <button class="font-opt" data-font="mono" data-i18n="fontMono">Monospaced</button>
           <button class="font-opt" data-font="cursive">Snell&nbsp;Roundhand</button>
         </div>
         <div class="preview" id="fontPreview">The quick brown fox jumps over the lazy dog.</div>
@@ -74,20 +87,20 @@
     </div>
 
     <div class="card">
-      <div class="row" data-toggle="reminders"><span class="ic">🔔</span><div class="row-main"><strong>Reminders</strong><div class="muted small">Daily quote reminder</div></div><span class="chev">⌄</span></div>
+      <div class="row" data-toggle="reminders"><span class="ic">🔔</span><div class="row-main"><strong data-i18n="reminders">Reminders</strong><div class="muted small" data-i18n="remindersSub">Daily quote reminder</div></div><span class="chev">⌄</span></div>
       <div class="expand" id="reminders">
-        <label class="switch-row">Enable reminders <input type="checkbox" id="remToggle" /></label>
-        <label class="time-row">Time <input type="time" id="remTime" value="08:00" /></label>
+        <label class="switch-row"><span data-i18n="enableReminders">Enable reminders</span> <input type="checkbox" id="remToggle" /></label>
+        <label class="time-row"><span data-i18n="timeLabel">Time</span> <input type="time" id="remTime" value="08:00" /></label>
         <p class="muted small" id="remNote"></p>
       </div>
     </div>
 
     <div class="card">
-      <label class="row switch-row"><span class="ic">◰</span><div class="row-main"><strong>Get Premium</strong><div class="muted small">Unlock widgets &amp; packs</div></div><button id="premiumBtn" class="pill">Unlock</button></label>
+      <label class="row switch-row"><span class="ic">◰</span><div class="row-main"><strong data-i18n="premium">Get Premium</strong><div class="muted small" data-i18n="premiumSub">Unlock widgets &amp; packs</div></div><button id="premiumBtn" class="pill" data-i18n="unlock">Unlock</button></label>
     </div>
 
-    <button id="resetBtn" class="reset">↺ Reset to defaults</button>
-    <p class="muted small center">Hitaarth · your data stays on this device</p>
+    <button id="resetBtn" class="reset" data-i18n="reset">↺ Reset to defaults</button>
+    <p class="muted small center" data-i18n="privacy">Hitaarth · your data stays on this device</p>
   </section>
 
   <!-- BOTTOM TAB BAR -->
@@ -100,20 +113,20 @@
   <!-- Note sheet -->
   <dialog id="noteSheet">
     <form method="dialog">
-      <h3>Your note</h3>
-      <textarea id="noteText" rows="4" placeholder="A thought on this quote…"></textarea>
-      <div class="sheet-actions"><button value="cancel">Cancel</button><button value="save" id="noteSave">Save</button></div>
+      <h3 data-i18n="noteTitle">Your note</h3>
+      <textarea id="noteText" rows="4" data-i18n-ph="notePh" placeholder="A thought on this quote…"></textarea>
+      <div class="sheet-actions"><button value="cancel" data-i18n="cancel">Cancel</button><button value="save" id="noteSave" data-i18n="save">Save</button></div>
     </form>
   </dialog>
 
   <!-- Share sheet -->
   <dialog id="shareSheet">
-    <h3>Share quote</h3>
+    <h3 data-i18n="shareTitle">Share quote</h3>
     <div class="share-opts">
-      <button type="button" id="shareImageBtn" class="share-opt"><span class="share-ic">🖼</span> Save as image</button>
-      <button type="button" id="shareTextBtn" class="share-opt"><span class="share-ic">✎</span> Share as text</button>
+      <button type="button" id="shareImageBtn" class="share-opt"><span class="share-ic">🖼</span> <span data-i18n="saveImage">Save as image</span></button>
+      <button type="button" id="shareTextBtn" class="share-opt"><span class="share-ic">✎</span> <span data-i18n="shareTextOpt">Share as text</span></button>
     </div>
-    <form method="dialog" class="sheet-actions"><button value="cancel">Cancel</button></form>
+    <form method="dialog" class="sheet-actions"><button value="cancel" data-i18n="cancel">Cancel</button></form>
   </dialog>
 
   <div id="toast" class="toast" hidden></div>

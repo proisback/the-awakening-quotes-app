@@ -1,0 +1,607 @@
+{
+  "_ui": {
+    "savedTitle": "Guardadas",
+    "savedEmpty": "Toca dos veces una cita, o toca ♡, para guardarla aquí.",
+    "settingsTitle": "Ajustes",
+    "streak": "RACHA",
+    "shareStreak": "Compartir racha ↗",
+    "language": "Idioma",
+    "languageSub": "Idioma de la app",
+    "appearance": "Apariencia",
+    "appearanceSub": "Claro / Oscuro / Sistema",
+    "segSystem": "SISTEMA",
+    "segLight": "CLARO",
+    "segDark": "OSCURO",
+    "typography": "Tipografía",
+    "typographySub": "Fuente y tamaño",
+    "fontSystem": "Sistema",
+    "fontMono": "Monoespaciada",
+    "reminders": "Recordatorios",
+    "remindersSub": "Recordatorio de cita diaria",
+    "enableReminders": "Activar recordatorios",
+    "timeLabel": "Hora",
+    "premium": "Obtener Premium",
+    "premiumSub": "Desbloquea widgets y packs",
+    "unlock": "Desbloquear",
+    "reset": "↺ Restablecer valores predeterminados",
+    "privacy": "Hitaarth · tus datos permanecen en este dispositivo",
+    "noteTitle": "Tu nota",
+    "notePh": "Un pensamiento sobre esta cita…",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "shareTitle": "Compartir cita",
+    "saveImage": "Guardar como imagen",
+    "shareTextOpt": "Compartir como texto",
+    "lessonLabel": "Lección",
+    "moveLabel": "Movimiento de hoy",
+    "sourceLabel": "Fuente",
+    "noteLabel": "Nota",
+    "todayBadge": "Idea de hoy",
+    "didIt": "Hecho",
+    "doneToday": "✓ Hecho hoy",
+    "translated": "traducida",
+    "dayOne": "{n} día",
+    "dayMany": "{n} días",
+    "levelTo": "Nivel {level} — hasta {m}",
+    "nextMilestone": "Próximo hito en {n} día",
+    "nextMilestoneN": "Próximo hito en {n} días",
+    "milestoneReached": "¡Hito alcanzado! 🎉",
+    "freezeBanked": "❄ {n} congelación de racha acumulada — te protege si fallas un día",
+    "freezeBankedN": "❄ {n} congelaciones de racha acumuladas — te protegen si fallas un día",
+    "freezeEarn": "Gana una congelación de racha cada 7 días — salva tu racha si fallas un día",
+    "movesTaken": "{t} movimiento realizado · {w} esta semana",
+    "movesTakenN": "{t} movimientos realizados · {w} esta semana",
+    "noMoves": "Aún no hay movimientos — haz el único movimiento de hoy.",
+    "remNote": "Los recordatorios solo se activan mientras la app está abierta o ejecutándose en segundo plano — puede que el navegador no los entregue una vez que esté completamente cerrada.",
+    "langNote": "Las citas en otro idioma están traducidas por máquina y marcadas como tal.",
+    "tCopied": "Copiado",
+    "tMoveLogged": "Movimiento registrado ✓",
+    "tImageSaved": "Imagen guardada",
+    "tRendering": "Generando imagen…",
+    "tCantImage": "No se pudo crear la imagen",
+    "tCopiedClip": "Copiado al portapapeles",
+    "tCantShare": "No se pudo compartir",
+    "tRemUnsupported": "Los recordatorios no son compatibles con este navegador",
+    "tPremiumSoon": "Premium / widgets: muy pronto"
+  },
+  "chanakya-friend": {
+    "text": "Detrás de toda amistad hay algún interés propio. No existe amistad sin intereses propios. Esta es una verdad amarga.",
+    "lesson": "Ve con claridad los incentivos, incluso dentro de las relaciones.",
+    "action": "Nombra una relación en la que das más de lo que recibes y luego envíale a esa persona un mensaje sincero hoy mismo."
+  },
+  "osho-sky": {
+    "text": "Tu ser es vasto como el cielo; no te identifiques con las nubes pasajeras.",
+    "lesson": "Eres la conciencia, no los estados de ánimo pasajeros.",
+    "action": "Anota el ánimo con el que despertaste y luego añade debajo 'esto es una nube, no soy yo'."
+  },
+  "vivekananda-arise": {
+    "text": "Levántate, despierta y no te detengas hasta alcanzar la meta.",
+    "lesson": "Comprométete por completo y persiste hasta terminarlo.",
+    "action": "Elige la meta que sigues dejando a medias y bloquea 30 minutos para ella en tu calendario ahora."
+  },
+  "meadows-dance": {
+    "text": "No podemos controlar los sistemas ni descifrarlos. Pero podemos danzar con ellos.",
+    "lesson": "Trabaja con la retroalimentación de un sistema en lugar de intentar dominarlo.",
+    "action": "Nombra una métrica que sigues forzando y luego escribe el siguiente pequeño empujón en lugar del gran arreglo."
+  },
+  "bateson-difference": {
+    "text": "La información es una diferencia que hace una diferencia.",
+    "lesson": "El significado surge del contraste y el contexto, no de los datos en bruto.",
+    "action": "Abre tu panel y rodea el único número que cambió; ignora el resto por ahora."
+  },
+  "boulding-growth": {
+    "text": "Cualquiera que crea que el crecimiento exponencial puede continuar para siempre en un mundo finito es un loco o un economista.",
+    "lesson": "Nada se compone para siempre en un sistema acotado.",
+    "action": "Anota un número de crecimiento que asumes eterno y luego añade el límite que terminará por detenerlo."
+  },
+  "daly-liquidation": {
+    "text": "Hay algo fundamentalmente erróneo en tratar a la Tierra como si fuera un negocio en liquidación.",
+    "lesson": "No quemes tu base de capital por un flujo a corto plazo.",
+    "action": "Nombra un activo a largo plazo que estás quemando por los números de esta semana y luego escríbele a un compañero sobre cómo protegerlo."
+  },
+  "einstein-curiosity": {
+    "text": "Lo importante es no dejar de hacerse preguntas. La curiosidad tiene su propia razón de existir.",
+    "lesson": "Protege tu 'sagrada curiosidad'; nunca dejes de preguntar por qué.",
+    "action": "Escribe una pregunta del tipo '¿por qué esto funciona así?' sobre tu producto y envíasela a alguien que lo sepa."
+  },
+  "hardin-commons": {
+    "text": "La libertad en un bien común trae la ruina para todos.",
+    "lesson": "Los recursos compartidos necesitan reglas compartidas.",
+    "action": "Elige un recurso compartido que tu equipo abusa y propón una regla simple para él en el chat del grupo."
+  },
+  "havel-hope": {
+    "text": "La esperanza no es la convicción de que algo saldrá bien, sino la certeza de que algo tiene sentido, sin importar cómo resulte.",
+    "lesson": "La esperanza trata del sentido, no del optimismo sobre los resultados.",
+    "action": "Escribe una frase sobre por qué tu proyecto actual importa incluso si fracasa, y pégala en tu escritorio."
+  },
+  "mumford-clock": {
+    "text": "El reloj, no la máquina de vapor, es la máquina clave de la era industrial moderna.",
+    "lesson": "Las herramientas que adoptamos reconfiguran en silencio cómo vivimos.",
+    "action": "Nombra una herramienta que usas a diario y luego anota un hábito que te impuso en silencio."
+  },
+  "myrdal-softstate": {
+    "text": "Un 'Estado blando' no se desmorona por malas leyes, sino por leyes que nadie hace cumplir.",
+    "lesson": "Las reglas sin aplicación son teatro.",
+    "action": "Elige una regla de equipo que todos ignoran; o hazla cumplir hoy o elimínala de tus documentos."
+  },
+  "schumacher-small": {
+    "text": "Lo pequeño es hermoso.",
+    "lesson": "La escala humana a menudo le gana a la grandeza implacable.",
+    "action": "Encuentra un proceso o función inflados y anota la versión más pequeña que podrías lanzar en su lugar."
+  },
+  "marcus-mind": {
+    "text": "Tienes poder sobre tu mente, no sobre los eventos externos. Date cuenta de esto y hallarás fuerza.",
+    "lesson": "Controla lo controlable: tu propia respuesta.",
+    "action": "Enumera algo que te estresa y luego tacha todo lo que en realidad no puedes controlar."
+  },
+  "seneca-imagination": {
+    "text": "Sufrimos más a menudo en la imaginación que en la realidad.",
+    "lesson": "No pagues por adelantado un sufrimiento por cosas que nunca ocurren.",
+    "action": "Anota el peor escenario que temes y luego califica qué tan probable es realmente, del uno al diez."
+  },
+  "laotzu-journey": {
+    "text": "El viaje de mil millas comienza con un solo paso.",
+    "lesson": "Empieza. El impulso se compone.",
+    "action": "Elige el proyecto que sigues posponiendo y da el primer paso más pequeño en los próximos cinco minutos."
+  },
+  "socrates-examined": {
+    "text": "Una vida sin examen no merece ser vivida.",
+    "lesson": "La reflexión es lo que hace que una vida sea tuya.",
+    "action": "Anota una decisión que tomaste hoy y la verdadera razón detrás de ella, no la que declaraste."
+  },
+  "durant-excellence": {
+    "text": "Somos lo que hacemos repetidamente. La excelencia, entonces, no es un acto, sino un hábito.",
+    "lesson": "La excelencia es una rutina, no un momento aislado.",
+    "action": "Nombra la única acción diaria que define tu oficio y luego hazla bien ahora mismo, una vez."
+  },
+  "roosevelt-arena": {
+    "text": "El mérito pertenece al hombre que está realmente en la arena, cuyo rostro está manchado de polvo, sudor y sangre.",
+    "lesson": "Los que hacen, no los críticos, ganan el mérito.",
+    "action": "Elige algo que solo has estado criticando desde la barrera y da un paso real al respecto hoy."
+  },
+  "mandela-impossible": {
+    "text": "Siempre parece imposible hasta que se hace.",
+    "lesson": "Las grandes metas parecen inalcanzables hasta que se alcanzan.",
+    "action": "Anota la meta que se siente imposible y luego enumera el único movimiento que harías si no lo fuera."
+  },
+  "angelou-feel": {
+    "text": "La gente nunca olvidará cómo la hiciste sentir.",
+    "lesson": "El impacto emocional perdura más que las palabras y los actos.",
+    "action": "Escríbele a una persona que te ayudó hace poco y dile exactamente cómo te hizo sentir."
+  },
+  "frankl-change": {
+    "text": "Cuando ya no somos capaces de cambiar una situación, se nos desafía a cambiarnos a nosotros mismos.",
+    "lesson": "Cambia tu respuesta cuando no puedas cambiar el mundo.",
+    "action": "Nombra una situación atascada que no puedes arreglar y luego anota algo de tu propia respuesta que sí puedas cambiar."
+  },
+  "nietzsche-why": {
+    "text": "Quien tiene un porqué para vivir puede soportar casi cualquier cómo.",
+    "lesson": "Un propósito fuerte hace soportables los medios difíciles.",
+    "action": "Escribe en una línea la razón por la que estás construyendo esto y mantenla donde la veas cuando se ponga difícil."
+  },
+  "mlk-right": {
+    "text": "Siempre es el momento adecuado para hacer lo correcto.",
+    "lesson": "No esperes un momento conveniente para actuar con rectitud.",
+    "action": "Elige algo correcto que has estado retrasando para un mejor momento y haz su primera parte ahora."
+  },
+  "curie-understood": {
+    "text": "Nada en la vida debe temerse, solo debe comprenderse.",
+    "lesson": "La comprensión disuelve el miedo.",
+    "action": "Nombra algo en el trabajo que te asusta y luego anota un hecho que lo haga menos desconocido."
+  },
+  "jung-unconscious": {
+    "text": "Hasta que no hagas consciente lo inconsciente, este dirigirá tu vida y tú lo llamarás destino.",
+    "lesson": "Examina tus patrones o serás gobernado por ellos.",
+    "action": "Anota un patrón que sigues repitiendo en tu trabajo y luego nombra su verdadero detonante."
+  },
+  "thoreau-dreams": {
+    "text": "Si uno avanza con confianza en la dirección de sus sueños, encontrará un éxito inesperado en las horas comunes.",
+    "lesson": "Avanza hacia lo que quieres; los límites ordinarios ceden.",
+    "action": "Escribe algo audaz que de verdad quieres y luego da un paso visible hacia ello hoy."
+  },
+  "sagan-starstuff": {
+    "text": "Estamos hechos de polvo de estrellas.",
+    "lesson": "Aléjate y observa: eres parte de algo inmenso.",
+    "action": "Aléjate de la pantalla por sesenta segundos y nombra una cosa más grande que la fecha límite de hoy."
+  },
+  "gandhi-forgive": {
+    "text": "Los débiles nunca pueden perdonar. El perdón es atributo de los fuertes.",
+    "lesson": "El perdón es fuerza, no rendición.",
+    "action": "Piensa en una persona contra la que guardas rencor y anota una cosa que estás dispuesto a dejar ir."
+  },
+  "jobs-time": {
+    "text": "Tu tiempo es limitado, así que no lo malgastes viviendo la vida de otra persona.",
+    "lesson": "Vive por convicción, no por las expectativas de los demás.",
+    "action": "Nombra algo en tu lista que haces solo para cumplir la expectativa de otra persona y luego cuestiónalo."
+  },
+  "buffett-value": {
+    "text": "El precio es lo que pagas. El valor es lo que recibes.",
+    "lesson": "Valor y precio no son lo mismo.",
+    "action": "Elige una compra o contratación reciente y anota lo que pagaste frente a lo que realmente obtuviste."
+  },
+  "munger-compound": {
+    "text": "La primera regla del interés compuesto: nunca lo interrumpas innecesariamente.",
+    "lesson": "Deja que las cosas buenas se compongan; deja de retocar.",
+    "action": "Nombra algo bueno que sigues retocando y luego comprométete a dejarlo intacto esta semana."
+  },
+  "gates-success": {
+    "text": "El éxito es un pésimo maestro. Seduce a la gente inteligente para que crea que no puede perder.",
+    "lesson": "Ganar genera complacencia; mantente alerta.",
+    "action": "Anota una victoria reciente y luego enumera algo en lo que te está volviendo perezoso o demasiado confiado."
+  },
+  "musk-odds": {
+    "text": "Cuando algo es lo bastante importante, lo haces aunque las probabilidades no estén a tu favor.",
+    "lesson": "Deja que la importancia, no las probabilidades, guíe las grandes apuestas.",
+    "action": "Nombra una apuesta importante que estás evitando porque las probabilidades pintan mal y luego escribe su primer paso."
+  },
+  "naval-wealth": {
+    "text": "Busca riqueza, no dinero ni estatus.",
+    "lesson": "Construye activos que ganen mientras duermes.",
+    "action": "Anota un activo que podrías construir y que gane sin tu tiempo, luego esboza su primera pieza."
+  },
+  "graham-want": {
+    "text": "Haz algo que la gente quiera.",
+    "lesson": "Nada más importa si la cosa no es deseada.",
+    "action": "Escríbele a un usuario hoy y hazle la única pregunta: ¿te molestaría si esto desapareciera?"
+  },
+  "thiel-competition": {
+    "text": "La competencia es para los perdedores.",
+    "lesson": "Diferénciate hasta volverte irremplazable.",
+    "action": "Anota la única cosa que tu producto hace y que ningún rival puede copiar con facilidad, y afínala en una frase."
+  },
+  "hoffman-launch": {
+    "text": "Si la primera versión de tu producto no te avergüenza, lanzaste demasiado tarde.",
+    "lesson": "Lanza pronto; la retroalimentación real le gana al pulido.",
+    "action": "Encuentra una función que estás puliendo de más y pon un temporizador para lanzar la versión tosca hoy."
+  },
+  "horowitz-bullets": {
+    "text": "No hay balas de plata, solo balas de plomo.",
+    "lesson": "Los problemas difíciles necesitan trabajo directo, no atajos.",
+    "action": "Nombra el problema difícil que sigues evitando y anota el trabajo directo y poco glamuroso que de verdad necesita."
+  },
+  "nadella-innov": {
+    "text": "Nuestra industria no respeta la tradición. Solo respeta la innovación.",
+    "lesson": "Reinvéntate antes de que te obliguen a hacerlo.",
+    "action": "Nombra algo que haces 'porque siempre lo hemos hecho así' y anota qué lo reemplazaría."
+  },
+  "zuck-risk": {
+    "text": "El mayor riesgo es no asumir ningún riesgo.",
+    "lesson": "En medio de cambios rápidos, quedarse quieto es lo más arriesgado.",
+    "action": "Anota una opción segura por la que estás optando por defecto y luego nombra el riesgo que evitas con ella."
+  },
+  "cuban-work": {
+    "text": "Trabaja como si hubiera alguien trabajando 24 horas al día para quitártelo todo.",
+    "lesson": "Trata tu ventaja como si siempre estuviera bajo amenaza.",
+    "action": "Nombra a un competidor que podría quitarte tu ventaja y luego escribe el único movimiento que harías hoy para defenderla."
+  },
+  "dalio-progress": {
+    "text": "Dolor más reflexión es igual a progreso.",
+    "lesson": "Reflexiona sobre el dolor para convertirlo en crecimiento.",
+    "action": "Anota un error doloroso reciente y la única lección que llevarás contigo de aquí en adelante."
+  },
+  "clear-systems": {
+    "text": "No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.",
+    "lesson": "Diseña el proceso, no solo el objetivo.",
+    "action": "Elige una meta que sigues fallando y diseña un pequeño sistema o detonante que la vuelva automática."
+  },
+  "sinek-why": {
+    "text": "La gente no compra lo que haces; compra por qué lo haces.",
+    "lesson": "El propósito crea lealtad.",
+    "action": "Escribe el 'porqué' de tu producto en una frase que un cliente repetiría de verdad a un amigo."
+  },
+  "ferriss-uncomf": {
+    "text": "El éxito de una persona en la vida suele medirse por la cantidad de conversaciones incómodas que está dispuesta a tener.",
+    "lesson": "El crecimiento se esconde detrás de la conversación que estás evitando.",
+    "action": "Nombra la única conversación que estás evitando y luego envía el primer mensaje para agendarla hoy."
+  },
+  "branson-train": {
+    "text": "Capacita a la gente tan bien que pueda irse, trátala tan bien que no quiera hacerlo.",
+    "lesson": "Invierte en las personas; la retención llega después.",
+    "action": "Elige a una persona de tu equipo y haz hoy algo concreto para volverla mejor en su oficio."
+  },
+  "huang-character": {
+    "text": "La grandeza viene del carácter, y el carácter se forma a partir de personas que han sufrido.",
+    "lesson": "La adversidad construye el carácter que hay detrás de la grandeza.",
+    "action": "Anota algo difícil que superaste y la fortaleza que te dio y que usas ahora."
+  },
+  "godin-stories": {
+    "text": "El marketing ya no trata sobre las cosas que fabricas, sino sobre las historias que cuentas.",
+    "lesson": "Una historia creída le gana a una lista de funciones.",
+    "action": "Escribe en una frase la historia detrás de lo que construyes, no la lista de funciones, y pruébala con alguien."
+  },
+  "altman-love": {
+    "text": "Es mejor tener un pequeño número de usuarios que te aman que un gran número que solo te aprecia.",
+    "lesson": "La profundidad del amor le gana a la amplitud del interés tibio.",
+    "action": "Nombra a tus tres usuarios más comprometidos y escríbele a uno para preguntarle qué es lo que más le encanta."
+  },
+  "hormozi-hard": {
+    "text": "Todo lo que vale la pena hacer es difícil. Cuanto mayor es la recompensa, mayor es la dificultad.",
+    "lesson": "La dificultad filtra a la competencia.",
+    "action": "Elige la tarea más difícil de tu lista y empiézala ahora, antes de que las fáciles te tienten."
+  },
+  "andreessen-soft": {
+    "text": "El software se está comiendo el mundo.",
+    "lesson": "Construye sobre software o serás absorbido por él.",
+    "action": "Nombra una parte manual de tu trabajo y anota cómo el software podría absorberla."
+  },
+  "bezos-brand": {
+    "text": "Tu marca es lo que otras personas dicen de ti cuando no estás en la sala.",
+    "lesson": "La reputación se forma en tu ausencia.",
+    "action": "Anota lo que querrías que la gente dijera de ti cuando no estás presente y luego actúa sobre una brecha."
+  },
+  "karpathy-english": {
+    "text": "El lenguaje de programación más en auge es el inglés.",
+    "lesson": "El lenguaje claro ahora es una verdadera ventaja.",
+    "action": "Toma una petición confusa que escribiste hoy y reescríbela en un inglés sencillo y preciso."
+  },
+  "bezos-dayone": {
+    "text": "El Día 2 es estancamiento. Seguido de irrelevancia. Seguido de un declive atroz y doloroso. Seguido de la muerte. Y por eso siempre es el Día 1.",
+    "lesson": "Trata cada día como el comienzo, no como una inercia.",
+    "action": "Nombra un proceso que tu equipo ejecuta en piloto automático y anota cómo lo construirías desde cero hoy."
+  },
+  "grove-paranoid": {
+    "text": "El éxito engendra complacencia. La complacencia engendra fracaso. Solo los paranoicos sobreviven.",
+    "lesson": "Una victoria reciente es el momento de buscar la amenaza con más dureza.",
+    "action": "Enumera tu última victoria clara y luego escribe la única debilidad que te tienta a ignorar ahora mismo."
+  },
+  "graham-unscalable": {
+    "text": "Lo no escalable más común que los fundadores tienen que hacer al principio es reclutar usuarios manualmente.",
+    "lesson": "Al inicio, recluta usuarios a mano uno por uno; la escala llega después.",
+    "action": "Elige cinco usuarios ideales y envía a cada uno un mensaje personal invitándolo a probar tu producto hoy."
+  },
+  "andreessen-pmf": {
+    "text": "Lo único que importa es alcanzar el encaje producto/mercado. El encaje producto/mercado significa estar en un buen mercado con un producto que pueda satisfacer ese mercado.",
+    "lesson": "Hasta que el mercado no jale tu producto, nada más de lo que hagas cuenta.",
+    "action": "Escribe una frase que describa el mercado al que sirves y cómo tu producto lo satisface ahora mismo."
+  },
+  "altman-hard": {
+    "text": "A menudo es más fácil tener éxito con una startup difícil que con una fácil.",
+    "lesson": "Un problema ambicioso atrae el talento y la fe que uno fácil no puede.",
+    "action": "Toma tu idea actual y anota una versión más difícil y ambiciosa de lo mismo."
+  },
+  "naval-longterm": {
+    "text": "Juega juegos a largo plazo con gente a largo plazo. Todos los retornos en la vida, ya sea en riqueza, relaciones o conocimiento, vienen del interés compuesto.",
+    "lesson": "Los retornos vienen de juegos repetidos con las mismas personas de confianza.",
+    "action": "Nombra a una persona con la que quieres una relación de diez años y haz hoy algo pequeño por ella."
+  },
+  "munger-invert": {
+    "text": "Invierte, siempre invierte.",
+    "lesson": "Resuelve problemas difíciles descubriendo cómo fracasar y evitándolo.",
+    "action": "Toma la meta en la que estás atascado y anota todas las formas en que podría fracasar, luego esquiva la principal."
+  },
+  "drucker-useless": {
+    "text": "No hay nada tan inútil como hacer con gran eficiencia lo que no debería hacerse en absoluto.",
+    "lesson": "Eliminar la tarea equivocada le gana a hacerla más rápido.",
+    "action": "Repasa tu lista de tareas y elimina una que no debería existir por bien que se haga."
+  },
+  "jobs-shipart": {
+    "text": "Los artistas de verdad entregan.",
+    "lesson": "Terminar y lanzar es parte del oficio, no algo aparte.",
+    "action": "Elige algo que esté casi terminado en tus borradores y ponlo hoy frente a una persona real."
+  },
+  "carnegie-onebasket": {
+    "text": "Pon todos tus huevos en una sola canasta, y luego vigila esa canasta.",
+    "lesson": "Concentra tus apuestas y luego protégelas con toda tu atención.",
+    "action": "Nombra la única apuesta que más importa este trimestre y corta un proyecto secundario que divide tu enfoque."
+  },
+  "buffett-reputation": {
+    "text": "Pierde dinero para la firma y seré comprensivo. Pierde un ápice de reputación para la firma y seré despiadado.",
+    "lesson": "Las pérdidas de dinero sanan; una reputación rota rara vez lo hace.",
+    "action": "Encuentra un atajo que estás a punto de tomar y que podría dañar la confianza, y elige en su lugar la versión honesta."
+  },
+  "marcus-obstacle": {
+    "text": "El impedimento a la acción impulsa la acción. Lo que se interpone en el camino se convierte en el camino.",
+    "lesson": "El obstáculo frente a ti es el camino, no un desvío de él.",
+    "action": "Nombra lo que bloquea tu proyecto y anota cómo atravesarlo podría convertirse en la victoria."
+  },
+  "marcus-dawn": {
+    "text": "Al amanecer, cuando te cueste levantarte de la cama, dite a ti mismo: \"Tengo que ir a trabajar — como ser humano. ¿De qué me quejo, si voy a hacer aquello para lo que nací?\"",
+    "lesson": "Naciste para hacer el trabajo; deja de negociar con la mañana.",
+    "action": "Elige la primera tarea real de tu día y empiézala antes de revisar mensajes o redes."
+  },
+  "seneca-port": {
+    "text": "Si un hombre no sabe hacia qué puerto se dirige, ningún viento le es favorable.",
+    "lesson": "Sin un destino claro, ningún esfuerzo apunta a algo útil.",
+    "action": "Escribe el único resultado específico hacia el que se dirige esta semana y luego contrasta las tareas de hoy con él."
+  },
+  "epictetus-control": {
+    "text": "Algunas cosas están en nuestro poder, mientras que otras no. En nuestro poder están la opinión, la motivación, el deseo, la aversión y, en una palabra, todo lo que es obra nuestra; no están en nuestro poder nuestro cuerpo, nuestras propiedades, la reputación, el cargo y, en una palabra, todo lo que no es obra nuestra.",
+    "lesson": "Gasta energía en tus elecciones, no en resultados que no puedes comandar.",
+    "action": "Enumera lo que te preocupa, luego divídelo en lo que controlas y lo que no, y actúa sobre lo primero."
+  },
+  "laotzu-pine": {
+    "text": "El pino gigante crece de un diminuto brote. El viaje de mil millas empieza bajo tus pies.",
+    "lesson": "Las grandes cosas crecen a partir de comienzos diminutos y poco glamurosos.",
+    "action": "Elige el proyecto desalentador que sigues posponiendo y planta la primera pequeña pieza en los próximos cinco minutos."
+  },
+  "confucius-mound": {
+    "text": "Es como hacer un montículo. Si, cuando solo falta una canasta más de tierra, me detengo, entonces me he detenido. Es como nivelar el suelo. Aunque solo se haya echado una canasta, si sigo adelante, entonces estoy progresando.",
+    "lesson": "Que termines o abandones es tu propia elección, canasta a canasta.",
+    "action": "Encuentra el proyecto al que le falta un empujón para terminar y añade esa última canasta de trabajo ahora mismo."
+  },
+  "confucius-knowing": {
+    "text": "El Maestro dijo: \"Cuando sabes algo, sostener que lo sabes; y cuando no sabes algo, admitir que no lo sabes — eso es conocimiento.\"",
+    "lesson": "El conocimiento real es saber el límite de lo que sabes.",
+    "action": "Anota una cosa que has estado fingiendo entender y luego admítela hoy ante la persona indicada."
+  },
+  "krishna-fruits": {
+    "text": "Tienes derecho a tus acciones, pero nunca a los frutos de tus acciones. Actúa por el bien de la acción. Y no te apegues a la inacción.",
+    "lesson": "Apropia tu esfuerzo por completo y suelta el resultado.",
+    "action": "Nombra un resultado que no puedes controlar y reescribe tu meta como la acción que sí puedes tomar."
+  },
+  "buddha-thoughts": {
+    "text": "Todo lo que somos es el resultado de lo que hemos pensado: se funda en nuestros pensamientos, está hecho de nuestros pensamientos.",
+    "lesson": "Tu narrativa interior construye la vida que experimentas.",
+    "action": "Atrapa hoy un pensamiento negativo recurrente que te dices y escribe la frase más verdadera que lo reemplace."
+  },
+  "rumi-prison": {
+    "text": "¿Por qué te quedas en prisión cuando la puerta está tan abierta?",
+    "lesson": "La mayoría de tus jaulas no están cerradas con llave; solo no has salido.",
+    "action": "Nombra un límite autoimpuesto que tratas como fijo y da hoy un paso como si no fuera real."
+  },
+  "thiruvalluvar-undismayed": {
+    "text": "Quienes luchan con mente impávida y firme, al final dejarán atrás al destino adverso.",
+    "lesson": "Una mente firme e inquebrantable acaba por sobrevivir a la mala suerte.",
+    "action": "Elige el revés que sigues reviviendo y escribe el siguiente movimiento concreto que harás a pesar de él."
+  },
+  "kabir-today": {
+    "text": "El trabajo de mañana hazlo hoy, y el de hoy ahora; si el momento se pierde, ¿cómo harás el trabajo?",
+    "lesson": "Trae el trabajo de mañana al ahora antes de que el momento se escape.",
+    "action": "Toma algo que programaste para más adelante esta semana y haz su primer paso en los próximos diez minutos."
+  },
+  "laotzu-difficult": {
+    "text": "Enfrenta lo difícil mientras aún es fácil; logra la gran tarea con una serie de pequeños actos.",
+    "lesson": "Aborda los problemas mientras son pequeños; construye grandes cosas con pequeños actos.",
+    "action": "Detecta un asunto que aún es diminuto y fácil de arreglar, y resuélvelo ahora antes de que crezca."
+  },
+  "meadows-purpose": {
+    "text": "La parte menos obvia del sistema, su función o propósito, suele ser el determinante más crucial del comportamiento del sistema.",
+    "lesson": "El propósito real de un sistema, no el declarado, dirige su comportamiento.",
+    "action": "Anota para qué optimiza realmente el proceso de tu equipo, no lo que dice el documento que hace."
+  },
+  "meadows-models": {
+    "text": "Recuerda, siempre, que todo lo que sabes, y todo lo que todos saben, es solo un modelo. Saca tu modelo a la luz donde pueda verse. Invita a otros a desafiar tus supuestos y a sumar los suyos.",
+    "lesson": "Todo lo que sabes es un modelo; exponlo para que otros lo afinen.",
+    "action": "Escribe en una línea el supuesto central de tu plan actual y pide hoy a un compañero que lo cuestione."
+  },
+  "feynman-fool": {
+    "text": "El primer principio es que no debes engañarte a ti mismo, y tú eres la persona más fácil de engañar.",
+    "lesson": "Cuídate con más fuerza de engañarte a ti mismo.",
+    "action": "Toma una creencia sobre tu producto en la que odiarías estar equivocado y encuentra un hecho que la ponga a prueba."
+  },
+  "feynman-nature": {
+    "text": "Para una tecnología exitosa, la realidad debe tener prioridad sobre las relaciones públicas, porque a la Naturaleza no se la puede engañar.",
+    "lesson": "La realidad siempre le gana a la historia que cuentas sobre ella.",
+    "action": "Encuentra una métrica que has estado maquillando en tus actualizaciones y anota en su lugar el número sin adornos."
+  },
+  "simon-attention": {
+    "text": "Una riqueza de información crea una pobreza de atención.",
+    "lesson": "Más información solo significa que tu atención es el verdadero cuello de botella.",
+    "action": "Cierra todas las pestañas y notificaciones, y luego trabaja en una sola cosa durante los próximos veinticinco minutos."
+  },
+  "simon-design": {
+    "text": "Diseña todo aquel que idea cursos de acción dirigidos a transformar situaciones existentes en otras preferidas.",
+    "lesson": "Cualquiera que cambia una situación hacia algo mejor está diseñando.",
+    "action": "Elige una parte molesta de tu día y esboza el pequeño cambio que la haría funcionar mejor."
+  },
+  "munger-incentives": {
+    "text": "Nunca, jamás, pienses en otra cosa cuando deberías estar pensando en el poder de los incentivos.",
+    "lesson": "Cuando un comportamiento te desconcierte, mira primero los incentivos.",
+    "action": "Nombra a una persona que actúa de un modo que no entiendes y luego anota por qué se la recompensa en realidad."
+  },
+  "deming-system": {
+    "text": "Un mal sistema vencerá a una buena persona siempre.",
+    "lesson": "Arregla el sistema antes de culpar a la persona que está dentro de él.",
+    "action": "Toma un error repetido en tu equipo y escribe el proceso roto que lo causa, no el nombre."
+  },
+  "ackoff-whole": {
+    "text": "Un sistema es más que la suma de sus partes; es un todo indivisible. Pierde sus propiedades esenciales cuando se desarma.",
+    "lesson": "El valor de un sistema vive en cómo se conectan sus partes, no en las partes solas.",
+    "action": "Elige una función que estás juzgando aislada y anota cómo trabaja con todo lo que la rodea."
+  },
+  "ackoff-rightthing": {
+    "text": "Es mucho mejor hacer mal lo correcto que hacer bien lo incorrecto.",
+    "lesson": "Hacer mal lo correcto le gana a pulir lo incorrecto.",
+    "action": "Revisa tu tarea principal y confirma que es el problema correcto antes de gastar otra hora perfeccionándolo."
+  },
+  "kahneman-wysiati": {
+    "text": "Lo que ves es todo lo que hay.",
+    "lesson": "Tu mente trata la evidencia visible como si fuera la historia completa.",
+    "action": "Antes de tu próxima decisión, anota una cosa importante que quizás aún no estés viendo."
+  },
+  "kahneman-premortem": {
+    "text": "Imagina que estamos a un año en el futuro. Implementamos el plan tal como existe ahora. El resultado fue un desastre. Por favor, tómate de 5 a 10 minutos para escribir una breve historia de ese desastre.",
+    "lesson": "Imaginar el fracaso de antemano saca a la luz riesgos que el optimismo oculta.",
+    "action": "Dedica cinco minutos a escribir la historia de cómo tu plan actual fracasó dentro de un año, y luego arregla una causa."
+  },
+  "taleb-wind": {
+    "text": "El viento apaga una vela y aviva un incendio. Lo mismo ocurre con la aleatoriedad, la incertidumbre y el caos: quieres usarlos, no esconderte de ellos.",
+    "lesson": "Construye de modo que el desorden te fortalezca en vez de quebrarte.",
+    "action": "Nombra una fuente de caos en tu trabajo y anota cómo podrías convertirla en una ventaja."
+  },
+  "taleb-vianegativa": {
+    "text": "Sabemos qué está mal con más certeza de la que sabemos cualquier otra cosa.",
+    "lesson": "Quitar lo que está claramente mal es más seguro que añadir lo que podría estar bien.",
+    "action": "Encuentra algo obviamente roto en tu producto o rutina y quítalo hoy."
+  },
+  "boyd-people": {
+    "text": "Personas, ideas, máquinas — en ese orden.",
+    "lesson": "Las personas van antes que las ideas, y las ideas antes que las máquinas.",
+    "action": "Antes de comprar otra herramienta, anota si la persona o la idea correcta resolverían el problema en su lugar."
+  },
+  "wilson-paleolithic": {
+    "text": "Tenemos emociones paleolíticas, instituciones medievales y tecnología divina.",
+    "lesson": "Nuestros instintos e instituciones van muy por detrás de nuestras herramientas.",
+    "action": "Nombra una herramienta poderosa que usas y anota una salvaguarda que tus viejos hábitos aún necesitan a su alrededor."
+  },
+  "lamott-firstdraft": {
+    "text": "Casi todo buen texto comienza con intentos terribles. Tienes que empezar por algún lado.",
+    "lesson": "Toda cosa buena empieza como un primer intento tosco y feo.",
+    "action": "Abre el documento que has estado evitando y escribe el peor primer borrador posible durante diez minutos seguidos."
+  },
+  "pressfield-resistance": {
+    "text": "La Resistencia se experimenta como miedo; el grado de miedo equivale a la fuerza de la Resistencia. Por lo tanto, cuanto más miedo sentimos por una empresa concreta, más seguros podemos estar de que esa empresa es importante para nosotros.",
+    "lesson": "El trabajo que más temes suele ser el que más importa.",
+    "action": "Nombra la tarea que más pavor te causa y empiézala hoy antes que cualquier otra más fácil."
+  },
+  "pressfield-pro": {
+    "text": "El aficionado tuitea. El profesional trabaja.",
+    "lesson": "Hablar del trabajo no es el trabajo.",
+    "action": "Cierra la app en la que difundes y dedica los próximos treinta minutos solo a hacer la cosa de verdad."
+  },
+  "godin-ship": {
+    "text": "El único propósito de empezar es terminar, y aunque los proyectos que hacemos nunca están del todo terminados, deben entregarse.",
+    "lesson": "Empezar solo cuenta si termina en algo lanzado.",
+    "action": "Elige un proyecto abierto y fíjale una fecha de entrega firme en tu calendario antes de cerrar esto."
+  },
+  "angelou-creativity": {
+    "text": "No puedes agotar la creatividad. Cuanto más la usas, más tienes.",
+    "lesson": "La creatividad crece con el uso, no con el racionamiento.",
+    "action": "Crea hoy algo pequeño y creativo sin guardar la idea para un momento más importante."
+  },
+  "baldwin-process": {
+    "text": "El artista no puede ni debe dar nada por sentado, sino llegar al corazón de cada respuesta y exponer la pregunta que esa respuesta esconde.",
+    "lesson": "No aceptes la respuesta fácil; desentierra la pregunta que esconde.",
+    "action": "Toma una respuesta que aceptaste en el trabajo y anota la pregunta más difícil que evitaba en silencio."
+  },
+  "morrison-writeit": {
+    "text": "Si encuentras un libro que de verdad quieres leer pero que aún no ha sido escrito, entonces debes escribirlo tú.",
+    "lesson": "Si la cosa que quieres no existe, tú eres quien debe construirla.",
+    "action": "Nombra un producto o recurso que sigues deseando que existiera y esboza hoy su primera pieza."
+  },
+  "morrison-free": {
+    "text": "Cuando consigas esos empleos para los que has sido tan brillantemente formado, solo recuerda que tu verdadero trabajo es que, si eres libre, necesitas liberar a alguien más. Si tienes algo de poder, entonces tu trabajo es empoderar a alguien más.",
+    "lesson": "El poder y la libertad solo valen la pena si los transmites.",
+    "action": "Usa esta semana un poco de tu acceso o habilidad para abrirle una puerta a alguien más, empezando ahora."
+  },
+  "frankl-success": {
+    "text": "No apuntes al éxito. Cuanto más lo persigues y lo conviertes en un objetivo, más lo vas a errar. Porque el éxito, como la felicidad, no puede perseguirse; debe sobrevenir.",
+    "lesson": "El éxito sigue al buen trabajo; perseguirlo directamente lo ahuyenta.",
+    "action": "Suelta una métrica que te obsesiona y reenfoca el esfuerzo de hoy en hacer bien el trabajo en su lugar."
+  },
+  "jung-heart": {
+    "text": "Tu visión se aclarará solo cuando puedas mirar dentro de tu propio corazón. Quien mira afuera, sueña; quien mira adentro, despierta.",
+    "lesson": "La claridad viene de mirar hacia adentro, no de escanear afuera en busca de señales.",
+    "action": "Anota lo que de verdad quieres de tu proyecto actual, no lo que luce bien ante los demás."
+  },
+  "leguin-freedom": {
+    "text": "Necesitaremos escritores capaces de recordar la libertad. Poetas, visionarios, los realistas de una realidad más amplia.",
+    "lesson": "El futuro necesita gente que todavía pueda imaginar algo mejor.",
+    "action": "Escribe una frase que describa la realidad más amplia hacia la que tu trabajo intenta construir."
+  },
+  "ogilvy-consumer": {
+    "text": "El consumidor no es un tonto; es tu esposa. Insultas su inteligencia si supones que un mero eslogan y unos cuantos adjetivos vacíos la persuadirán de comprar algo.",
+    "lesson": "Respeta la inteligencia de tu cliente en lugar de disfrazar afirmaciones vacías.",
+    "action": "Encuentra una línea vaga en tu marketing y reescríbela como una razón concreta y honesta para que les importe."
+  },
+  "rand-good": {
+    "text": "No intentes ser original. Solo intenta ser bueno.",
+    "lesson": "Persigue la calidad, no la novedad; lo original surge de lo bueno.",
+    "action": "Deja de buscar un ángulo ingenioso y haz que la próxima cosa simplemente funcione bien."
+  },
+  "pressfield-agents": {
+    "text": "Fuimos puestos aquí en la Tierra para actuar como agentes del Infinito, para traer a la existencia aquello que aún no es, pero que será, a través de nosotros.",
+    "lesson": "Tu trabajo es traer a la existencia lo que aún no existe.",
+    "action": "Nombra la única cosa que solo tú puedes construir ahora mismo y haz hoy una pieza real de ella."
+  }
+}

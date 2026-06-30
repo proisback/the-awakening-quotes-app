@@ -484,5 +484,491 @@
   "lesson": "Clear language is now real leverage.",
   "category": "AI",
   "action": "Take one fuzzy request you wrote today and rewrite it in plain, precise English."
+ },
+ {
+  "id": "bezos-dayone",
+  "text": "Day 2 is stasis. Followed by irrelevance. Followed by excruciating, painful decline. Followed by death. And that is why it is always Day 1.",
+  "author": "Jeff Bezos",
+  "source": "Amazon 2016 Letter to Shareholders",
+  "lesson": "Treat every day as the start, not the coast.",
+  "category": "complacency",
+  "action": "Name one process your team runs on autopilot and write down how you'd build it fresh today."
+ },
+ {
+  "id": "grove-paranoid",
+  "text": "Success breeds complacency. Complacency breeds failure. Only the paranoid survive.",
+  "author": "Andy Grove",
+  "source": "Only the Paranoid Survive, Andrew S. Grove, 1996",
+  "lesson": "A recent win is the moment to look hardest for the threat.",
+  "category": "vigilance",
+  "action": "List your last clear win, then write the one weakness it's tempting you to ignore right now."
+ },
+ {
+  "id": "graham-unscalable",
+  "text": "The most common unscalable thing founders have to do at the start is to recruit users manually.",
+  "author": "Paul Graham",
+  "source": "Essay 'Do Things That Don't Scale,' Paul Graham, July 2013",
+  "lesson": "Early on, hand-recruit users one by one; scale comes later.",
+  "category": "traction",
+  "action": "Pick five ideal users and send each a personal message inviting them to try your product today."
+ },
+ {
+  "id": "andreessen-pmf",
+  "text": "The only thing that matters is getting to product/market fit. Product/market fit means being in a good market with a product that can satisfy that market.",
+  "author": "Marc Andreessen",
+  "source": "Essay 'The Pmarca Guide to Startups, part 4: The only thing that matters,' Marc Andreessen, June 25, 2007",
+  "lesson": "Until the market pulls your product, nothing else you do counts.",
+  "category": "focus",
+  "action": "Write one sentence describing the market you serve and how your product satisfies it right now."
+ },
+ {
+  "id": "altman-hard",
+  "text": "It's often easier to succeed with a hard startup than an easy one.",
+  "author": "Sam Altman",
+  "source": "Essay 'Hard Startups,' Sam Altman, 2019 (blog.samaltman.com)",
+  "lesson": "An ambitious problem attracts the talent and belief an easy one can't.",
+  "category": "ambition",
+  "action": "Take your current idea and write down a harder, more ambitious version of the same thing."
+ },
+ {
+  "id": "naval-longterm",
+  "text": "Play long-term games with long-term people. All the returns in life, whether in wealth, relationships, or knowledge, come from compound interest.",
+  "author": "Naval Ravikant",
+  "source": "Naval Ravikant, X/Twitter, 23 March 2019 (tweet 1109704032204009473); collected in The Almanack of Naval Ravikant, 2020",
+  "lesson": "Returns come from repeated games with the same trusted people.",
+  "category": "compounding",
+  "action": "Name one person you want a ten-year relationship with and do one small thing for them today."
+ },
+ {
+  "id": "munger-invert",
+  "text": "Invert, always invert.",
+  "author": "Charlie Munger",
+  "source": "Munger popularizing Carl Jacobi's maxim; collected in Poor Charlie's Almanack, 2005",
+  "lesson": "Solve hard problems by figuring out how to fail and avoiding that.",
+  "category": "thinking",
+  "action": "Take the goal you're stuck on and write down every way it could fail, then dodge the top one."
+ },
+ {
+  "id": "drucker-useless",
+  "text": "There is surely nothing quite so useless as doing with great efficiency what should not be done at all.",
+  "author": "Peter Drucker",
+  "source": "Article 'Managing for Business Effectiveness,' Harvard Business Review, Peter Drucker, May 1963",
+  "lesson": "Killing the wrong task beats doing it faster.",
+  "category": "prioritization",
+  "action": "Scan your to-do list and delete one task that shouldn't exist no matter how well it's done."
+ },
+ {
+  "id": "jobs-shipart",
+  "text": "Real artists ship.",
+  "author": "Steve Jobs",
+  "source": "Steve Jobs to the Macintosh team, 1983 (documented by Andy Hertzfeld, folklore.org)",
+  "lesson": "Finishing and releasing is part of the craft, not separate from it.",
+  "category": "shipping",
+  "action": "Pick one thing sitting nearly done in your drafts and put it in front of a real person today."
+ },
+ {
+  "id": "carnegie-onebasket",
+  "text": "Put all your eggs in one basket, and then watch that basket.",
+  "author": "Andrew Carnegie",
+  "source": "Andrew Carnegie, address 'The Road to Business Success,' Curry Commercial College, Pittsburgh, 23 June 1885 (pub. The Empire of Business, 1902)",
+  "lesson": "Concentrate your bets, then guard them with full attention.",
+  "category": "focus",
+  "action": "Name the one bet that matters most this quarter and cut one side project that splits your focus."
+ },
+ {
+  "id": "buffett-reputation",
+  "text": "Lose money for the firm, and I will be understanding. Lose a shred of reputation for the firm, and I will be ruthless.",
+  "author": "Warren Buffett",
+  "source": "Warren Buffett, U.S. Congressional testimony on Salomon Brothers, September 1991",
+  "lesson": "Money losses heal; a broken reputation rarely does.",
+  "category": "reputation",
+  "action": "Find one shortcut you're about to take that could dent trust, and choose the honest version instead."
+ },
+ {
+  "id": "marcus-obstacle",
+  "text": "The impediment to action advances action. What stands in the way becomes the way.",
+  "author": "Marcus Aurelius",
+  "source": "Meditations, Book 5.20 (Gregory Hays translation, Modern Library, 2002)",
+  "lesson": "The obstacle in front of you is the path, not a detour from it.",
+  "category": "obstacles",
+  "action": "Name the thing blocking your project and write down how working through it could become the win."
+ },
+ {
+  "id": "marcus-dawn",
+  "text": "At dawn, when you have trouble getting out of bed, tell yourself: \"I have to go to work — as a human being. What do I have to complain of, if I'm going to do what I was born for?\"",
+  "author": "Marcus Aurelius",
+  "source": "Meditations, Book 5.1 (Gregory Hays translation, Modern Library, 2002)",
+  "lesson": "You were made to do the work; stop bargaining with the morning.",
+  "category": "discipline",
+  "action": "Pick the first real task of your day and start it before you check any messages or feeds."
+ },
+ {
+  "id": "seneca-port",
+  "text": "If a man does not know to what port he is steering, no wind is favorable to him.",
+  "author": "Seneca",
+  "source": "Letters from a Stoic (Epistulae Morales), Letter 71 (Richard Mott Gummere translation, Loeb Classical Library)",
+  "lesson": "Without a clear destination, no effort points anywhere useful.",
+  "category": "focus",
+  "action": "Write the one specific outcome this week is steering toward, then check today's tasks against it."
+ },
+ {
+  "id": "epictetus-control",
+  "text": "Some things are within our power, while others are not. Within our power are opinion, motivation, desire, aversion, and, in a word, whatever is of our own doing; not within our power are our body, our property, reputation, office, and, in a word, whatever is not of our own doing.",
+  "author": "Epictetus",
+  "source": "The Handbook (Enchiridion), ch. 1 (Robin Hard translation, Oxford World's Classics, 2014)",
+  "lesson": "Spend energy on your choices, not on outcomes you can't command.",
+  "category": "control",
+  "action": "List what's worrying you, then split it into what you control and what you don't, and act on the first."
+ },
+ {
+  "id": "laotzu-pine",
+  "text": "The giant pine tree grows from a tiny sprout. The journey of a thousand miles starts from beneath your feet.",
+  "author": "Lao Tzu",
+  "source": "Tao Te Ching, ch. 64 (Stephen Mitchell translation, Harper & Row, 1988)",
+  "lesson": "Big things grow from tiny, unglamorous starts.",
+  "category": "beginnings",
+  "action": "Pick the daunting project you keep postponing and plant the first small piece in the next five minutes."
+ },
+ {
+  "id": "confucius-mound",
+  "text": "It is like making a mound. If, when only one more basketful of earth is needed, I stop, then I have stopped. It is like leveling ground. Even if only one basketful is laid down, if I go on, then I am making progress.",
+  "author": "Confucius",
+  "source": "The Analects, Book 9.18 (Arthur Waley translation, 1938; numbered 9.19 in some editions)",
+  "lesson": "Whether you finish or quit is your own choice, basket by basket.",
+  "category": "persistence",
+  "action": "Find the project that's one push from done and add that final basketful of work right now."
+ },
+ {
+  "id": "confucius-knowing",
+  "text": "The Master said, \"When you know a thing, to hold that you know it; and when you do not know a thing, to allow that you do not know it — this is knowledge.\"",
+  "author": "Confucius",
+  "source": "The Analects, Book 2.17 (James Legge translation, 1861)",
+  "lesson": "Real knowledge is knowing the edge of what you know.",
+  "category": "honesty",
+  "action": "Write down one thing you've been pretending to understand, then admit it to the right person today."
+ },
+ {
+  "id": "krishna-fruits",
+  "text": "You have a right to your actions, but never to your actions' fruits. Act for the action's sake. And do not be attached to inaction.",
+  "author": "Krishna (Bhagavad Gita)",
+  "source": "The Bhagavad Gita, ch. 2, verse 47 (Stephen Mitchell translation, Harmony, 2000)",
+  "lesson": "Own your effort fully and let go of the result.",
+  "category": "detachment",
+  "action": "Name one outcome you can't control and rewrite your goal as the action you can actually take."
+ },
+ {
+  "id": "buddha-thoughts",
+  "text": "All that we are is the result of what we have thought: it is founded on our thoughts, it is made up of our thoughts.",
+  "author": "The Buddha",
+  "source": "The Dhammapada, verse 1 (F. Max Müller translation, Sacred Books of the East, Vol. 10, 1881)",
+  "lesson": "Your inner narrative builds the life you experience.",
+  "category": "mind",
+  "action": "Catch one recurring negative thought you tell yourself today and write the truer line to replace it."
+ },
+ {
+  "id": "rumi-prison",
+  "text": "Why do you stay in prison when the door is so wide open?",
+  "author": "Rumi",
+  "source": "The Essential Rumi, translated by Coleman Barks with John Moyne (HarperOne, 1995)",
+  "lesson": "Most of your cages are unlocked; you just haven't walked out.",
+  "category": "freedom",
+  "action": "Name one self-imposed limit you treat as fixed and take one step today as if it weren't real."
+ },
+ {
+  "id": "thiruvalluvar-undismayed",
+  "text": "Who strive with undismayed, unfaltering mind, at length shall leave opposing fate behind.",
+  "author": "Thiruvalluvar",
+  "source": "Tirukkural, couplet 620 (G.U. Pope translation, 1886)",
+  "lesson": "A steady, unshaken mind eventually outlasts bad luck.",
+  "category": "perseverance",
+  "action": "Pick the setback you keep replaying and write the next concrete move you'll make despite it."
+ },
+ {
+  "id": "kabir-today",
+  "text": "Tomorrow's work do today, and today's work now; if the moment is lost, the work how will you do?",
+  "author": "Kabir",
+  "source": "Kabir, doha \"Kal kare so aaj kar\" (traditional Hindi couplet)",
+  "lesson": "Pull tomorrow's work into now before the moment slips.",
+  "category": "urgency",
+  "action": "Take one thing you scheduled for later this week and do its first step in the next ten minutes."
+ },
+ {
+  "id": "laotzu-difficult",
+  "text": "Confront the difficult while it is still easy; accomplish the great task by a series of small acts.",
+  "author": "Lao Tzu",
+  "source": "Tao Te Ching, ch. 63 (Stephen Mitchell translation, Harper & Row, 1988)",
+  "lesson": "Tackle problems while small; build big things from small acts.",
+  "category": "momentum",
+  "action": "Spot one issue that's still tiny and easy to fix, and handle it now before it grows."
+ },
+ {
+  "id": "meadows-purpose",
+  "text": "The least obvious part of the system, its function or purpose, is often the most crucial determinant of the system's behavior.",
+  "author": "Donella Meadows",
+  "source": "Thinking in Systems: A Primer (2008), Chapter 1",
+  "lesson": "A system's real purpose, not its stated one, drives its behavior.",
+  "category": "systems",
+  "action": "Write down what your team's process actually optimizes for, not what the doc says it does."
+ },
+ {
+  "id": "meadows-models",
+  "text": "Remember, always, that everything you know, and everything everyone knows, is only a model. Get your model out there where it can be viewed. Invite others to challenge your assumptions and add their own.",
+  "author": "Donella Meadows",
+  "source": "Dancing With Systems (2001 essay, Donella Meadows Project / Whole Earth Review); also in Thinking in Systems (2008)",
+  "lesson": "Everything you know is a model; expose it so others can sharpen it.",
+  "category": "humility",
+  "action": "Write your current plan's core assumption in one line and ask a teammate to poke holes in it today."
+ },
+ {
+  "id": "feynman-fool",
+  "text": "The first principle is that you must not fool yourself - and you are the easiest person to fool.",
+  "author": "Richard Feynman",
+  "source": "\"Cargo Cult Science,\" Caltech commencement address, 1974 (published in Engineering & Science, June 1974)",
+  "lesson": "Guard hardest against fooling yourself.",
+  "category": "integrity",
+  "action": "Take one belief about your product you'd hate to be wrong about and find one fact that tests it."
+ },
+ {
+  "id": "feynman-nature",
+  "text": "For a successful technology, reality must take precedence over public relations, for Nature cannot be fooled.",
+  "author": "Richard Feynman",
+  "source": "Rogers Commission Report, Appendix F (\"Personal Observations on the Reliability of the Shuttle\"), 1986",
+  "lesson": "Reality always beats the story you tell about it.",
+  "category": "reality",
+  "action": "Find one metric you've been spinning in updates and write down the unvarnished number instead."
+ },
+ {
+  "id": "simon-attention",
+  "text": "A wealth of information creates a poverty of attention.",
+  "author": "Herbert Simon",
+  "source": "\"Designing Organizations for an Information-Rich World,\" in Computers, Communications, and the Public Interest (Johns Hopkins Press, 1971)",
+  "lesson": "More information just means attention is your real bottleneck.",
+  "category": "attention",
+  "action": "Close every tab and notification, then work on one thing only for the next twenty-five minutes."
+ },
+ {
+  "id": "simon-design",
+  "text": "Everyone designs who devises courses of action aimed at changing existing situations into preferred ones.",
+  "author": "Herbert Simon",
+  "source": "The Sciences of the Artificial (MIT Press, 1969), Ch. 3 \"The Science of Design\"",
+  "lesson": "Anyone changing a situation toward a better one is designing.",
+  "category": "design",
+  "action": "Pick one annoying part of your day and sketch the small change that would make it work better."
+ },
+ {
+  "id": "munger-incentives",
+  "text": "Never, ever, think about something else when you should be thinking about the power of incentives.",
+  "author": "Charlie Munger",
+  "source": "\"The Psychology of Human Misjudgment,\" Harvard speech, 1995",
+  "lesson": "When behavior puzzles you, look first at the incentives.",
+  "category": "incentives",
+  "action": "Name one person acting in a way you don't get, then write down what they're actually rewarded for."
+ },
+ {
+  "id": "deming-system",
+  "text": "A bad system will beat a good person every time.",
+  "author": "W. Edwards Deming",
+  "source": "W. Edwards Deming, four-day seminar, February 1993 (W. Edwards Deming Institute)",
+  "lesson": "Fix the system before you blame the person inside it.",
+  "category": "systems",
+  "action": "Take one repeated mistake on your team and write the broken process behind it, not the name."
+ },
+ {
+  "id": "ackoff-whole",
+  "text": "A system is more than the sum of its parts; it is an indivisible whole. It loses its essential properties when it is taken apart.",
+  "author": "Russell Ackoff",
+  "source": "\"Science in the Systems Age: Beyond IE, OR and MS,\" Operations Research, Vol. 21 (1973), p. 664",
+  "lesson": "A system's value lives in how its parts connect, not the parts alone.",
+  "category": "systems",
+  "action": "Pick one feature you're judging in isolation and write down how it works with everything around it."
+ },
+ {
+  "id": "ackoff-rightthing",
+  "text": "It is much better to do the right thing wrong than the wrong thing right.",
+  "author": "Russell Ackoff",
+  "source": "Russell Ackoff, recorded talk \"If Russ Ackoff had given a TED talk\" (c. 1994)",
+  "lesson": "Doing the right thing badly beats polishing the wrong thing.",
+  "category": "effectiveness",
+  "action": "Check your top task and confirm it's the right problem before you spend another hour perfecting it."
+ },
+ {
+  "id": "kahneman-wysiati",
+  "text": "What you see is all there is.",
+  "author": "Daniel Kahneman",
+  "source": "Thinking, Fast and Slow (2011), Part 1 (the WYSIATI principle)",
+  "lesson": "Your mind treats the visible evidence as the whole story.",
+  "category": "bias",
+  "action": "Before your next decision, write down one important thing you might not be seeing yet."
+ },
+ {
+  "id": "kahneman-premortem",
+  "text": "Imagine that we are a year into the future. We implemented the plan as it now exists. The outcome was a disaster. Please take 5 to 10 minutes to write a brief history of that disaster.",
+  "author": "Daniel Kahneman",
+  "source": "Thinking, Fast and Slow (2011), p. 264 (premortem, crediting Gary Klein)",
+  "lesson": "Imagining failure in advance surfaces risks optimism hides.",
+  "category": "decision",
+  "action": "Spend five minutes writing the story of how your current plan failed a year from now, then fix one cause."
+ },
+ {
+  "id": "taleb-wind",
+  "text": "Wind extinguishes a candle and energizes fire. Likewise with randomness, uncertainty, chaos: you want to use them, not hide from them.",
+  "author": "Nassim Taleb",
+  "source": "Antifragile: Things That Gain from Disorder (2012), Prologue (\"How to Love the Wind\")",
+  "lesson": "Build so that disorder strengthens you instead of breaking you.",
+  "category": "antifragility",
+  "action": "Name one source of chaos in your work and write down how you could turn it into an advantage."
+ },
+ {
+  "id": "taleb-vianegativa",
+  "text": "We know what is wrong with more certainty than we know anything else.",
+  "author": "Nassim Taleb",
+  "source": "Antifragile: Things That Gain from Disorder (2012), on via negativa / subtractive knowledge",
+  "lesson": "Removing what's clearly wrong is surer than adding what might be right.",
+  "category": "via-negativa",
+  "action": "Find one obviously broken thing in your product or routine and remove it today."
+ },
+ {
+  "id": "boyd-people",
+  "text": "People, ideas, machines - in that order.",
+  "author": "John Boyd",
+  "source": "Quoted in Robert Coram, Boyd: The Fighter Pilot Who Changed the Art of War (2002); from Boyd's briefings",
+  "lesson": "People come before ideas, and ideas before machines.",
+  "category": "priorities",
+  "action": "Before buying another tool, write down whether the right person or idea would fix the problem instead."
+ },
+ {
+  "id": "wilson-paleolithic",
+  "text": "We have Paleolithic emotions, medieval institutions, and god-like technology.",
+  "author": "E.O. Wilson",
+  "source": "E.O. Wilson, debate at the Harvard Museum of Natural History, 9 September 2009",
+  "lesson": "Our instincts and institutions lag far behind our tools.",
+  "category": "technology",
+  "action": "Name one powerful tool you use and write down one guardrail your old habits still need around it."
+ },
+ {
+  "id": "lamott-firstdraft",
+  "text": "Almost all good writing begins with terrible first efforts. You need to start somewhere.",
+  "author": "Anne Lamott",
+  "source": "Bird by Bird: Some Instructions on Writing and Life (1994), chapter \"Shitty First Drafts\"",
+  "lesson": "Every good thing starts as a rough, ugly first attempt.",
+  "category": "writing",
+  "action": "Open the doc you've been avoiding and write the worst possible first draft for ten minutes straight."
+ },
+ {
+  "id": "pressfield-resistance",
+  "text": "Resistance is experienced as fear; the degree of fear equates to the strength of Resistance. Therefore the more fear we feel about a specific enterprise, the more certain we can be that that enterprise is important to us.",
+  "author": "Steven Pressfield",
+  "source": "The War of Art: Break Through the Blocks and Win Your Inner Creative Battles (2002)",
+  "lesson": "The work you fear most is usually the work that matters most.",
+  "category": "resistance",
+  "action": "Name the task you feel the most dread about and start it before anything easier today."
+ },
+ {
+  "id": "pressfield-pro",
+  "text": "The amateur tweets. The pro works.",
+  "author": "Steven Pressfield",
+  "source": "Turning Pro: Tap Your Inner Power and Create Your Life's Work (2012)",
+  "lesson": "Talking about the work is not the work.",
+  "category": "discipline",
+  "action": "Close the app you broadcast on and spend the next thirty minutes only making the actual thing."
+ },
+ {
+  "id": "godin-ship",
+  "text": "The only purpose of starting is to finish, and while the projects we do are never really finished, they must ship.",
+  "author": "Seth Godin",
+  "source": "Linchpin: Are You Indispensable? (2010)",
+  "lesson": "Starting only counts if it ends in something released.",
+  "category": "shipping",
+  "action": "Pick one open project and set a hard ship date for it on your calendar before you close this."
+ },
+ {
+  "id": "angelou-creativity",
+  "text": "You can't use up creativity. The more you use, the more you have.",
+  "author": "Maya Angelou",
+  "source": "Maya Angelou interview, Bell Telephone Magazine (1982); reprinted in Conversations with Maya Angelou, ed. Jeffrey M. Elliot (1989)",
+  "lesson": "Creativity grows from use, not from rationing.",
+  "category": "creativity",
+  "action": "Make one small creative thing today without saving the idea for a more important moment."
+ },
+ {
+  "id": "baldwin-process",
+  "text": "The artist cannot and must not take anything for granted, but must drive to the heart of every answer and expose the question the answer hides.",
+  "author": "James Baldwin",
+  "source": "\"The Creative Process,\" essay in Creative America (Ridge Press, 1962)",
+  "lesson": "Don't accept the easy answer; dig out the question it's hiding.",
+  "category": "craft",
+  "action": "Take an answer you accepted at work and write down the harder question it was quietly avoiding."
+ },
+ {
+  "id": "morrison-writeit",
+  "text": "If you find a book you really want to read but it hasn't been written yet, then you must write it.",
+  "author": "Toni Morrison",
+  "source": "Address to the Ohio Arts Council (1981), reported in The Cincinnati Enquirer (27 Sept 1981) via Gannett News Service",
+  "lesson": "If the thing you want doesn't exist, you're the one to build it.",
+  "category": "agency",
+  "action": "Name one product or resource you keep wishing existed and sketch its first piece today."
+ },
+ {
+  "id": "morrison-free",
+  "text": "When you get these jobs that you have been so brilliantly trained for, just remember that your real job is that if you are free, you need to free somebody else. If you have some power, then your job is to empower somebody else.",
+  "author": "Toni Morrison",
+  "source": "O, The Oprah Magazine interview (November 2003)",
+  "lesson": "Power and freedom are only worth having if you pass them on.",
+  "category": "leadership",
+  "action": "Use one bit of your access or skill to open a door for someone else this week, starting now."
+ },
+ {
+  "id": "frankl-success",
+  "text": "Don't aim at success. The more you aim at it and make it a target, the more you are going to miss it. For success, like happiness, cannot be pursued; it must ensue.",
+  "author": "Viktor Frankl",
+  "source": "Man's Search for Meaning, preface to the 1992 edition (English translation; original 1946)",
+  "lesson": "Success follows good work; chasing it directly drives it away.",
+  "category": "meaning",
+  "action": "Drop one metric you're obsessing over and refocus today's effort on doing the work well instead."
+ },
+ {
+  "id": "jung-heart",
+  "text": "Your vision will become clear only when you can look into your own heart. Who looks outside, dreams; who looks inside, awakes.",
+  "author": "Carl Jung",
+  "source": "Letter to Fanny Bowditch, 22 October 1916, in C.G. Jung Letters, Vol. 1: 1906-1950 (Princeton/Bollingen), p. 33",
+  "lesson": "Clarity comes from looking inward, not scanning outside for cues.",
+  "category": "psychology",
+  "action": "Write down what you actually want from your current project, not what looks good to others."
+ },
+ {
+  "id": "leguin-freedom",
+  "text": "We will need writers who can remember freedom. Poets, visionaries, the realists of a larger reality.",
+  "author": "Ursula K. Le Guin",
+  "source": "National Book Awards acceptance speech, Medal for Distinguished Contribution to American Letters (19 November 2014)",
+  "lesson": "The future needs people who can still picture something better.",
+  "category": "vision",
+  "action": "Write one sentence describing the larger reality your work is trying to build toward."
+ },
+ {
+  "id": "ogilvy-consumer",
+  "text": "The consumer isn't a moron; she is your wife. You insult her intelligence if you assume that a mere slogan and a few vapid adjectives will persuade her to buy anything.",
+  "author": "David Ogilvy",
+  "source": "Confessions of an Advertising Man (1963), p. 96",
+  "lesson": "Respect your customer's intelligence instead of dressing up empty claims.",
+  "category": "craft",
+  "action": "Find one vague line in your marketing and rewrite it as a concrete, honest reason to care."
+ },
+ {
+  "id": "rand-good",
+  "text": "Don't try to be original. Just try to be good.",
+  "author": "Paul Rand",
+  "source": "Interview with Steven Heller (conducted 1990), published in Design Dialogues (Allworth Press, 1998)",
+  "lesson": "Chase quality, not novelty; original follows from good.",
+  "category": "craft",
+  "action": "Stop hunting for a clever angle and make the next thing simply work well instead."
+ },
+ {
+  "id": "pressfield-agents",
+  "text": "We were put here on earth to act as agents of the Infinite, to bring into existence that which is not yet, but which will be, through us.",
+  "author": "Steven Pressfield",
+  "source": "The War of Art: Break Through the Blocks and Win Your Inner Creative Battles (2002)",
+  "lesson": "Your job is to bring into being what doesn't yet exist.",
+  "category": "purpose",
+  "action": "Name the one thing only you can build right now and do one real piece of it today."
  }
 ]
