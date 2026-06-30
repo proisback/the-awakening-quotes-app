@@ -5,7 +5,8 @@
   "author": "Chanakya",
   "source": "Attributed to Chanakya (Chanakya Niti), ancient India",
   "lesson": "See the incentives clearly, even inside relationships.",
-  "category": "Practical Wisdom"
+  "category": "Practical Wisdom",
+  "action": "Name one relationship where you give more than you take, then send that person a genuine message today."
  },
  {
   "id": "osho-sky",
@@ -13,7 +14,8 @@
   "author": "Osho (Rajneesh)",
   "source": "Attributed to Osho (Rajneesh)",
   "lesson": "You are the awareness, not the passing moods.",
-  "category": "Consciousness"
+  "category": "Consciousness",
+  "action": "Write down the mood you woke up in, then add 'this is a cloud, not me' under it."
  },
  {
   "id": "vivekananda-arise",
@@ -21,7 +23,8 @@
   "author": "Swami Vivekananda",
   "source": "Swami Vivekananda's rallying call (from the Katha Upanishad)",
   "lesson": "Commit fully and persist until it's done.",
-  "category": "Resolve"
+  "category": "Resolve",
+  "action": "Pick the one goal you keep half-finishing and block 30 minutes for it on your calendar now."
  },
  {
   "id": "meadows-dance",
@@ -29,7 +32,8 @@
   "author": "Donella Meadows",
   "source": "'Dancing with Systems' (Whole Earth Review, 2001); Thinking in Systems, ch. 7",
   "lesson": "Work with a system's feedback instead of trying to dominate it.",
-  "category": "Systems Thinking"
+  "category": "Systems Thinking",
+  "action": "Name one metric you keep forcing, then write the next small nudge instead of the big fix."
  },
  {
   "id": "bateson-difference",
@@ -37,7 +41,8 @@
   "author": "Gregory Bateson",
   "source": "Steps to an Ecology of Mind (1972), 'Form, Substance and Difference'",
   "lesson": "Meaning comes from contrast and context, not raw data.",
-  "category": "Systems Thinking"
+  "category": "Systems Thinking",
+  "action": "Open your dashboard and circle the one number that changed; ignore the rest for now."
  },
  {
   "id": "boulding-growth",
@@ -45,7 +50,8 @@
   "author": "Kenneth Boulding",
   "source": "Attributed; popularized via Mancur Olson, Daedalus (1973); exact origin disputed",
   "lesson": "Nothing compounds forever in a bounded system.",
-  "category": "Systems Thinking"
+  "category": "Systems Thinking",
+  "action": "Write down one growth number you assume is forever, then add the limit that will eventually stop it."
  },
  {
   "id": "daly-liquidation",
@@ -53,7 +59,8 @@
   "author": "Herman E. Daly",
   "source": "Steady-State Economics, 2nd ed. (1991), p. 248",
   "lesson": "Don't burn your capital base for short-term flow.",
-  "category": "Systems Thinking"
+  "category": "Systems Thinking",
+  "action": "Name one long-term asset you're burning for this week's numbers, then text a teammate about protecting it."
  },
  {
   "id": "einstein-curiosity",
@@ -61,7 +68,8 @@
   "author": "Albert Einstein",
   "source": "Quoted by William Miller, LIFE magazine, 2 May 1955",
   "lesson": "Protect your 'holy curiosity'; never stop asking why.",
-  "category": "Curiosity"
+  "category": "Curiosity",
+  "action": "Write one 'why does this work this way' question about your product and send it to someone who'd know."
  },
  {
   "id": "hardin-commons",
@@ -69,7 +77,8 @@
   "author": "Garrett Hardin",
   "source": "'The Tragedy of the Commons,' Science (1968)",
   "lesson": "Shared resources need shared rules.",
-  "category": "Systems Thinking"
+  "category": "Systems Thinking",
+  "action": "Pick one shared resource your team overuses and propose one simple rule for it in your group chat."
  },
  {
   "id": "havel-hope",
@@ -77,7 +86,8 @@
   "author": "Vaclav Havel",
   "source": "Disturbing the Peace (1990), pp. 181-182",
   "lesson": "Hope is about meaning, not optimism about outcomes.",
-  "category": "Hope"
+  "category": "Hope",
+  "action": "Write one sentence on why your current project matters even if it fails, and pin it to your desk."
  },
  {
   "id": "mumford-clock",
@@ -85,7 +95,8 @@
   "author": "Lewis Mumford",
   "source": "Technics and Civilization (1934)",
   "lesson": "The tools we adopt quietly reshape how we live.",
-  "category": "Technology & Society"
+  "category": "Technology & Society",
+  "action": "Name one tool you use daily, then write down one habit it quietly forced on you."
  },
  {
   "id": "myrdal-softstate",
@@ -93,7 +104,8 @@
   "author": "Gunnar Myrdal",
   "source": "Paraphrase of Myrdal's thesis in Asian Drama (1968) - concept, not a verbatim quote",
   "lesson": "Rules without enforcement are theater.",
-  "category": "Development"
+  "category": "Development",
+  "action": "Pick one team rule everyone ignores; either enforce it today or delete it from your docs."
  },
  {
   "id": "schumacher-small",
@@ -101,7 +113,8 @@
   "author": "E. F. Schumacher",
   "source": "Small Is Beautiful: Economics as if People Mattered (1973); phrase from Leopold Kohr",
   "lesson": "Human-scale often beats relentless bigness.",
-  "category": "Economics"
+  "category": "Economics",
+  "action": "Find one bloated process or feature and write down the smaller version you could ship instead."
  },
  {
   "id": "marcus-mind",
@@ -109,7 +122,8 @@
   "author": "Marcus Aurelius",
   "source": "Meditations (popular translation)",
   "lesson": "Control the controllable: your own response.",
-  "category": "Stoicism"
+  "category": "Stoicism",
+  "action": "List one thing stressing you, then cross out everything on it you cannot actually control."
  },
  {
   "id": "seneca-imagination",
@@ -117,7 +131,8 @@
   "author": "Seneca",
   "source": "Letters from a Stoic (Letters to Lucilius)",
   "lesson": "Don't pre-pay suffering for things that never happen.",
-  "category": "Stoicism"
+  "category": "Stoicism",
+  "action": "Write down the worst-case scenario you're dreading, then rate how likely it really is, one to ten."
  },
  {
   "id": "laotzu-journey",
@@ -125,7 +140,8 @@
   "author": "Lao Tzu",
   "source": "Tao Te Ching, ch. 64",
   "lesson": "Start. Momentum compounds.",
-  "category": "Action"
+  "category": "Action",
+  "action": "Pick the project you keep postponing and do the smallest first step in the next five minutes."
  },
  {
   "id": "socrates-examined",
@@ -133,7 +149,8 @@
   "author": "Socrates",
   "source": "Plato's Apology (38a)",
   "lesson": "Reflection is what makes a life your own.",
-  "category": "Philosophy"
+  "category": "Philosophy",
+  "action": "Write down one decision you made today and the real reason behind it, not the stated one."
  },
  {
   "id": "durant-excellence",
@@ -141,7 +158,8 @@
   "author": "Will Durant",
   "source": "The Story of Philosophy (1926), summarizing Aristotle (commonly misattributed to Aristotle)",
   "lesson": "Excellence is a routine, not a one-off moment.",
-  "category": "Habits"
+  "category": "Habits",
+  "action": "Name the one daily action that defines your craft, then do it once right now."
  },
  {
   "id": "roosevelt-arena",
@@ -149,7 +167,8 @@
   "author": "Theodore Roosevelt",
   "source": "'Citizenship in a Republic,' Paris (1910)",
   "lesson": "Doers, not critics, earn the credit.",
-  "category": "Courage"
+  "category": "Courage",
+  "action": "Pick one thing you've only been critiquing from the sidelines and take one real step on it today."
  },
  {
   "id": "mandela-impossible",
@@ -157,7 +176,8 @@
   "author": "Nelson Mandela",
   "source": "Widely attributed to Nelson Mandela",
   "lesson": "Big goals look unreachable until reached.",
-  "category": "Perseverance"
+  "category": "Perseverance",
+  "action": "Write down the goal that feels impossible, then list the one move you'd make if it weren't."
  },
  {
   "id": "angelou-feel",
@@ -165,7 +185,8 @@
   "author": "Maya Angelou",
   "source": "Maya Angelou (widely attributed)",
   "lesson": "Emotional impact outlasts words and deeds.",
-  "category": "Leadership"
+  "category": "Leadership",
+  "action": "Text one person who helped you recently and tell them exactly how they made you feel."
  },
  {
   "id": "frankl-change",
@@ -173,7 +194,8 @@
   "author": "Viktor Frankl",
   "source": "Man's Search for Meaning (1946)",
   "lesson": "Change your response when you can't change the world.",
-  "category": "Resilience"
+  "category": "Resilience",
+  "action": "Name one stuck situation you can't fix, then write down one thing about your own response you can change."
  },
  {
   "id": "nietzsche-why",
@@ -181,7 +203,8 @@
   "author": "Friedrich Nietzsche",
   "source": "Twilight of the Idols (1888)",
   "lesson": "A strong purpose makes hard means bearable.",
-  "category": "Purpose"
+  "category": "Purpose",
+  "action": "Write the one-line reason you're building this, and keep it where you'll see it when it gets hard."
  },
  {
   "id": "mlk-right",
@@ -189,7 +212,8 @@
   "author": "Martin Luther King Jr.",
   "source": "Oberlin College address (1965)",
   "lesson": "Don't wait for a convenient moment to act rightly.",
-  "category": "Ethics"
+  "category": "Ethics",
+  "action": "Pick one right thing you've been delaying for a better moment and do the first part of it now."
  },
  {
   "id": "curie-understood",
@@ -197,7 +221,8 @@
   "author": "Marie Curie",
   "source": "Marie Curie (widely attributed)",
   "lesson": "Understanding dissolves fear.",
-  "category": "Courage"
+  "category": "Courage",
+  "action": "Name one thing at work that scares you, then write down one fact that makes it less unknown."
  },
  {
   "id": "jung-unconscious",
@@ -205,7 +230,8 @@
   "author": "Carl Jung",
   "source": "Attributed to Carl Jung (exact source debated)",
   "lesson": "Examine your patterns or be ruled by them.",
-  "category": "Psychology"
+  "category": "Psychology",
+  "action": "Write down one pattern you keep repeating in your work, then name its real trigger."
  },
  {
   "id": "thoreau-dreams",
@@ -213,7 +239,8 @@
   "author": "Henry David Thoreau",
   "source": "Walden (1854)",
   "lesson": "Move toward what you want; ordinary limits bend.",
-  "category": "Action"
+  "category": "Action",
+  "action": "Write one bold thing you actually want, then take one visible step toward it today."
  },
  {
   "id": "sagan-starstuff",
@@ -221,7 +248,8 @@
   "author": "Carl Sagan",
   "source": "Cosmos (1980)",
   "lesson": "Zoom out: you're part of something vast.",
-  "category": "Wonder"
+  "category": "Wonder",
+  "action": "Step away from the screen for sixty seconds and name one thing bigger than today's deadline."
  },
  {
   "id": "gandhi-forgive",
@@ -229,7 +257,8 @@
   "author": "Mahatma Gandhi",
   "source": "Attributed to Mahatma Gandhi",
   "lesson": "Forgiveness is strength, not surrender.",
-  "category": "Character"
+  "category": "Character",
+  "action": "Think of one person you're holding a grudge against and write down one thing you'll let go of."
  },
  {
   "id": "jobs-time",
@@ -237,7 +266,8 @@
   "author": "Steve Jobs",
   "source": "Stanford commencement (2005)",
   "lesson": "Live by conviction, not others' expectations.",
-  "category": "Focus"
+  "category": "Focus",
+  "action": "Name one thing on your list you're doing only to meet someone else's expectation, then question it."
  },
  {
   "id": "buffett-value",
@@ -245,7 +275,8 @@
   "author": "Warren Buffett",
   "source": "Berkshire Hathaway shareholder letter (2008)",
   "lesson": "Worth and price are not the same thing.",
-  "category": "Money"
+  "category": "Money",
+  "action": "Pick one recent purchase or hire and write down what you paid versus what you actually got."
  },
  {
   "id": "munger-compound",
@@ -253,7 +284,8 @@
   "author": "Charlie Munger",
   "source": "Attributed to Charlie Munger",
   "lesson": "Let good things compound; stop tinkering.",
-  "category": "Patience"
+  "category": "Patience",
+  "action": "Name one good thing you keep tinkering with, then commit to leaving it untouched this week."
  },
  {
   "id": "gates-success",
@@ -261,7 +293,8 @@
   "author": "Bill Gates",
   "source": "The Road Ahead (1995)",
   "lesson": "Winning breeds complacency; stay alert.",
-  "category": "Mindset"
+  "category": "Mindset",
+  "action": "Write down one recent win, then list one thing it's making you lazy or overconfident about."
  },
  {
   "id": "musk-odds",
@@ -269,7 +302,8 @@
   "author": "Elon Musk",
   "source": "60 Minutes interview (2012)",
   "lesson": "Let importance, not odds, drive big bets.",
-  "category": "Courage"
+  "category": "Courage",
+  "action": "Name one important bet you're avoiding because the odds look bad, then write its first step."
  },
  {
   "id": "naval-wealth",
@@ -277,7 +311,8 @@
   "author": "Naval Ravikant",
   "source": "'How to Get Rich' thread (2018)",
   "lesson": "Build assets that earn while you sleep.",
-  "category": "Wealth"
+  "category": "Wealth",
+  "action": "Write down one asset you could build that earns without your time, then sketch its first piece."
  },
  {
   "id": "graham-want",
@@ -285,7 +320,8 @@
   "author": "Paul Graham",
   "source": "Y Combinator motto, from Paul Graham's essays",
   "lesson": "Nothing else matters if the thing isn't wanted.",
-  "category": "Building"
+  "category": "Building",
+  "action": "Message one user today and ask the one question: would you be upset if this disappeared?"
  },
  {
   "id": "thiel-competition",
@@ -293,7 +329,8 @@
   "author": "Peter Thiel",
   "source": "Peter Thiel, WSJ essay (2014), from Zero to One",
   "lesson": "Differentiate until you're irreplaceable.",
-  "category": "Strategy"
+  "category": "Strategy",
+  "action": "Write down the one thing your product does that no rival can copy easily, and sharpen it in a sentence."
  },
  {
   "id": "hoffman-launch",
@@ -301,7 +338,8 @@
   "author": "Reid Hoffman",
   "source": "Reid Hoffman (widely cited and confirmed by him)",
   "lesson": "Ship early; real feedback beats polish.",
-  "category": "Shipping"
+  "category": "Shipping",
+  "action": "Find one feature you're over-polishing and set a timer to ship the rough version today."
  },
  {
   "id": "horowitz-bullets",
@@ -309,7 +347,8 @@
   "author": "Ben Horowitz",
   "source": "The Hard Thing About Hard Things (2014)",
   "lesson": "Hard problems need direct work, not shortcuts.",
-  "category": "Execution"
+  "category": "Execution",
+  "action": "Name the hard problem you keep avoiding and write down the direct, unglamorous work it actually needs."
  },
  {
   "id": "nadella-innov",
@@ -317,7 +356,8 @@
   "author": "Satya Nadella",
   "source": "On becoming Microsoft CEO (2014)",
   "lesson": "Reinvent before you're forced to.",
-  "category": "Change"
+  "category": "Change",
+  "action": "Name one thing you do 'because we've always done it' and write down what would replace it."
  },
  {
   "id": "zuck-risk",
@@ -325,7 +365,8 @@
   "author": "Mark Zuckerberg",
   "source": "Y Combinator Startup School (2011)",
   "lesson": "In fast change, standing still is riskiest.",
-  "category": "Risk"
+  "category": "Risk",
+  "action": "Write down one safe choice you're defaulting to, then name the risk you're avoiding by it."
  },
  {
   "id": "cuban-work",
@@ -333,7 +374,8 @@
   "author": "Mark Cuban",
   "source": "How to Win at the Sport of Business (2011)",
   "lesson": "Treat your edge as always under threat.",
-  "category": "Hustle"
+  "category": "Hustle",
+  "action": "Name one competitor who could take your edge, then write the one move you'd make to defend it today."
  },
  {
   "id": "dalio-progress",
@@ -341,7 +383,8 @@
   "author": "Ray Dalio",
   "source": "Principles (2017)",
   "lesson": "Reflect on pain to convert it into growth.",
-  "category": "Growth"
+  "category": "Growth",
+  "action": "Write down one recent painful mistake and the single lesson you'll carry forward from it."
  },
  {
   "id": "clear-systems",
@@ -349,7 +392,8 @@
   "author": "James Clear",
   "source": "Atomic Habits (2018)",
   "lesson": "Design the process, not just the target.",
-  "category": "Habits"
+  "category": "Habits",
+  "action": "Pick one goal you keep missing and design one small system or trigger that makes it automatic."
  },
  {
   "id": "sinek-why",
@@ -357,7 +401,8 @@
   "author": "Simon Sinek",
   "source": "Start With Why (2009) / TED talk",
   "lesson": "Purpose creates loyalty.",
-  "category": "Purpose"
+  "category": "Purpose",
+  "action": "Write your product's 'why' in one sentence a customer would actually repeat to a friend."
  },
  {
   "id": "ferriss-uncomf",
@@ -365,7 +410,8 @@
   "author": "Tim Ferriss",
   "source": "The 4-Hour Workweek (2007)",
   "lesson": "Growth hides behind the conversation you're avoiding.",
-  "category": "Courage"
+  "category": "Courage",
+  "action": "Name the one conversation you're avoiding, then send the first message to schedule it today."
  },
  {
   "id": "branson-train",
@@ -373,7 +419,8 @@
   "author": "Richard Branson",
   "source": "Richard Branson, posted on X (2014)",
   "lesson": "Invest in people; retention follows.",
-  "category": "Leadership"
+  "category": "Leadership",
+  "action": "Pick one person on your team and do one concrete thing today to make them better at their craft."
  },
  {
   "id": "huang-character",
@@ -381,7 +428,8 @@
   "author": "Jensen Huang",
   "source": "Jensen Huang, Stanford talk (2024)",
   "lesson": "Hardship builds the character behind greatness.",
-  "category": "Resilience"
+  "category": "Resilience",
+  "action": "Write down one hard thing you survived and the strength it gave you that you use now."
  },
  {
   "id": "godin-stories",
@@ -389,7 +437,8 @@
   "author": "Seth Godin",
   "source": "Seth Godin (theme of All Marketers Are Liars)",
   "lesson": "A believed story beats a feature list.",
-  "category": "Marketing"
+  "category": "Marketing",
+  "action": "Write the one-sentence story behind what you build, not the feature list, and test it on someone."
  },
  {
   "id": "altman-love",
@@ -397,7 +446,8 @@
   "author": "Sam Altman",
   "source": "Sam Altman, Startup Playbook (Y Combinator)",
   "lesson": "Depth of love beats breadth of mild interest.",
-  "category": "Building"
+  "category": "Building",
+  "action": "Name your three most engaged users and message one of them to ask what they love most."
  },
  {
   "id": "hormozi-hard",
@@ -405,7 +455,8 @@
   "author": "Alex Hormozi",
   "source": "Alex Hormozi, posted on X / $100M series",
   "lesson": "Difficulty filters out the competition.",
-  "category": "Discipline"
+  "category": "Discipline",
+  "action": "Pick the hardest task on your list and start it now, before the easy ones tempt you."
  },
  {
   "id": "andreessen-soft",
@@ -413,7 +464,8 @@
   "author": "Marc Andreessen",
   "source": "Marc Andreessen, WSJ essay (2011)",
   "lesson": "Build on software or be absorbed by it.",
-  "category": "Tech"
+  "category": "Tech",
+  "action": "Name one manual part of your work and write down how software could absorb it."
  },
  {
   "id": "bezos-brand",
@@ -421,7 +473,8 @@
   "author": "Jeff Bezos",
   "source": "Attributed to Jeff Bezos",
   "lesson": "Reputation forms in your absence.",
-  "category": "Branding"
+  "category": "Branding",
+  "action": "Write down what you'd want people saying about you when you're not there, then act on one gap."
  },
  {
   "id": "karpathy-english",
@@ -429,6 +482,7 @@
   "author": "Andrej Karpathy",
   "source": "Andrej Karpathy, posted on X (January 2023)",
   "lesson": "Clear language is now real leverage.",
-  "category": "AI"
+  "category": "AI",
+  "action": "Take one fuzzy request you wrote today and rewrite it in plain, precise English."
  }
 ]

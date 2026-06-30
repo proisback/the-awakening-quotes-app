@@ -8,11 +8,14 @@ const store = {
   set(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
 };
 
+const SITE = "the-awakening-quotes.netlify.app";
+
 const state = {
   quotes: [],
   current: 0,
   favorites: new Set(store.get("favorites", [])),
   notes: store.get("notes", {}),
+  actions: store.get("actions", {}),   // "id::YYYY-MM-DD" -> ISO timestamp of the move
   settings: store.get("settings", { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false })
 };
 
@@ -24,6 +27,7 @@ async function init() {
     const res = await fetch("quotes.json");
     state.quotes = await res.json();
   } catch { state.quotes = []; }
+  state.current = dayIndex();           // open on today's idea
   renderFeed();
   bindReaderGestures();
   bindTabs();
@@ -34,21 +38,41 @@ async function init() {
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js").catch(() => {});
 }
 
+// Deterministic "idea of the day": same idea all day, a different one tomorrow.
+function dayIndex() {
+  if (!state.quotes.length) return 0;
+  const z = new Date(); z.setHours(0, 0, 0, 0);
+  const epochDay = Math.floor(z.getTime() / 86400000);
+  return ((epochDay % state.quotes.length) + state.quotes.length) % state.quotes.length;
+}
+function dayKey(d) {
+  const z = d ? new Date(d) : new Date(); z.setHours(0, 0, 0, 0);
+  return `${z.getFullYear()}-${String(z.getMonth() + 1).padStart(2, "0")}-${String(z.getDate()).padStart(2, "0")}`;
+}
+
 // ---------- reader feed ----------
 function renderFeed() {
   const feed = $("#feed");
-  feed.innerHTML = state.quotes.map((q, i) => `
+  const di = dayIndex();
+  // Rotate so today's idea is first, but keep each card's ORIGINAL index (favorites/notes key off it).
+  const ordered = state.quotes.map((q, i) => ({ q, i }));
+  const rotated = ordered.slice(di).concat(ordered.slice(0, di));
+  feed.innerHTML = rotated.map(({ q, i }) => `
     <article class="quote" data-i="${i}">
       <div class="inner">
+        ${i === di ? `<span class="today-badge">Today's idea</span>` : ""}
         <div class="qmark">&#8220;</div>
         <p class="text">${escapeHTML(q.text)}</p>
         <div class="meta">
           <div class="byline"><span class="author">${escapeHTML(q.author)}</span>${q.category ? `<span class="chip">${escapeHTML(q.category)}</span>` : ""}</div>
           ${q.lesson ? `<div class="lesson"><span class="kicker">Lesson</span>${escapeHTML(q.lesson)}</div>` : ""}
+          ${q.action ? `<div class="todo"><span class="kicker">Today's move</span><span class="todo-text">${escapeHTML(q.action)}</span><button type="button" class="todo-done${isActionDone(q.id) ? " on" : ""}" data-done="${escapeHTML(q.id)}">${isActionDone(q.id) ? "✓ Done today" : "Did it"}</button></div>` : ""}
           ${q.source ? `<div class="source"><span class="kicker">Source</span>${escapeHTML(q.source)}</div>` : ""}
         </div>
       </div>
     </article>`).join("");
+
+  $$(".todo-done", feed).forEach(b => b.onclick = () => toggleActionDone(b));
 
   // Track which quote is centered, to drive the action bar state.
   const io = new IntersectionObserver((entries) => {
@@ -60,6 +84,37 @@ function renderFeed() {
 }
 
 function currentQuote() { return state.quotes[state.current]; }
+
+// ---------- today's move (the practice loop) ----------
+function isActionDone(id) { return !!state.actions[`${id}::${dayKey()}`]; }
+function toggleActionDone(btn) {
+  const id = btn.dataset.done; if (!id) return;
+  const key = `${id}::${dayKey()}`;
+  if (state.actions[key]) {
+    delete state.actions[key];
+    btn.classList.remove("on"); btn.textContent = "Did it";
+  } else {
+    state.actions[key] = new Date().toISOString();
+    btn.classList.add("on"); btn.textContent = "✓ Done today";
+    toast("Move logged ✓");
+  }
+  store.set("actions", state.actions);
+  updateActionsStat(); haptic();
+}
+function actionStats() {
+  const keys = Object.keys(state.actions);
+  const weekAgo = Date.now() - 7 * 86400000;
+  let week = 0;
+  for (const k of keys) { const t = Date.parse(state.actions[k]); if (t && t >= weekAgo) week++; }
+  return { total: keys.length, week };
+}
+function updateActionsStat() {
+  const el = $("#actionsStat"); if (!el) return;
+  const { total, week } = actionStats();
+  el.textContent = total
+    ? `${total} move${total === 1 ? "" : "s"} taken · ${week} this week`
+    : "No moves yet — do today's one move.";
+}
 
 // ---------- gestures ----------
 function bindReaderGestures() {
@@ -122,7 +177,10 @@ function copyQuote() {
   navigator.clipboard?.writeText(`${q.text}\n— ${q.author}`);
   toast("Copied"); haptic();
 }
+
 // ---------- share ----------
+function quoteShareText(q) { return `${q.text}\n— ${q.author}\n\nvia Hitaarth · ${SITE}/?s=card`; }
+
 function openShareMenu() {
   const q = currentQuote(); if (!q) return;
   const dlg = $("#shareSheet");
@@ -133,28 +191,13 @@ function openShareMenu() {
 async function saveQuoteImage() {
   const q = currentQuote(); if (!q) return;
   toast("Rendering image…");
-  let blob;
-  try { blob = await renderQuoteImage(q); } catch { blob = null; }
+  let blob; try { blob = await renderQuoteImage(q); } catch { blob = null; }
   if (!blob) { toast("Couldn't make image"); return; }
-  const file = new File([blob], `hitaarth-${q.id}.png`, { type: "image/png" });
-  const text = `${q.text}\n— ${q.author}`;
-  // Phones / supported browsers: native share sheet WITH the image file
-  // (lets the user Save Image to Photos, or post to Instagram / LinkedIn directly).
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    try { await navigator.share({ files: [file], text }); return; }
-    catch (e) { if (e && e.name === "AbortError") return; }
-  }
-  // Desktop fallback: download the PNG.
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url; a.download = file.name;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  toast("Image saved");
+  await shareCanvasBlob(blob, `hitaarth-${q.id}`, quoteShareText(q));
 }
 async function shareText() {
   const q = currentQuote(); if (!q) return;
-  const text = `${q.text}\n— ${q.author}`;
+  const text = quoteShareText(q);
   const data = { text };
   if (navigator.share && (!navigator.canShare || navigator.canShare(data))) {
     try { await navigator.share(data); return; }
@@ -172,9 +215,59 @@ async function shareText() {
     ta.remove();
   }
 }
+// Phones: share the PNG file (Save to Photos / IG / LinkedIn). Desktop: download.
+async function shareCanvasBlob(blob, base, text) {
+  const file = new File([blob], `${base}.png`, { type: "image/png" });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], text }); return; }
+    catch (e) { if (e && e.name === "AbortError") return; }
+  }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = file.name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast("Image saved");
+}
+
+function toggleNote() {
+  const q = currentQuote(); if (!q) return;
+  const dlg = $("#noteSheet"), ta = $("#noteText");
+  ta.value = state.notes[q.id] || "";
+  dlg.showModal();
+  $("#noteSave").onclick = () => { state.notes[q.id] = ta.value.trim(); store.set("notes", state.notes); refreshActionBar(); renderSaved(); };
+}
 
 // ---------- quote -> shareable PNG (1080x1350, vanilla canvas) ----------
-function renderQuoteImage(q) {
+let _qrImg;                                  // cached QR <img>, undefined until first load
+function loadQR() {
+  if (_qrImg !== undefined) return Promise.resolve(_qrImg);
+  return new Promise((res) => {
+    const img = new Image();
+    img.onload = () => { _qrImg = img; res(img); };
+    img.onerror = () => { _qrImg = null; res(null); };
+    img.src = "icons/qr.png";
+  });
+}
+function drawBrandFooter(ctx, W, H, PAD, SANS, qr) {
+  const footY = H - 210;
+  ctx.strokeStyle = "rgba(244,244,242,0.16)";
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(PAD, footY); ctx.lineTo(W - PAD, footY); ctx.stroke();
+  if (qr) {                                  // QR bottom-right on a white quiet-zone
+    const qs = 130, qx = W - PAD - qs, qy = H - PAD - qs - 4;
+    ctx.fillStyle = "#ffffff"; ctx.fillRect(qx - 12, qy - 12, qs + 24, qs + 24);
+    ctx.drawImage(qr, qx, qy, qs, qs);
+  }
+  ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
+  ctx.fillStyle = "#F4F4F2"; ctx.font = `800 36px ${SANS}`;
+  ctx.fillText("Hitaarth", PAD, footY + 66);
+  ctx.fillStyle = "#8a8a8e"; ctx.font = `600 25px ${SANS}`;
+  ctx.fillText(SITE, PAD, footY + 106);
+  ctx.fillText("One idea. One move. Every day.", PAD, footY + 142);
+}
+async function renderQuoteImage(q) {
+  const qr = await loadQR();
   return new Promise((resolve) => {
     const W = 1080, H = 1350, PAD = 96;
     const SERIF = 'Georgia, "Times New Roman", serif';
@@ -190,17 +283,17 @@ function renderQuoteImage(q) {
     // opening quote mark
     ctx.fillStyle = "#FF5F6D";
     ctx.globalAlpha = 0.5;
-    ctx.textBaseline = "alphabetic";
+    ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
     ctx.font = `700 220px ${SERIF}`;
     ctx.fillText("“", PAD - 8, PAD + 150);
     ctx.globalAlpha = 1;
 
-    // quote text — auto-fit into the available box
+    // quote text — auto-fit into the available box (above the footer band)
     const maxW = W - PAD * 2;
-    const topY = PAD + 210;
-    const footerReserve = 230;                 // author + rule + wordmark
-    const maxTextH = H - topY - footerReserve;
-    const fit = fitText(ctx, q.text, maxW, maxTextH, 66, 30, 1.32, SERIF, 600);
+    const topY = PAD + 200;
+    const footY = H - 210;
+    const maxTextH = footY - topY - 150;       // leave room for the author line
+    const fit = fitText(ctx, q.text, maxW, maxTextH, 64, 28, 1.32, SERIF, 600);
     ctx.fillStyle = "#F4F4F2";
     ctx.font = `600 ${fit.size}px ${SERIF}`;
     ctx.textBaseline = "top";
@@ -210,19 +303,50 @@ function renderQuoteImage(q) {
     // author
     ctx.fillStyle = "#FFA63D";
     ctx.font = `700 38px ${SANS}`;
-    ctx.fillText(`— ${q.author}`, PAD, y + 38);
+    ctx.fillText(`— ${q.author}`, PAD, y + 34);
 
-    // accent rule + brand wordmark (bottom)
-    ctx.strokeStyle = "rgba(244,244,242,0.18)";
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(PAD, H - PAD - 34); ctx.lineTo(W - PAD, H - PAD - 34); ctx.stroke();
-    ctx.fillStyle = "#9a9aa0";
-    ctx.textBaseline = "alphabetic";
-    ctx.font = `700 30px ${SANS}`;
-    ctx.fillText("Hitaarth", PAD, H - PAD + 6);
-
+    drawBrandFooter(ctx, W, H, PAD, SANS, qr);
     canvas.toBlob(b => resolve(b), "image/png");
   });
+}
+// Streak-as-image: turns retention into a shareable artifact.
+async function renderStreakImage(count) {
+  const qr = await loadQR();
+  return new Promise((resolve) => {
+    const W = 1080, H = 1350, PAD = 96;
+    const SERIF = 'Georgia, "Times New Roman", serif';
+    const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
+    const canvas = document.createElement("canvas");
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#000000"; ctx.fillRect(0, 0, W, H);
+    ctx.textAlign = "left"; ctx.textBaseline = "top";
+
+    ctx.fillStyle = "#FF5F6D"; ctx.font = `800 42px ${SANS}`;
+    ctx.fillText("PRACTICE STREAK", PAD, PAD + 24);
+
+    ctx.fillStyle = "#F4F4F2"; ctx.font = `800 320px ${SANS}`;
+    ctx.fillText(String(count), PAD - 6, PAD + 110);
+
+    ctx.fillStyle = "#FFA63D"; ctx.font = `700 70px ${SANS}`;
+    ctx.fillText(count === 1 ? "day" : "days", PAD, PAD + 500);
+
+    ctx.fillStyle = "#cfcfd4"; ctx.font = `600 46px ${SERIF}`;
+    const lines = wrapText(ctx, "Showing up daily — one idea, one move at a time.", W - PAD * 2);
+    let y = PAD + 640;
+    lines.forEach(l => { ctx.fillText(l, PAD, y); y += 46 * 1.35; });
+
+    drawBrandFooter(ctx, W, H, PAD, SANS, qr);
+    canvas.toBlob(b => resolve(b), "image/png");
+  });
+}
+async function shareStreak() {
+  const n = (store.get("streak", { count: 1 }).count) || 1;
+  toast("Rendering image…");
+  let blob; try { blob = await renderStreakImage(n); } catch { blob = null; }
+  if (!blob) { toast("Couldn't make image"); return; }
+  await shareCanvasBlob(blob, `hitaarth-day-${n}`, `Day ${n} of my practice.\n\nvia Hitaarth · ${SITE}/?s=streak`);
 }
 // Shrink font until wrapped text fits the box; returns { size, lineH, lines }.
 function fitText(ctx, text, maxW, maxH, startSize, minSize, lineRatio, family, weight) {
@@ -245,13 +369,6 @@ function wrapText(ctx, text, maxW) {
   }
   if (line) lines.push(line);
   return lines;
-}
-function toggleNote() {
-  const q = currentQuote(); if (!q) return;
-  const dlg = $("#noteSheet"), ta = $("#noteText");
-  ta.value = state.notes[q.id] || "";
-  dlg.showModal();
-  $("#noteSave").onclick = () => { state.notes[q.id] = ta.value.trim(); store.set("notes", state.notes); refreshActionBar(); renderSaved(); };
 }
 
 // ---------- tabs / screens ----------
@@ -316,6 +433,8 @@ function bindSettings() {
     scheduleReminder();
   };
   $("#remTime").onchange = (e) => { state.settings.remTime = e.target.value; saveSettings(); scheduleReminder(); };
+  // share streak
+  const ssb = $("#shareStreakBtn"); if (ssb) ssb.onclick = shareStreak;
   // premium (placeholder)
   $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); toast("Premium / widgets: coming soon"); };
   // reset
@@ -357,20 +476,36 @@ function scheduleReminder() {
 }
 function fireReminder() {
   if (typeof Notification === "undefined" || Notification.permission !== "granted") return;
-  const q = state.quotes.length ? state.quotes[Math.floor(Math.random() * state.quotes.length)] : null;
+  const q = state.quotes.length ? state.quotes[dayIndex()] : null;   // today's idea, not random
   const body = q ? `${q.text} — ${q.author}` : "A moment of stillness is waiting.";
-  try { new Notification("Hitaarth", { body, icon: "icons/icon-192.png" }); } catch {}
+  try { new Notification("Hitaarth · Today's idea", { body, icon: "icons/icon-192.png" }); } catch {}
 }
 
-// ---------- streak ----------
+// ---------- streak (with freeze economy) ----------
 function computeStreak() {
   const today = new Date(); today.setHours(0, 0, 0, 0);
-  const data = store.get("streak", { count: 0, last: null });
+  const data = store.get("streak", { count: 0, last: null, freezes: 0, frozenDates: [] });
+  if (data.freezes == null) data.freezes = 0;
+  if (!Array.isArray(data.frozenDates)) data.frozenDates = [];
+
   if (data.last) {
     const diff = Math.round((today - new Date(data.last)) / 86400000);
-    if (diff === 1) data.count += 1; else if (diff > 1) data.count = 1; // same day: unchanged
+    if (diff === 1) {
+      data.count += 1;
+    } else if (diff === 2 && data.freezes > 0) {         // missed exactly one day → spend a freeze
+      data.freezes -= 1;
+      const miss = new Date(today); miss.setDate(miss.getDate() - 1);
+      data.frozenDates.push(dayKey(miss));
+      data.count += 1;
+    } else if (diff > 1) {
+      data.count = 1;                                      // streak broke
+    }
     if (data.count === 0) data.count = 1;
-  } else data.count = 1;
+    // award a freeze on each 7-day milestone (cap 3)
+    if (diff === 1 && data.count % 7 === 0) data.freezes = Math.min(3, data.freezes + 1);
+  } else {
+    data.count = 1;
+  }
   data.last = today.toISOString();
   store.set("streak", data);
 
@@ -384,6 +519,11 @@ function computeStreak() {
   $("#streakBar").style.width = pct + "%";
   const left = milestone - dayInLevel;
   $("#streakNext").textContent = left === 0 ? "Milestone reached! 🎉" : `Next milestone in ${left} day${left === 1 ? "" : "s"}`;
+  const fz = $("#streakFreeze");
+  if (fz) fz.textContent = data.freezes
+    ? `❄ ${data.freezes} streak freeze${data.freezes === 1 ? "" : "s"} banked — protects you if you miss a day`
+    : "Earn a streak freeze every 7 days — it saves your streak if you miss a day";
+  updateActionsStat();
 }
 
 // ---------- utils ----------
