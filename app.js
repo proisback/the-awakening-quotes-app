@@ -348,6 +348,7 @@ function drawBrandFooter(ctx, W, H, PAD, SANS, qr) {
   ctx.fillText("One idea. One move. Every day.", PAD, footY + 142);
 }
 async function renderQuoteImage(q) {
+  try { await document.fonts.ready; } catch {}
   const qr = await loadQR();
   return new Promise((resolve) => {
     const W = 1080, H = 1350, PAD = 96;
@@ -374,9 +375,10 @@ async function renderQuoteImage(q) {
     const topY = PAD + 200;
     const footY = H - 210;
     const maxTextH = footY - topY - 150;       // leave room for the author line
-    const fit = fitText(ctx, tq(q, "text"), maxW, maxTextH, 64, 28, 1.32, SERIF, 600);
+    const QFONT = ((getComputedStyle(document.documentElement).getPropertyValue("--quote-font")) || SERIF).trim() || SERIF;
+    const fit = fitText(ctx, tq(q, "text"), maxW, maxTextH, 64, 28, 1.32, QFONT, 600);
     ctx.fillStyle = "#F4F4F2";
-    ctx.font = `600 ${fit.size}px ${SERIF}`;
+    ctx.font = `600 ${fit.size}px ${QFONT}`;
     ctx.textBaseline = "top";
     let y = topY;
     fit.lines.forEach(line => { ctx.fillText(line, PAD, y); y += fit.lineH; });
@@ -480,22 +482,17 @@ async function renderQuoteImageFull(q) {
         }});
       }
 
-      // today's move: kicker + text + Did-it pill (amber outline)
+      // today's move: kicker + text
       if (q.action) {
         ctx.font = `600 ${Mv}px ${SANS}`;
         const ml = wrapText(ctx, tq(q, "action"), maxW);
-        const klh = Math.round(K * 1.55), mlh = Math.round(Mv * 1.3), pillH = px(46), pillGap = px(16);
-        const h = klh + ml.length * mlh + pillGap + pillH;
+        const klh = Math.round(K * 1.55), mlh = Math.round(Mv * 1.3);
+        const h = klh + ml.length * mlh;
         els.push({ gap: px(24), h, draw: (y) => {
           ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
           ctx.fillText(t("moveLabel").toUpperCase(), PAD, y);
           ctx.fillStyle = FG; ctx.font = `600 ${Mv}px ${SANS}`;
           let yy = y + klh; ml.forEach(l => { ctx.fillText(l, PAD, yy); yy += mlh; });
-          const dl = t("didIt"); const ds = px(22);
-          ctx.font = `700 ${ds}px ${SANS}`; const dw = ctx.measureText(dl).width, dpx = px(20), pw = dw + dpx * 2;
-          const py = yy + pillGap;
-          ctx.strokeStyle = AMBER; ctx.lineWidth = 2; rrect(ctx, PAD, py, pw, pillH, pillH / 2); ctx.stroke();
-          ctx.fillStyle = AMBER; ctx.textBaseline = "top"; ctx.fillText(dl, PAD + dpx, py + Math.round((pillH - ds) / 2) - px(1));
         }});
       }
 
