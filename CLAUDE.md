@@ -37,8 +37,13 @@ Single tap = toggle distraction-free ("immersive"); double tap = favorite; long-
 
 - `node --check app.js` passes.
 - `styles.css` ends with the complete `.toast` rule.
-- `quotes.json` is valid JSON and every item has all six fields.
+- `quotes.json` is valid JSON and every item has all **eight** fields (`id, text, author, source, lesson, category, action, genre`).
 - Every asset path referenced in code exists on disk.
+- **`node tools/check-i18n.js` passes** — every locale (`i18n/hi.json`, `es.json`, `fr.json`) must cover ALL `quotes.json` ids (`text/lesson/action` each) plus every UI key in `app.js`'s `I18N.en`.
+
+## Adding or changing content (MUST)
+
+Translations do NOT auto-propagate. Whenever you add or edit a quote in `quotes.json`, you MUST add/update the matching `{ text, lesson, action }` entry in **all three** `i18n/<lang>.json` files (Hindi in Devanagari; Bollywood lines kept in their original wording, Hollywood/English translated). Same for any new UI string added to `I18N.en`. Then run `node tools/check-i18n.js` before committing — it fails loudly and names any locale gap. Never ship a quote that only exists in English.
 
 ## Deploy
 
