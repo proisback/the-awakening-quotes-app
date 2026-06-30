@@ -36,6 +36,7 @@
   <!-- BROWSE -->
   <section id="browse" class="screen list-screen" hidden>
     <h1 data-i18n="browseTitle">Browse</h1>
+    <input type="search" id="browseSearch" class="browse-search" data-i18n-ph="searchPh" placeholder="Search quotes, authors…" autocomplete="off" />
     <div class="seg browse-seg" role="tablist">
       <button data-browse="genre" data-i18n="byGenre">By genre</button>
       <button data-browse="author" data-i18n="byAuthor">By author</button>
@@ -138,7 +139,8 @@
   <dialog id="shareSheet">
     <h3 data-i18n="shareTitle">Share quote</h3>
     <div class="share-opts">
-      <button type="button" id="shareImageBtn" class="share-opt"><span class="share-ic">🖼</span> <span data-i18n="saveImage">Save as image</span></button>
+      <button type="button" id="shareImageFullBtn" class="share-opt"><span class="share-ic">🖼</span> <span data-i18n="saveImageBig">Big image — full card</span></button>
+      <button type="button" id="shareImageBtn" class="share-opt"><span class="share-ic">❝</span> <span data-i18n="saveImageSmall">Small image — quote only</span></button>
       <button type="button" id="shareTextBtn" class="share-opt"><span class="share-ic">✎</span> <span data-i18n="shareTextOpt">Share as text</span></button>
     </div>
     <form method="dialog" class="sheet-actions"><button value="cancel" data-i18n="cancel">Cancel</button></form>

@@ -117,6 +117,9 @@ body.immersive .meta{opacity:0;pointer-events:none}
 #langNote{margin-top:10px}
 
 /* browse (library) */
+.browse-search{width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:15px;margin:0 0 14px;-webkit-appearance:none;appearance:none}
+.browse-search::placeholder{color:var(--muted)}
+.browse-search:focus{outline:none;border-color:var(--accent2)}
 .browse-seg{margin:0 0 16px}
 .browse-group{display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px;border-radius:14px;background:var(--card);margin-bottom:10px;text-align:left}
 .browse-group .bg-name{font-size:16px;font-weight:600}

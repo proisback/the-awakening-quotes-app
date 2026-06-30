@@ -30,7 +30,6 @@
   "cancel": "Annuler",
   "save": "Enregistrer",
   "shareTitle": "Partager la citation",
-  "saveImage": "Enregistrer en image",
   "shareTextOpt": "Partager en texte",
   "lessonLabel": "Leçon",
   "moveLabel": "Action du jour",
@@ -66,7 +65,13 @@
   "browseTitle": "Explorer",
   "byGenre": "Par genre",
   "byAuthor": "Par auteur",
-  "browseBack": "← Retour"
+  "browseBack": "← Retour",
+  "saveImageBig": "Grande image — carte complète",
+  "saveImageSmall": "Petite image — citation seule",
+  "searchPh": "Rechercher citations, auteurs…",
+  "resultOne": "résultat",
+  "resultMany": "résultats",
+  "noResults": "Aucun résultat"
  },
  "chanakya-friend": {
   "text": "Il y a un intérêt personnel derrière chaque amitié. Il n'existe pas d'amitié sans intérêt personnel. C'est une vérité amère.",

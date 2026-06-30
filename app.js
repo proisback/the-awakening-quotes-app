@@ -37,7 +37,7 @@ const I18N = {
     premium: "Get Premium", premiumSub: "Unlock widgets & packs", unlock: "Unlock",
     reset: "↺ Reset to defaults", privacy: "Hitaarth · your data stays on this device",
     noteTitle: "Your note", notePh: "A thought on this quote…", cancel: "Cancel", save: "Save",
-    shareTitle: "Share quote", saveImage: "Save as image", shareTextOpt: "Share as text",
+    shareTitle: "Share quote", saveImageBig: "Big image — full card", saveImageSmall: "Small image — quote only", shareTextOpt: "Share as text",
     lessonLabel: "Lesson", moveLabel: "Today's move", sourceLabel: "Source", noteLabel: "Note",
     todayBadge: "Today's idea", didIt: "Did it", doneToday: "✓ Done today", translated: "translated",
     dayOne: "{n} day", dayMany: "{n} days",
@@ -56,7 +56,7 @@ const I18N = {
     tCopiedClip: "Copied to clipboard", tCantShare: "Couldn't share",
     tRemUnsupported: "Reminders aren't supported on this browser",
     tPremiumSoon: "Premium / widgets: coming soon",
-    browseTitle: "Browse", byGenre: "By genre", byAuthor: "By author", browseBack: "← Back"
+    browseTitle: "Browse", byGenre: "By genre", byAuthor: "By author", browseBack: "← Back", searchPh: "Search quotes, authors…", resultOne: "result", resultMany: "results", noResults: "No matches"
   }
 };
 function lang() { return state.settings.lang || "en"; }
@@ -264,16 +264,17 @@ function quoteShareText(q) { return `${tq(q, "text")}\n— ${q.author}\n\nvia Hi
 function openShareMenu() {
   const q = currentQuote(); if (!q) return;
   const dlg = $("#shareSheet");
-  $("#shareImageBtn").onclick = () => { dlg.close(); saveQuoteImage(); };
+  $("#shareImageFullBtn").onclick = () => { dlg.close(); saveQuoteImage(true); };
+  $("#shareImageBtn").onclick = () => { dlg.close(); saveQuoteImage(false); };
   $("#shareTextBtn").onclick = () => { dlg.close(); shareText(); };
   dlg.showModal();
 }
-async function saveQuoteImage() {
+async function saveQuoteImage(full) {
   const q = currentQuote(); if (!q) return;
   toast(t("tRendering"));
-  let blob; try { blob = await renderQuoteImage(q); } catch { blob = null; }
+  let blob; try { blob = await (full ? renderQuoteImageFull(q) : renderQuoteImage(q)); } catch { blob = null; }
   if (!blob) { toast(t("tCantImage")); return; }
-  await shareCanvasBlob(blob, `hitaarth-${q.id}`, quoteShareText(q));
+  await shareCanvasBlob(blob, `hitaarth-${q.id}${full ? "-full" : ""}`, quoteShareText(q));
 }
 async function shareText() {
   const q = currentQuote(); if (!q) return;
@@ -389,6 +390,64 @@ async function renderQuoteImage(q) {
     canvas.toBlob(b => resolve(b), "image/png");
   });
 }
+// Full-card image: all details (quote, author+category, lesson, today move, source), auto-scaled to fit.
+async function renderQuoteImageFull(q) {
+  const qr = await loadQR();
+  return new Promise((resolve) => {
+    const W = 1080, H = 1350, PAD = 84;
+    const SERIF = 'Georgia, "Times New Roman", serif';
+    const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
+    const canvas = document.createElement("canvas");
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#000000"; ctx.fillRect(0, 0, W, H);
+    ctx.textAlign = "left";
+    const maxW = W - PAD * 2;
+    const top = PAD + 96;
+    const avail = (H - 210) - top - 16;
+    const base = { quote: 50, author: 33, kicker: 21, lesson: 29, move: 31, source: 22 };
+    function build(scale) {
+      const px = k => Math.max(10, Math.round(base[k] * scale));
+      const blocks = []; let total = 0;
+      const add = (lines, lineH, color, font, gap) => { blocks.push({ lines, lineH, color, font, gap }); total += lines.length * lineH + gap; };
+      ctx.font = `600 ${px("quote")}px ${SERIF}`;
+      add(wrapText(ctx, tq(q, "text"), maxW), px("quote") * 1.3, "#F4F4F2", `600 ${px("quote")}px ${SERIF}`, 24);
+      ctx.font = `700 ${px("author")}px ${SANS}`;
+      add(wrapText(ctx, `— ${q.author}${q.category ? "   " + q.category.toUpperCase() : ""}`, maxW), px("author") * 1.3, "#FFA63D", `700 ${px("author")}px ${SANS}`, 28);
+      if (q.lesson) {
+        add([t("lessonLabel").toUpperCase()], px("kicker") * 1.5, "#8a8a8e", `800 ${px("kicker")}px ${SANS}`, 2);
+        ctx.font = `italic 400 ${px("lesson")}px ${SERIF}`;
+        add(wrapText(ctx, tq(q, "lesson"), maxW), px("lesson") * 1.32, "#d8d8dc", `italic 400 ${px("lesson")}px ${SERIF}`, 22);
+      }
+      if (q.action) {
+        add([t("moveLabel").toUpperCase()], px("kicker") * 1.5, "#8a8a8e", `800 ${px("kicker")}px ${SANS}`, 2);
+        ctx.font = `600 ${px("move")}px ${SANS}`;
+        add(wrapText(ctx, tq(q, "action"), maxW), px("move") * 1.3, "#F4F4F2", `600 ${px("move")}px ${SANS}`, 22);
+      }
+      if (q.source) {
+        add([t("sourceLabel").toUpperCase()], px("kicker") * 1.5, "#8a8a8e", `800 ${px("kicker")}px ${SANS}`, 2);
+        ctx.font = `400 ${px("source")}px ${SANS}`;
+        add(wrapText(ctx, q.source, maxW), px("source") * 1.3, "#8a8a8e", `400 ${px("source")}px ${SANS}`, 0);
+      }
+      return { blocks, total, scale };
+    }
+    let layout = build(1);
+    for (let scale = 1; layout.total > avail && scale > 0.5; scale -= 0.05) layout = build(scale);
+    ctx.fillStyle = "#FF5F6D"; ctx.globalAlpha = 0.5; ctx.textBaseline = "alphabetic";
+    ctx.font = `700 ${Math.round(140 * layout.scale)}px ${SERIF}`;
+    ctx.fillText("“", PAD - 6, top - 18);
+    ctx.globalAlpha = 1;
+    ctx.textBaseline = "top";
+    let y = top;
+    for (const b of layout.blocks) {
+      ctx.fillStyle = b.color; ctx.font = b.font;
+      for (const ln of b.lines) { ctx.fillText(ln, PAD, y); y += b.lineH; }
+      y += b.gap;
+    }
+    drawBrandFooter(ctx, W, H, PAD, SANS, qr);
+    canvas.toBlob(b => resolve(b), "image/png");
+  });
+}
 // Streak-as-image: turns retention into a shareable artifact.
 async function renderStreakImage(count) {
   const qr = await loadQR();
@@ -499,7 +558,7 @@ function deleteNote(id) {
 
 // ---------- browse (by genre / by author) ----------
 const GENRE_ORDER = ["Stoicism", "Eastern Wisdom", "Building & Startups", "Systems & Science", "Strategy & Money", "Craft & Creativity", "Mind & Character", "Cinema"];
-let browseMode = "genre", browseSel = null;
+let browseMode = "genre", browseSel = null, browseQuery = "";
 function openQuote(id) {
   const idx = state.quotes.findIndex(q => q.id === id);
   if (idx < 0) return;
@@ -511,36 +570,49 @@ function openQuote(id) {
   refreshActionBar();
 }
 function bindBrowse() {
-  $$("[data-browse]").forEach(b => b.onclick = () => { browseMode = b.dataset.browse; browseSel = null; renderBrowse(); });
+  $$("[data-browse]").forEach(b => b.onclick = () => { browseMode = b.dataset.browse; browseSel = null; browseQuery = ""; const sb = $("#browseSearch"); if (sb) sb.value = ""; renderBrowse(); });
+  const s = $("#browseSearch");
+  if (s) s.oninput = () => { browseQuery = s.value; browseSel = null; renderBrowse(); };
+}
+function quoteHaystack(q) {
+  return [tq(q, "text"), q.author, tq(q, "lesson"), tq(q, "action"), q.category, q.genre, q.text, q.source].join(" | ").toLowerCase();
+}
+function quoteRow(q) {
+  return `<div class="item item-open" data-open="${escapeHTML(q.id)}"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div></div>`;
 }
 function renderBrowse() {
   const wrap = $("#browseList"); if (!wrap) return;
   $$("[data-browse]").forEach(b => b.classList.toggle("on", b.dataset.browse === browseMode));
-  if (browseSel != null) {
+  const query = browseQuery.trim().toLowerCase();
+  if (query) {
+    const items = state.quotes.filter(q => quoteHaystack(q).includes(query));
+    const head = items.length ? `${items.length} ${items.length === 1 ? t("resultOne") : t("resultMany")}` : t("noResults");
+    wrap.innerHTML = `<div class="browse-head">${head}</div>` + items.map(quoteRow).join("");
+  } else if (browseSel != null) {
     const items = state.quotes.filter(q => (browseMode === "genre" ? q.genre : q.author) === browseSel);
     wrap.innerHTML =
       `<button type="button" class="browse-back" id="browseBack">${t("browseBack")}</button>` +
       `<div class="browse-head">${escapeHTML(browseSel)} · ${items.length}</div>` +
-      items.map(q => `<div class="item item-open" data-open="${escapeHTML(q.id)}"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div></div>`).join("");
+      items.map(quoteRow).join("");
     $("#browseBack").onclick = () => { browseSel = null; renderBrowse(); };
-    $$(".item-open", wrap).forEach(el => el.onclick = () => openQuote(el.dataset.open));
-    wrap.scrollTop = 0;
-    return;
-  }
-  let groups;
-  if (browseMode === "genre") {
-    groups = GENRE_ORDER.filter(g => state.quotes.some(q => q.genre === g))
-      .map(g => ({ key: g, n: state.quotes.filter(q => q.genre === g).length }));
   } else {
-    groups = [...new Set(state.quotes.map(q => q.author))].sort((a, b) => a.localeCompare(b))
-      .map(a => ({ key: a, n: state.quotes.filter(q => q.author === a).length }));
+    let groups;
+    if (browseMode === "genre") {
+      groups = GENRE_ORDER.filter(g => state.quotes.some(q => q.genre === g))
+        .map(g => ({ key: g, n: state.quotes.filter(q => q.genre === g).length }));
+    } else {
+      groups = [...new Set(state.quotes.map(q => q.author))]
+        .map(a => ({ key: a, n: state.quotes.filter(q => q.author === a).length }));
+    }
+    groups.sort((a, b) => b.n - a.n || a.key.localeCompare(b.key));
+    wrap.innerHTML = groups.map(g =>
+      `<button type="button" class="browse-group" data-group="${escapeHTML(g.key)}"><span class="bg-name">${escapeHTML(g.key)}</span><span class="bg-count">${g.n}</span></button>`).join("");
+    $$(".browse-group", wrap).forEach(b => b.onclick = () => { browseSel = b.dataset.group; renderBrowse(); });
   }
-  wrap.innerHTML = groups.map(g =>
-    `<button type="button" class="browse-group" data-group="${escapeHTML(g.key)}"><span class="bg-name">${escapeHTML(g.key)}</span><span class="bg-count">${g.n}</span></button>`).join("");
-  $$(".browse-group", wrap).forEach(b => b.onclick = () => { browseSel = b.dataset.group; renderBrowse(); });
+  $$(".item-open", wrap).forEach(el => el.onclick = () => openQuote(el.dataset.open));
 }
 
-// ---------- settings ----------
+// ---------- settings ----------// ---------- settings ----------
 function bindSettings() {
   // expandable cards
   $$(".row[data-toggle]").forEach(r => r.onclick = () => r.closest(".card").classList.toggle("open"));

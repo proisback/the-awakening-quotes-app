@@ -31,6 +31,8 @@ for (const l of LANGS) {
 
   if (missUi.length) { failed = true; console.error(`[${l}] missing ${missUi.length} UI key(s): ${missUi.join(", ")}`); }
   if (missQ.length) { failed = true; console.error(`[${l}] missing ${missQ.length} quote translation(s): ${missQ.slice(0, 12).join(", ")}${missQ.length > 12 ? " …" : ""}`); }
+  const orphans = Object.keys(ui).filter(k => !enKeys.includes(k));  // not a failure, just noise to clean up
+  if (orphans.length) console.warn(`[${l}] note: ${orphans.length} unused _ui key(s) (not in I18N.en): ${orphans.join(", ")}`);
   if (!missUi.length && !missQ.length) console.log(`[${l}] OK — ${ids.length} quotes + ${enKeys.length} UI keys`);
 }
 

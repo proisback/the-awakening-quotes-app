@@ -30,7 +30,6 @@
   "cancel": "Cancelar",
   "save": "Guardar",
   "shareTitle": "Compartir cita",
-  "saveImage": "Guardar como imagen",
   "shareTextOpt": "Compartir como texto",
   "lessonLabel": "Lección",
   "moveLabel": "Movimiento de hoy",
@@ -66,7 +65,13 @@
   "browseTitle": "Explorar",
   "byGenre": "Por género",
   "byAuthor": "Por autor",
-  "browseBack": "← Atrás"
+  "browseBack": "← Atrás",
+  "saveImageBig": "Imagen grande — tarjeta completa",
+  "saveImageSmall": "Imagen pequeña — solo la cita",
+  "searchPh": "Buscar citas, autores…",
+  "resultOne": "resultado",
+  "resultMany": "resultados",
+  "noResults": "Sin resultados"
  },
  "chanakya-friend": {
   "text": "Detrás de toda amistad hay algún interés propio. No existe amistad sin intereses propios. Esta es una verdad amarga.",
