@@ -607,5 +607,220 @@
   "text": "Fuimos puestos aquí en la Tierra para actuar como agentes del Infinito, para traer a la existencia aquello que aún no es, pero que será, a través de nosotros.",
   "lesson": "Tu trabajo es traer a la existencia lo que aún no existe.",
   "action": "Nombra la única cosa que solo tú puedes construir ahora mismo y haz hoy una pieza real de ella."
+ },
+ "anand-badi": {
+  "text": "Babumoshai, la vida debe ser grande... no larga.",
+  "lesson": "El valor de una vida se mide por su profundidad y su impacto, no por la cantidad de años que dura.",
+  "action": "Nombra una cosa que harías hoy si supieras que importará más que otra década de rutina, y luego da el primer paso ahora."
+ },
+ "anand-kathputli": {
+  "text": "Babumoshai, la vida y la muerte están en manos del de arriba. Ni tú ni yo podemos cambiarlas. Todos somos marionetas de un escenario cuyos hilos están atados a los dedos del de arriba.",
+  "lesson": "La paz llega cuando sueltas aquello que nunca estuvo bajo tu control.",
+  "action": "Anota una cosa que has estado esforzándote por controlar y que no te corresponde controlar, luego táchala y redirige esa energía."
+ },
+ "deewaar-maa": {
+  "text": "Yo tengo a mi madre.",
+  "lesson": "Lo que de verdad te hace rico rara vez es algo a lo que se le pueda poner precio.",
+  "action": "Escríbele a una persona que sea tu verdadera riqueza y dile en dos frases, de forma específica, por qué te importa."
+ },
+ "deewaar-pheke": {
+  "text": "Aún hoy no recojo el dinero que me arrojan.",
+  "lesson": "Tu dignidad fija un límite que ninguna cantidad de dinero ni de presión debería poder rebasar hacia abajo.",
+  "action": "Identifica un trato o favor que en silencio te cuesta tu amor propio, y recházalo hoy con una sola frase clara."
+ },
+ "sholay-dar": {
+  "text": "El que se asusta, dalo por muerto.",
+  "lesson": "El miedo, cuando te paraliza, acaba con las cosas más rápido que el peligro al que temías.",
+  "action": "Elige la única tarea que has estado evitando por miedo y da la acción más pequeña posible sobre ella en los próximos 60 segundos."
+ },
+ "sholay-kitne": {
+  "text": "¿Cuántos hombres eran?",
+  "lesson": "Un recuento honesto de lo que realmente pasó vale más que cualquier excusa sobre por qué salió mal.",
+  "action": "Toma una cosa que se te escapó esta semana y escribe la razón llana y factual de por qué falló, sin justificación alguna."
+ },
+ "zanjeer-sharafat": {
+  "text": "Hasta que no se te diga que te sientes, permanece de pie con decencia. Esto es una comisaría, no la casa de tu padre.",
+  "lesson": "Mantenerte firme en tus principios impone más respeto que ceder ante quien grita más fuerte en la sala.",
+  "action": "Encuentra hoy un lugar donde has estado cediendo al estatus por encima de lo correcto, y sostén tu posición con cortesía pero con firmeza."
+ },
+ "mughal-pyar": {
+  "text": "Si he amado, ¿por qué habría de temer?",
+  "lesson": "Si una decisión es de verdad tuya y de verdad correcta, asumirla abiertamente cuesta menos que esconderla.",
+  "action": "Di hoy en voz alta una verdad que has estado callando por miedo al juicio de los demás."
+ },
+ "mrindia-mogambo": {
+  "text": "Mogambo está complacido.",
+  "lesson": "Nombrar lo que de verdad te complace te ayuda a notar y repetir lo que está funcionando.",
+  "action": "Termina tu día nombrando en voz alta una cosa específica que hiciste bien, antes de enumerar nada que haya salido mal."
+ },
+ "kaalia-line": {
+  "text": "Donde yo me paro, ahí empieza la fila.",
+  "lesson": "La confianza es en parte decidir tratar tu propia posición como el punto de partida, no como el final de la cola.",
+  "action": "En tu próxima reunión o mensaje, abre con tu punto de vista en lugar de esperar a ver dónde aterrizan los demás."
+ },
+ "3idiots-aal": {
+  "text": "Todo está bien.",
+  "lesson": "Una señal que te calma no resuelve el problema, pero te serena lo suficiente para enfrentarlo de verdad.",
+  "action": "Antes de tu próxima tarea estresante, toma tres respiraciones lentas y dite que está bajo control, luego empieza el primer paso."
+ },
+ "3idiots-kaabil": {
+  "text": "Hijo, vuélvete capaz, capaz. El éxito vendrá corriendo detrás de ti por sí solo.",
+  "lesson": "Persigue la competencia sin descanso y las recompensas tienden a llegar solas.",
+  "action": "Dedica hoy 15 minutos a practicar deliberadamente la única habilidad de la que depende de verdad tu meta, no el ajetreo a su alrededor."
+ },
+ "chakde-sattar": {
+  "text": "Tienen setenta minutos, quizá los setenta minutos más especiales de su vida. Hoy jueguen bien o mal, estos setenta minutos los recordarán toda la vida.",
+  "lesson": "Tratar una ventana breve y definida como sagrada concentra todo tu esfuerzo donde de verdad cuenta.",
+  "action": "Bloquea 70 minutos para tu tarea más importante de hoy, elimina todas las notificaciones y dale todo lo que tienes."
+ },
+ "rdb-zimmedaari": {
+  "text": "Solo hay dos maneras de vivir la vida. Una: deja que pase lo que pase y sopórtalo. O bien: asume la responsabilidad de cambiarlo.",
+  "lesson": "O toleras lo que está mal o asumes la responsabilidad de cambiarlo, y solo una de esas dos cosas te hace avanzar.",
+  "action": "Elige una cosa que solo has estado soportando y da hoy un único paso concreto para cambiarla en su lugar."
+ },
+ "rdb-behtar": {
+  "text": "Ningún país es perfecto; hay que hacerlo mejor.",
+  "lesson": "Nada que valga la pena para pertenecer es impecable, así que el verdadero trabajo es mejorarlo en lugar de abandonarlo.",
+  "action": "Elige una comunidad o proyecto del que te quejas y aporta hoy un pequeño arreglo en lugar de solo criticar."
+ },
+ "swades-kaabiliyat": {
+  "text": "No creo que nuestro país sea el más grandioso del mundo. Pero sí creo que tenemos la capacidad y la fuerza para hacerlo grandioso.",
+  "lesson": "La honestidad clara sobre dónde te quedas corto, unida a la fe en tu capacidad, le gana al orgullo hueco.",
+  "action": "Nombra con honestidad una debilidad y una fortaleza real con la que la cerrarás, luego actúa hoy sobre esa fortaleza."
+ },
+ "znmd-seize": {
+  "text": "Aprovecha el día, amigo. Primero vive este día por completo, luego piensa en los cuarenta.",
+  "lesson": "Vivir este día por completo importa más que preocuparse por un futuro que quizá nunca llegue.",
+  "action": "Haz hoy una cosa solo porque hace mejor el día de hoy, no porque sirva a algún plan lejano."
+ },
+ "znmd-zinda": {
+  "text": "Si llevas en el corazón tus propias inquietudes, entonces estás vivo.",
+  "lesson": "La inquietud y el anhelo son señales de que sigues plenamente vivo, no problemas que reprimir.",
+  "action": "Anota un deseo inquieto que has estado descartando por poco práctico, y da hoy un pequeño paso hacia él."
+ },
+ "gullyboy-time": {
+  "text": "Mi momento llegará.",
+  "lesson": "Creer que tu momento se acerca te mantiene trabajando durante el tramo en que nada parece dar resultado todavía.",
+  "action": "En tu meta a largo plazo, haz hoy la siguiente repetición poco glamurosa y confía en los tiempos en lugar de exigir pruebas inmediatas."
+ },
+ "dangal-chhoriyan": {
+  "text": "¿Acaso nuestras hijas son menos que los hijos?",
+  "lesson": "La capacidad no tiene nada que ver con la categoría en la que alguien intentó clasificarte.",
+  "action": "Atrapa hoy una suposición sobre lo que tú u otra persona no pueden hacer por una etiqueta, y desafíala con una acción."
+ },
+ "lagaan-sapne": {
+  "text": "Ojos pequeños, y sueños grandes. Y solo pueden hacer realidad los sueños quienes se atreven a soñarlos.",
+  "lesson": "Solo las personas dispuestas a soñar en grande desde el principio llegan a hacer realidad esos sueños.",
+  "action": "Anota un sueño que encogiste para que pareciera realista, devuélvelo a su tamaño completo y apunta el primer movimiento hacia él."
+ },
+ "dch-ret": {
+  "text": "Cuanto más intentes cerrar esta arena en tu mano, más rápido se te escurrirá.",
+  "lesson": "Cuanto más fuerte te aferras a una persona o a un resultado, más rápido sueles perderlo.",
+  "action": "Identifica una cosa que has estado apretando demasiado y afloja conscientemente tu agarre sobre ella por el resto del día."
+ },
+ "deadpoets-carpe": {
+  "text": "Carpe diem. Aprovechen el día, muchachos. Hagan de sus vidas algo extraordinario.",
+  "lesson": "Una vida ordinaria es un valor por defecto que tienes que rechazar activamente, un día a la vez.",
+  "action": "Haz hoy una cosa que tu yo futuro llamaría extraordinaria, por pequeña que sea, en lugar de dejarte llevar en piloto automático."
+ },
+ "yoda-try": {
+  "text": "Hazlo. O no lo hagas. No existe el intentar.",
+  "lesson": "Comprometerte a medias mientras lo llamas intentar es solo una forma más suave de no hacer la cosa.",
+  "action": "Toma una meta que has estado intentando hacer y comprométete hoy con una acción concreta y una hora, luego hazla de verdad."
+ },
+ "coolhand-communicate": {
+  "text": "Lo que tenemos aquí es una falla de comunicación.",
+  "lesson": "La mayoría de los conflictos no son desacuerdos, sino mensajes que nunca se enviaron o recibieron con claridad.",
+  "action": "Elige una situación tensa y envía un mensaje llano que diga lo que de verdad quieres decir, sin insinuaciones."
+ },
+ "forrest-chocolates": {
+  "text": "Mi mamá siempre decía que la vida es como una caja de chocolates. Nunca sabes qué te va a tocar.",
+  "lesson": "No puedes predecir lo que cada día te entrega, así que mantenerte abierto le gana a exigir certeza.",
+  "action": "Dile hoy que sí a una pequeña cosa no planeada en lugar de insistir en saber exactamente cómo saldrá."
+ },
+ "vader-father": {
+  "text": "No. Yo soy tu padre.",
+  "lesson": "Algunas verdades caen con fuerza, pero enfrentarlas es la única manera de superar la historia que preferirías creer.",
+  "action": "Nombra una verdad incómoda sobre tu situación que has estado esquivando, y escríbela en una sola frase honesta."
+ },
+ "lotr-time": {
+  "text": "Lo único que tenemos que decidir es qué hacer con el tiempo que se nos ha dado.",
+  "lesson": "No eliges tus circunstancias, solo lo que haces con el tiempo que tienes dentro de ellas.",
+  "action": "Deja por un minuto de desear que tu situación fuera distinta y decide una cosa útil que hacer con las horas de hoy."
+ },
+ "batman-fall": {
+  "text": "¿Por qué caemos, señor? Para aprender a levantarnos.",
+  "lesson": "El sentido de un tropiezo es la práctica que te da en volver a levantarte.",
+  "action": "Toma un fracaso reciente y escribe la única lección que te enseñó, luego aplícala a una acción hoy."
+ },
+ "help-worth": {
+  "text": "Eres bondadosa. Eres inteligente. Eres importante.",
+  "lesson": "El valor que te repites a ti mismo con suficiente frecuencia empieza a convertirse en algo que de verdad crees.",
+  "action": "Dite a ti mismo, o a alguien que lo necesite, tres afirmaciones llanas de valor hoy, y siente de verdad cada una."
+ },
+ "shawshank-living": {
+  "text": "Ponte a vivir, o ponte a morir.",
+  "lesson": "Andar a la deriva sin propósito es su propia forma lenta de rendirse, así que elige vivir activamente.",
+  "action": "Elige una cosa que te haga sentir vivo y agéndala para hoy, no para algún día."
+ },
+ "shawshank-hope": {
+  "text": "Recuerda, Red, la esperanza es algo bueno, quizá lo mejor de todo, y nada bueno muere jamás.",
+  "lesson": "La esperanza que mantienes viva es lo que te lleva a través de los tramos donde nada más lo hace.",
+  "action": "Anota una cosa por la que sientes esperanza genuina y guárdala en un lugar donde la veas cuando el día se ponga pesado."
+ },
+ "fewgoodmen-truth": {
+  "text": "¡No puedes soportar la verdad!",
+  "lesson": "Suponer que los demás no pueden soportar la verdad suele ser una excusa para evitar la incomodidad de decirla.",
+  "action": "Dale a una persona la opinión honesta que has estado guardándote porque supusiste que no podría aguantarla."
+ },
+ "gwtw-damn": {
+  "text": "Francamente, querida, me importa un comino.",
+  "lesson": "Hay libertad en negarte por fin a seguir volcándote en aquello que ya no lo merece.",
+  "action": "Identifica una cosa que te drena y no merece tu energía, y deja conscientemente de dársela hoy."
+ },
+ "mockingbird-empathy": {
+  "text": "Nunca entiendes de verdad a una persona hasta que consideras las cosas desde su punto de vista. Hasta que te metes en su piel y caminas dentro de ella.",
+  "lesson": "No puedes juzgar a nadie con justicia hasta que de verdad has intentado ver la situación a través de sus ojos.",
+  "action": "Elige a alguien que te frustró hace poco y escribe dos razones reales por las que pudo haber actuado así."
+ },
+ "pursuit-dream": {
+  "text": "Nunca dejes que alguien te diga que no puedes hacer algo. Ni siquiera yo. ¿De acuerdo? Si tienes un sueño, tienes que protegerlo. La gente que no puede hacer algo por sí misma quiere decirte que tú tampoco puedes. Si quieres algo, ve por ello. Punto.",
+  "lesson": "Los límites de los demás son suyos, no tuyos, así que protege tu meta de cualquiera que necesite verte fracasar.",
+  "action": "Anota una duda que alguien sembró en ti, decide si de verdad es cierta y da un paso hacia tu meta de todos modos."
+ },
+ "whiplash-goodjob": {
+  "text": "No hay dos palabras en el idioma más dañinas que 'buen trabajo'.",
+  "lesson": "Conformarte con lo bastante bueno puede limitar en silencio hasta dónde llegas a exigirte.",
+  "action": "Toma algo que llamarías 'lo bastante bueno' hoy y dedica 15 minutos a hacerlo genuinamente mejor."
+ },
+ "darkknight-villain": {
+  "text": "O mueres como un héroe, o vives lo suficiente para verte convertido en el villano.",
+  "lesson": "Seguir siendo bueno con el tiempo exige vigilancia activa, porque la deriva lenta es como las buenas personas se vuelven aquello que combatían.",
+  "action": "Revisa un hábito o concesión que has estado excusando últimamente y pregúntate con honestidad si te aleja de quien quieres ser."
+ },
+ "oogway-present": {
+  "text": "El ayer es historia, el mañana es un misterio, pero el hoy es un regalo. Por eso se le llama presente.",
+  "lesson": "El hoy es el único tramo de tiempo en el que de verdad puedes actuar, lo que lo convierte en el que cuenta.",
+  "action": "Deja el teléfono por diez minutos y dale toda tu atención a lo que tienes delante en este momento."
+ },
+ "ratatouille-anywhere": {
+  "text": "No cualquiera puede convertirse en un gran artista, pero un gran artista puede surgir de cualquier parte.",
+  "lesson": "El talento no está confinado a las personas de los lugares u orígenes esperados.",
+  "action": "Persigue una cosa que has supuesto que no era para gente como tú, y da hoy el primer paso concreto hacia ella."
+ },
+ "matrix-door": {
+  "text": "Intento liberar tu mente, Neo. Pero solo puedo mostrarte la puerta. Eres tú quien tiene que cruzarla.",
+  "lesson": "Otros pueden señalarte el camino, pero el cruce en sí es algo que solo tú puedes hacer.",
+  "action": "Deja de esperar más consejos sobre una decisión y tómala tú mismo hoy, luego actúa sobre ella."
+ },
+ "interstellar-rage": {
+  "text": "No entres dócilmente en esa buena noche. La vejez debería arder y delirar al caer el día. Enfurece, enfurece contra la muerte de la luz.",
+  "lesson": "Algunas cosas merecen que pelees con fiereza por ellas en lugar de aceptarlas en silencio.",
+  "action": "Elige una cosa que has estado dejando escapar pasivamente y resístete a ella con una acción audaz hoy."
+ },
+ "gladiator-echoes": {
+  "text": "Hermanos, lo que hacemos en vida resuena en la eternidad.",
+  "lesson": "Las acciones de hoy se propagan mucho más allá del momento, así que elígelas como si fueran a perdurar más que tú.",
+  "action": "Haz hoy una cosa de la que te enorgullecería ser recordado, y omite una que preferirías olvidar."
  }
 }
