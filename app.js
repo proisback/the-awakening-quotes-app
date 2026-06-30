@@ -390,64 +390,143 @@ async function renderQuoteImage(q) {
     canvas.toBlob(b => resolve(b), "image/png");
   });
 }
-// Full-card image: all details (quote, author+category, lesson, today move, source), auto-scaled to fit.
+function rrect(ctx, x, y, w, h, r) {
+  if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); return; }
+  ctx.beginPath();
+  ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+}
+// Full-card image: mirrors the app card (selected quote font, white author + coral category chip,
+// coral lesson accent, Did-it pill, kicker hierarchy) and centers the content block in the card.
 async function renderQuoteImageFull(q) {
+  try { await document.fonts.ready; } catch {}
   const qr = await loadQR();
   return new Promise((resolve) => {
-    const W = 1080, H = 1350, PAD = 84;
+    const W = 1080, H = 1350, PAD = 80;
     const SERIF = 'Georgia, "Times New Roman", serif';
     const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
+    const QFONT = ((getComputedStyle(document.documentElement).getPropertyValue("--quote-font")) || SERIF).trim() || SERIF;
+    const FG = "#F4F4F2", MUTED = "#8a8a8e", CORAL = "#FF5F6D", AMBER = "#FFA63D";
     const canvas = document.createElement("canvas");
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#000000"; ctx.fillRect(0, 0, W, H);
     ctx.textAlign = "left";
     const maxW = W - PAD * 2;
-    const top = PAD + 96;
-    const avail = (H - 210) - top - 16;
-    const base = { quote: 50, author: 33, kicker: 21, lesson: 29, move: 31, source: 22 };
+    const topY = PAD;
+    const footTop = H - 210;
+    const availH = footTop - topY - 16;
+
     function build(scale) {
-      const px = k => Math.max(10, Math.round(base[k] * scale));
-      const blocks = []; let total = 0;
-      const add = (lines, lineH, color, font, gap) => { blocks.push({ lines, lineH, color, font, gap }); total += lines.length * lineH + gap; };
-      ctx.font = `600 ${px("quote")}px ${SERIF}`;
-      add(wrapText(ctx, tq(q, "text"), maxW), px("quote") * 1.3, "#F4F4F2", `600 ${px("quote")}px ${SERIF}`, 24);
-      ctx.font = `700 ${px("author")}px ${SANS}`;
-      add(wrapText(ctx, `— ${q.author}${q.category ? "   " + q.category.toUpperCase() : ""}`, maxW), px("author") * 1.3, "#FFA63D", `700 ${px("author")}px ${SANS}`, 28);
+      const px = n => Math.max(8, Math.round(n * scale));
+      const Q = px(54), A = px(38), K = px(21), L = px(33), Mv = px(32), Src = px(26);
+      const els = [];
+
+      // quote mark
+      els.push({ gap: 0, h: px(86), draw: (y) => {
+        ctx.globalAlpha = 0.5; ctx.fillStyle = CORAL; ctx.textBaseline = "alphabetic";
+        ctx.font = `700 ${px(116)}px ${SERIF}`; ctx.fillText("“", PAD - 6, y + px(84)); ctx.globalAlpha = 1;
+      }});
+
+      // quote text (app font)
+      ctx.font = `600 ${Q}px ${QFONT}`;
+      const ql = wrapText(ctx, tq(q, "text"), maxW);
+      const qlh = Math.round(Q * 1.34);
+      els.push({ gap: px(16), h: ql.length * qlh, draw: (y) => {
+        ctx.fillStyle = FG; ctx.font = `600 ${Q}px ${QFONT}`; ctx.textBaseline = "top";
+        let yy = y; ql.forEach(l => { ctx.fillText(l, PAD, yy); yy += qlh; });
+      }});
+
+      // byline: author (white) + category chip (coral outline)
+      ctx.font = `700 ${A}px ${SANS}`;
+      const authorLines = wrapText(ctx, q.author, maxW);
+      const alh = Math.round(A * 1.26);
+      const lastW = ctx.measureText(authorLines[authorLines.length - 1]).width;
+      const label = q.category ? q.category.toUpperCase() : "";
+      const cs = px(20), chipPadX = px(11), chipH = cs + px(12);
+      ctx.font = `700 ${cs}px ${SANS}`;
+      const chipW = label ? ctx.measureText(label).width + chipPadX * 2 : 0;
+      const inline = label && (lastW + px(16) + chipW) <= maxW;
+      const bylineH = (authorLines.length - 1) * alh + Math.max(A, inline ? chipH : 0) + (label && !inline ? chipH + px(12) : 0);
+      els.push({ gap: px(26), h: bylineH, draw: (y) => {
+        ctx.textBaseline = "top"; ctx.fillStyle = FG; ctx.font = `700 ${A}px ${SANS}`;
+        let yy = y;
+        for (let i = 0; i < authorLines.length; i++) { ctx.fillText(authorLines[i], PAD, yy); if (i < authorLines.length - 1) yy += alh; }
+        if (label) {
+          let cx, cy;
+          if (inline) { ctx.font = `700 ${A}px ${SANS}`; const lw = ctx.measureText(authorLines[authorLines.length - 1]).width; cx = PAD + lw + px(16); cy = yy + Math.round((A - chipH) / 2) + px(2); }
+          else { cx = PAD; cy = yy + alh + px(2); }
+          ctx.strokeStyle = "rgba(255,95,109,0.5)"; ctx.lineWidth = 2;
+          rrect(ctx, cx, cy, chipW, chipH, chipH / 2); ctx.stroke();
+          ctx.fillStyle = CORAL; ctx.font = `700 ${cs}px ${SANS}`; ctx.textBaseline = "top";
+          ctx.fillText(label, cx + chipPadX, cy + px(6));
+        }
+      }});
+
+      // lesson: coral left accent + kicker + italic
       if (q.lesson) {
-        add([t("lessonLabel").toUpperCase()], px("kicker") * 1.5, "#8a8a8e", `800 ${px("kicker")}px ${SANS}`, 2);
-        ctx.font = `italic 400 ${px("lesson")}px ${SERIF}`;
-        add(wrapText(ctx, tq(q, "lesson"), maxW), px("lesson") * 1.32, "#d8d8dc", `italic 400 ${px("lesson")}px ${SERIF}`, 22);
+        const indent = px(18);
+        ctx.font = `italic 400 ${L}px ${SANS}`;
+        const ll = wrapText(ctx, tq(q, "lesson"), maxW - indent);
+        const klh = Math.round(K * 1.55), llh = Math.round(L * 1.34);
+        const h = klh + ll.length * llh;
+        els.push({ gap: px(26), h, draw: (y) => {
+          ctx.strokeStyle = CORAL; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(PAD + 1.5, y + px(1)); ctx.lineTo(PAD + 1.5, y + h - px(2)); ctx.stroke();
+          ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
+          ctx.fillText(t("lessonLabel").toUpperCase(), PAD + indent, y);
+          ctx.fillStyle = "#e4e4e7"; ctx.font = `italic 400 ${L}px ${SANS}`;
+          let yy = y + klh; ll.forEach(l => { ctx.fillText(l, PAD + indent, yy); yy += llh; });
+        }});
       }
+
+      // today's move: kicker + text + Did-it pill (amber outline)
       if (q.action) {
-        add([t("moveLabel").toUpperCase()], px("kicker") * 1.5, "#8a8a8e", `800 ${px("kicker")}px ${SANS}`, 2);
-        ctx.font = `600 ${px("move")}px ${SANS}`;
-        add(wrapText(ctx, tq(q, "action"), maxW), px("move") * 1.3, "#F4F4F2", `600 ${px("move")}px ${SANS}`, 22);
+        ctx.font = `600 ${Mv}px ${SANS}`;
+        const ml = wrapText(ctx, tq(q, "action"), maxW);
+        const klh = Math.round(K * 1.55), mlh = Math.round(Mv * 1.3), pillH = px(46), pillGap = px(16);
+        const h = klh + ml.length * mlh + pillGap + pillH;
+        els.push({ gap: px(24), h, draw: (y) => {
+          ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
+          ctx.fillText(t("moveLabel").toUpperCase(), PAD, y);
+          ctx.fillStyle = FG; ctx.font = `600 ${Mv}px ${SANS}`;
+          let yy = y + klh; ml.forEach(l => { ctx.fillText(l, PAD, yy); yy += mlh; });
+          const dl = t("didIt"); const ds = px(22);
+          ctx.font = `700 ${ds}px ${SANS}`; const dw = ctx.measureText(dl).width, dpx = px(20), pw = dw + dpx * 2;
+          const py = yy + pillGap;
+          ctx.strokeStyle = AMBER; ctx.lineWidth = 2; rrect(ctx, PAD, py, pw, pillH, pillH / 2); ctx.stroke();
+          ctx.fillStyle = AMBER; ctx.textBaseline = "top"; ctx.fillText(dl, PAD + dpx, py + Math.round((pillH - ds) / 2) - px(1));
+        }});
       }
+
+      // source: kicker + muted text
       if (q.source) {
-        add([t("sourceLabel").toUpperCase()], px("kicker") * 1.5, "#8a8a8e", `800 ${px("kicker")}px ${SANS}`, 2);
-        ctx.font = `400 ${px("source")}px ${SANS}`;
-        add(wrapText(ctx, q.source, maxW), px("source") * 1.3, "#8a8a8e", `400 ${px("source")}px ${SANS}`, 0);
+        ctx.font = `400 ${Src}px ${SANS}`;
+        const sl = wrapText(ctx, q.source, maxW);
+        const klh = Math.round(K * 1.55), slh = Math.round(Src * 1.3);
+        const h = klh + sl.length * slh;
+        els.push({ gap: px(24), h, draw: (y) => {
+          ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
+          ctx.fillText(t("sourceLabel").toUpperCase(), PAD, y);
+          ctx.fillStyle = MUTED; ctx.font = `400 ${Src}px ${SANS}`;
+          let yy = y + klh; sl.forEach(l => { ctx.fillText(l, PAD, yy); yy += slh; });
+        }});
       }
-      return { blocks, total, scale };
+
+      const blockH = els.reduce((s, e) => s + e.gap + e.h, 0);
+      return { els, blockH };
     }
-    let layout = build(1);
-    for (let scale = 1; layout.total > avail && scale > 0.5; scale -= 0.05) layout = build(scale);
-    ctx.fillStyle = "#FF5F6D"; ctx.globalAlpha = 0.5; ctx.textBaseline = "alphabetic";
-    ctx.font = `700 ${Math.round(140 * layout.scale)}px ${SERIF}`;
-    ctx.fillText("“", PAD - 6, top - 18);
-    ctx.globalAlpha = 1;
-    ctx.textBaseline = "top";
-    let y = top;
-    for (const b of layout.blocks) {
-      ctx.fillStyle = b.color; ctx.font = b.font;
-      for (const ln of b.lines) { ctx.fillText(ln, PAD, y); y += b.lineH; }
-      y += b.gap;
-    }
+
+    let scale = 1, layout = build(1);
+    while (layout.blockH > availH && scale > 0.5) { scale -= 0.05; layout = build(scale); }
+    let y = topY + Math.max(0, (availH - layout.blockH) / 2);   // vertically centered
+    for (const e of layout.els) { y += e.gap; e.draw(y); y += e.h; }
+
     drawBrandFooter(ctx, W, H, PAD, SANS, qr);
     canvas.toBlob(b => resolve(b), "image/png");
   });
 }
+
 // Streak-as-image: turns retention into a shareable artifact.
 async function renderStreakImage(count) {
   const qr = await loadQR();
