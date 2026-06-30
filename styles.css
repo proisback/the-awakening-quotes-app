@@ -1,3 +1,8 @@
+@font-face{font-family:"Playfair Display";src:url(fonts/PlayfairDisplay.woff2) format("woff2");font-weight:400 800;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/Fraunces.woff2) format("woff2");font-weight:400 700;font-display:swap}
+@font-face{font-family:"Cormorant Garamond";src:url(fonts/Cormorant.woff2) format("woff2");font-weight:400 700;font-display:swap}
+@font-face{font-family:"Spectral";src:url(fonts/Spectral-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Spectral";src:url(fonts/Spectral-600.woff2) format("woff2");font-weight:600;font-display:swap}
 :root{
   --bg:#000; --fg:#fff; --muted:#8a8a8e; --card:#111114; --line:#26262b;
   --accent1:#FFA63D; --accent2:#FF5F6D;
@@ -80,6 +85,10 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .fonts{display:flex;flex-direction:column;gap:2px}
 .font-opt{text-align:left;padding:12px 4px;border-bottom:1px solid var(--line)}
 .font-opt[data-font="cursive"]{font-family:"Snell Roundhand","Brush Script MT",cursive;font-size:20px}
+.font-opt[data-font="playfair"]{font-family:"Playfair Display",Georgia,serif;font-size:19px}
+.font-opt[data-font="fraunces"]{font-family:"Fraunces",Georgia,serif;font-size:18px}
+.font-opt[data-font="cormorant"]{font-family:"Cormorant Garamond",Georgia,serif;font-size:21px}
+.font-opt[data-font="spectral"]{font-family:"Spectral",Georgia,serif;font-size:18px}
 .font-opt.on::after{content:"  ✓";color:#0a84ff}
 .preview{margin-top:14px;padding:14px;border-radius:12px;background:rgba(127,127,127,.12);font-family:var(--quote-font);font-size:var(--quote-size)}
 
@@ -106,6 +115,15 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .tr-badge{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
 .lang-seg{flex-wrap:wrap}
 #langNote{margin-top:10px}
+
+/* browse (library) */
+.browse-seg{margin:0 0 16px}
+.browse-group{display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px;border-radius:14px;background:var(--card);margin-bottom:10px;text-align:left}
+.browse-group .bg-name{font-size:16px;font-weight:600}
+.browse-group .bg-count{font-size:13px;color:var(--muted);background:rgba(127,127,127,.16);border-radius:999px;padding:2px 11px;flex:none;margin-left:12px}
+.browse-group:active{background:rgba(127,127,127,.22)}
+.browse-back{color:var(--accent2);font-weight:600;padding:6px 2px;margin-bottom:8px}
+.browse-head{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:2px 2px 14px}
 
 /* surprise me */
 .surprise{position:fixed;top:calc(var(--safe-top) + 14px);right:14px;z-index:6;width:42px;height:42px;border-radius:50%;background:color-mix(in srgb,var(--bg) 68%, transparent);backdrop-filter:blur(10px);border:1px solid var(--line);font-size:20px;line-height:1;color:var(--fg);display:grid;place-items:center;transition:opacity .25s,transform .2s}

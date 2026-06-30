@@ -55,7 +55,8 @@ const I18N = {
     tRendering: "Rendering image…", tCantImage: "Couldn't make image",
     tCopiedClip: "Copied to clipboard", tCantShare: "Couldn't share",
     tRemUnsupported: "Reminders aren't supported on this browser",
-    tPremiumSoon: "Premium / widgets: coming soon"
+    tPremiumSoon: "Premium / widgets: coming soon",
+    browseTitle: "Browse", byGenre: "By genre", byAuthor: "By author", browseBack: "← Back"
   }
 };
 function lang() { return state.settings.lang || "en"; }
@@ -88,6 +89,7 @@ async function applyLanguage(lng) {
   applyStaticI18n();
   renderFeed();
   renderSaved();
+  renderBrowse();
   computeStreak();
   syncSettingsUI();
 }
@@ -106,6 +108,7 @@ async function init() {
   bindReaderGestures();
   bindTabs();
   bindActions();
+  bindBrowse();
   bindSettings();
   computeStreak();
   applyStaticI18n();
@@ -470,6 +473,7 @@ function showScreen(name, tabEl) {
   (tabEl || $(`.tab[data-screen="${name}"]`)).classList.add("active");
   $("#actions").style.display = name === "reader" ? "flex" : "none";
   if (name === "saved") renderSaved();
+  if (name === "browse") renderBrowse();
 }
 
 // ---------- saved (favorites + notes) ----------
@@ -491,6 +495,38 @@ function deleteNote(id) {
   delete state.notes[id];
   store.set("notes", state.notes);
   refreshActionBar(); renderSaved(); haptic();
+}
+
+// ---------- browse (by genre / by author) ----------
+const GENRE_ORDER = ["Stoicism", "Eastern Wisdom", "Building & Startups", "Systems & Science", "Strategy & Money", "Craft & Creativity", "Mind & Character", "Cinema"];
+let browseMode = "genre", browseSel = null;
+function bindBrowse() {
+  $$("[data-browse]").forEach(b => b.onclick = () => { browseMode = b.dataset.browse; browseSel = null; renderBrowse(); });
+}
+function renderBrowse() {
+  const wrap = $("#browseList"); if (!wrap) return;
+  $$("[data-browse]").forEach(b => b.classList.toggle("on", b.dataset.browse === browseMode));
+  if (browseSel != null) {
+    const items = state.quotes.filter(q => (browseMode === "genre" ? q.genre : q.author) === browseSel);
+    wrap.innerHTML =
+      `<button type="button" class="browse-back" id="browseBack">${t("browseBack")}</button>` +
+      `<div class="browse-head">${escapeHTML(browseSel)} · ${items.length}</div>` +
+      items.map(q => `<div class="item"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div></div>`).join("");
+    $("#browseBack").onclick = () => { browseSel = null; renderBrowse(); };
+    wrap.scrollTop = 0;
+    return;
+  }
+  let groups;
+  if (browseMode === "genre") {
+    groups = GENRE_ORDER.filter(g => state.quotes.some(q => q.genre === g))
+      .map(g => ({ key: g, n: state.quotes.filter(q => q.genre === g).length }));
+  } else {
+    groups = [...new Set(state.quotes.map(q => q.author))].sort((a, b) => a.localeCompare(b))
+      .map(a => ({ key: a, n: state.quotes.filter(q => q.author === a).length }));
+  }
+  wrap.innerHTML = groups.map(g =>
+    `<button type="button" class="browse-group" data-group="${escapeHTML(g.key)}"><span class="bg-name">${escapeHTML(g.key)}</span><span class="bg-count">${g.n}</span></button>`).join("");
+  $$(".browse-group", wrap).forEach(b => b.onclick = () => { browseSel = b.dataset.group; renderBrowse(); });
 }
 
 // ---------- settings ----------
@@ -539,6 +575,10 @@ function applySettings() {
   document.documentElement.dataset.theme = s.appearance;
   const fam = s.font === "mono" ? 'ui-monospace,Menlo,Consolas,monospace'
             : s.font === "cursive" ? '"Snell Roundhand","Brush Script MT",cursive'
+            : s.font === "playfair" ? '"Playfair Display",Georgia,serif'
+            : s.font === "fraunces" ? '"Fraunces",Georgia,serif'
+            : s.font === "cormorant" ? '"Cormorant Garamond",Georgia,serif'
+            : s.font === "spectral" ? '"Spectral",Georgia,serif'
             : '-apple-system,system-ui,"Segoe UI",Roboto,sans-serif';
   document.documentElement.style.setProperty("--quote-font", fam);
   document.documentElement.style.setProperty("--quote-size", s.size + "px");

@@ -6,7 +6,8 @@
   "source": "Attributed to Chanakya (Chanakya Niti), ancient India",
   "lesson": "See the incentives clearly, even inside relationships.",
   "category": "Practical Wisdom",
-  "action": "Name one relationship where you give more than you take, then send that person a genuine message today."
+  "action": "Name one relationship where you give more than you take, then send that person a genuine message today.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "osho-sky",
@@ -15,7 +16,8 @@
   "source": "Attributed to Osho (Rajneesh)",
   "lesson": "You are the awareness, not the passing moods.",
   "category": "Consciousness",
-  "action": "Write down the mood you woke up in, then add 'this is a cloud, not me' under it."
+  "action": "Write down the mood you woke up in, then add 'this is a cloud, not me' under it.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "vivekananda-arise",
@@ -24,7 +26,8 @@
   "source": "Swami Vivekananda's rallying call (from the Katha Upanishad)",
   "lesson": "Commit fully and persist until it's done.",
   "category": "Resolve",
-  "action": "Pick the one goal you keep half-finishing and block 30 minutes for it on your calendar now."
+  "action": "Pick the one goal you keep half-finishing and block 30 minutes for it on your calendar now.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "meadows-dance",
@@ -33,7 +36,8 @@
   "source": "'Dancing with Systems' (Whole Earth Review, 2001); Thinking in Systems, ch. 7",
   "lesson": "Work with a system's feedback instead of trying to dominate it.",
   "category": "Systems Thinking",
-  "action": "Name one metric you keep forcing, then write the next small nudge instead of the big fix."
+  "action": "Name one metric you keep forcing, then write the next small nudge instead of the big fix.",
+  "genre": "Systems & Science"
  },
  {
   "id": "bateson-difference",
@@ -42,7 +46,8 @@
   "source": "Steps to an Ecology of Mind (1972), 'Form, Substance and Difference'",
   "lesson": "Meaning comes from contrast and context, not raw data.",
   "category": "Systems Thinking",
-  "action": "Open your dashboard and circle the one number that changed; ignore the rest for now."
+  "action": "Open your dashboard and circle the one number that changed; ignore the rest for now.",
+  "genre": "Systems & Science"
  },
  {
   "id": "boulding-growth",
@@ -51,7 +56,8 @@
   "source": "Attributed; popularized via Mancur Olson, Daedalus (1973); exact origin disputed",
   "lesson": "Nothing compounds forever in a bounded system.",
   "category": "Systems Thinking",
-  "action": "Write down one growth number you assume is forever, then add the limit that will eventually stop it."
+  "action": "Write down one growth number you assume is forever, then add the limit that will eventually stop it.",
+  "genre": "Systems & Science"
  },
  {
   "id": "daly-liquidation",
@@ -60,7 +66,8 @@
   "source": "Steady-State Economics, 2nd ed. (1991), p. 248",
   "lesson": "Don't burn your capital base for short-term flow.",
   "category": "Systems Thinking",
-  "action": "Name one long-term asset you're burning for this week's numbers, then text a teammate about protecting it."
+  "action": "Name one long-term asset you're burning for this week's numbers, then text a teammate about protecting it.",
+  "genre": "Systems & Science"
  },
  {
   "id": "einstein-curiosity",
@@ -69,7 +76,8 @@
   "source": "Quoted by William Miller, LIFE magazine, 2 May 1955",
   "lesson": "Protect your 'holy curiosity'; never stop asking why.",
   "category": "Curiosity",
-  "action": "Write one 'why does this work this way' question about your product and send it to someone who'd know."
+  "action": "Write one 'why does this work this way' question about your product and send it to someone who'd know.",
+  "genre": "Systems & Science"
  },
  {
   "id": "hardin-commons",
@@ -78,7 +86,8 @@
   "source": "'The Tragedy of the Commons,' Science (1968)",
   "lesson": "Shared resources need shared rules.",
   "category": "Systems Thinking",
-  "action": "Pick one shared resource your team overuses and propose one simple rule for it in your group chat."
+  "action": "Pick one shared resource your team overuses and propose one simple rule for it in your group chat.",
+  "genre": "Systems & Science"
  },
  {
   "id": "havel-hope",
@@ -87,7 +96,8 @@
   "source": "Disturbing the Peace (1990), pp. 181-182",
   "lesson": "Hope is about meaning, not optimism about outcomes.",
   "category": "Hope",
-  "action": "Write one sentence on why your current project matters even if it fails, and pin it to your desk."
+  "action": "Write one sentence on why your current project matters even if it fails, and pin it to your desk.",
+  "genre": "Mind & Character"
  },
  {
   "id": "mumford-clock",
@@ -96,7 +106,8 @@
   "source": "Technics and Civilization (1934)",
   "lesson": "The tools we adopt quietly reshape how we live.",
   "category": "Technology & Society",
-  "action": "Name one tool you use daily, then write down one habit it quietly forced on you."
+  "action": "Name one tool you use daily, then write down one habit it quietly forced on you.",
+  "genre": "Systems & Science"
  },
  {
   "id": "myrdal-softstate",
@@ -105,7 +116,8 @@
   "source": "Paraphrase of Myrdal's thesis in Asian Drama (1968) - concept, not a verbatim quote",
   "lesson": "Rules without enforcement are theater.",
   "category": "Development",
-  "action": "Pick one team rule everyone ignores; either enforce it today or delete it from your docs."
+  "action": "Pick one team rule everyone ignores; either enforce it today or delete it from your docs.",
+  "genre": "Systems & Science"
  },
  {
   "id": "schumacher-small",
@@ -114,7 +126,8 @@
   "source": "Small Is Beautiful: Economics as if People Mattered (1973); phrase from Leopold Kohr",
   "lesson": "Human-scale often beats relentless bigness.",
   "category": "Economics",
-  "action": "Find one bloated process or feature and write down the smaller version you could ship instead."
+  "action": "Find one bloated process or feature and write down the smaller version you could ship instead.",
+  "genre": "Systems & Science"
  },
  {
   "id": "marcus-mind",
@@ -123,7 +136,8 @@
   "source": "Meditations (popular translation)",
   "lesson": "Control the controllable: your own response.",
   "category": "Stoicism",
-  "action": "List one thing stressing you, then cross out everything on it you cannot actually control."
+  "action": "List one thing stressing you, then cross out everything on it you cannot actually control.",
+  "genre": "Stoicism"
  },
  {
   "id": "seneca-imagination",
@@ -132,7 +146,8 @@
   "source": "Letters from a Stoic (Letters to Lucilius)",
   "lesson": "Don't pre-pay suffering for things that never happen.",
   "category": "Stoicism",
-  "action": "Write down the worst-case scenario you're dreading, then rate how likely it really is, one to ten."
+  "action": "Write down the worst-case scenario you're dreading, then rate how likely it really is, one to ten.",
+  "genre": "Stoicism"
  },
  {
   "id": "laotzu-journey",
@@ -141,7 +156,8 @@
   "source": "Tao Te Ching, ch. 64",
   "lesson": "Start. Momentum compounds.",
   "category": "Action",
-  "action": "Pick the project you keep postponing and do the smallest first step in the next five minutes."
+  "action": "Pick the project you keep postponing and do the smallest first step in the next five minutes.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "socrates-examined",
@@ -150,7 +166,8 @@
   "source": "Plato's Apology (38a)",
   "lesson": "Reflection is what makes a life your own.",
   "category": "Philosophy",
-  "action": "Write down one decision you made today and the real reason behind it, not the stated one."
+  "action": "Write down one decision you made today and the real reason behind it, not the stated one.",
+  "genre": "Mind & Character"
  },
  {
   "id": "durant-excellence",
@@ -159,7 +176,8 @@
   "source": "The Story of Philosophy (1926), summarizing Aristotle (commonly misattributed to Aristotle)",
   "lesson": "Excellence is a routine, not a one-off moment.",
   "category": "Habits",
-  "action": "Name the one daily action that defines your craft, then do it once right now."
+  "action": "Name the one daily action that defines your craft, then do it once right now.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "roosevelt-arena",
@@ -168,7 +186,8 @@
   "source": "'Citizenship in a Republic,' Paris (1910)",
   "lesson": "Doers, not critics, earn the credit.",
   "category": "Courage",
-  "action": "Pick one thing you've only been critiquing from the sidelines and take one real step on it today."
+  "action": "Pick one thing you've only been critiquing from the sidelines and take one real step on it today.",
+  "genre": "Mind & Character"
  },
  {
   "id": "mandela-impossible",
@@ -177,7 +196,8 @@
   "source": "Widely attributed to Nelson Mandela",
   "lesson": "Big goals look unreachable until reached.",
   "category": "Perseverance",
-  "action": "Write down the goal that feels impossible, then list the one move you'd make if it weren't."
+  "action": "Write down the goal that feels impossible, then list the one move you'd make if it weren't.",
+  "genre": "Mind & Character"
  },
  {
   "id": "angelou-feel",
@@ -186,7 +206,8 @@
   "source": "Maya Angelou (widely attributed)",
   "lesson": "Emotional impact outlasts words and deeds.",
   "category": "Leadership",
-  "action": "Text one person who helped you recently and tell them exactly how they made you feel."
+  "action": "Text one person who helped you recently and tell them exactly how they made you feel.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "frankl-change",
@@ -195,7 +216,8 @@
   "source": "Man's Search for Meaning (1946)",
   "lesson": "Change your response when you can't change the world.",
   "category": "Resilience",
-  "action": "Name one stuck situation you can't fix, then write down one thing about your own response you can change."
+  "action": "Name one stuck situation you can't fix, then write down one thing about your own response you can change.",
+  "genre": "Mind & Character"
  },
  {
   "id": "nietzsche-why",
@@ -204,7 +226,8 @@
   "source": "Twilight of the Idols (1888)",
   "lesson": "A strong purpose makes hard means bearable.",
   "category": "Purpose",
-  "action": "Write the one-line reason you're building this, and keep it where you'll see it when it gets hard."
+  "action": "Write the one-line reason you're building this, and keep it where you'll see it when it gets hard.",
+  "genre": "Mind & Character"
  },
  {
   "id": "mlk-right",
@@ -213,7 +236,8 @@
   "source": "Oberlin College address (1965)",
   "lesson": "Don't wait for a convenient moment to act rightly.",
   "category": "Ethics",
-  "action": "Pick one right thing you've been delaying for a better moment and do the first part of it now."
+  "action": "Pick one right thing you've been delaying for a better moment and do the first part of it now.",
+  "genre": "Mind & Character"
  },
  {
   "id": "curie-understood",
@@ -222,7 +246,8 @@
   "source": "Marie Curie (widely attributed)",
   "lesson": "Understanding dissolves fear.",
   "category": "Courage",
-  "action": "Name one thing at work that scares you, then write down one fact that makes it less unknown."
+  "action": "Name one thing at work that scares you, then write down one fact that makes it less unknown.",
+  "genre": "Systems & Science"
  },
  {
   "id": "jung-unconscious",
@@ -231,7 +256,8 @@
   "source": "Attributed to Carl Jung (exact source debated)",
   "lesson": "Examine your patterns or be ruled by them.",
   "category": "Psychology",
-  "action": "Write down one pattern you keep repeating in your work, then name its real trigger."
+  "action": "Write down one pattern you keep repeating in your work, then name its real trigger.",
+  "genre": "Mind & Character"
  },
  {
   "id": "thoreau-dreams",
@@ -240,7 +266,8 @@
   "source": "Walden (1854)",
   "lesson": "Move toward what you want; ordinary limits bend.",
   "category": "Action",
-  "action": "Write one bold thing you actually want, then take one visible step toward it today."
+  "action": "Write one bold thing you actually want, then take one visible step toward it today.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "sagan-starstuff",
@@ -249,7 +276,8 @@
   "source": "Cosmos (1980)",
   "lesson": "Zoom out: you're part of something vast.",
   "category": "Wonder",
-  "action": "Step away from the screen for sixty seconds and name one thing bigger than today's deadline."
+  "action": "Step away from the screen for sixty seconds and name one thing bigger than today's deadline.",
+  "genre": "Systems & Science"
  },
  {
   "id": "gandhi-forgive",
@@ -258,7 +286,8 @@
   "source": "Attributed to Mahatma Gandhi",
   "lesson": "Forgiveness is strength, not surrender.",
   "category": "Character",
-  "action": "Think of one person you're holding a grudge against and write down one thing you'll let go of."
+  "action": "Think of one person you're holding a grudge against and write down one thing you'll let go of.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "jobs-time",
@@ -267,7 +296,8 @@
   "source": "Stanford commencement (2005)",
   "lesson": "Live by conviction, not others' expectations.",
   "category": "Focus",
-  "action": "Name one thing on your list you're doing only to meet someone else's expectation, then question it."
+  "action": "Name one thing on your list you're doing only to meet someone else's expectation, then question it.",
+  "genre": "Building & Startups"
  },
  {
   "id": "buffett-value",
@@ -276,7 +306,8 @@
   "source": "Berkshire Hathaway shareholder letter (2008)",
   "lesson": "Worth and price are not the same thing.",
   "category": "Money",
-  "action": "Pick one recent purchase or hire and write down what you paid versus what you actually got."
+  "action": "Pick one recent purchase or hire and write down what you paid versus what you actually got.",
+  "genre": "Strategy & Money"
  },
  {
   "id": "munger-compound",
@@ -285,7 +316,8 @@
   "source": "Attributed to Charlie Munger",
   "lesson": "Let good things compound; stop tinkering.",
   "category": "Patience",
-  "action": "Name one good thing you keep tinkering with, then commit to leaving it untouched this week."
+  "action": "Name one good thing you keep tinkering with, then commit to leaving it untouched this week.",
+  "genre": "Strategy & Money"
  },
  {
   "id": "gates-success",
@@ -294,7 +326,8 @@
   "source": "The Road Ahead (1995)",
   "lesson": "Winning breeds complacency; stay alert.",
   "category": "Mindset",
-  "action": "Write down one recent win, then list one thing it's making you lazy or overconfident about."
+  "action": "Write down one recent win, then list one thing it's making you lazy or overconfident about.",
+  "genre": "Building & Startups"
  },
  {
   "id": "musk-odds",
@@ -303,7 +336,8 @@
   "source": "60 Minutes interview (2012)",
   "lesson": "Let importance, not odds, drive big bets.",
   "category": "Courage",
-  "action": "Name one important bet you're avoiding because the odds look bad, then write its first step."
+  "action": "Name one important bet you're avoiding because the odds look bad, then write its first step.",
+  "genre": "Building & Startups"
  },
  {
   "id": "naval-wealth",
@@ -312,7 +346,8 @@
   "source": "'How to Get Rich' thread (2018)",
   "lesson": "Build assets that earn while you sleep.",
   "category": "Wealth",
-  "action": "Write down one asset you could build that earns without your time, then sketch its first piece."
+  "action": "Write down one asset you could build that earns without your time, then sketch its first piece.",
+  "genre": "Building & Startups"
  },
  {
   "id": "graham-want",
@@ -321,7 +356,8 @@
   "source": "Y Combinator motto, from Paul Graham's essays",
   "lesson": "Nothing else matters if the thing isn't wanted.",
   "category": "Building",
-  "action": "Message one user today and ask the one question: would you be upset if this disappeared?"
+  "action": "Message one user today and ask the one question: would you be upset if this disappeared?",
+  "genre": "Building & Startups"
  },
  {
   "id": "thiel-competition",
@@ -330,7 +366,8 @@
   "source": "Peter Thiel, WSJ essay (2014), from Zero to One",
   "lesson": "Differentiate until you're irreplaceable.",
   "category": "Strategy",
-  "action": "Write down the one thing your product does that no rival can copy easily, and sharpen it in a sentence."
+  "action": "Write down the one thing your product does that no rival can copy easily, and sharpen it in a sentence.",
+  "genre": "Strategy & Money"
  },
  {
   "id": "hoffman-launch",
@@ -339,7 +376,8 @@
   "source": "Reid Hoffman (widely cited and confirmed by him)",
   "lesson": "Ship early; real feedback beats polish.",
   "category": "Shipping",
-  "action": "Find one feature you're over-polishing and set a timer to ship the rough version today."
+  "action": "Find one feature you're over-polishing and set a timer to ship the rough version today.",
+  "genre": "Building & Startups"
  },
  {
   "id": "horowitz-bullets",
@@ -348,7 +386,8 @@
   "source": "The Hard Thing About Hard Things (2014)",
   "lesson": "Hard problems need direct work, not shortcuts.",
   "category": "Execution",
-  "action": "Name the hard problem you keep avoiding and write down the direct, unglamorous work it actually needs."
+  "action": "Name the hard problem you keep avoiding and write down the direct, unglamorous work it actually needs.",
+  "genre": "Building & Startups"
  },
  {
   "id": "nadella-innov",
@@ -357,7 +396,8 @@
   "source": "On becoming Microsoft CEO (2014)",
   "lesson": "Reinvent before you're forced to.",
   "category": "Change",
-  "action": "Name one thing you do 'because we've always done it' and write down what would replace it."
+  "action": "Name one thing you do 'because we've always done it' and write down what would replace it.",
+  "genre": "Building & Startups"
  },
  {
   "id": "zuck-risk",
@@ -366,7 +406,8 @@
   "source": "Y Combinator Startup School (2011)",
   "lesson": "In fast change, standing still is riskiest.",
   "category": "Risk",
-  "action": "Write down one safe choice you're defaulting to, then name the risk you're avoiding by it."
+  "action": "Write down one safe choice you're defaulting to, then name the risk you're avoiding by it.",
+  "genre": "Building & Startups"
  },
  {
   "id": "cuban-work",
@@ -375,7 +416,8 @@
   "source": "How to Win at the Sport of Business (2011)",
   "lesson": "Treat your edge as always under threat.",
   "category": "Hustle",
-  "action": "Name one competitor who could take your edge, then write the one move you'd make to defend it today."
+  "action": "Name one competitor who could take your edge, then write the one move you'd make to defend it today.",
+  "genre": "Building & Startups"
  },
  {
   "id": "dalio-progress",
@@ -384,7 +426,8 @@
   "source": "Principles (2017)",
   "lesson": "Reflect on pain to convert it into growth.",
   "category": "Growth",
-  "action": "Write down one recent painful mistake and the single lesson you'll carry forward from it."
+  "action": "Write down one recent painful mistake and the single lesson you'll carry forward from it.",
+  "genre": "Strategy & Money"
  },
  {
   "id": "clear-systems",
@@ -393,7 +436,8 @@
   "source": "Atomic Habits (2018)",
   "lesson": "Design the process, not just the target.",
   "category": "Habits",
-  "action": "Pick one goal you keep missing and design one small system or trigger that makes it automatic."
+  "action": "Pick one goal you keep missing and design one small system or trigger that makes it automatic.",
+  "genre": "Mind & Character"
  },
  {
   "id": "sinek-why",
@@ -402,7 +446,8 @@
   "source": "Start With Why (2009) / TED talk",
   "lesson": "Purpose creates loyalty.",
   "category": "Purpose",
-  "action": "Write your product's 'why' in one sentence a customer would actually repeat to a friend."
+  "action": "Write your product's 'why' in one sentence a customer would actually repeat to a friend.",
+  "genre": "Building & Startups"
  },
  {
   "id": "ferriss-uncomf",
@@ -411,7 +456,8 @@
   "source": "The 4-Hour Workweek (2007)",
   "lesson": "Growth hides behind the conversation you're avoiding.",
   "category": "Courage",
-  "action": "Name the one conversation you're avoiding, then send the first message to schedule it today."
+  "action": "Name the one conversation you're avoiding, then send the first message to schedule it today.",
+  "genre": "Building & Startups"
  },
  {
   "id": "branson-train",
@@ -420,7 +466,8 @@
   "source": "Richard Branson, posted on X (2014)",
   "lesson": "Invest in people; retention follows.",
   "category": "Leadership",
-  "action": "Pick one person on your team and do one concrete thing today to make them better at their craft."
+  "action": "Pick one person on your team and do one concrete thing today to make them better at their craft.",
+  "genre": "Building & Startups"
  },
  {
   "id": "huang-character",
@@ -429,7 +476,8 @@
   "source": "Jensen Huang, Stanford talk (2024)",
   "lesson": "Hardship builds the character behind greatness.",
   "category": "Resilience",
-  "action": "Write down one hard thing you survived and the strength it gave you that you use now."
+  "action": "Write down one hard thing you survived and the strength it gave you that you use now.",
+  "genre": "Building & Startups"
  },
  {
   "id": "godin-stories",
@@ -438,7 +486,8 @@
   "source": "Seth Godin (theme of All Marketers Are Liars)",
   "lesson": "A believed story beats a feature list.",
   "category": "Marketing",
-  "action": "Write the one-sentence story behind what you build, not the feature list, and test it on someone."
+  "action": "Write the one-sentence story behind what you build, not the feature list, and test it on someone.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "altman-love",
@@ -447,7 +496,8 @@
   "source": "Sam Altman, Startup Playbook (Y Combinator)",
   "lesson": "Depth of love beats breadth of mild interest.",
   "category": "Building",
-  "action": "Name your three most engaged users and message one of them to ask what they love most."
+  "action": "Name your three most engaged users and message one of them to ask what they love most.",
+  "genre": "Building & Startups"
  },
  {
   "id": "hormozi-hard",
@@ -456,7 +506,8 @@
   "source": "Alex Hormozi, posted on X / $100M series",
   "lesson": "Difficulty filters out the competition.",
   "category": "Discipline",
-  "action": "Pick the hardest task on your list and start it now, before the easy ones tempt you."
+  "action": "Pick the hardest task on your list and start it now, before the easy ones tempt you.",
+  "genre": "Building & Startups"
  },
  {
   "id": "andreessen-soft",
@@ -465,7 +516,8 @@
   "source": "Marc Andreessen, WSJ essay (2011)",
   "lesson": "Build on software or be absorbed by it.",
   "category": "Tech",
-  "action": "Name one manual part of your work and write down how software could absorb it."
+  "action": "Name one manual part of your work and write down how software could absorb it.",
+  "genre": "Building & Startups"
  },
  {
   "id": "bezos-brand",
@@ -474,7 +526,8 @@
   "source": "Attributed to Jeff Bezos",
   "lesson": "Reputation forms in your absence.",
   "category": "Branding",
-  "action": "Write down what you'd want people saying about you when you're not there, then act on one gap."
+  "action": "Write down what you'd want people saying about you when you're not there, then act on one gap.",
+  "genre": "Building & Startups"
  },
  {
   "id": "karpathy-english",
@@ -483,7 +536,8 @@
   "source": "Andrej Karpathy, posted on X (January 2023)",
   "lesson": "Clear language is now real leverage.",
   "category": "AI",
-  "action": "Take one fuzzy request you wrote today and rewrite it in plain, precise English."
+  "action": "Take one fuzzy request you wrote today and rewrite it in plain, precise English.",
+  "genre": "Building & Startups"
  },
  {
   "id": "bezos-dayone",
@@ -492,7 +546,8 @@
   "source": "Amazon 2016 Letter to Shareholders",
   "lesson": "Treat every day as the start, not the coast.",
   "category": "complacency",
-  "action": "Name one process your team runs on autopilot and write down how you'd build it fresh today."
+  "action": "Name one process your team runs on autopilot and write down how you'd build it fresh today.",
+  "genre": "Building & Startups"
  },
  {
   "id": "grove-paranoid",
@@ -501,7 +556,8 @@
   "source": "Only the Paranoid Survive, Andrew S. Grove, 1996",
   "lesson": "A recent win is the moment to look hardest for the threat.",
   "category": "vigilance",
-  "action": "List your last clear win, then write the one weakness it's tempting you to ignore right now."
+  "action": "List your last clear win, then write the one weakness it's tempting you to ignore right now.",
+  "genre": "Building & Startups"
  },
  {
   "id": "graham-unscalable",
@@ -510,7 +566,8 @@
   "source": "Essay 'Do Things That Don't Scale,' Paul Graham, July 2013",
   "lesson": "Early on, hand-recruit users one by one; scale comes later.",
   "category": "traction",
-  "action": "Pick five ideal users and send each a personal message inviting them to try your product today."
+  "action": "Pick five ideal users and send each a personal message inviting them to try your product today.",
+  "genre": "Building & Startups"
  },
  {
   "id": "andreessen-pmf",
@@ -519,7 +576,8 @@
   "source": "Essay 'The Pmarca Guide to Startups, part 4: The only thing that matters,' Marc Andreessen, June 25, 2007",
   "lesson": "Until the market pulls your product, nothing else you do counts.",
   "category": "focus",
-  "action": "Write one sentence describing the market you serve and how your product satisfies it right now."
+  "action": "Write one sentence describing the market you serve and how your product satisfies it right now.",
+  "genre": "Building & Startups"
  },
  {
   "id": "altman-hard",
@@ -528,7 +586,8 @@
   "source": "Essay 'Hard Startups,' Sam Altman, 2019 (blog.samaltman.com)",
   "lesson": "An ambitious problem attracts the talent and belief an easy one can't.",
   "category": "ambition",
-  "action": "Take your current idea and write down a harder, more ambitious version of the same thing."
+  "action": "Take your current idea and write down a harder, more ambitious version of the same thing.",
+  "genre": "Building & Startups"
  },
  {
   "id": "naval-longterm",
@@ -537,7 +596,8 @@
   "source": "Naval Ravikant, X/Twitter, 23 March 2019 (tweet 1109704032204009473); collected in The Almanack of Naval Ravikant, 2020",
   "lesson": "Returns come from repeated games with the same trusted people.",
   "category": "compounding",
-  "action": "Name one person you want a ten-year relationship with and do one small thing for them today."
+  "action": "Name one person you want a ten-year relationship with and do one small thing for them today.",
+  "genre": "Building & Startups"
  },
  {
   "id": "munger-invert",
@@ -546,7 +606,8 @@
   "source": "Munger popularizing Carl Jacobi's maxim; collected in Poor Charlie's Almanack, 2005",
   "lesson": "Solve hard problems by figuring out how to fail and avoiding that.",
   "category": "thinking",
-  "action": "Take the goal you're stuck on and write down every way it could fail, then dodge the top one."
+  "action": "Take the goal you're stuck on and write down every way it could fail, then dodge the top one.",
+  "genre": "Strategy & Money"
  },
  {
   "id": "drucker-useless",
@@ -555,7 +616,8 @@
   "source": "Article 'Managing for Business Effectiveness,' Harvard Business Review, Peter Drucker, May 1963",
   "lesson": "Killing the wrong task beats doing it faster.",
   "category": "prioritization",
-  "action": "Scan your to-do list and delete one task that shouldn't exist no matter how well it's done."
+  "action": "Scan your to-do list and delete one task that shouldn't exist no matter how well it's done.",
+  "genre": "Strategy & Money"
  },
  {
   "id": "jobs-shipart",
@@ -564,7 +626,8 @@
   "source": "Steve Jobs to the Macintosh team, 1983 (documented by Andy Hertzfeld, folklore.org)",
   "lesson": "Finishing and releasing is part of the craft, not separate from it.",
   "category": "shipping",
-  "action": "Pick one thing sitting nearly done in your drafts and put it in front of a real person today."
+  "action": "Pick one thing sitting nearly done in your drafts and put it in front of a real person today.",
+  "genre": "Building & Startups"
  },
  {
   "id": "carnegie-onebasket",
@@ -573,7 +636,8 @@
   "source": "Andrew Carnegie, address 'The Road to Business Success,' Curry Commercial College, Pittsburgh, 23 June 1885 (pub. The Empire of Business, 1902)",
   "lesson": "Concentrate your bets, then guard them with full attention.",
   "category": "focus",
-  "action": "Name the one bet that matters most this quarter and cut one side project that splits your focus."
+  "action": "Name the one bet that matters most this quarter and cut one side project that splits your focus.",
+  "genre": "Building & Startups"
  },
  {
   "id": "buffett-reputation",
@@ -582,7 +646,8 @@
   "source": "Warren Buffett, U.S. Congressional testimony on Salomon Brothers, September 1991",
   "lesson": "Money losses heal; a broken reputation rarely does.",
   "category": "reputation",
-  "action": "Find one shortcut you're about to take that could dent trust, and choose the honest version instead."
+  "action": "Find one shortcut you're about to take that could dent trust, and choose the honest version instead.",
+  "genre": "Strategy & Money"
  },
  {
   "id": "marcus-obstacle",
@@ -591,7 +656,8 @@
   "source": "Meditations, Book 5.20 (Gregory Hays translation, Modern Library, 2002)",
   "lesson": "The obstacle in front of you is the path, not a detour from it.",
   "category": "obstacles",
-  "action": "Name the thing blocking your project and write down how working through it could become the win."
+  "action": "Name the thing blocking your project and write down how working through it could become the win.",
+  "genre": "Stoicism"
  },
  {
   "id": "marcus-dawn",
@@ -600,7 +666,8 @@
   "source": "Meditations, Book 5.1 (Gregory Hays translation, Modern Library, 2002)",
   "lesson": "You were made to do the work; stop bargaining with the morning.",
   "category": "discipline",
-  "action": "Pick the first real task of your day and start it before you check any messages or feeds."
+  "action": "Pick the first real task of your day and start it before you check any messages or feeds.",
+  "genre": "Stoicism"
  },
  {
   "id": "seneca-port",
@@ -609,7 +676,8 @@
   "source": "Letters from a Stoic (Epistulae Morales), Letter 71 (Richard Mott Gummere translation, Loeb Classical Library)",
   "lesson": "Without a clear destination, no effort points anywhere useful.",
   "category": "focus",
-  "action": "Write the one specific outcome this week is steering toward, then check today's tasks against it."
+  "action": "Write the one specific outcome this week is steering toward, then check today's tasks against it.",
+  "genre": "Stoicism"
  },
  {
   "id": "epictetus-control",
@@ -618,7 +686,8 @@
   "source": "The Handbook (Enchiridion), ch. 1 (Robin Hard translation, Oxford World's Classics, 2014)",
   "lesson": "Spend energy on your choices, not on outcomes you can't command.",
   "category": "control",
-  "action": "List what's worrying you, then split it into what you control and what you don't, and act on the first."
+  "action": "List what's worrying you, then split it into what you control and what you don't, and act on the first.",
+  "genre": "Stoicism"
  },
  {
   "id": "laotzu-pine",
@@ -627,7 +696,8 @@
   "source": "Tao Te Ching, ch. 64 (Stephen Mitchell translation, Harper & Row, 1988)",
   "lesson": "Big things grow from tiny, unglamorous starts.",
   "category": "beginnings",
-  "action": "Pick the daunting project you keep postponing and plant the first small piece in the next five minutes."
+  "action": "Pick the daunting project you keep postponing and plant the first small piece in the next five minutes.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "confucius-mound",
@@ -636,7 +706,8 @@
   "source": "The Analects, Book 9.18 (Arthur Waley translation, 1938; numbered 9.19 in some editions)",
   "lesson": "Whether you finish or quit is your own choice, basket by basket.",
   "category": "persistence",
-  "action": "Find the project that's one push from done and add that final basketful of work right now."
+  "action": "Find the project that's one push from done and add that final basketful of work right now.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "confucius-knowing",
@@ -645,7 +716,8 @@
   "source": "The Analects, Book 2.17 (James Legge translation, 1861)",
   "lesson": "Real knowledge is knowing the edge of what you know.",
   "category": "honesty",
-  "action": "Write down one thing you've been pretending to understand, then admit it to the right person today."
+  "action": "Write down one thing you've been pretending to understand, then admit it to the right person today.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "krishna-fruits",
@@ -654,7 +726,8 @@
   "source": "The Bhagavad Gita, ch. 2, verse 47 (Stephen Mitchell translation, Harmony, 2000)",
   "lesson": "Own your effort fully and let go of the result.",
   "category": "detachment",
-  "action": "Name one outcome you can't control and rewrite your goal as the action you can actually take."
+  "action": "Name one outcome you can't control and rewrite your goal as the action you can actually take.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "buddha-thoughts",
@@ -663,7 +736,8 @@
   "source": "The Dhammapada, verse 1 (F. Max Müller translation, Sacred Books of the East, Vol. 10, 1881)",
   "lesson": "Your inner narrative builds the life you experience.",
   "category": "mind",
-  "action": "Catch one recurring negative thought you tell yourself today and write the truer line to replace it."
+  "action": "Catch one recurring negative thought you tell yourself today and write the truer line to replace it.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "rumi-prison",
@@ -672,7 +746,8 @@
   "source": "The Essential Rumi, translated by Coleman Barks with John Moyne (HarperOne, 1995)",
   "lesson": "Most of your cages are unlocked; you just haven't walked out.",
   "category": "freedom",
-  "action": "Name one self-imposed limit you treat as fixed and take one step today as if it weren't real."
+  "action": "Name one self-imposed limit you treat as fixed and take one step today as if it weren't real.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "thiruvalluvar-undismayed",
@@ -681,7 +756,8 @@
   "source": "Tirukkural, couplet 620 (G.U. Pope translation, 1886)",
   "lesson": "A steady, unshaken mind eventually outlasts bad luck.",
   "category": "perseverance",
-  "action": "Pick the setback you keep replaying and write the next concrete move you'll make despite it."
+  "action": "Pick the setback you keep replaying and write the next concrete move you'll make despite it.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "kabir-today",
@@ -690,7 +766,8 @@
   "source": "Kabir, doha \"Kal kare so aaj kar\" (traditional Hindi couplet)",
   "lesson": "Pull tomorrow's work into now before the moment slips.",
   "category": "urgency",
-  "action": "Take one thing you scheduled for later this week and do its first step in the next ten minutes."
+  "action": "Take one thing you scheduled for later this week and do its first step in the next ten minutes.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "laotzu-difficult",
@@ -699,7 +776,8 @@
   "source": "Tao Te Ching, ch. 63 (Stephen Mitchell translation, Harper & Row, 1988)",
   "lesson": "Tackle problems while small; build big things from small acts.",
   "category": "momentum",
-  "action": "Spot one issue that's still tiny and easy to fix, and handle it now before it grows."
+  "action": "Spot one issue that's still tiny and easy to fix, and handle it now before it grows.",
+  "genre": "Eastern Wisdom"
  },
  {
   "id": "meadows-purpose",
@@ -708,7 +786,8 @@
   "source": "Thinking in Systems: A Primer (2008), Chapter 1",
   "lesson": "A system's real purpose, not its stated one, drives its behavior.",
   "category": "systems",
-  "action": "Write down what your team's process actually optimizes for, not what the doc says it does."
+  "action": "Write down what your team's process actually optimizes for, not what the doc says it does.",
+  "genre": "Systems & Science"
  },
  {
   "id": "meadows-models",
@@ -717,7 +796,8 @@
   "source": "Dancing With Systems (2001 essay, Donella Meadows Project / Whole Earth Review); also in Thinking in Systems (2008)",
   "lesson": "Everything you know is a model; expose it so others can sharpen it.",
   "category": "humility",
-  "action": "Write your current plan's core assumption in one line and ask a teammate to poke holes in it today."
+  "action": "Write your current plan's core assumption in one line and ask a teammate to poke holes in it today.",
+  "genre": "Systems & Science"
  },
  {
   "id": "feynman-fool",
@@ -726,7 +806,8 @@
   "source": "\"Cargo Cult Science,\" Caltech commencement address, 1974 (published in Engineering & Science, June 1974)",
   "lesson": "Guard hardest against fooling yourself.",
   "category": "integrity",
-  "action": "Take one belief about your product you'd hate to be wrong about and find one fact that tests it."
+  "action": "Take one belief about your product you'd hate to be wrong about and find one fact that tests it.",
+  "genre": "Systems & Science"
  },
  {
   "id": "feynman-nature",
@@ -735,7 +816,8 @@
   "source": "Rogers Commission Report, Appendix F (\"Personal Observations on the Reliability of the Shuttle\"), 1986",
   "lesson": "Reality always beats the story you tell about it.",
   "category": "reality",
-  "action": "Find one metric you've been spinning in updates and write down the unvarnished number instead."
+  "action": "Find one metric you've been spinning in updates and write down the unvarnished number instead.",
+  "genre": "Systems & Science"
  },
  {
   "id": "simon-attention",
@@ -744,7 +826,8 @@
   "source": "\"Designing Organizations for an Information-Rich World,\" in Computers, Communications, and the Public Interest (Johns Hopkins Press, 1971)",
   "lesson": "More information just means attention is your real bottleneck.",
   "category": "attention",
-  "action": "Close every tab and notification, then work on one thing only for the next twenty-five minutes."
+  "action": "Close every tab and notification, then work on one thing only for the next twenty-five minutes.",
+  "genre": "Systems & Science"
  },
  {
   "id": "simon-design",
@@ -753,7 +836,8 @@
   "source": "The Sciences of the Artificial (MIT Press, 1969), Ch. 3 \"The Science of Design\"",
   "lesson": "Anyone changing a situation toward a better one is designing.",
   "category": "design",
-  "action": "Pick one annoying part of your day and sketch the small change that would make it work better."
+  "action": "Pick one annoying part of your day and sketch the small change that would make it work better.",
+  "genre": "Systems & Science"
  },
  {
   "id": "munger-incentives",
@@ -762,7 +846,8 @@
   "source": "\"The Psychology of Human Misjudgment,\" Harvard speech, 1995",
   "lesson": "When behavior puzzles you, look first at the incentives.",
   "category": "incentives",
-  "action": "Name one person acting in a way you don't get, then write down what they're actually rewarded for."
+  "action": "Name one person acting in a way you don't get, then write down what they're actually rewarded for.",
+  "genre": "Strategy & Money"
  },
  {
   "id": "deming-system",
@@ -771,7 +856,8 @@
   "source": "W. Edwards Deming, four-day seminar, February 1993 (W. Edwards Deming Institute)",
   "lesson": "Fix the system before you blame the person inside it.",
   "category": "systems",
-  "action": "Take one repeated mistake on your team and write the broken process behind it, not the name."
+  "action": "Take one repeated mistake on your team and write the broken process behind it, not the name.",
+  "genre": "Systems & Science"
  },
  {
   "id": "ackoff-whole",
@@ -780,7 +866,8 @@
   "source": "\"Science in the Systems Age: Beyond IE, OR and MS,\" Operations Research, Vol. 21 (1973), p. 664",
   "lesson": "A system's value lives in how its parts connect, not the parts alone.",
   "category": "systems",
-  "action": "Pick one feature you're judging in isolation and write down how it works with everything around it."
+  "action": "Pick one feature you're judging in isolation and write down how it works with everything around it.",
+  "genre": "Systems & Science"
  },
  {
   "id": "ackoff-rightthing",
@@ -789,7 +876,8 @@
   "source": "Russell Ackoff, recorded talk \"If Russ Ackoff had given a TED talk\" (c. 1994)",
   "lesson": "Doing the right thing badly beats polishing the wrong thing.",
   "category": "effectiveness",
-  "action": "Check your top task and confirm it's the right problem before you spend another hour perfecting it."
+  "action": "Check your top task and confirm it's the right problem before you spend another hour perfecting it.",
+  "genre": "Systems & Science"
  },
  {
   "id": "kahneman-wysiati",
@@ -798,7 +886,8 @@
   "source": "Thinking, Fast and Slow (2011), Part 1 (the WYSIATI principle)",
   "lesson": "Your mind treats the visible evidence as the whole story.",
   "category": "bias",
-  "action": "Before your next decision, write down one important thing you might not be seeing yet."
+  "action": "Before your next decision, write down one important thing you might not be seeing yet.",
+  "genre": "Systems & Science"
  },
  {
   "id": "kahneman-premortem",
@@ -807,7 +896,8 @@
   "source": "Thinking, Fast and Slow (2011), p. 264 (premortem, crediting Gary Klein)",
   "lesson": "Imagining failure in advance surfaces risks optimism hides.",
   "category": "decision",
-  "action": "Spend five minutes writing the story of how your current plan failed a year from now, then fix one cause."
+  "action": "Spend five minutes writing the story of how your current plan failed a year from now, then fix one cause.",
+  "genre": "Systems & Science"
  },
  {
   "id": "taleb-wind",
@@ -816,7 +906,8 @@
   "source": "Antifragile: Things That Gain from Disorder (2012), Prologue (\"How to Love the Wind\")",
   "lesson": "Build so that disorder strengthens you instead of breaking you.",
   "category": "antifragility",
-  "action": "Name one source of chaos in your work and write down how you could turn it into an advantage."
+  "action": "Name one source of chaos in your work and write down how you could turn it into an advantage.",
+  "genre": "Systems & Science"
  },
  {
   "id": "taleb-vianegativa",
@@ -825,7 +916,8 @@
   "source": "Antifragile: Things That Gain from Disorder (2012), on via negativa / subtractive knowledge",
   "lesson": "Removing what's clearly wrong is surer than adding what might be right.",
   "category": "via-negativa",
-  "action": "Find one obviously broken thing in your product or routine and remove it today."
+  "action": "Find one obviously broken thing in your product or routine and remove it today.",
+  "genre": "Systems & Science"
  },
  {
   "id": "boyd-people",
@@ -834,7 +926,8 @@
   "source": "Quoted in Robert Coram, Boyd: The Fighter Pilot Who Changed the Art of War (2002); from Boyd's briefings",
   "lesson": "People come before ideas, and ideas before machines.",
   "category": "priorities",
-  "action": "Before buying another tool, write down whether the right person or idea would fix the problem instead."
+  "action": "Before buying another tool, write down whether the right person or idea would fix the problem instead.",
+  "genre": "Systems & Science"
  },
  {
   "id": "wilson-paleolithic",
@@ -843,7 +936,8 @@
   "source": "E.O. Wilson, debate at the Harvard Museum of Natural History, 9 September 2009",
   "lesson": "Our instincts and institutions lag far behind our tools.",
   "category": "technology",
-  "action": "Name one powerful tool you use and write down one guardrail your old habits still need around it."
+  "action": "Name one powerful tool you use and write down one guardrail your old habits still need around it.",
+  "genre": "Systems & Science"
  },
  {
   "id": "lamott-firstdraft",
@@ -852,7 +946,8 @@
   "source": "Bird by Bird: Some Instructions on Writing and Life (1994), chapter \"Shitty First Drafts\"",
   "lesson": "Every good thing starts as a rough, ugly first attempt.",
   "category": "writing",
-  "action": "Open the doc you've been avoiding and write the worst possible first draft for ten minutes straight."
+  "action": "Open the doc you've been avoiding and write the worst possible first draft for ten minutes straight.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "pressfield-resistance",
@@ -861,7 +956,8 @@
   "source": "The War of Art: Break Through the Blocks and Win Your Inner Creative Battles (2002)",
   "lesson": "The work you fear most is usually the work that matters most.",
   "category": "resistance",
-  "action": "Name the task you feel the most dread about and start it before anything easier today."
+  "action": "Name the task you feel the most dread about and start it before anything easier today.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "pressfield-pro",
@@ -870,7 +966,8 @@
   "source": "Turning Pro: Tap Your Inner Power and Create Your Life's Work (2012)",
   "lesson": "Talking about the work is not the work.",
   "category": "discipline",
-  "action": "Close the app you broadcast on and spend the next thirty minutes only making the actual thing."
+  "action": "Close the app you broadcast on and spend the next thirty minutes only making the actual thing.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "godin-ship",
@@ -879,7 +976,8 @@
   "source": "Linchpin: Are You Indispensable? (2010)",
   "lesson": "Starting only counts if it ends in something released.",
   "category": "shipping",
-  "action": "Pick one open project and set a hard ship date for it on your calendar before you close this."
+  "action": "Pick one open project and set a hard ship date for it on your calendar before you close this.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "angelou-creativity",
@@ -888,7 +986,8 @@
   "source": "Maya Angelou interview, Bell Telephone Magazine (1982); reprinted in Conversations with Maya Angelou, ed. Jeffrey M. Elliot (1989)",
   "lesson": "Creativity grows from use, not from rationing.",
   "category": "creativity",
-  "action": "Make one small creative thing today without saving the idea for a more important moment."
+  "action": "Make one small creative thing today without saving the idea for a more important moment.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "baldwin-process",
@@ -897,7 +996,8 @@
   "source": "\"The Creative Process,\" essay in Creative America (Ridge Press, 1962)",
   "lesson": "Don't accept the easy answer; dig out the question it's hiding.",
   "category": "craft",
-  "action": "Take an answer you accepted at work and write down the harder question it was quietly avoiding."
+  "action": "Take an answer you accepted at work and write down the harder question it was quietly avoiding.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "morrison-writeit",
@@ -906,7 +1006,8 @@
   "source": "Address to the Ohio Arts Council (1981), reported in The Cincinnati Enquirer (27 Sept 1981) via Gannett News Service",
   "lesson": "If the thing you want doesn't exist, you're the one to build it.",
   "category": "agency",
-  "action": "Name one product or resource you keep wishing existed and sketch its first piece today."
+  "action": "Name one product or resource you keep wishing existed and sketch its first piece today.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "morrison-free",
@@ -915,7 +1016,8 @@
   "source": "O, The Oprah Magazine interview (November 2003)",
   "lesson": "Power and freedom are only worth having if you pass them on.",
   "category": "leadership",
-  "action": "Use one bit of your access or skill to open a door for someone else this week, starting now."
+  "action": "Use one bit of your access or skill to open a door for someone else this week, starting now.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "frankl-success",
@@ -924,7 +1026,8 @@
   "source": "Man's Search for Meaning, preface to the 1992 edition (English translation; original 1946)",
   "lesson": "Success follows good work; chasing it directly drives it away.",
   "category": "meaning",
-  "action": "Drop one metric you're obsessing over and refocus today's effort on doing the work well instead."
+  "action": "Drop one metric you're obsessing over and refocus today's effort on doing the work well instead.",
+  "genre": "Mind & Character"
  },
  {
   "id": "jung-heart",
@@ -933,7 +1036,8 @@
   "source": "Letter to Fanny Bowditch, 22 October 1916, in C.G. Jung Letters, Vol. 1: 1906-1950 (Princeton/Bollingen), p. 33",
   "lesson": "Clarity comes from looking inward, not scanning outside for cues.",
   "category": "psychology",
-  "action": "Write down what you actually want from your current project, not what looks good to others."
+  "action": "Write down what you actually want from your current project, not what looks good to others.",
+  "genre": "Mind & Character"
  },
  {
   "id": "leguin-freedom",
@@ -942,7 +1046,8 @@
   "source": "National Book Awards acceptance speech, Medal for Distinguished Contribution to American Letters (19 November 2014)",
   "lesson": "The future needs people who can still picture something better.",
   "category": "vision",
-  "action": "Write one sentence describing the larger reality your work is trying to build toward."
+  "action": "Write one sentence describing the larger reality your work is trying to build toward.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "ogilvy-consumer",
@@ -951,7 +1056,8 @@
   "source": "Confessions of an Advertising Man (1963), p. 96",
   "lesson": "Respect your customer's intelligence instead of dressing up empty claims.",
   "category": "craft",
-  "action": "Find one vague line in your marketing and rewrite it as a concrete, honest reason to care."
+  "action": "Find one vague line in your marketing and rewrite it as a concrete, honest reason to care.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "rand-good",
@@ -960,7 +1066,8 @@
   "source": "Interview with Steven Heller (conducted 1990), published in Design Dialogues (Allworth Press, 1998)",
   "lesson": "Chase quality, not novelty; original follows from good.",
   "category": "craft",
-  "action": "Stop hunting for a clever angle and make the next thing simply work well instead."
+  "action": "Stop hunting for a clever angle and make the next thing simply work well instead.",
+  "genre": "Craft & Creativity"
  },
  {
   "id": "pressfield-agents",
@@ -969,6 +1076,437 @@
   "source": "The War of Art: Break Through the Blocks and Win Your Inner Creative Battles (2002)",
   "lesson": "Your job is to bring into being what doesn't yet exist.",
   "category": "purpose",
-  "action": "Name the one thing only you can build right now and do one real piece of it today."
+  "action": "Name the one thing only you can build right now and do one real piece of it today.",
+  "genre": "Craft & Creativity"
+ },
+ {
+  "id": "anand-badi",
+  "text": "Babumoshai, zindagi badi honi chahiye... lambi nahi.",
+  "author": "Anand Sehgal (Rajesh Khanna)",
+  "source": "Anand (1971)",
+  "lesson": "A life's worth is measured by its depth and impact, not the number of years it lasts.",
+  "category": "Meaning",
+  "action": "Name one thing you'd do today if you knew it would matter more than another decade of routine, then do the first step now.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "anand-kathputli",
+  "text": "Babumoshai, zindagi aur maut uparwale ke haath hai. Usse na toh aap badal sakte hain na main. Hum sab toh rangmanch ki kathputliyan hain jinki dor uparwale ki ungliyon mein bandhi hai.",
+  "author": "Anand Sehgal (Rajesh Khanna)",
+  "source": "Anand (1971)",
+  "lesson": "Peace comes from releasing your grip on what you were never in control of.",
+  "category": "Acceptance",
+  "action": "Write down one thing you've been straining to control that isn't yours to control, then cross it off and redirect that energy.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "deewaar-maa",
+  "text": "Mere paas maa hai.",
+  "author": "Ravi Verma (Shashi Kapoor)",
+  "source": "Deewaar (1975)",
+  "lesson": "What truly makes you rich is rarely the thing you can put a price on.",
+  "category": "Values",
+  "action": "Text one person who is your real wealth and tell them specifically why they matter to you, in two sentences.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "deewaar-pheke",
+  "text": "Main aaj bhi pheke hue paise nahi uthata.",
+  "author": "Vijay Verma (Amitabh Bachchan)",
+  "source": "Deewaar (1975)",
+  "lesson": "Your dignity sets a floor that no amount of money or pressure should be allowed to drop below.",
+  "category": "Self-respect",
+  "action": "Identify one deal or favor that quietly costs your self-respect, and decline it today in one clear line.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "sholay-dar",
+  "text": "Jo dar gaya, samjho mar gaya.",
+  "author": "Gabbar Singh (Amjad Khan)",
+  "source": "Sholay (1975)",
+  "lesson": "Fear, when it freezes you, ends things faster than the danger you were afraid of.",
+  "category": "Courage",
+  "action": "Pick the one task you've been avoiding out of fear and take the smallest possible action on it in the next 60 seconds.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "sholay-kitne",
+  "text": "Kitne aadmi the?",
+  "author": "Gabbar Singh (Amjad Khan)",
+  "source": "Sholay (1975)",
+  "lesson": "Honest accounting of what actually happened beats any excuse for why it went wrong.",
+  "category": "Accountability",
+  "action": "Take one thing that slipped this week and write the plain factual reason it failed, with no justification attached.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "zanjeer-sharafat",
+  "text": "Jab tak baithne ko na kaha jaaye, sharafat se khade raho. Yeh police station hai, tumhare baap ka ghar nahi.",
+  "author": "Inspector Vijay Khanna (Amitabh Bachchan)",
+  "source": "Zanjeer (1973)",
+  "lesson": "Standing firm on principle commands more respect than bending to whoever is loudest in the room.",
+  "category": "Integrity",
+  "action": "Find one place today where you've been deferring to status over what's right, and hold your line politely but firmly.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "mughal-pyar",
+  "text": "Pyar kiya to darna kya.",
+  "author": "Anarkali (Madhubala)",
+  "source": "Mughal-e-Azam (1960)",
+  "lesson": "If a choice is truly yours and truly right, owning it openly costs less than hiding it.",
+  "category": "Courage",
+  "action": "Say one true thing out loud today that you've been keeping quiet about out of fear of judgment.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "mrindia-mogambo",
+  "text": "Mogambo khush hua.",
+  "author": "Mogambo (Amrish Puri)",
+  "source": "Mr. India (1987)",
+  "lesson": "Naming what genuinely pleases you helps you notice and repeat what's working.",
+  "category": "Recognition",
+  "action": "End your day by naming one specific thing you did well, out loud, before you list anything that went wrong.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "kaalia-line",
+  "text": "Hum jahan khade ho jaate hain, line wahin se shuru hoti hai.",
+  "author": "Raju (Amitabh Bachchan)",
+  "source": "Kaalia (1981)",
+  "lesson": "Confidence is partly a decision to treat your own position as the starting point, not the back of the queue.",
+  "category": "Self-belief",
+  "action": "In your next meeting or message, lead with your view first instead of waiting to see where everyone else lands.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "3idiots-aal",
+  "text": "Aal izz well",
+  "author": "Ranchhoddas 'Rancho' Chanchad (Aamir Khan)",
+  "source": "3 Idiots (2009)",
+  "lesson": "A calming cue doesn't fix the problem, but it steadies you enough to actually face it.",
+  "category": "Calm",
+  "action": "Before your next stressful task, take three slow breaths and tell yourself it's handled, then start the very first step.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "3idiots-kaabil",
+  "text": "Bachcha, kaabil bano, kaabil. Kaamyaabi toh saali jhak maarke peeche bhagegi.",
+  "author": "Rancho, via Farhan (R. Madhavan) in 3 Idiots",
+  "source": "3 Idiots (2009)",
+  "lesson": "Chase competence relentlessly and the rewards tend to follow on their own.",
+  "category": "Mastery",
+  "action": "Spend 15 minutes today deliberately practicing the one skill your goal actually depends on, not the busywork around it.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "chakde-sattar",
+  "text": "Sattar minute hai tumhare paas, shaayad tumhari zindagi ke sabse khaas sattar minute. Aaj tum achha khelo ya bura, yeh sattar minute tumhe zindagi bhar yaad rahenge.",
+  "author": "Kabir Khan (Shah Rukh Khan)",
+  "source": "Chak De! India (2007)",
+  "lesson": "Treating a short, defined window as sacred concentrates your whole effort where it counts.",
+  "category": "Focus",
+  "action": "Block 70 minutes for your single most important task today, kill all notifications, and give it everything you have.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "rdb-zimmedaari",
+  "text": "Zindagi jeene ke do hi tarike hote hain. Ek, jo ho raha hai hone do, bardaasht karte jao. Ya phir, zimmedaari uthao use badalne ki.",
+  "author": "Daljeet 'DJ' Singh (Aamir Khan)",
+  "source": "Rang De Basanti (2006)",
+  "lesson": "You either tolerate what's wrong or you take ownership of changing it, and only one of those moves you forward.",
+  "category": "Agency",
+  "action": "Pick one thing you've been merely enduring and take a single concrete step today to change it instead.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "rdb-behtar",
+  "text": "Koi bhi desh perfect nahi hota, use behtar banana padta hai.",
+  "author": "Flight Lt. Ajay Singh Rathod (R. Madhavan)",
+  "source": "Rang De Basanti (2006)",
+  "lesson": "Nothing worth belonging to is flawless, so the real work is improving it rather than abandoning it.",
+  "category": "Responsibility",
+  "action": "Choose one community or project you complain about and contribute one small fix to it today instead of just criticizing.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "swades-kaabiliyat",
+  "text": "Main nahi maanta hamara desh duniya ka sabse mahaan desh hai. Lekin yeh zaroor maanta hoon ki hum mein kaabiliyat hai, taaqat hai, apne desh ko mahaan banane ki.",
+  "author": "Mohan Bhargav (Shah Rukh Khan)",
+  "source": "Swades (2004)",
+  "lesson": "Clear-eyed honesty about where you fall short, paired with belief in your capacity, beats hollow pride.",
+  "category": "Honesty",
+  "action": "Name one weakness honestly and one real strength you'll use to close it, then act on the strength today.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "znmd-seize",
+  "text": "Seize the day, my friend. Pehle is din ko poori tarah jiyo, phir chaalis ke baare mein sochna.",
+  "author": "Laila (Katrina Kaif)",
+  "source": "Zindagi Na Milegi Dobara (2011)",
+  "lesson": "Living this day fully matters more than worrying about a future that may never arrive.",
+  "category": "Presence",
+  "action": "Do one thing today purely because it makes today better, not because it serves some distant plan.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "znmd-zinda",
+  "text": "Dilon mein tum apni betaabiyan leke chal rahe ho, toh zinda ho tum.",
+  "author": "Imran Qureshi (Farhan Akhtar)",
+  "source": "Zindagi Na Milegi Dobara (2011)",
+  "lesson": "Restlessness and longing are signs you're still fully alive, not problems to suppress.",
+  "category": "Aliveness",
+  "action": "Write down one restless desire you've been dismissing as impractical, and take one tiny step toward it today.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "gullyboy-time",
+  "text": "Apna time aayega.",
+  "author": "Murad (Ranveer Singh)",
+  "source": "Gully Boy (2019)",
+  "lesson": "Belief that your moment is coming keeps you working through the stretch when nothing seems to land yet.",
+  "category": "Hope",
+  "action": "On your long-term goal, do the next unglamorous rep today and trust the timeline instead of demanding instant proof.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "dangal-chhoriyan",
+  "text": "Mhaari chhoriyaan chhoron se kam hai ke?",
+  "author": "Mahavir Singh Phogat (Aamir Khan)",
+  "source": "Dangal (2016)",
+  "lesson": "Capability has nothing to do with the category someone tried to sort you into.",
+  "category": "Equality",
+  "action": "Catch one assumption today about what you or someone else can't do because of a label, and challenge it with an action.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "lagaan-sapne",
+  "text": "Chhoti chhoti aankhein, aur bade bade sapne. Aur sapne wohi saakaar kar sakte hain, jo unhe dekhte hain.",
+  "author": "Bhuvan (Aamir Khan)",
+  "source": "Lagaan: Once Upon a Time in India (2001)",
+  "lesson": "Only the people willing to dream big in the first place ever get to make those dreams real.",
+  "category": "Vision",
+  "action": "Write down one dream you've shrunk to feel realistic, restore it to full size, and note the first move toward it.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "dch-ret",
+  "text": "Is ret ko jitna apne haath mein bandh karne ki koshish karoge, utni hi tezi se yeh phisal jaayegi.",
+  "author": "Siddharth 'Sid' Sinha (Akshaye Khanna)",
+  "source": "Dil Chahta Hai (2001)",
+  "lesson": "The harder you clutch at a person or outcome, the faster you tend to lose it.",
+  "category": "Acceptance",
+  "action": "Identify one thing you've been gripping too tightly and consciously loosen your hold on it for the rest of today.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "deadpoets-carpe",
+  "text": "Carpe diem. Seize the day, boys. Make your lives extraordinary.",
+  "author": "John Keating (Robin Williams)",
+  "source": "Dead Poets Society (1989)",
+  "lesson": "An ordinary life is a default you have to actively refuse, one day at a time.",
+  "category": "Seize",
+  "action": "Do one thing today that your future self would call extraordinary, however small, instead of coasting on autopilot.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "yoda-try",
+  "text": "Do. Or do not. There is no try.",
+  "author": "Master Yoda",
+  "source": "Star Wars: Episode V - The Empire Strikes Back (1980)",
+  "lesson": "Half-committing while calling it trying is just a softer way of not doing the thing.",
+  "category": "Commitment",
+  "action": "Take one goal you've been trying to do and commit to a specific action with a time today, then actually do it.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "coolhand-communicate",
+  "text": "What we've got here is failure to communicate.",
+  "author": "The Captain (Strother Martin)",
+  "source": "Cool Hand Luke (1967)",
+  "lesson": "Most conflicts are not disagreements but messages that never got clearly sent or received.",
+  "category": "Communication",
+  "action": "Pick one tense situation and send one plain message stating what you actually mean, with no hinting.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "forrest-chocolates",
+  "text": "My mama always said life was like a box of chocolates. You never know what you're gonna get.",
+  "author": "Forrest Gump (Tom Hanks)",
+  "source": "Forrest Gump (1994)",
+  "lesson": "You can't predict what each day hands you, so staying open beats demanding certainty.",
+  "category": "Uncertainty",
+  "action": "Say yes to one small unplanned thing today instead of insisting on knowing exactly how it'll go.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "vader-father",
+  "text": "No. I am your father.",
+  "author": "Darth Vader (David Prowse / voice James Earl Jones)",
+  "source": "Star Wars: Episode V - The Empire Strikes Back (1980)",
+  "lesson": "Some truths land hard, but facing them is the only way past the story you'd rather believe.",
+  "category": "Truth",
+  "action": "Name one uncomfortable truth about your situation you've been dodging, and write it down in one honest sentence.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "lotr-time",
+  "text": "All we have to decide is what to do with the time that is given us.",
+  "author": "Gandalf (Ian McKellen)",
+  "source": "The Lord of the Rings: The Fellowship of the Ring (2001)",
+  "lesson": "You don't get to choose your circumstances, only what you do with the time inside them.",
+  "category": "Time",
+  "action": "Stop wishing your situation were different for one minute and decide one useful thing to do with today's hours.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "batman-fall",
+  "text": "Why do we fall, sir? So that we can learn to pick ourselves up.",
+  "author": "Alfred Pennyworth (Michael Caine)",
+  "source": "Batman Begins (2005)",
+  "lesson": "The point of a setback is the practice it gives you at getting back up.",
+  "category": "Resilience",
+  "action": "Take one recent failure and write the single lesson it taught you, then apply that lesson to one action today.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "help-worth",
+  "text": "You is kind. You is smart. You is important.",
+  "author": "Aibileen Clark (Viola Davis)",
+  "source": "The Help (2011)",
+  "lesson": "Worth that you repeat to yourself often enough starts to become something you actually believe.",
+  "category": "Worth",
+  "action": "Tell yourself or someone who needs it three plain affirmations of worth today, and mean each one.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "shawshank-living",
+  "text": "Get busy living, or get busy dying.",
+  "author": "Andy Dufresne / Red (Tim Robbins / Morgan Freeman)",
+  "source": "The Shawshank Redemption (1994)",
+  "lesson": "Drifting without purpose is its own slow kind of giving up, so choose to actively live.",
+  "category": "Hope",
+  "action": "Pick one thing that makes you feel alive and schedule it into today, not someday.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "shawshank-hope",
+  "text": "Remember, Red, hope is a good thing, maybe the best of things, and no good thing ever dies.",
+  "author": "Andy Dufresne (Tim Robbins)",
+  "source": "The Shawshank Redemption (1994)",
+  "lesson": "Hope kept alive is what carries you through the stretches where nothing else does.",
+  "category": "Hope",
+  "action": "Write down one thing you're genuinely hopeful about and keep it somewhere you'll see it when today gets heavy.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "fewgoodmen-truth",
+  "text": "You can't handle the truth!",
+  "author": "Col. Nathan Jessup (Jack Nicholson)",
+  "source": "A Few Good Men (1992)",
+  "lesson": "Assuming others can't handle the truth is often an excuse for avoiding the discomfort of telling it.",
+  "category": "Truth",
+  "action": "Give one person the honest feedback you've been withholding because you assumed they couldn't take it.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "gwtw-damn",
+  "text": "Frankly, my dear, I don't give a damn.",
+  "author": "Rhett Butler (Clark Gable)",
+  "source": "Gone with the Wind (1939)",
+  "lesson": "There's freedom in finally refusing to keep pouring yourself into what no longer deserves it.",
+  "category": "Boundaries",
+  "action": "Identify one thing draining you that doesn't deserve your energy, and consciously stop giving it any today.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "mockingbird-empathy",
+  "text": "You never really understand a person until you consider things from his point of view. Until you climb into his skin and walk around in it.",
+  "author": "Atticus Finch (Gregory Peck)",
+  "source": "To Kill a Mockingbird (1962)",
+  "lesson": "You can't fairly judge anyone until you've genuinely tried to see the situation through their eyes.",
+  "category": "Empathy",
+  "action": "Pick someone who frustrated you recently and write two real reasons they might have acted that way.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "pursuit-dream",
+  "text": "Don't ever let somebody tell you you can't do something. Not even me. All right? You got a dream, you gotta protect it. People can't do something themselves, they wanna tell you you can't do it. If you want something, go get it. Period.",
+  "author": "Chris Gardner (Will Smith)",
+  "source": "The Pursuit of Happyness (2006)",
+  "lesson": "Other people's limits are theirs, not yours, so guard your goal from anyone who needs you to fail.",
+  "category": "Perseverance",
+  "action": "Note one doubt someone planted in you, decide whether it's actually true, and take one step toward your goal regardless.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "whiplash-goodjob",
+  "text": "There are no two words in the English language more harmful than 'good job.'",
+  "author": "Terence Fletcher (J.K. Simmons)",
+  "source": "Whiplash (2014)",
+  "lesson": "Settling for good enough can quietly cap how far you ever push yourself.",
+  "category": "Growth",
+  "action": "Take something you'd call 'good enough' today and spend 15 minutes making it genuinely better.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "darkknight-villain",
+  "text": "You either die a hero, or you live long enough to see yourself become the villain.",
+  "author": "Harvey Dent (Aaron Eckhart)",
+  "source": "The Dark Knight (2008)",
+  "lesson": "Staying good over time takes active vigilance, because slow drift is how good people become the thing they fought.",
+  "category": "Integrity",
+  "action": "Check one habit or compromise you've been excusing lately and ask honestly if it's drifting from who you want to be.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "oogway-present",
+  "text": "Yesterday is history, tomorrow is a mystery, but today is a gift. That is why it is called the present.",
+  "author": "Master Oogway",
+  "source": "Kung Fu Panda (2008)",
+  "lesson": "Today is the only stretch of time you can actually act in, which makes it the one that counts.",
+  "category": "Presence",
+  "action": "Put your phone down for ten minutes and give your full attention to whatever is in front of you right now.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "ratatouille-anywhere",
+  "text": "Not everyone can become a great artist, but a great artist can come from anywhere.",
+  "author": "Anton Ego (Peter O'Toole)",
+  "source": "Ratatouille (2007)",
+  "lesson": "Talent isn't confined to the people from the expected places or backgrounds.",
+  "category": "Potential",
+  "action": "Pursue one thing you've assumed wasn't for people like you, and take the first concrete step toward it today.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "matrix-door",
+  "text": "I'm trying to free your mind, Neo. But I can only show you the door. You're the one that has to walk through it.",
+  "author": "Morpheus (Laurence Fishburne)",
+  "source": "The Matrix (1999)",
+  "lesson": "Others can point the way, but the actual crossing is something only you can do.",
+  "category": "Agency",
+  "action": "Stop waiting for more advice on one decision and make the call yourself today, then act on it.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "interstellar-rage",
+  "text": "Do not go gentle into that good night. Old age should burn and rave at close of day. Rage, rage against the dying of the light.",
+  "author": "Professor Brand (Michael Caine), quoting Dylan Thomas",
+  "source": "Interstellar (2014)",
+  "lesson": "Some things are worth fighting for fiercely rather than accepting quietly.",
+  "category": "Defiance",
+  "action": "Pick one thing you've been passively letting slip away and push back on it with one bold action today.",
+  "genre": "Cinema"
+ },
+ {
+  "id": "gladiator-echoes",
+  "text": "Brothers, what we do in life echoes in eternity.",
+  "author": "Maximus (Russell Crowe)",
+  "source": "Gladiator (2000)",
+  "lesson": "Today's actions ripple far beyond the moment, so choose them as if they'll outlast you.",
+  "category": "Legacy",
+  "action": "Do one thing today you'd be proud to have remembered, and skip one you'd rather forget.",
+  "genre": "Cinema"
  }
 ]

@@ -33,6 +33,16 @@
     <p id="savedEmpty" class="empty" data-i18n="savedEmpty">Double-tap a quote, or tap ♡, to save it here.</p>
   </section>
 
+  <!-- BROWSE -->
+  <section id="browse" class="screen list-screen" hidden>
+    <h1 data-i18n="browseTitle">Browse</h1>
+    <div class="seg browse-seg" role="tablist">
+      <button data-browse="genre" data-i18n="byGenre">By genre</button>
+      <button data-browse="author" data-i18n="byAuthor">By author</button>
+    </div>
+    <div id="browseList" class="list"></div>
+  </section>
+
   <!-- SETTINGS -->
   <section id="settings" class="screen list-screen" hidden>
     <h1 data-i18n="settingsTitle">Settings</h1>
@@ -81,6 +91,10 @@
           <button class="font-opt" data-font="system" data-i18n="fontSystem">System</button>
           <button class="font-opt" data-font="mono" data-i18n="fontMono">Monospaced</button>
           <button class="font-opt" data-font="cursive">Snell&nbsp;Roundhand</button>
+          <button class="font-opt" data-font="playfair">Playfair Display</button>
+          <button class="font-opt" data-font="fraunces">Fraunces</button>
+          <button class="font-opt" data-font="cormorant">Cormorant</button>
+          <button class="font-opt" data-font="spectral">Spectral</button>
         </div>
         <div class="preview" id="fontPreview">The quick brown fox jumps over the lazy dog.</div>
       </div>
@@ -106,6 +120,7 @@
   <!-- BOTTOM TAB BAR -->
   <nav id="tabbar" class="tabbar">
     <button class="tab active" data-screen="reader" aria-label="Read">▤</button>
+    <button class="tab" data-screen="browse" aria-label="Browse">▦</button>
     <button class="tab" data-screen="saved" aria-label="Saved">★</button>
     <button class="tab" data-screen="settings" aria-label="Settings">⚙︎</button>
   </nav>

@@ -6,7 +6,8 @@ const ASSETS = [
   "./manifest.webmanifest",
   "./icons/icon-192.png", "./icons/icon-512.png",
   "./icons/icon-maskable-512.png", "./icons/apple-touch-icon.png", "./icons/qr.png",
-  "./i18n/es.json", "./i18n/hi.json", "./i18n/fr.json"
+  "./i18n/es.json", "./i18n/hi.json", "./i18n/fr.json",
+  "./fonts/PlayfairDisplay.woff2", "./fonts/Fraunces.woff2", "./fonts/Cormorant.woff2", "./fonts/Spectral-400.woff2", "./fonts/Spectral-600.woff2"
 ];
 
 self.addEventListener("install", (e) => {
