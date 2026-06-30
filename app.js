@@ -16,7 +16,7 @@ const state = {
   favorites: new Set(store.get("favorites", [])),
   notes: store.get("notes", {}),
   actions: store.get("actions", {}),   // "id::YYYY-MM-DD" -> ISO timestamp of the move
-  settings: store.get("settings", { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false, lang: "en" })
+  settings: store.get("settings", { appearance: "dark", font: "georgia", size: 20, reminders: false, remTime: "08:00", premium: false, lang: "en" })
 };
 if (!state.settings.lang) state.settings.lang = "en";
 
@@ -724,7 +724,7 @@ function bindSettings() {
   // premium (placeholder)
   $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); toast(t("tPremiumSoon")); };
   // reset
-  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "system", size: 20, reminders: false, remTime: "08:00", premium: false, lang: lang() }; saveSettings(); scheduleReminder(); };
+  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "georgia", size: 20, reminders: false, remTime: "08:00", premium: false, lang: lang() }; saveSettings(); scheduleReminder(); };
 
   syncSettingsUI();
 }
@@ -738,6 +738,7 @@ function applySettings() {
             : s.font === "fraunces" ? '"Fraunces",Georgia,serif'
             : s.font === "cormorant" ? '"Cormorant Garamond",Georgia,serif'
             : s.font === "spectral" ? '"Spectral",Georgia,serif'
+            : s.font === "georgia" ? 'Georgia, "Times New Roman", serif'
             : '-apple-system,system-ui,"Segoe UI",Roboto,sans-serif';
   document.documentElement.style.setProperty("--quote-font", fam);
   document.documentElement.style.setProperty("--quote-size", s.size + "px");

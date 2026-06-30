@@ -89,6 +89,7 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .font-opt[data-font="fraunces"]{font-family:"Fraunces",Georgia,serif;font-size:18px}
 .font-opt[data-font="cormorant"]{font-family:"Cormorant Garamond",Georgia,serif;font-size:21px}
 .font-opt[data-font="spectral"]{font-family:"Spectral",Georgia,serif;font-size:18px}
+.font-opt[data-font="georgia"]{font-family:Georgia,"Times New Roman",serif;font-size:19px}
 .font-opt.on::after{content:"  ✓";color:#0a84ff}
 .preview{margin-top:14px;padding:14px;border-radius:12px;background:rgba(127,127,127,.12);font-family:var(--quote-font);font-size:var(--quote-size)}
 
