@@ -500,6 +500,16 @@ function deleteNote(id) {
 // ---------- browse (by genre / by author) ----------
 const GENRE_ORDER = ["Stoicism", "Eastern Wisdom", "Building & Startups", "Systems & Science", "Strategy & Money", "Craft & Creativity", "Mind & Character", "Cinema"];
 let browseMode = "genre", browseSel = null;
+function openQuote(id) {
+  const idx = state.quotes.findIndex(q => q.id === id);
+  if (idx < 0) return;
+  state.current = idx;
+  showScreen("reader");
+  const feed = $("#feed"); const cards = $$(".quote", feed);
+  const pos = cards.findIndex(c => +c.dataset.i === idx);
+  if (pos >= 0) feed.scrollTo({ top: pos * feed.clientHeight, behavior: "auto" });
+  refreshActionBar();
+}
 function bindBrowse() {
   $$("[data-browse]").forEach(b => b.onclick = () => { browseMode = b.dataset.browse; browseSel = null; renderBrowse(); });
 }
@@ -511,8 +521,9 @@ function renderBrowse() {
     wrap.innerHTML =
       `<button type="button" class="browse-back" id="browseBack">${t("browseBack")}</button>` +
       `<div class="browse-head">${escapeHTML(browseSel)} · ${items.length}</div>` +
-      items.map(q => `<div class="item"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div></div>`).join("");
+      items.map(q => `<div class="item item-open" data-open="${escapeHTML(q.id)}"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div></div>`).join("");
     $("#browseBack").onclick = () => { browseSel = null; renderBrowse(); };
+    $$(".item-open", wrap).forEach(el => el.onclick = () => openQuote(el.dataset.open));
     wrap.scrollTop = 0;
     return;
   }
