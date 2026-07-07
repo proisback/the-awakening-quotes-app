@@ -11,8 +11,9 @@
   --quote-size:22px; --quote-font:"Fraunces",Georgia,serif;
   --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px);
 }
-html[data-theme="light"]{ --bg:#fff; --fg:#111; --muted:#8a8a8e; --card:#f3f3f5; --bg-grad:none; }
-@media (prefers-color-scheme: light){ html[data-theme="system"]{ --bg:#fff; --fg:#111; --card:#f3f3f5; --bg-grad:none; } }
+/* light = paper & ink, not spreadsheet white */
+html[data-theme="light"]{ --bg:#FAF7F2; --fg:#1D1912; --muted:#8A8378; --card:#F2EDE4; --bg-grad:none; }
+@media (prefers-color-scheme: light){ html[data-theme="system"]{ --bg:#FAF7F2; --fg:#1D1912; --muted:#8A8378; --card:#F2EDE4; --bg-grad:none; } }
 
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
