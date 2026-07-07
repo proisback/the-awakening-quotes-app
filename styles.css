@@ -99,7 +99,7 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .seg button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 
 .slider-row{display:flex;align-items:center;gap:12px;padding:6px 0 14px;font-size:20px}
-.slider-row input[type=range]{flex:1;accent-color:#0a84ff}
+.slider-row input[type=range]{flex:1;accent-color:var(--accent2)}
 .fonts{display:flex;flex-direction:column;gap:2px}
 .font-opt{text-align:left;padding:12px 4px;border-bottom:1px solid var(--line)}
 .font-opt[data-font="cursive"]{font-family:"Snell Roundhand","Brush Script MT",cursive;font-size:20px}
@@ -108,12 +108,12 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .font-opt[data-font="cormorant"]{font-family:"Cormorant Garamond",Georgia,serif;font-size:21px}
 .font-opt[data-font="spectral"]{font-family:"Spectral",Georgia,serif;font-size:18px}
 .font-opt[data-font="georgia"]{font-family:Georgia,"Times New Roman",serif;font-size:19px}
-.font-opt.on::after{content:"  ✓";color:#0a84ff}
+.font-opt.on::after{content:"  ✓";color:var(--accent2)}
 .preview{margin-top:14px;padding:14px;border-radius:12px;background:rgba(127,127,127,.12);font-family:var(--quote-font);font-size:var(--quote-size)}
 
 .switch-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0}
 .time-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-.time-row input,.switch-row input{accent-color:#0a84ff}
+.time-row input,.switch-row input{accent-color:var(--accent2)}
 .pill{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:600}
 .reset{display:block;width:100%;padding:16px;border-radius:16px;background:var(--card);color:var(--accent2);font-weight:600;margin:4px 0 14px}
 
