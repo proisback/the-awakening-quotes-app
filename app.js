@@ -140,6 +140,12 @@ function dayKey(d) {
 }
 
 // ---------- reader feed ----------
+// Genre → tint slug for the reader's ambient wash (styles.css .quote[data-g=...]).
+const GENRE_SLUG = {
+  "Stoicism": "stoic", "Eastern Wisdom": "eastern", "Building & Startups": "startup",
+  "Systems & Science": "science", "Strategy & Money": "money", "Craft & Creativity": "craft",
+  "Mind & Character": "mind", "Cinema": "cinema"
+};
 function renderFeed() {
   const feed = $("#feed");
   const di = dayIndex();
@@ -148,7 +154,7 @@ function renderFeed() {
   shuffle(rest);
   const rotated = state.quotes.length ? [{ q: state.quotes[di], i: di }, ...rest] : [];
   feed.innerHTML = rotated.map(({ q, i }) => `
-    <article class="quote" data-i="${i}">
+    <article class="quote" data-i="${i}" data-g="${GENRE_SLUG[q.genre] || ""}">
       <div class="inner">
         ${i === di ? `<span class="today-badge">${t("todayBadge")}</span>` : ""}
         <div class="qmark">&#8220;</div>

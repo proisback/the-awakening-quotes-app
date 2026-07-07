@@ -54,7 +54,19 @@ html[data-theme="light"] #reader::after{background:none}
 .feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
 .feed::-webkit-scrollbar{display:none}
 .quote{height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
-  padding:0 28px;padding-top:var(--safe-top);padding-bottom:calc(var(--safe-bottom) + 150px)}
+  padding:0 28px;padding-top:var(--safe-top);padding-bottom:calc(var(--safe-bottom) + 150px);
+  background:radial-gradient(85% 55% at 50% 32%, var(--tint, transparent), transparent 72%)}
+/* per-genre ambient wash — barely-there color that shifts as you scroll between genres */
+.quote[data-g="stoic"]{--tint:rgba(122,150,186,.07)}
+.quote[data-g="eastern"]{--tint:rgba(226,168,92,.06)}
+.quote[data-g="startup"]{--tint:rgba(88,196,186,.06)}
+.quote[data-g="science"]{--tint:rgba(118,196,232,.06)}
+.quote[data-g="money"]{--tint:rgba(122,188,122,.06)}
+.quote[data-g="craft"]{--tint:rgba(188,140,226,.06)}
+.quote[data-g="mind"]{--tint:rgba(238,142,152,.05)}
+.quote[data-g="cinema"]{--tint:rgba(134,122,255,.07)}
+html[data-theme="light"] .quote{background:none}
+@media (prefers-color-scheme: light){ html[data-theme="system"] .quote{background:none} }
 .quote .inner{width:100%;max-width:640px;margin:0 auto}
 .qmark{font-family:"Fraunces",Georgia,'Times New Roman',serif;font-size:calc(var(--quote-size) * 3.2);line-height:.5;height:.5em;color:var(--accent2);opacity:.85;margin-left:-0.05em;margin-bottom:16px}
 .quote .text{font-family:var(--quote-font);font-size:var(--quote-size);line-height:1.5;font-weight:500;letter-spacing:0;text-wrap:balance}
