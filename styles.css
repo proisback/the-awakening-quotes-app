@@ -4,17 +4,20 @@
 @font-face{font-family:"Spectral";src:url(fonts/Spectral-400.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Spectral";src:url(fonts/Spectral-600.woff2) format("woff2");font-weight:600;font-display:swap}
 :root{
-  --bg:#000; --fg:#fff; --muted:#8a8a8e; --card:#111114; --line:#26262b;
+  --bg:#0a0a0e; --fg:#f4f4f2; --muted:#8a8a8e; --card:#15151b;
+  --line:color-mix(in srgb, var(--fg) 12%, transparent);
+  --bg-grad:radial-gradient(140% 90% at 50% -20%, #17171f 0%, #0a0a0e 52%, #07070a 100%);
   --accent1:#FFA63D; --accent2:#FF5F6D;
   --quote-size:22px; --quote-font:"Fraunces",Georgia,serif;
   --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px);
 }
-html[data-theme="light"]{ --bg:#fff; --fg:#111; --muted:#8a8a8e; --card:#f3f3f5; --line:#e5e5ea; }
-@media (prefers-color-scheme: light){ html[data-theme="system"]{ --bg:#fff; --fg:#111; --card:#f3f3f5; --line:#e5e5ea; } }
+html[data-theme="light"]{ --bg:#fff; --fg:#111; --muted:#8a8a8e; --card:#f3f3f5; --bg-grad:none; }
+@media (prefers-color-scheme: light){ html[data-theme="system"]{ --bg:#fff; --fg:#111; --card:#f3f3f5; --bg-grad:none; } }
 
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
   font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:none;}
+body{background-image:var(--bg-grad)}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .muted{color:var(--muted)} .small{font-size:13px} .center{text-align:center}
 
@@ -39,6 +42,13 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .screen.active{display:block}
 
 /* READER */
+/* faint coral glow behind the quote + soft vignette at the edges (dark themes only) */
+#reader::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(52% 38% at 50% 42%, color-mix(in srgb, var(--accent2) 6%, transparent), transparent 70%),
+    radial-gradient(125% 95% at 50% 50%, transparent 62%, rgba(0,0,0,.35) 100%)}
+html[data-theme="light"] #reader::after{background:none}
+@media (prefers-color-scheme: light){ html[data-theme="system"] #reader::after{background:none} }
 .feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
 .feed::-webkit-scrollbar{display:none}
 .quote{height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
@@ -73,12 +83,12 @@ body.immersive .meta{opacity:0;pointer-events:none}
 /* LIST SCREENS */
 .list-screen{padding:calc(var(--safe-top) + 16px) 18px calc(96px + var(--safe-bottom))}
 .list-screen h1{font-size:30px;margin:8px 4px 18px}
-.list .item{padding:16px;border-radius:16px;background:var(--card);margin-bottom:12px}
+.list .item{padding:16px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:12px}
 .list .item .t{font-size:16px;font-family:var(--quote-font);line-height:1.45} .list .item .a{color:var(--muted);font-size:13px;margin-top:6px}
 .empty{color:var(--muted);text-align:center;margin-top:60px}
 
 /* SETTINGS */
-.card{background:var(--card);border-radius:18px;margin-bottom:14px;overflow:hidden}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden}
 .row{display:flex;align-items:center;gap:14px;padding:18px}
 .row .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(127,127,127,.18);font-weight:700}
 .row-main{flex:1}
@@ -140,7 +150,7 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .browse-search::placeholder{color:var(--muted)}
 .browse-search:focus{outline:none;border-color:var(--accent2)}
 .browse-seg{margin:0 0 16px}
-.browse-group{display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px;border-radius:14px;background:var(--card);margin-bottom:10px;text-align:left}
+.browse-group{display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px;border-radius:14px;background:var(--card);border:1px solid var(--line);margin-bottom:10px;text-align:left}
 .browse-group .bg-name{font-size:16px;font-weight:600}
 .browse-group .bg-count{font-size:13px;color:var(--muted);background:rgba(127,127,127,.16);border-radius:999px;padding:2px 11px;flex:none;margin-left:12px}
 .browse-group:active{background:rgba(127,127,127,.22)}
@@ -171,7 +181,7 @@ body.immersive .surprise{opacity:0;pointer-events:none}
 .share-opt:active{background:rgba(127,127,127,.22)}
 
 /* sheets + toast */
-dialog{border:none;border-radius:18px;background:var(--card);color:var(--fg);width:min(92vw,420px);padding:20px}
+dialog{border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--fg);width:min(92vw,420px);padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
 dialog::backdrop{background:rgba(0,0,0,.5)}
 dialog textarea{width:100%;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:10px;margin-top:8px}
 .sheet-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
