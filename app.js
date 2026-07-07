@@ -800,8 +800,13 @@ function bindSettings() {
     }
     saveSettings();
     scheduleReminder();
+    if (state.settings.reminders) {                               // one-shot bell ring when armed
+      const ic = $('[data-toggle="reminders"] .ic');
+      if (ic) { ic.classList.remove("ring"); void ic.offsetWidth; ic.classList.add("ring"); ic.onanimationend = () => ic.classList.remove("ring"); }
+    }
   };
   $("#remTime").onchange = (e) => { state.settings.remTime = e.target.value; saveSettings(); scheduleReminder(); };
+  $("#remTime").onclick = (e) => { try { e.target.showPicker(); } catch (_) {} }; // desktop: open the clock dropdown (indicator is hidden)
   // share streak
   const ssb = $("#shareStreakBtn"); if (ssb) ssb.onclick = shareStreak;
   // premium
@@ -842,6 +847,7 @@ function syncSettingsUI() {
   $$(".font-opt").forEach(b => b.classList.toggle("on", b.dataset.font === s.font));
   $("#sizeRange").value = s.size; $("#sizeVal").textContent = s.size;
   $("#remToggle").checked = s.reminders; $("#remTime").value = s.remTime;
+  const remCard = $("#remToggle").closest(".card"); if (remCard) remCard.classList.toggle("rem-on", s.reminders);
   $("#remNote").textContent = t("remNote");
   const ln = $("#langNote"); if (ln) ln.textContent = t("langNote");
 }

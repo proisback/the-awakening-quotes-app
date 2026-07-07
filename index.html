@@ -36,6 +36,7 @@
     <symbol id="i-x" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></symbol>
     <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></symbol>
   </svg>
 
   <!-- First-open moment: brand splash that fades into the reader -->
@@ -154,9 +155,11 @@
     <div class="card">
       <div class="row" data-toggle="reminders"><span class="ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-bell"/></svg></span><div class="row-main"><strong data-i18n="reminders">Reminders</strong><div class="muted small" data-i18n="remindersSub">Daily quote reminder</div></div><span class="chev"><svg class="ic-svg" aria-hidden="true"><use href="#i-chev"/></svg></span></div>
       <div class="expand" id="reminders">
-        <label class="switch-row"><span data-i18n="enableReminders">Enable reminders</span> <input type="checkbox" id="remToggle" /></label>
-        <label class="time-row"><span data-i18n="timeLabel">Time</span> <input type="time" id="remTime" value="08:00" /></label>
-        <p class="muted small" id="remNote"></p>
+        <label class="switch-row"><span data-i18n="enableReminders">Enable reminders</span> <span class="switch"><input type="checkbox" id="remToggle" /><span class="knob" aria-hidden="true"></span></span></label>
+        <div class="rem-details"><div class="rem-details-in">
+          <label class="time-row"><span data-i18n="timeLabel">Time</span> <span class="time-pill"><svg class="ic-svg" aria-hidden="true"><use href="#i-clock"/></svg><input type="time" id="remTime" value="08:00" /></span></label>
+          <p class="muted small" id="remNote"></p>
+        </div></div>
       </div>
     </div>
 
