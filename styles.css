@@ -25,7 +25,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .ic-svg{width:1em;height:1em;display:block;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
 .ic-fill{fill:currentColor;stroke:none}
 .tab .ic-svg{margin:0 auto}
-.act{display:grid;place-items:center;width:46px;height:46px;border-radius:50%}
+.act{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;transition:transform .15s,color .2s}
+.act:active{transform:scale(.85)}
 #favBtn.on .ic-heart{fill:currentColor}
 .act .ic-stop{display:none}
 .act.on .ic-stop{display:block}
@@ -39,7 +40,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .flame .ic-svg{display:inline-block;vertical-align:-3px;width:17px;height:17px;color:var(--accent1)}
 
 .screen{display:none}
-.screen.active{display:block}
+.screen.active{display:block;animation:screenIn .24s cubic-bezier(.16,.68,.3,1)}
+@keyframes screenIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* READER */
 /* faint coral glow behind the quote + soft vignette at the edges (dark themes only) */
@@ -131,8 +133,21 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .tabbar{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;
   height:calc(60px + var(--safe-bottom));padding-bottom:var(--safe-bottom);
   background:color-mix(in srgb,var(--bg) 86%, transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);font-size:22px}
-.tab{opacity:.5;padding:10px 24px}
+.tab{opacity:.5;padding:10px 24px;transition:opacity .2s,transform .15s}
+.tab:active{transform:scale(.85)}
 .tab.active{opacity:1}
+
+/* motion — entrances + press feedback */
+dialog[open]{animation:sheetIn .22s cubic-bezier(.16,.68,.3,1)}
+@keyframes sheetIn{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.toast{animation:toastIn .2s ease}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,10px)}}
+.pill,.todo-done{transition:transform .15s,background .15s,color .15s}
+.pill:active,.todo-done:active{transform:scale(.96)}
+@media (prefers-reduced-motion: reduce){
+  .screen.active,dialog[open],.toast,.heart-pop.show{animation:none}
+  .tab,.act,.pill,.todo-done{transition:none}
+}
 
 /* notes in saved */
 .list .item .note{display:flex;align-items:flex-start;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
@@ -162,7 +177,7 @@ body.immersive .meta{opacity:0;pointer-events:none}
 
 /* surprise me */
 .surprise{position:fixed;top:calc(var(--safe-top) + 14px);right:14px;z-index:6;width:42px;height:42px;border-radius:50%;background:color-mix(in srgb,var(--bg) 68%, transparent);backdrop-filter:blur(10px);border:1px solid var(--line);font-size:20px;line-height:1;color:var(--fg);display:grid;place-items:center;transition:opacity .25s,transform .2s}
-.surprise:active{transform:rotate(180deg)}
+.surprise:active{transform:scale(.88)}
 body.immersive .surprise{opacity:0;pointer-events:none}
 
 /* today's move (practice loop) */
