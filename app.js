@@ -16,7 +16,7 @@ const state = {
   favorites: new Set(store.get("favorites", [])),
   notes: store.get("notes", {}),
   actions: store.get("actions", {}),   // "id::YYYY-MM-DD" -> ISO timestamp of the move
-  settings: store.get("settings", { appearance: "dark", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: "en" })
+  settings: store.get("settings", { appearance: "dark", skin: "", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: "en" })
 };
 if (!state.settings.lang) state.settings.lang = "en";
 
@@ -57,7 +57,13 @@ const I18N = {
     tRemUnsupported: "Reminders aren't supported on this browser",
     tNoTTS: "Read aloud isn't supported on this browser",
     tPremiumSoon: "Premium / widgets: coming soon",
-    browseTitle: "Browse", byGenre: "By genre", byAuthor: "By author", browseBack: "← Back", searchPh: "Search quotes, authors…", resultOne: "result", resultMany: "results", noResults: "No matches"
+    browseTitle: "Browse", byGenre: "By genre", byAuthor: "By author", browseBack: "← Back", searchPh: "Search quotes, authors…", resultOne: "result", resultMany: "results", noResults: "No matches",
+    skins: "Themes",
+    pwSub: "Own the full editorial experience.",
+    pwFeatThemes: "All theme packs — Dawn, Ink, Forest",
+    pwFeatFonts: "The complete font library",
+    pwFeatFuture: "Every future pack, included",
+    pwCta: "Coming soon", pwLater: "Maybe later"
   }
 };
 function lang() { return state.settings.lang || "en"; }
@@ -765,8 +771,17 @@ function bindSettings() {
   $$("[data-lang]").forEach(b => b.onclick = () => applyLanguage(b.dataset.lang));
   // appearance
   $$("[data-appearance]").forEach(b => b.onclick = () => { state.settings.appearance = b.dataset.appearance; saveSettings(); });
-  // fonts
-  $$(".font-opt").forEach(b => b.onclick = () => { state.settings.font = b.dataset.font; saveSettings(); });
+  // theme packs (skins) — premium ones open the paywall until unlocked
+  $$(".skin").forEach(b => b.onclick = () => {
+    const sk = b.dataset.skin;
+    if (PREMIUM_SKINS.has(sk) && !state.settings.premium) { openPaywall(); return; }
+    state.settings.skin = sk === "noir" ? "" : sk; saveSettings();
+  });
+  // fonts — premium faces open the paywall until unlocked
+  $$(".font-opt").forEach(b => b.onclick = () => {
+    if (PREMIUM_FONTS.has(b.dataset.font) && !state.settings.premium) { openPaywall(); return; }
+    state.settings.font = b.dataset.font; saveSettings();
+  });
   // size
   $("#sizeRange").oninput = (e) => { state.settings.size = +e.target.value; saveSettings(); };
   // reminders
@@ -789,17 +804,25 @@ function bindSettings() {
   $("#remTime").onchange = (e) => { state.settings.remTime = e.target.value; saveSettings(); scheduleReminder(); };
   // share streak
   const ssb = $("#shareStreakBtn"); if (ssb) ssb.onclick = shareStreak;
-  // premium (placeholder)
-  $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); toast(t("tPremiumSoon")); };
+  // premium
+  $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); openPaywall(); };
+  const cta = $("#pwCta"); if (cta) cta.onclick = () => toast(t("tPremiumSoon"));
   // reset
-  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: lang() }; saveSettings(); scheduleReminder(); };
+  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", skin: "", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: lang() }; saveSettings(); scheduleReminder(); };
 
   syncSettingsUI();
 }
+// Premium gates — checked against state.settings.premium before applying.
+const PREMIUM_SKINS = new Set(["dawn", "ink", "forest"]);
+const PREMIUM_FONTS = new Set(["playfair", "cormorant", "spectral"]);
+function openPaywall() { const d = $("#paywall"); if (d) d.showModal(); }
+
 function saveSettings() { store.set("settings", state.settings); applySettings(); syncSettingsUI(); }
 function applySettings() {
   const s = state.settings;
   document.documentElement.dataset.theme = s.appearance;
+  if (s.skin) document.documentElement.dataset.skin = s.skin; else delete document.documentElement.dataset.skin;
+  document.documentElement.dataset.premium = s.premium ? "1" : "0";
   const fam = s.font === "mono" ? 'ui-monospace,Menlo,Consolas,monospace'
             : s.font === "cursive" ? '"Snell Roundhand","Brush Script MT",cursive'
             : s.font === "playfair" ? '"Playfair Display",Georgia,serif'
@@ -815,6 +838,7 @@ function syncSettingsUI() {
   const s = state.settings;
   $$("[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang === lang()));
   $$("[data-appearance]").forEach(b => b.classList.toggle("on", b.dataset.appearance === s.appearance));
+  $$(".skin").forEach(b => b.classList.toggle("on", (s.skin || "noir") === b.dataset.skin));
   $$(".font-opt").forEach(b => b.classList.toggle("on", b.dataset.font === s.font));
   $("#sizeRange").value = s.size; $("#sizeVal").textContent = s.size;
   $("#remToggle").checked = s.reminders; $("#remTime").value = s.remTime;

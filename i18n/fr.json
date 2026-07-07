@@ -72,7 +72,14 @@
   "searchPh": "Rechercher citations, auteurs…",
   "resultOne": "résultat",
   "resultMany": "résultats",
-  "noResults": "Aucun résultat"
+  "noResults": "Aucun résultat",
+  "skins": "Thèmes",
+  "pwSub": "Débloquez toute l'expérience éditoriale.",
+  "pwFeatThemes": "Tous les packs de thèmes — Dawn, Ink, Forest",
+  "pwFeatFonts": "Toute la bibliothèque de polices",
+  "pwFeatFuture": "Chaque futur pack, inclus",
+  "pwCta": "Bientôt disponible",
+  "pwLater": "Peut-être plus tard"
  },
  "chanakya-friend": {
   "text": "Il y a un intérêt personnel derrière chaque amitié. Il n'existe pas d'amitié sans intérêt personnel. C'est une vérité amère.",

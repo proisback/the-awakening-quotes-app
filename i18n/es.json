@@ -72,7 +72,14 @@
   "searchPh": "Buscar citas, autores…",
   "resultOne": "resultado",
   "resultMany": "resultados",
-  "noResults": "Sin resultados"
+  "noResults": "Sin resultados",
+  "skins": "Temas",
+  "pwSub": "Desbloquea la experiencia editorial completa.",
+  "pwFeatThemes": "Todos los packs de temas — Dawn, Ink, Forest",
+  "pwFeatFonts": "La biblioteca de fuentes completa",
+  "pwFeatFuture": "Cada pack futuro, incluido",
+  "pwCta": "Muy pronto",
+  "pwLater": "Quizá más tarde"
  },
  "chanakya-friend": {
   "text": "Detrás de toda amistad hay algún interés propio. No existe amistad sin intereses propios. Esta es una verdad amarga.",
