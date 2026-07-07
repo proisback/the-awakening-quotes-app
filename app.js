@@ -16,7 +16,7 @@ const state = {
   favorites: new Set(store.get("favorites", [])),
   notes: store.get("notes", {}),
   actions: store.get("actions", {}),   // "id::YYYY-MM-DD" -> ISO timestamp of the move
-  settings: store.get("settings", { appearance: "dark", font: "georgia", size: 20, reminders: false, remTime: "08:00", premium: false, lang: "en" })
+  settings: store.get("settings", { appearance: "dark", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: "en" })
 };
 if (!state.settings.lang) state.settings.lang = "en";
 
@@ -784,7 +784,7 @@ function bindSettings() {
   // premium (placeholder)
   $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); toast(t("tPremiumSoon")); };
   // reset
-  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "georgia", size: 20, reminders: false, remTime: "08:00", premium: false, lang: lang() }; saveSettings(); scheduleReminder(); };
+  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: lang() }; saveSettings(); scheduleReminder(); };
 
   syncSettingsUI();
 }
