@@ -99,6 +99,8 @@ async function applyLanguage(lng) {
 init();
 async function init() {
   applySettings();
+  // First-open splash cleans itself out of the DOM once its exit animation is done.
+  setTimeout(() => { const s = $("#splash"); if (s) s.remove(); }, 2000);
   try {
     const res = await fetch("quotes.json");
     state.quotes = await res.json();

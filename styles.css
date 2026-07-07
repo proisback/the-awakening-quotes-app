@@ -43,6 +43,14 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .screen.active{display:block;animation:screenIn .24s cubic-bezier(.16,.68,.3,1)}
 @keyframes screenIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
+/* first-open moment — wordmark rises, then the whole veil fades to the reader */
+#splash{position:fixed;inset:0;z-index:99;display:grid;place-items:center;background:var(--bg);pointer-events:none;animation:splashOut .5s ease 1.3s forwards}
+.splash-mark{display:flex;align-items:baseline;gap:6px;font-family:"Fraunces",Georgia,serif;font-size:36px;font-weight:600;letter-spacing:.01em;opacity:0;transform:translateY(14px);animation:splashIn .7s cubic-bezier(.16,.68,.3,1) .15s forwards}
+.splash-q{color:var(--accent2);font-size:1.35em;line-height:0;transform:translateY(.18em)}
+@keyframes splashIn{to{opacity:1;transform:none}}
+@keyframes splashOut{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion: reduce){#splash{display:none}}
+
 /* READER */
 /* faint coral glow behind the quote + soft vignette at the edges (dark themes only) */
 #reader::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
