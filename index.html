@@ -137,13 +137,14 @@
       <div class="expand" id="typography">
         <label class="slider-row">Aa <input type="range" id="sizeRange" min="14" max="34" step="1" /> <span id="sizeVal">20</span></label>
         <div class="fonts">
-          <button class="font-opt" data-font="system" data-i18n="fontSystem">System</button>
+          <!-- available faces first (A→Z), then premium locked faces (A→Z) -->
+          <button class="font-opt" data-font="fraunces">Fraunces</button>
           <button class="font-opt" data-font="georgia">Georgia</button>
           <button class="font-opt" data-font="mono" data-i18n="fontMono">Monospaced</button>
           <button class="font-opt" data-font="cursive">Snell&nbsp;Roundhand</button>
-          <button class="font-opt" data-font="playfair">Playfair Display<svg class="ic-svg lock" aria-hidden="true"><use href="#i-lock"/></svg></button>
-          <button class="font-opt" data-font="fraunces">Fraunces</button>
+          <button class="font-opt" data-font="system" data-i18n="fontSystem">System</button>
           <button class="font-opt" data-font="cormorant">Cormorant<svg class="ic-svg lock" aria-hidden="true"><use href="#i-lock"/></svg></button>
+          <button class="font-opt" data-font="playfair">Playfair Display<svg class="ic-svg lock" aria-hidden="true"><use href="#i-lock"/></svg></button>
           <button class="font-opt" data-font="spectral">Spectral<svg class="ic-svg lock" aria-hidden="true"><use href="#i-lock"/></svg></button>
         </div>
         <div class="preview" id="fontPreview">The quick brown fox jumps over the lazy dog.</div>

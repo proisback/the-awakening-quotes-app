@@ -125,7 +125,7 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .chev{color:var(--muted);transition:transform .2s}
 .card.open .chev{transform:rotate(180deg)}
 .expand{max-height:0;overflow:hidden;transition:max-height .28s ease;padding:0 18px}
-.card.open .expand{max-height:420px;padding:0 18px 18px}
+.card.open .expand{max-height:820px;padding:0 18px 18px}
 
 .streak{padding:18px}
 .streak-top{display:flex;align-items:center;gap:18px}
