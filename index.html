@@ -75,10 +75,21 @@
 
     <div class="card streak">
       <div class="streak-top">
-        <div><span class="flame"><svg class="ic-svg" aria-hidden="true"><use href="#i-flame"/></svg></span> <span data-i18n="streak">STREAK</span><br /><strong id="streakDays">1 day</strong></div>
-        <div class="streak-pct"><strong id="streakPct">14%</strong><br /><span id="streakLevel" class="muted">Level 1 — to 7</span></div>
+        <div class="ring-wrap" aria-hidden="true">
+          <svg class="ring" viewBox="0 0 76 76">
+            <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFA63D"/><stop offset="1" stop-color="#FF5F6D"/></linearGradient></defs>
+            <circle class="ring-track" cx="38" cy="38" r="32"/>
+            <circle class="ring-fill" id="streakRing" cx="38" cy="38" r="32"/>
+          </svg>
+          <span class="ring-center"><svg class="ic-svg" aria-hidden="true"><use href="#i-flame"/></svg></span>
+        </div>
+        <div class="streak-main">
+          <span class="kicker" data-i18n="streak">STREAK</span>
+          <strong id="streakDays">1 day</strong>
+          <span id="streakLevel" class="muted small">Level 1 — to 7</span>
+        </div>
       </div>
-      <div class="bar"><div id="streakBar" class="bar-fill"></div></div>
+      <div class="seals" id="streakSeals" aria-hidden="true"></div>
       <div class="muted small" id="streakNext">Next milestone in 6 days</div>
       <div class="muted small" id="streakFreeze"></div>
       <div class="muted small" id="actionsStat"></div>

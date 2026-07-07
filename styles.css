@@ -37,7 +37,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .share-ic .ic-svg{width:20px;height:20px;margin:0 auto}
 .note-del .ic-svg{width:14px;height:14px}
 .surprise .ic-svg{width:18px;height:18px}
-.flame .ic-svg{display:inline-block;vertical-align:-3px;width:17px;height:17px;color:var(--accent1)}
 
 .screen{display:none}
 .screen.active{display:block;animation:screenIn .24s cubic-bezier(.16,.68,.3,1)}
@@ -99,12 +98,19 @@ body.immersive .meta{opacity:0;pointer-events:none}
 .expand{max-height:0;overflow:hidden;transition:max-height .28s ease;padding:0 18px}
 .card.open .expand{max-height:420px;padding:0 18px 18px}
 
-.streak{padding:18px;background:linear-gradient(120deg,var(--card),var(--card))}
-.streak-top{display:flex;justify-content:space-between;align-items:flex-start;line-height:1.5}
-.streak-top strong{font-size:22px}
-.streak-pct{text-align:right}
-.bar{height:8px;border-radius:8px;background:rgba(127,127,127,.25);margin:14px 0 8px;overflow:hidden}
-.bar-fill{height:100%;width:14%;border-radius:8px;background:linear-gradient(90deg,var(--accent1),var(--accent2))}
+.streak{padding:18px}
+.streak-top{display:flex;align-items:center;gap:18px}
+.streak-main{display:flex;flex-direction:column;gap:2px}
+.streak-main strong{font-size:24px;line-height:1.2}
+.ring-wrap{position:relative;width:76px;height:76px;flex:none}
+.ring{width:76px;height:76px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:6}
+.ring-track{stroke:color-mix(in srgb, var(--fg) 12%, transparent)}
+.ring-fill{stroke:url(#ringGrad);stroke-linecap:round;stroke-dasharray:201.06;stroke-dashoffset:201.06;transition:stroke-dashoffset .6s cubic-bezier(.16,.68,.3,1)}
+.ring-center{position:absolute;inset:0;display:grid;place-items:center;color:var(--accent1);font-size:22px}
+.seals{display:flex;gap:8px;margin:16px 0 10px}
+.seal{width:10px;height:10px;border-radius:50%;background:color-mix(in srgb, var(--fg) 14%, transparent)}
+.seal.on{background:linear-gradient(135deg,var(--accent1),var(--accent2))}
 
 .seg{display:flex;gap:10px;justify-content:center;padding-top:6px}
 .seg button{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600}

@@ -867,9 +867,14 @@ function computeStreak() {
   const pct = Math.round((dayInLevel / milestone) * 100);
   const dEl = $("#streakDays"); if (!dEl) return;
   dEl.textContent = (data.count === 1 ? t("dayOne") : t("dayMany")).replace("{n}", data.count);
-  $("#streakPct").textContent = pct + "%";
   $("#streakLevel").textContent = t("levelTo").replace("{level}", level).replace("{m}", milestone);
-  $("#streakBar").style.width = pct + "%";
+  const ring = $("#streakRing");
+  if (ring) {
+    const C = 2 * Math.PI * 32;                          // matches r="32" in the ring SVG
+    ring.style.strokeDashoffset = String(C * (1 - pct / 100));
+  }
+  const seals = $("#streakSeals");
+  if (seals) seals.innerHTML = Array.from({ length: milestone }, (_, i) => `<span class="seal${i < dayInLevel ? " on" : ""}"></span>`).join("");
   const left = milestone - dayInLevel;
   $("#streakNext").textContent = left === 0 ? t("milestoneReached")
     : (left === 1 ? t("nextMilestone") : t("nextMilestoneN")).replace("{n}", left);
