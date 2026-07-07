@@ -18,6 +18,23 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .muted{color:var(--muted)} .small{font-size:13px} .center{text-align:center}
 
+/* inline SVG icon system — stroke icons inherit currentColor, size via em/explicit */
+.ic-svg{width:1em;height:1em;display:block;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.ic-fill{fill:currentColor;stroke:none}
+.tab .ic-svg{margin:0 auto}
+.act{display:grid;place-items:center;width:46px;height:46px;border-radius:50%}
+#favBtn.on .ic-heart{fill:currentColor}
+.act .ic-stop{display:none}
+.act.on .ic-stop{display:block}
+.act.on .ic-vol{display:none}
+.heart-pop svg{width:120px;height:120px;fill:currentColor;stroke:none}
+.row .ic .ic-svg{width:18px;height:18px}
+.chev .ic-svg{width:18px;height:18px}
+.share-ic .ic-svg{width:20px;height:20px;margin:0 auto}
+.note-del .ic-svg{width:14px;height:14px}
+.surprise .ic-svg{width:18px;height:18px}
+.flame .ic-svg{display:inline-block;vertical-align:-3px;width:17px;height:17px;color:var(--accent1)}
+
 .screen{display:none}
 .screen.active{display:block}
 

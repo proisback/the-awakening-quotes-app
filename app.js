@@ -250,8 +250,7 @@ function bindActions() {
 }
 function refreshActionBar() {
   const q = currentQuote(); if (!q) return;
-  $("#favBtn").textContent = state.favorites.has(q.id) ? "♥" : "♡";
-  $("#favBtn").classList.toggle("on", state.favorites.has(q.id));
+  $("#favBtn").classList.toggle("on", state.favorites.has(q.id));   // .on fills the heart via CSS
   $("#noteBtn").classList.toggle("on", hasNote(q.id));
 }
 function toggleFavorite() {
@@ -263,7 +262,8 @@ function toggleFavorite() {
 function favoriteWithPop() {
   const q = currentQuote(); if (!q) return;
   if (!state.favorites.has(q.id)) {
-    const pop = document.createElement("div"); pop.className = "heart-pop show"; pop.textContent = "♥";
+    const pop = document.createElement("div"); pop.className = "heart-pop show";
+    pop.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg>';
     document.body.appendChild(pop); setTimeout(() => pop.remove(), 700);
   }
   toggleFavorite();
@@ -279,8 +279,7 @@ const TTS_LANG = { en: "en-US", hi: "hi-IN", es: "es-ES", fr: "fr-FR" };
 let _speaking = false;
 function setSpeakBtn(on) {
   const b = $("#speakBtn"); if (!b) return;
-  b.textContent = on ? "⏹" : "🔊";
-  b.classList.toggle("on", on);
+  b.classList.toggle("on", on);                 // .on swaps the volume/stop SVGs via CSS
 }
 // Stop any ongoing speech (called on quote change / screen change / re-tap).
 function stopSpeech() {
@@ -681,7 +680,7 @@ function renderSaved() {
   $("#savedEmpty").hidden = items.length > 0;
   wrap.innerHTML = items.map(q => {
     const note = hasNote(q.id)
-      ? `<div class="note"><span class="kicker">${t("noteLabel")}</span><span class="note-text">${escapeHTML(state.notes[q.id])}</span><button class="note-del" data-del="${escapeHTML(q.id)}" aria-label="Delete note">✕</button></div>`
+      ? `<div class="note"><span class="kicker">${t("noteLabel")}</span><span class="note-text">${escapeHTML(state.notes[q.id])}</span><button class="note-del" data-del="${escapeHTML(q.id)}" aria-label="Delete note"><svg class="ic-svg" aria-hidden="true"><use href="#i-x"/></svg></button></div>`
       : "";
     return `<div class="item"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div>${note}</div>`;
   }).join("");
