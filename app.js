@@ -10,6 +10,24 @@ const store = {
 
 const SITE = "the-awakening-quotes.netlify.app";
 
+// ---------- analytics (privacy-first: no cookies, no IDs, respects DNT) ----------
+// Local day-counters always (inspect via hitaarthStats() in the console). Remote aggregation
+// pings GoatCounter only once GC_SITE is set — free account, code goes here, nothing else.
+const GC_SITE = "";                            // e.g. "hitaarth" → hitaarth.goatcounter.com
+function track(ev) {
+  try {
+    const s = store.get("stats", {});
+    const day = dayKey();
+    (s[day] = s[day] || {})[ev] = (s[day][ev] || 0) + 1;
+    const days = Object.keys(s).sort();        // keep the last 30 days only
+    while (days.length > 30) delete s[days.shift()];
+    store.set("stats", s);
+    if (!GC_SITE || navigator.doNotTrack === "1" || location.hostname === "localhost") return;
+    new Image().src = `https://${GC_SITE}.goatcounter.com/count?p=${encodeURIComponent("/e/" + ev)}&t=${encodeURIComponent(ev)}`;
+  } catch {}
+}
+window.hitaarthStats = () => store.get("stats", {});
+
 const state = {
   quotes: [],
   current: 0,
@@ -37,7 +55,7 @@ const I18N = {
     premium: "Get Premium", premiumSub: "Unlock widgets & packs", unlock: "Unlock",
     reset: "↺ Reset to defaults", privacy: "Hitaarth · your data stays on this device",
     noteTitle: "Your note", notePh: "A thought on this quote…", cancel: "Cancel", save: "Save",
-    shareTitle: "Share quote", saveImageBig: "Big image — full card", saveImageSmall: "Small image — quote only", shareTextOpt: "Share as text",
+    shareTitle: "Share quote", saveImageStatus: "Status image — WhatsApp story", saveImageBig: "Big image — full card", saveImageSmall: "Small image — quote only", shareTextOpt: "Share as text",
     lessonLabel: "Lesson", moveLabel: "Today's move", sourceLabel: "Source", noteLabel: "Note",
     todayBadge: "Today's idea", didIt: "Did it", doneToday: "✓ Done today", translated: "translated",
     dayOne: "{n} day", dayMany: "{n} days",
@@ -105,6 +123,8 @@ async function applyLanguage(lng) {
 init();
 async function init() {
   applySettings();
+  track("open");
+  window.addEventListener("appinstalled", () => track("install"));
   // First-open splash cleans itself out of the DOM once its exit animation is done.
   setTimeout(() => { const s = $("#splash"); if (s) s.remove(); }, 2000);
   try {
@@ -183,7 +203,7 @@ function renderFeed() {
     entries.forEach(e => {
       if (e.isIntersecting) {
         const i = +e.target.dataset.i;
-        if (i !== state.current) stopSpeech();   // never read a stale quote
+        if (i !== state.current) { stopSpeech(); track("read"); }   // never read a stale quote
         state.current = i; refreshActionBar();
       }
     });
@@ -205,6 +225,7 @@ function toggleActionDone(btn) {
     state.actions[key] = new Date().toISOString();
     btn.classList.add("on"); btn.textContent = t("doneToday");
     toast(t("tMoveLogged"));
+    track("did-it");
   }
   store.set("actions", state.actions);
   updateActionsStat(); haptic();
@@ -269,7 +290,7 @@ function refreshActionBar() {
 }
 function toggleFavorite() {
   const q = currentQuote(); if (!q) return;
-  if (state.favorites.has(q.id)) state.favorites.delete(q.id); else state.favorites.add(q.id);
+  if (state.favorites.has(q.id)) state.favorites.delete(q.id); else { state.favorites.add(q.id); track("save"); }
   store.set("favorites", [...state.favorites]);
   refreshActionBar(); renderSaved(); haptic();
 }
@@ -337,17 +358,22 @@ function quoteShareText(q) { return `${tq(q, "text")}\n— ${q.author}\n\nvia Hi
 function openShareMenu() {
   const q = currentQuote(); if (!q) return;
   const dlg = $("#shareSheet");
-  $("#shareImageFullBtn").onclick = () => { dlg.close(); saveQuoteImage(true); };
-  $("#shareImageBtn").onclick = () => { dlg.close(); saveQuoteImage(false); };
-  $("#shareTextBtn").onclick = () => { dlg.close(); shareText(); };
+  $("#shareStatusBtn").onclick = () => { dlg.close(); track("share-status"); saveQuoteImage("status"); };
+  $("#shareImageFullBtn").onclick = () => { dlg.close(); track("share-card-full"); saveQuoteImage("full"); };
+  $("#shareImageBtn").onclick = () => { dlg.close(); track("share-card-small"); saveQuoteImage("small"); };
+  $("#shareTextBtn").onclick = () => { dlg.close(); track("share-text"); shareText(); };
   dlg.showModal();
 }
-async function saveQuoteImage(full) {
+async function saveQuoteImage(mode) {
   const q = currentQuote(); if (!q) return;
   toast(t("tRendering"));
-  let blob; try { blob = await (full ? renderQuoteImageFull(q) : renderQuoteImage(q)); } catch { blob = null; }
+  let blob; try {
+    blob = await (mode === "full" ? renderQuoteImageFull(q)
+                : mode === "status" ? renderQuoteImageStatus(q)
+                : renderQuoteImage(q));
+  } catch { blob = null; }
   if (!blob) { toast(t("tCantImage")); return; }
-  await shareCanvasBlob(blob, `hitaarth-${q.id}${full ? "-full" : ""}`, quoteShareText(q));
+  await shareCanvasBlob(blob, `hitaarth-${q.id}${mode === "small" ? "" : "-" + mode}`, quoteShareText(q));
 }
 async function shareText() {
   const q = currentQuote(); if (!q) return;
@@ -389,10 +415,18 @@ function toggleNote() {
   const dlg = $("#noteSheet"), ta = $("#noteText");
   ta.value = state.notes[q.id] || "";
   dlg.showModal();
-  $("#noteSave").onclick = () => { state.notes[q.id] = ta.value.trim(); store.set("notes", state.notes); refreshActionBar(); renderSaved(); };
+  $("#noteSave").onclick = () => { state.notes[q.id] = ta.value.trim(); if (state.notes[q.id]) track("note"); store.set("notes", state.notes); refreshActionBar(); renderSaved(); };
 }
 
 // ---------- quote -> shareable PNG (1080x1350, vanilla canvas) ----------
+// Devanagari needs a capable font and taller lines (matras stack above/below the base glyphs).
+const DEVA_RE = /[ऀ-ॿ]/;
+function isDevanagari(s) { return DEVA_RE.test(String(s)); }
+function cardFont(text) {
+  const SERIF = 'Georgia, "Times New Roman", serif';
+  if (isDevanagari(text)) return '"Noto Serif Devanagari", "Noto Sans Devanagari", "Mangal", "Nirmala UI", serif';
+  return ((getComputedStyle(document.documentElement).getPropertyValue("--quote-font")) || SERIF).trim() || SERIF;
+}
 let _qrImg;                                  // cached QR <img>, undefined until first load
 function loadQR() {
   if (_qrImg !== undefined) return Promise.resolve(_qrImg);
@@ -448,8 +482,9 @@ async function renderQuoteImage(q) {
     const topY = PAD + 200;
     const footY = H - 210;
     const maxTextH = footY - topY - 150;       // leave room for the author line
-    const QFONT = ((getComputedStyle(document.documentElement).getPropertyValue("--quote-font")) || SERIF).trim() || SERIF;
-    const fit = fitText(ctx, tq(q, "text"), maxW, maxTextH, 64, 28, 1.32, QFONT, 600);
+    const qtext = tq(q, "text");
+    const QFONT = cardFont(qtext);
+    const fit = fitText(ctx, qtext, maxW, maxTextH, 64, 28, isDevanagari(qtext) ? 1.6 : 1.32, QFONT, 600);
     ctx.fillStyle = "#F4F4F2";
     ctx.font = `600 ${fit.size}px ${QFONT}`;
     ctx.textBaseline = "top";
@@ -460,6 +495,46 @@ async function renderQuoteImage(q) {
     ctx.fillStyle = "#FFA63D";
     ctx.font = `700 38px ${SANS}`;
     ctx.fillText(`— ${q.author}`, PAD, y + 34);
+
+    drawBrandFooter(ctx, W, H, PAD, SANS, qr);
+    canvas.toBlob(b => resolve(b), "image/png");
+  });
+}
+// WhatsApp Status / story card: 1080x1920, quote block vertically centered above the brand footer.
+async function renderQuoteImageStatus(q) {
+  try { await document.fonts.ready; } catch {}
+  const qr = await loadQR();
+  return new Promise((resolve) => {
+    const W = 1080, H = 1920, PAD = 110;
+    const SERIF = 'Georgia, "Times New Roman", serif';
+    const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
+    const qtext = tq(q, "text");
+    const QFONT = cardFont(qtext);
+    const canvas = document.createElement("canvas");
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#000000"; ctx.fillRect(0, 0, W, H);
+    ctx.textAlign = "left";
+
+    const maxW = W - PAD * 2;
+    const footY = H - 210;
+    const markH = 200, authorH = 120;
+    const maxTextH = footY - PAD - markH - authorH - 120;
+    const fit = fitText(ctx, qtext, maxW, maxTextH, 78, 32, isDevanagari(qtext) ? 1.62 : 1.42, QFONT, 600);
+    const blockH = markH + fit.lines.length * fit.lineH + authorH;
+    let y = PAD + Math.max(0, (footY - PAD - blockH) / 2);
+
+    ctx.fillStyle = "#FF5F6D"; ctx.globalAlpha = 0.5;
+    ctx.textBaseline = "alphabetic"; ctx.font = `700 250px ${SERIF}`;
+    ctx.fillText("“", PAD - 8, y + 170);
+    ctx.globalAlpha = 1;
+    y += markH;
+
+    ctx.fillStyle = "#F4F4F2"; ctx.font = `600 ${fit.size}px ${QFONT}`; ctx.textBaseline = "top";
+    fit.lines.forEach(line => { ctx.fillText(line, PAD, y); y += fit.lineH; });
+
+    ctx.fillStyle = "#FFA63D"; ctx.font = `700 42px ${SANS}`;
+    ctx.fillText(`— ${q.author}`, PAD, y + 44);
 
     drawBrandFooter(ctx, W, H, PAD, SANS, qr);
     canvas.toBlob(b => resolve(b), "image/png");
@@ -480,7 +555,8 @@ async function renderQuoteImageFull(q) {
     const W = 1080, H = 1350, PAD = 80;
     const SERIF = 'Georgia, "Times New Roman", serif';
     const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
-    const QFONT = ((getComputedStyle(document.documentElement).getPropertyValue("--quote-font")) || SERIF).trim() || SERIF;
+    const QFONT = cardFont(tq(q, "text"));
+    const QRATIO = isDevanagari(tq(q, "text")) ? 1.6 : 1.34;
     const FG = "#F4F4F2", MUTED = "#8a8a8e", CORAL = "#FF5F6D", AMBER = "#FFA63D";
     const canvas = document.createElement("canvas");
     canvas.width = W; canvas.height = H;
@@ -506,7 +582,7 @@ async function renderQuoteImageFull(q) {
       // quote text (app font)
       ctx.font = `600 ${Q}px ${QFONT}`;
       const ql = wrapText(ctx, tq(q, "text"), maxW);
-      const qlh = Math.round(Q * 1.34);
+      const qlh = Math.round(Q * QRATIO);
       els.push({ gap: px(16), h: ql.length * qlh, draw: (y) => {
         ctx.fillStyle = FG; ctx.font = `600 ${Q}px ${QFONT}`; ctx.textBaseline = "top";
         let yy = y; ql.forEach(l => { ctx.fillText(l, PAD, yy); yy += qlh; });
@@ -794,7 +870,7 @@ function bindSettings() {
       }
       const ok = await Notification.requestPermission();
       state.settings.reminders = ok === "granted";
-      if (ok !== "granted") e.target.checked = false;
+      if (ok !== "granted") e.target.checked = false; else track("reminder-on");
     } else {
       state.settings.reminders = false;
     }
@@ -820,7 +896,7 @@ function bindSettings() {
 // Premium gates — checked against state.settings.premium before applying.
 const PREMIUM_SKINS = new Set(["dawn", "ink", "forest"]);
 const PREMIUM_FONTS = new Set(["playfair", "cormorant", "spectral"]);
-function openPaywall() { const d = $("#paywall"); if (d) d.showModal(); }
+function openPaywall() { const d = $("#paywall"); if (d) { track("paywall"); d.showModal(); } }
 
 function saveSettings() { store.set("settings", state.settings); applySettings(); syncSettingsUI(); }
 function applySettings() {

@@ -37,6 +37,7 @@
     <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></symbol>
   </svg>
 
   <!-- First-open moment: brand splash that fades into the reader -->
@@ -192,6 +193,7 @@
   <dialog id="shareSheet">
     <h3 data-i18n="shareTitle">Share quote</h3>
     <div class="share-opts">
+      <button type="button" id="shareStatusBtn" class="share-opt"><span class="share-ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-phone"/></svg></span> <span data-i18n="saveImageStatus">Status image — WhatsApp story</span></button>
       <button type="button" id="shareImageFullBtn" class="share-opt"><span class="share-ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-image"/></svg></span> <span data-i18n="saveImageBig">Big image — full card</span></button>
       <button type="button" id="shareImageBtn" class="share-opt"><span class="share-ic"><svg class="ic-svg ic-fill" aria-hidden="true"><use href="#i-quote"/></svg></span> <span data-i18n="saveImageSmall">Small image — quote only</span></button>
       <button type="button" id="shareTextBtn" class="share-opt"><span class="share-ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-pen"/></svg></span> <span data-i18n="shareTextOpt">Share as text</span></button>
