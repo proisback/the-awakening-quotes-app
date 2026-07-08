@@ -7,7 +7,7 @@ All quotes live in `quotes.json`. Each item:
 `{ "id", "text", "author", "source", "lesson", "category" }`
 
 ## Deploy
-Hosted on Netlify, auto-deploys on every push to `main`.
+Hosted on Vercel (https://the-awakening-quotes-app.vercel.app/), auto-deploys on every push to `main`.
 Static site: no build command, publish directory is the repo root.
 
 ## Local preview (Windows)

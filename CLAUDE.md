@@ -2,7 +2,7 @@
 
 An installable PWA quotes reader. Vanilla HTML/CSS/JS. **No build step, no frameworks, no dependencies.**
 
-- **Live:** https://the-awakening-quotes.netlify.app/
+- **Live:** https://the-awakening-quotes-app.vercel.app/
 - **Repo:** https://github.com/proisback/the-awakening-quotes-app
 
 ## Hard constraints (do not break these)
@@ -22,7 +22,7 @@ An installable PWA quotes reader. Vanilla HTML/CSS/JS. **No build step, no frame
 - `service-worker.js` — network-first (fresh when online, cache fallback offline, then `index.html`). Only caches `res.ok` responses — never 404s/5xx. Precaches core assets + icons in its `ASSETS` array. No version bumps needed for content updates; if you rename/move an asset, update `ASSETS`.
 - `manifest.webmanifest` — PWA manifest. Icons live in `icons/`.
 - `icons/` — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`. Paths in `manifest.webmanifest`, `index.html`, and `service-worker.js` must match these exactly.
-- `netlify.toml` — static config: publish dir = repo root, no build command, `no-cache` header on the service worker, and `Content-Type: application/manifest+json` on `manifest.webmanifest`.
+- `vercel.json` — static config: `no-cache` header on the service worker, and `Content-Type: application/manifest+json` on `manifest.webmanifest`. No build command; Vercel serves the repo root as-is.
 
 ## Gestures (reader)
 
@@ -47,7 +47,7 @@ Translations do NOT auto-propagate. Whenever you add or edit a quote in `quotes.
 
 ## Deploy
 
-Netlify auto-deploys on every push to `main` (static, no build, publish dir = repo root). Just commit and push to `main` — the live site updates automatically.
+Vercel auto-deploys on every push to `main` (static, no build, repo root served as-is). Just commit and push to `main` — the live site updates automatically. (Hosting moved from Netlify 2026-07-08 after its workspace ran out of credits; the old the-awakening-quotes.netlify.app domain is dead — never reference it. The QR in `icons/qr.png` encodes the Vercel URL with `?s=qr` for arrival tracking.)
 
 ## Local preview (Windows)
 

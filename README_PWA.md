@@ -38,7 +38,7 @@ Easiest is to deploy free (below) and open the URL on your phone. To install:
 It then launches full-screen like a native app.
 
 ## Deploy free (pick one, all work from Windows)
-- **Netlify Drop:** go to app.netlify.com/drop and drag the `HitaarthPWA` folder in. Instant HTTPS URL.
+- **Vercel:** import the repo at vercel.com/new (framework preset: Other, no build command). Instant HTTPS URL, auto-deploys on push.
 - **GitHub Pages:** push the folder to a repo → Settings → Pages → deploy from branch.
 - **Vercel:** `vercel` CLI or drag-drop import.
 HTTPS is required for PWA install — all three give it automatically.

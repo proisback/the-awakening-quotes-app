@@ -8,7 +8,7 @@ const store = {
   set(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
 };
 
-const SITE = "the-awakening-quotes.netlify.app";
+const SITE = "the-awakening-quotes-app.vercel.app";
 
 // ---------- analytics (privacy-first: no cookies, no IDs, respects DNT) ----------
 // Local day-counters always (inspect via hitaarthStats() in the console). Remote aggregation
@@ -148,6 +148,9 @@ async function init() {
   if (navigator.storage?.persist) {
     navigator.storage.persisted().then(p => { if (!p) navigator.storage.persist().catch(() => {}); }).catch(() => {});
   }
+  // Arrival source (?s=qr|card|streak) — measures which share surface brought the visit.
+  const src = new URLSearchParams(location.search).get("s");
+  if (src) track("arrive-" + src.replace(/[^a-z]/g, "").slice(0, 12));
   // App-shortcut / deep-link routing (?go=…) — feed + screens already exist at this point.
   const go = new URLSearchParams(location.search).get("go");
   if (go === "saved") showScreen("saved");
