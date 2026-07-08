@@ -16,10 +16,10 @@ Updated 2026-07-08. Operating thesis: **distribution before monetization.** The 
 
 5. **Payment rails** (Razorpay Payment Links or Gumroad license keys) - do not build on zero demand signal. CHEAP TEST BUILT 2026-07-08: paywall CTA is now "Notify me when it's ready" - one tap per user, counted as `notify-me`, persists as "You're on the list". Read the paywall→notify-me conversion after two weeks of traffic, then decide on rails.
 
-## Kill candidates (pending final call)
+## Killed (decided 2026-07-08)
 
-6. **"Widgets" in paywall copy** - PWA widgets do not meaningfully exist on Android/iOS; the promise cannot ship. Five-minute honesty edit whenever confirmed.
-7. **es/fr locale expansion** - India thesis; new locales are maintenance tax with no user behind them. Keep existing files, add no more.
+6. **"Widgets" in premium copy** - KILLED. PWA widgets do not meaningfully exist on Android/iOS; the promise could not ship. Copy now reads "Unlock theme packs & fonts" in all locales; the dead widgets toast string was removed.
+7. **es/fr locale expansion** - KILLED. India thesis; new locales are maintenance tax with no user behind them. Existing es/fr files stay maintained for current UI keys, but no new locales and no locale-specific features.
 
 ## Watching (build only on signal)
 
