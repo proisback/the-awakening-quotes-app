@@ -217,6 +217,10 @@ html[data-theme="light"] .time-pill input{color-scheme:light}
 @keyframes bellring{0%,100%{transform:rotate(0)}18%{transform:rotate(14deg)}42%{transform:rotate(-11deg)}65%{transform:rotate(7deg)}84%{transform:rotate(-4deg)}}
 @media (prefers-reduced-motion: reduce){.ic.ring .ic-svg{animation:none}.rem-details,.switch .knob,.switch .knob::after{transition:none}}
 .pill{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:600}
+.about-story p{margin:0 0 12px;font-size:14px;line-height:1.7}
+.about-story p:first-child{font-family:"Fraunces",Georgia,serif;font-size:15.5px}
+.about-story p:last-child{margin-bottom:2px;color:var(--muted);font-style:italic}
+.card.open #about{max-height:1400px}
 .reset{display:block;width:100%;padding:16px;border-radius:16px;background:var(--card);color:var(--accent2);font-weight:600;margin:4px 0 14px}
 
 /* TAB BAR */

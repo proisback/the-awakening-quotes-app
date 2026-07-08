@@ -82,7 +82,13 @@ const I18N = {
     pwFeatFonts: "The complete font library",
     pwFeatFuture: "Every future pack, included",
     pwCta: "Notify me when it's ready", pwCtaDone: "✓ You're on the list", pwLater: "Maybe later",
-    tNotifyMe: "Noted — you'll be first to know"
+    tNotifyMe: "Noted — you'll be first to know",
+    about: "About Hitaarth", aboutSub: "The story behind the name",
+    aboutP1: "When our son was born, we named him Hitaarth: a Sanskrit word meaning one whose purpose is to do good.",
+    aboutP2: "Becoming a father changed what I noticed about my own days. Social media gave me endless information, but almost nothing that stayed. Every once in a while, though, a single sentence would change how I handled a conversation, a hard decision, an ordinary day.",
+    aboutP3: "I wanted a place where ideas weren't buried under algorithms. One meaningful thought at a time, with one small action attached.",
+    aboutP4: "That's how Hitaarth was born. It isn't named after my son as a tribute. It's named after the value I hope we both grow into.",
+    aboutP5: "If you leave a little calmer, a little kinder, or with a slightly better perspective than when you arrived, the app has lived up to its name."
   }
 };
 function lang() { return state.settings.lang || "en"; }
@@ -880,7 +886,10 @@ function renderBrowse() {
 // ---------- settings ----------// ---------- settings ----------
 function bindSettings() {
   // expandable cards
-  $$(".row[data-toggle]").forEach(r => r.onclick = () => r.closest(".card").classList.toggle("open"));
+  $$(".row[data-toggle]").forEach(r => r.onclick = () => {
+    const c = r.closest(".card"); c.classList.toggle("open");
+    if (r.dataset.toggle === "about" && c.classList.contains("open")) track("about");
+  });
 
   // language
   $$("[data-lang]").forEach(b => b.onclick = () => applyLanguage(b.dataset.lang));
