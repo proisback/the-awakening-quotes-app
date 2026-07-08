@@ -34,7 +34,7 @@ const state = {
   favorites: new Set(store.get("favorites", [])),
   notes: store.get("notes", {}),
   actions: store.get("actions", {}),   // "id::YYYY-MM-DD" -> ISO timestamp of the move
-  settings: store.get("settings", { appearance: "dark", skin: "", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: "en" })
+  settings: store.get("settings", { appearance: "dark", skin: "", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: "en", cardStyle: "noir" })
 };
 if (!state.settings.lang) state.settings.lang = "en";
 
@@ -56,6 +56,7 @@ const I18N = {
     reset: "↺ Reset to defaults", privacy: "Hitaarth · your data stays on this device",
     noteTitle: "Your note", notePh: "A thought on this quote…", cancel: "Cancel", save: "Save",
     shareTitle: "Share quote", saveImageStatus: "Status image — WhatsApp story", saveImageBig: "Big image — full card", saveImageSmall: "Small image — quote only", shareTextOpt: "Share as text",
+    cardStyle: "Card style",
     lessonLabel: "Lesson", moveLabel: "Today's move", sourceLabel: "Source", noteLabel: "Note",
     todayBadge: "Today's idea", didIt: "Did it", doneToday: "✓ Done today", translated: "translated",
     dayOne: "{n} day", dayMany: "{n} days",
@@ -81,7 +82,8 @@ const I18N = {
     pwFeatThemes: "All theme packs — Dawn, Ink, Forest",
     pwFeatFonts: "The complete font library",
     pwFeatFuture: "Every future pack, included",
-    pwCta: "Coming soon", pwLater: "Maybe later"
+    pwCta: "Notify me when it's ready", pwCtaDone: "✓ You're on the list", pwLater: "Maybe later",
+    tNotifyMe: "Noted — you'll be first to know"
   }
 };
 function lang() { return state.settings.lang || "en"; }
@@ -358,6 +360,14 @@ function quoteShareText(q) { return `${tq(q, "text")}\n— ${q.author}\n\nvia Hi
 function openShareMenu() {
   const q = currentQuote(); if (!q) return;
   const dlg = $("#shareSheet");
+  const cur = state.settings.cardStyle || "noir";
+  $$(".card-style").forEach(b => {
+    b.classList.toggle("on", b.dataset.style === cur);
+    b.onclick = () => {
+      state.settings.cardStyle = b.dataset.style; saveSettings(); track("style-" + b.dataset.style);
+      $$(".card-style").forEach(x => x.classList.toggle("on", x === b));
+    };
+  });
   $("#shareStatusBtn").onclick = () => { dlg.close(); track("share-status"); saveQuoteImage("status"); };
   $("#shareImageFullBtn").onclick = () => { dlg.close(); track("share-card-full"); saveQuoteImage("full"); };
   $("#shareImageBtn").onclick = () => { dlg.close(); track("share-card-small"); saveQuoteImage("small"); };
@@ -419,6 +429,32 @@ function toggleNote() {
 }
 
 // ---------- quote -> shareable PNG (1080x1350, vanilla canvas) ----------
+// Card style templates — free tier. Each style owns its palette + background painter.
+const CARD_STYLES = {
+  noir: {
+    fg: "#F4F4F2", muted: "#8a8a8e", accent: "#FF5F6D", accent2: "#FFA63D",
+    lesson: "#e4e4e7", line: "rgba(244,244,242,0.16)", chip: "rgba(255,95,109,0.5)",
+    paint(ctx, W, H) { ctx.fillStyle = "#000000"; ctx.fillRect(0, 0, W, H); }
+  },
+  paper: {
+    fg: "#1D1912", muted: "#8A8378", accent: "#C13440", accent2: "#B45309",
+    lesson: "#3F3A30", line: "rgba(29,25,18,0.18)", chip: "rgba(193,52,64,0.55)",
+    paint(ctx, W, H) { ctx.fillStyle = "#FAF7F2"; ctx.fillRect(0, 0, W, H); }
+  },
+  dusk: {
+    fg: "#F4F4F2", muted: "#9A97A6", accent: "#FF5F6D", accent2: "#FFA63D",
+    lesson: "#E4E4E7", line: "rgba(244,244,242,0.16)", chip: "rgba(255,95,109,0.5)",
+    paint(ctx, W, H) {
+      const g = ctx.createLinearGradient(0, 0, 0, H);
+      g.addColorStop(0, "#1A1030"); g.addColorStop(0.55, "#0B0817"); g.addColorStop(1, "#07070A");
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      const r = ctx.createRadialGradient(W / 2, H * 0.3, 0, W / 2, H * 0.3, H * 0.55);
+      r.addColorStop(0, "rgba(255,95,109,0.10)"); r.addColorStop(1, "rgba(255,95,109,0)");
+      ctx.fillStyle = r; ctx.fillRect(0, 0, W, H);
+    }
+  }
+};
+function activeCardStyle() { return CARD_STYLES[state.settings.cardStyle] || CARD_STYLES.noir; }
 // Devanagari needs a capable font and taller lines (matras stack above/below the base glyphs).
 const DEVA_RE = /[ऀ-ॿ]/;
 function isDevanagari(s) { return DEVA_RE.test(String(s)); }
@@ -437,9 +473,9 @@ function loadQR() {
     img.src = "icons/qr.png";
   });
 }
-function drawBrandFooter(ctx, W, H, PAD, SANS, qr) {
+function drawBrandFooter(ctx, W, H, PAD, SANS, qr, S = CARD_STYLES.noir) {
   const footY = H - 210;
-  ctx.strokeStyle = "rgba(244,244,242,0.16)";
+  ctx.strokeStyle = S.line;
   ctx.lineWidth = 2;
   ctx.beginPath(); ctx.moveTo(PAD, footY); ctx.lineTo(W - PAD, footY); ctx.stroke();
   if (qr) {                                  // QR bottom-right on a white quiet-zone
@@ -448,9 +484,9 @@ function drawBrandFooter(ctx, W, H, PAD, SANS, qr) {
     ctx.drawImage(qr, qx, qy, qs, qs);
   }
   ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
-  ctx.fillStyle = "#F4F4F2"; ctx.font = `800 36px ${SANS}`;
+  ctx.fillStyle = S.fg; ctx.font = `800 36px ${SANS}`;
   ctx.fillText("Hitaarth", PAD, footY + 66);
-  ctx.fillStyle = "#8a8a8e"; ctx.font = `600 25px ${SANS}`;
+  ctx.fillStyle = S.muted; ctx.font = `600 25px ${SANS}`;
   ctx.fillText(SITE, PAD, footY + 106);
   ctx.fillText("One idea. One move. Every day.", PAD, footY + 142);
 }
@@ -461,16 +497,15 @@ async function renderQuoteImage(q) {
     const W = 1080, H = 1350, PAD = 96;
     const SERIF = 'Georgia, "Times New Roman", serif';
     const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
+    const S = activeCardStyle();
     const canvas = document.createElement("canvas");
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext("2d");
 
-    // background (always the dark brand look, regardless of app theme)
-    ctx.fillStyle = "#000000";
-    ctx.fillRect(0, 0, W, H);
+    S.paint(ctx, W, H);
 
     // opening quote mark
-    ctx.fillStyle = "#FF5F6D";
+    ctx.fillStyle = S.accent;
     ctx.globalAlpha = 0.5;
     ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
     ctx.font = `700 220px ${SERIF}`;
@@ -485,18 +520,18 @@ async function renderQuoteImage(q) {
     const qtext = tq(q, "text");
     const QFONT = cardFont(qtext);
     const fit = fitText(ctx, qtext, maxW, maxTextH, 64, 28, isDevanagari(qtext) ? 1.6 : 1.32, QFONT, 600);
-    ctx.fillStyle = "#F4F4F2";
+    ctx.fillStyle = S.fg;
     ctx.font = `600 ${fit.size}px ${QFONT}`;
     ctx.textBaseline = "top";
     let y = topY;
     fit.lines.forEach(line => { ctx.fillText(line, PAD, y); y += fit.lineH; });
 
     // author
-    ctx.fillStyle = "#FFA63D";
+    ctx.fillStyle = S.accent2;
     ctx.font = `700 38px ${SANS}`;
     ctx.fillText(`— ${q.author}`, PAD, y + 34);
 
-    drawBrandFooter(ctx, W, H, PAD, SANS, qr);
+    drawBrandFooter(ctx, W, H, PAD, SANS, qr, S);
     canvas.toBlob(b => resolve(b), "image/png");
   });
 }
@@ -510,10 +545,11 @@ async function renderQuoteImageStatus(q) {
     const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
     const qtext = tq(q, "text");
     const QFONT = cardFont(qtext);
+    const S = activeCardStyle();
     const canvas = document.createElement("canvas");
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#000000"; ctx.fillRect(0, 0, W, H);
+    S.paint(ctx, W, H);
     ctx.textAlign = "left";
 
     const maxW = W - PAD * 2;
@@ -524,19 +560,19 @@ async function renderQuoteImageStatus(q) {
     const blockH = markH + fit.lines.length * fit.lineH + authorH;
     let y = PAD + Math.max(0, (footY - PAD - blockH) / 2);
 
-    ctx.fillStyle = "#FF5F6D"; ctx.globalAlpha = 0.5;
+    ctx.fillStyle = S.accent; ctx.globalAlpha = 0.5;
     ctx.textBaseline = "alphabetic"; ctx.font = `700 250px ${SERIF}`;
     ctx.fillText("“", PAD - 8, y + 170);
     ctx.globalAlpha = 1;
     y += markH;
 
-    ctx.fillStyle = "#F4F4F2"; ctx.font = `600 ${fit.size}px ${QFONT}`; ctx.textBaseline = "top";
+    ctx.fillStyle = S.fg; ctx.font = `600 ${fit.size}px ${QFONT}`; ctx.textBaseline = "top";
     fit.lines.forEach(line => { ctx.fillText(line, PAD, y); y += fit.lineH; });
 
-    ctx.fillStyle = "#FFA63D"; ctx.font = `700 42px ${SANS}`;
+    ctx.fillStyle = S.accent2; ctx.font = `700 42px ${SANS}`;
     ctx.fillText(`— ${q.author}`, PAD, y + 44);
 
-    drawBrandFooter(ctx, W, H, PAD, SANS, qr);
+    drawBrandFooter(ctx, W, H, PAD, SANS, qr, S);
     canvas.toBlob(b => resolve(b), "image/png");
   });
 }
@@ -557,11 +593,12 @@ async function renderQuoteImageFull(q) {
     const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
     const QFONT = cardFont(tq(q, "text"));
     const QRATIO = isDevanagari(tq(q, "text")) ? 1.6 : 1.34;
-    const FG = "#F4F4F2", MUTED = "#8a8a8e", CORAL = "#FF5F6D", AMBER = "#FFA63D";
+    const S = activeCardStyle();
+    const FG = S.fg, MUTED = S.muted, CORAL = S.accent;
     const canvas = document.createElement("canvas");
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#000000"; ctx.fillRect(0, 0, W, H);
+    S.paint(ctx, W, H);
     ctx.textAlign = "left";
     const maxW = W - PAD * 2;
     const topY = PAD;
@@ -607,7 +644,7 @@ async function renderQuoteImageFull(q) {
           let cx, cy;
           if (inline) { ctx.font = `700 ${A}px ${SANS}`; const lw = ctx.measureText(authorLines[authorLines.length - 1]).width; cx = PAD + lw + px(16); cy = yy + Math.round((A - chipH) / 2) + px(2); }
           else { cx = PAD; cy = yy + alh + px(2); }
-          ctx.strokeStyle = "rgba(255,95,109,0.5)"; ctx.lineWidth = 2;
+          ctx.strokeStyle = S.chip; ctx.lineWidth = 2;
           rrect(ctx, cx, cy, chipW, chipH, chipH / 2); ctx.stroke();
           ctx.fillStyle = CORAL; ctx.font = `700 ${cs}px ${SANS}`; ctx.textBaseline = "top";
           ctx.fillText(label, cx + chipPadX, cy + px(6));
@@ -626,7 +663,7 @@ async function renderQuoteImageFull(q) {
           ctx.beginPath(); ctx.moveTo(PAD + 1.5, y + px(1)); ctx.lineTo(PAD + 1.5, y + h - px(2)); ctx.stroke();
           ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
           ctx.fillText(t("lessonLabel").toUpperCase(), PAD + indent, y);
-          ctx.fillStyle = "#e4e4e7"; ctx.font = `italic 400 ${L}px ${SANS}`;
+          ctx.fillStyle = S.lesson; ctx.font = `italic 400 ${L}px ${SANS}`;
           let yy = y + klh; ll.forEach(l => { ctx.fillText(l, PAD + indent, yy); yy += llh; });
         }});
       }
@@ -668,7 +705,7 @@ async function renderQuoteImageFull(q) {
     let y = topY + Math.max(0, (availH - layout.blockH) / 2);   // vertically centered
     for (const e of layout.els) { y += e.gap; e.draw(y); y += e.h; }
 
-    drawBrandFooter(ctx, W, H, PAD, SANS, qr);
+    drawBrandFooter(ctx, W, H, PAD, SANS, qr, S);
     canvas.toBlob(b => resolve(b), "image/png");
   });
 }
@@ -887,16 +924,26 @@ function bindSettings() {
   const ssb = $("#shareStreakBtn"); if (ssb) ssb.onclick = shareStreak;
   // premium
   $("#premiumBtn").onclick = (ev) => { ev.preventDefault(); openPaywall(); };
-  const cta = $("#pwCta"); if (cta) cta.onclick = () => toast(t("tPremiumSoon"));
+  // Demand signal for premium: no payment rails yet, just count raised hands.
+  const cta = $("#pwCta"); if (cta) cta.onclick = () => {
+    if (!store.get("notifyMe", false)) { store.set("notifyMe", true); track("notify-me"); }
+    cta.textContent = t("pwCtaDone");
+    toast(t("tNotifyMe"));
+  };
   // reset
-  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", skin: "", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: lang() }; saveSettings(); scheduleReminder(); };
+  $("#resetBtn").onclick = () => { localStorage.removeItem("settings"); state.settings = { appearance: "dark", skin: "", font: "fraunces", size: 22, reminders: false, remTime: "08:00", premium: false, lang: lang(), cardStyle: "noir" }; saveSettings(); scheduleReminder(); };
 
   syncSettingsUI();
 }
 // Premium gates — checked against state.settings.premium before applying.
 const PREMIUM_SKINS = new Set(["dawn", "ink", "forest"]);
 const PREMIUM_FONTS = new Set(["playfair", "cormorant", "spectral"]);
-function openPaywall() { const d = $("#paywall"); if (d) { track("paywall"); d.showModal(); } }
+function openPaywall() {
+  const d = $("#paywall"); if (!d) return;
+  track("paywall");
+  const c = $("#pwCta"); if (c) c.textContent = store.get("notifyMe", false) ? t("pwCtaDone") : t("pwCta");
+  d.showModal();
+}
 
 function saveSettings() { store.set("settings", state.settings); applySettings(); syncSettingsUI(); }
 function applySettings() {

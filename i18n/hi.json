@@ -79,7 +79,10 @@
   "pwFeatThemes": "सभी थीम पैक — Dawn, Ink, Forest",
   "pwFeatFonts": "पूरी फ़ॉन्ट लाइब्रेरी",
   "pwFeatFuture": "आगे आने वाला हर पैक शामिल",
-  "pwCta": "जल्द आ रहा है",
+  "pwCta": "तैयार होने पर मुझे बताएं",
+  "pwCtaDone": "✓ आप सूची में हैं",
+  "tNotifyMe": "नोट कर लिया — सबसे पहले आपको बताएंगे",
+  "cardStyle": "कार्ड स्टाइल",
   "pwLater": "बाद में"
  },
  "chanakya-friend": {

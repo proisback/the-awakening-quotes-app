@@ -282,6 +282,13 @@ body.immersive .surprise{opacity:0;pointer-events:none}
 /* share sheet */
 .share-opts{display:flex;flex-direction:column;gap:10px;margin-top:6px}
 .share-opt{display:flex;align-items:center;gap:12px;padding:16px;border-radius:14px;background:rgba(127,127,127,.12);font-size:16px;font-weight:600;text-align:left}
+.card-styles{display:flex;gap:8px;margin:8px 0 14px}
+.card-style{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 8px;border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:600;color:var(--muted);transition:color .2s,border-color .2s}
+.card-style .sw{width:18px;height:18px;flex:none}
+.card-style.on{border-color:var(--accent2);color:var(--fg)}
+.sw-cnoir{background:#000}
+.sw-cpaper{background:#FAF7F2}
+.sw-cdusk{background:linear-gradient(160deg,#1a1030,#07070a 75%)}
 .share-opt .share-ic{font-size:20px;width:24px;text-align:center}
 .share-opt:active{background:rgba(127,127,127,.22)}
 

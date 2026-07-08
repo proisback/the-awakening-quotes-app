@@ -79,7 +79,10 @@
   "pwFeatThemes": "Tous les packs de thèmes — Dawn, Ink, Forest",
   "pwFeatFonts": "Toute la bibliothèque de polices",
   "pwFeatFuture": "Chaque futur pack, inclus",
-  "pwCta": "Bientôt disponible",
+  "pwCta": "Prévenez-moi quand c'est prêt",
+  "pwCtaDone": "✓ Vous êtes sur la liste",
+  "tNotifyMe": "C'est noté — vous serez averti en premier",
+  "cardStyle": "Style de carte",
   "pwLater": "Peut-être plus tard"
  },
  "chanakya-friend": {

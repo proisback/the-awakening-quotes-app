@@ -10,11 +10,11 @@ Updated 2026-07-08. Operating thesis: **distribution before monetization.** The 
 
 ## Next
 
-4. **Share-card templates** - free tier first to raise the loop's quality bar, premium templates as the upsell after. Resequenced from the old plan (was premium-first).
+4. **Share-card templates** - FREE TIER BUILT 2026-07-08: three styles (Noir / Paper / Dusk) selectable in the share sheet, remembered across sessions, applied to all three formats, per-style usage tracked. Premium template pack remains the upsell once demand data exists.
 
 ## Parked
 
-5. **Payment rails** (Razorpay Payment Links or Gumroad license keys) - do not build on zero demand signal. Cheap test first: turn the paywall "Coming soon" CTA into a "Notify me" tap and count it for two weeks. Revisit with data.
+5. **Payment rails** (Razorpay Payment Links or Gumroad license keys) - do not build on zero demand signal. CHEAP TEST BUILT 2026-07-08: paywall CTA is now "Notify me when it's ready" - one tap per user, counted as `notify-me`, persists as "You're on the list". Read the paywall→notify-me conversion after two weeks of traffic, then decide on rails.
 
 ## Kill candidates (pending final call)
 
