@@ -13,7 +13,7 @@ const SITE = "the-awakening-quotes-app.vercel.app";
 // ---------- analytics (privacy-first: no cookies, no IDs, respects DNT) ----------
 // Local day-counters always (inspect via hitaarthStats() in the console). Remote aggregation
 // pings GoatCounter only once GC_SITE is set — free account, code goes here, nothing else.
-const GC_SITE = "";                            // e.g. "hitaarth" → hitaarth.goatcounter.com
+const GC_SITE = "prateek-mehta";               // dashboard: prateek-mehta.goatcounter.com
 function track(ev) {
   try {
     const s = store.get("stats", {});
