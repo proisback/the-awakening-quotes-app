@@ -68,7 +68,9 @@ html[data-theme="light"] #reader::after{background:none}
 @media (prefers-color-scheme: light){ html[data-theme="system"] #reader::after{background:none} }
 .feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
 .feed::-webkit-scrollbar{display:none}
-.quote{height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-start;
+/* min-height (not height): long quotes grow past the viewport, and the snap container
+   then allows free scrolling inside the tall card instead of yanking back to its top */
+.quote{min-height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-start;
   padding:0 28px;padding-top:calc(var(--safe-top) + 9vh);padding-bottom:calc(var(--safe-bottom) + 118px);
   background:radial-gradient(85% 55% at 50% 32%, var(--tint, transparent), transparent 72%)}
 /* per-genre ambient wash — barely-there color that shifts as you scroll between genres */

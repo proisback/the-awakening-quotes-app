@@ -236,16 +236,18 @@ function renderFeed() {
 
   $$(".todo-done", feed).forEach(b => b.onclick = () => toggleActionDone(b));
 
-  // Track which quote is centered, to drive the action bar state.
+  // Track which quote dominates the screen, to drive the action bar state.
+  // Cards can be TALLER than the viewport (long quotes), so a fixed intersection ratio
+  // would never fire on them — compare the visible height to the viewport instead.
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
+      if (e.isIntersecting && e.intersectionRect.height >= feed.clientHeight * 0.55) {
         const i = +e.target.dataset.i;
         if (i !== state.current) { stopSpeech(); track("read"); }   // never read a stale quote
         state.current = i; refreshActionBar();
       }
     });
-  }, { threshold: 0.6 });
+  }, { root: feed, threshold: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9] });
   $$(".quote", feed).forEach(el => io.observe(el));
 }
 
