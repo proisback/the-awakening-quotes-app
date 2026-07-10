@@ -69,8 +69,8 @@ html[data-theme="light"] #reader::after{background:none}
 @media (prefers-color-scheme: light){ html[data-theme="system"] #reader::after{background:none} }
 .feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
 .feed::-webkit-scrollbar{display:none}
-.quote{height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
-  padding:0 28px;padding-top:var(--safe-top);padding-bottom:calc(var(--safe-bottom) + 150px);
+.quote{height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-start;
+  padding:0 28px;padding-top:calc(var(--safe-top) + 9vh);padding-bottom:calc(var(--safe-bottom) + 150px);
   background:radial-gradient(85% 55% at 50% 32%, var(--tint, transparent), transparent 72%)}
 /* per-genre ambient wash — barely-there color that shifts as you scroll between genres */
 .quote[data-g="stoic"]{--tint:rgba(122,150,186,.07)}
@@ -84,15 +84,18 @@ html[data-theme="light"] #reader::after{background:none}
 html[data-theme="light"] .quote{background:none}
 @media (prefers-color-scheme: light){ html[data-theme="system"] .quote{background:none} }
 .quote .inner{width:100%;max-width:640px;margin:0 auto}
-.qmark{font-family:"Fraunces",Georgia,'Times New Roman',serif;font-size:calc(var(--quote-size) * 3.2);line-height:.5;height:.5em;color:var(--accent2);opacity:.85;margin-left:-0.05em;margin-bottom:16px}
-.quote .text{font-family:var(--quote-font);font-size:var(--quote-size);line-height:1.5;font-weight:500;letter-spacing:0;text-wrap:balance}
-.meta{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.qmark{font-family:"Fraunces",Georgia,'Times New Roman',serif;font-size:calc(var(--quote-size) * 2.9);line-height:.5;height:.5em;color:var(--accent2);opacity:.75;margin-left:-0.05em;margin-bottom:10px}
+/* book column: constrained measure, airy leading, lighter optical weight */
+.quote .text{font-family:var(--quote-font);font-size:var(--quote-size);line-height:1.68;font-weight:440;letter-spacing:0;text-wrap:balance;max-width:min(32ch, 84%);margin:0;font-optical-sizing:auto}
+.quote .text + .text{margin-top:1.05em}
+@media (max-height:700px){ .quote{padding-top:calc(var(--safe-top) + 3vh)} }
+.meta{margin-top:34px;display:flex;flex-direction:column;gap:16px;max-width:min(52ch, 100%)}
 .byline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .byline .author{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:max(12px,calc(var(--quote-size) * 0.56));text-transform:uppercase;letter-spacing:.13em}
 .byline .author::before{content:"";width:22px;height:2px;flex:none;background:linear-gradient(90deg,var(--accent1),var(--accent2))}
 .chip{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--accent2);border:1px solid color-mix(in srgb,var(--accent2) 45%, transparent);border-radius:999px;padding:3px 10px;white-space:nowrap}
-.lesson{padding:2px 0 2px 14px;border-left:2px solid var(--accent2);font-style:italic;font-size:calc(var(--quote-size) * 0.68);opacity:.95}
-.source{font-size:calc(var(--quote-size) * 0.54);color:var(--muted)}
+.lesson{padding:2px 0 2px 14px;border-left:2px solid var(--accent2);font-style:italic;font-size:calc(var(--quote-size) * 0.68);opacity:.95;line-height:1.55}
+.source{font-size:calc(var(--quote-size) * 0.6);color:var(--muted);line-height:1.5}
 .kicker{display:block;font-style:normal;font-weight:800;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 
 .actions{position:fixed;left:0;right:0;bottom:calc(64px + var(--safe-bottom));display:flex;justify-content:space-around;
@@ -276,8 +279,9 @@ body.immersive .surprise{opacity:0;pointer-events:none}
 
 /* today's move (practice loop) */
 .today-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#1a1205;background:var(--accent1);border-radius:999px;padding:4px 11px;margin-bottom:16px}
-.todo{margin-top:2px}
-.todo .todo-text{display:block;font-size:calc(var(--quote-size) * 0.62);font-weight:600;margin:4px 0 12px;line-height:1.4}
+.todo{margin-top:12px}
+.todo .kicker{font-size:11px;color:color-mix(in srgb, var(--accent1) 60%, var(--muted))}
+.todo .todo-text{display:block;font-size:calc(var(--quote-size) * 0.66);font-weight:600;margin:6px 0 14px;line-height:1.45}
 .todo-done{border:1px solid var(--accent1);color:var(--accent1);border-radius:999px;padding:8px 18px;font-size:14px;font-weight:700;letter-spacing:.3px;transition:background .15s}
 .todo-done.on{background:var(--accent1);color:#1a1205;border-color:var(--accent1)}
 .streak-share{margin-top:12px}

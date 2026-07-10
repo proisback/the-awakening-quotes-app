@@ -184,6 +184,21 @@ const GENRE_SLUG = {
   "Systems & Science": "science", "Strategy & Money": "money", "Craft & Creativity": "craft",
   "Mind & Character": "mind", "Cinema": "cinema"
 };
+// Long quotes render as thought groups — split at sentence pauses (. ; ! ? … and the
+// Hindi danda ।) so each idea breathes. Fragments merge into their neighbour; short
+// quotes stay a single block. Returns escaped HTML, one <p class="text"> per group.
+function thoughtGroupsHTML(text) {
+  const t = String(text).trim();
+  const parts = (t.match(/[^.;!?।…]+[.;!?।…]*["'”’»)]*\s*/g) || [t]).map(s => s.trim()).filter(Boolean);
+  const groups = [];
+  for (const p of parts) {
+    if (groups.length && (p.length < 12 || groups[groups.length - 1].length < 12)) groups[groups.length - 1] += " " + p;
+    else groups.push(p);
+  }
+  const use = (t.length > 90 && groups.length > 1) ? groups : [t];
+  return use.map(g => `<p class="text">${escapeHTML(g)}</p>`).join("");
+}
+
 function renderFeed() {
   const feed = $("#feed");
   const di = dayIndex();
@@ -196,7 +211,7 @@ function renderFeed() {
       <div class="inner">
         ${i === di ? `<span class="today-badge">${t("todayBadge")}</span>` : ""}
         <div class="qmark">&#8220;</div>
-        <p class="text">${escapeHTML(tq(q, "text"))}</p>
+        ${thoughtGroupsHTML(tq(q, "text"))}
         <div class="meta">
           <div class="byline"><span class="author">${escapeHTML(q.author)}</span>${q.category ? `<span class="chip">${escapeHTML(q.category)}</span>` : ""}${isTranslated(q) ? `<span class="tr-badge">${t("translated")}</span>` : ""}</div>
           ${q.lesson ? `<div class="lesson"><span class="kicker">${t("lessonLabel")}</span>${escapeHTML(tq(q, "lesson"))}</div>` : ""}
