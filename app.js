@@ -396,7 +396,7 @@ function setMediaSession(q) {
 }
 
 // ---------- share ----------
-function quoteShareText(q) { return `${tq(q, "text")}\n— ${q.author}\n\nvia Hitaarth · ${SITE}/?s=card`; }
+function quoteShareText(q) { return `${tq(q, "text")}\n— ${q.author}\n\nvia Hitaarth · https://${SITE}/?s=card`; }
 
 function openShareMenu() {
   const q = currentQuote(); if (!q) return;
@@ -809,7 +809,7 @@ async function shareStreak() {
   toast(t("tRendering"));
   let blob; try { blob = await renderStreakImage(n); } catch { blob = null; }
   if (!blob) { toast(t("tCantImage")); return; }
-  await shareCanvasBlob(blob, `hitaarth-day-${n}`, `Day ${n} of my practice.\n\nvia Hitaarth · ${SITE}/?s=streak`);
+  await shareCanvasBlob(blob, `hitaarth-day-${n}`, `Day ${n} of my practice.\n\nvia Hitaarth · https://${SITE}/?s=streak`);
 }
 function wrapText(ctx, text, maxW) {
   const words = String(text).split(/\s+/);
