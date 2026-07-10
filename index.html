@@ -55,6 +55,9 @@
   <main id="reader" class="screen active" aria-label="Quotes">
     <div id="feed" class="feed"><!-- quote sections injected here --></div>
 
+    <!-- returns to the Browse/Saved list you came from; hidden otherwise -->
+    <button type="button" id="backBtn" class="back-pill" hidden data-i18n="browseBack">← Back</button>
+
     <!-- the single reading toolbar (auto-hides while scrolling; tap = immersive) -->
     <div class="actions" id="actions">
       <button class="act" id="favBtn" aria-label="Favorite"><svg class="ic-svg ic-heart" aria-hidden="true"><use href="#i-heart"/></svg></button>

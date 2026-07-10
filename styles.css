@@ -68,7 +68,12 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     radial-gradient(125% 95% at 50% 50%, transparent 62%, rgba(0,0,0,.35) 100%)}
 html[data-theme="light"] #reader::after{background:none}
 @media (prefers-color-scheme: light){ html[data-theme="system"] #reader::after{background:none} }
-.feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
+.feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;
+  -webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.back-pill{position:fixed;top:calc(var(--safe-top) + 14px);left:14px;z-index:6;padding:9px 16px;border-radius:999px;
+  background:color-mix(in srgb,var(--bg) 68%, transparent);backdrop-filter:blur(10px);border:1px solid var(--line);
+  font-size:13px;font-weight:600;color:var(--fg);transition:opacity .25s}
+body.immersive .back-pill{opacity:0;pointer-events:none}
 .feed::-webkit-scrollbar{display:none}
 /* min-height (not height): long quotes grow past the viewport, and the snap container
    then allows free scrolling inside the tall card instead of yanking back to its top */

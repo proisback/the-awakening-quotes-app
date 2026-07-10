@@ -333,6 +333,7 @@ function bindActions() {
   $("#favBtn").onclick = favoriteWithPop;
   $("#shareBtn").onclick = openShareMenu;
   const spk = $("#speakBtn"); if (spk) spk.onclick = toggleSpeak;
+  const bb = $("#backBtn"); if (bb) bb.onclick = () => { bb.hidden = true; showScreen(readerOrigin || "browse"); };
   // everything not used many times per session lives in the More sheet
   const sheet = $("#moreSheet");
   $("#moreBtn").onclick = () => { track("more"); sheet.showModal(); };
@@ -362,15 +363,19 @@ function favoriteWithPop() {
   }
   toggleFavorite();
 }
-// Honest copy: toast only after the clipboard actually took the text.
+// Copy with an iOS-friendly fallback. Success toasts; failure stays silent (owner's call).
 async function copyText(text) {
   try { await navigator.clipboard.writeText(text); toast(t("tCopied")); return; } catch {}
   const ta = document.createElement("textarea");
-  ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
-  document.body.appendChild(ta); ta.select();
+  ta.value = text; ta.readOnly = true;
+  ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;font-size:16px";
+  document.body.appendChild(ta);
+  const range = document.createRange(); range.selectNodeContents(ta);   // the selection dance iOS requires
+  const sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  ta.setSelectionRange(0, text.length);
   let ok = false; try { ok = document.execCommand("copy"); } catch {}
-  ta.remove();
-  toast(t(ok ? "tCopied" : "tCantShare"));
+  sel.removeAllRanges(); ta.remove();
+  if (ok) toast(t("tCopied"));
 }
 function copyQuote() {
   const q = currentQuote(); if (!q) return;
@@ -868,6 +873,7 @@ function bindTabs() {
 }
 function showScreen(name, tabEl) {
   document.body.dataset.screen = name;            // reader hides the tab bar (single-toolbar model)
+  if (name !== "reader") { const bb = $("#backBtn"); if (bb) bb.hidden = true; }
   stopSpeech();                                   // don't keep reading after leaving the reader
   $$(".screen").forEach(s => { s.hidden = (s.id !== name); s.classList.toggle("active", s.id === name); });
   $$(".tab").forEach(tb => tb.classList.remove("active"));
@@ -888,9 +894,10 @@ function renderSaved() {
     const note = hasNote(q.id)
       ? `<div class="note"><span class="kicker">${t("noteLabel")}</span><span class="note-text">${escapeHTML(state.notes[q.id])}</span><button class="note-del" data-del="${escapeHTML(q.id)}" aria-label="Delete note"><svg class="ic-svg" aria-hidden="true"><use href="#i-x"/></svg></button></div>`
       : "";
-    return `<div class="item"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div>${note}</div>`;
+    return `<div class="item item-open" data-open="${escapeHTML(q.id)}"><div class="t">${escapeHTML(tq(q, "text"))}</div><div class="a">— ${escapeHTML(q.author)}</div>${note}</div>`;
   }).join("");
   $$(".note-del", wrap).forEach(b => b.onclick = () => deleteNote(b.dataset.del));
+  $$(".item-open", wrap).forEach(el => el.onclick = (e) => { if (e.target.closest(".note-del")) return; openQuote(el.dataset.open); });
 }
 function deleteNote(id) {
   delete state.notes[id];
@@ -901,11 +908,14 @@ function deleteNote(id) {
 // ---------- browse (by genre / by author) ----------
 const GENRE_ORDER = ["Stoicism", "Eastern Wisdom", "Building & Startups", "Systems & Science", "Strategy & Money", "Craft & Creativity", "Mind & Character", "Cinema", "Television"];
 let browseMode = "genre", browseSel = null, browseQuery = "";
+let readerOrigin = null;                       // where openQuote came from, for the back pill
 function openQuote(id) {
   const idx = state.quotes.findIndex(q => q.id === id);
   if (idx < 0) return;
+  readerOrigin = document.body.dataset.screen !== "reader" ? document.body.dataset.screen : null;
   state.current = idx;
   showScreen("reader");
+  const bb = $("#backBtn"); if (bb) bb.hidden = !readerOrigin;
   const feed = $("#feed"); const cards = $$(".quote", feed);
   const pos = cards.findIndex(c => +c.dataset.i === idx);
   if (pos >= 0) feed.scrollTo({ top: cards[pos].offsetTop, behavior: "auto" });   // offsetTop: cards vary in height
