@@ -24,6 +24,8 @@ html[data-theme="light"]{ --bg:#FAF7F2; --fg:#1D1912; --muted:#8A8378; --card:#F
 @media (prefers-color-scheme: light){ html[data-theme="system"]{ --bg:#FAF7F2; --fg:#1D1912; --muted:#8A8378; --card:#F2EDE4; --bg-grad:none; } }
 
 *{box-sizing:border-box}
+/* pan only — pinch/double-tap zoom locked; readers size type in Settings instead */
+html,body{touch-action:pan-x pan-y}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
   font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:none;}
 body{background-image:var(--bg-grad)}

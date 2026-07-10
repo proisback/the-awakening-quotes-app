@@ -298,16 +298,21 @@ function bindReaderGestures() {
     barTimer = setTimeout(() => document.body.classList.remove("bar-hide"), 850);
   }, { passive: true });
 
+  let longPress = false;
   feed.addEventListener("pointerdown", (e) => {
-    startX = e.clientX; startY = e.clientY;
-    pressTimer = setTimeout(() => { pressTimer = null; copyQuote(); }, 500); // long-press = copy
+    startX = e.clientX; startY = e.clientY; longPress = false;
+    // long-press = copy; the copy itself runs on release so it lives inside a real user
+    // gesture (mobile clipboards reject writes from timers)
+    pressTimer = setTimeout(() => { pressTimer = null; longPress = true; haptic(); }, 500);
   });
   feed.addEventListener("pointermove", (e) => {                    // movement means scroll/rest, not a long-press
-    if (pressTimer && (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10)) {
-      clearTimeout(pressTimer); pressTimer = null;
+    if (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10) {
+      if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
+      longPress = false;
     }
   });
   feed.addEventListener("pointerup", (e) => {
+    if (longPress) { longPress = false; copyQuote(); return; }
     if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; } else return;
     const dx = e.clientX - startX, dy = e.clientY - startY;
     if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy)) {        // horizontal swipe
@@ -320,7 +325,7 @@ function bindReaderGestures() {
       else { lastTap = now; setTimeout(() => { if (lastTap) { document.body.classList.toggle("immersive"); lastTap = 0; } }, 280); }
     }
   });
-  feed.addEventListener("pointercancel", () => { if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; } });
+  feed.addEventListener("pointercancel", () => { if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; } longPress = false; });
 }
 
 // ---------- actions ----------
@@ -357,10 +362,20 @@ function favoriteWithPop() {
   }
   toggleFavorite();
 }
+// Honest copy: toast only after the clipboard actually took the text.
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); toast(t("tCopied")); return; } catch {}
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select();
+  let ok = false; try { ok = document.execCommand("copy"); } catch {}
+  ta.remove();
+  toast(t(ok ? "tCopied" : "tCantShare"));
+}
 function copyQuote() {
   const q = currentQuote(); if (!q) return;
-  navigator.clipboard?.writeText(`${tq(q, "text")}\n— ${q.author}`);
-  toast(t("tCopied")); haptic();
+  copyText(`${tq(q, "text")}\n— ${q.author}`);
+  haptic();
 }
 
 // ---------- read aloud (Web Speech, 100% client-side) ----------
@@ -674,7 +689,8 @@ async function renderQuoteImageFull(q) {
     const availH = footTop - topY - 16;
 
     function build(scale) {
-      const px = n => Math.max(8, Math.round(n * scale));
+      const px = n => Math.max(8, Math.round(n * scale));    // fonts: floor keeps text readable
+      const pad = n => Math.max(1, Math.round(n * scale));   // geometry: no floor, or paddings distort
       const Q = px(56), A = px(38), K = px(21), L = px(33), Mv = px(33), Src = px(28);
       const els = [];
 
@@ -702,23 +718,23 @@ async function renderQuoteImageFull(q) {
       const alh = Math.round(A * 1.26);
       const lastW = ctx.measureText(authorLines[authorLines.length - 1]).width;
       const label = q.category ? q.category.toUpperCase() : "";
-      const cs = px(20), chipPadX = px(11), chipH = cs + px(12);
+      const cs = px(20), chipPadX = pad(11), chipH = cs + pad(10);
       ctx.font = `700 ${cs}px ${SANS}`;
-      const chipW = label ? ctx.measureText(label).width + chipPadX * 2 : 0;
-      const inline = label && (lastW + px(16) + chipW) <= maxW;
-      const bylineH = (authorLines.length - 1) * alh + Math.max(A, inline ? chipH : 0) + (label && !inline ? chipH + px(12) : 0);
+      const chipW = label ? Math.round(ctx.measureText(label).width) + chipPadX * 2 : 0;
+      const inline = label && (lastW + pad(14) + chipW) <= maxW;
+      const bylineH = (authorLines.length - 1) * alh + Math.max(A, inline ? chipH : 0) + (label && !inline ? chipH + pad(10) : 0);
       els.push({ gap: px(36), h: bylineH, draw: (y) => {
         ctx.textBaseline = "top"; ctx.fillStyle = FG; ctx.font = `700 ${A}px ${SANS}`;
         let yy = y;
         for (let i = 0; i < authorLines.length; i++) { ctx.fillText(authorLines[i], PAD, yy); if (i < authorLines.length - 1) yy += alh; }
         if (label) {
           let cx, cy;
-          if (inline) { ctx.font = `700 ${A}px ${SANS}`; const lw = ctx.measureText(authorLines[authorLines.length - 1]).width; cx = PAD + lw + px(16); cy = yy + Math.round((A - chipH) / 2) + px(2); }
-          else { cx = PAD; cy = yy + alh + px(2); }
-          ctx.strokeStyle = S.chip; ctx.lineWidth = 2;
+          if (inline) { ctx.font = `700 ${A}px ${SANS}`; const lw = ctx.measureText(authorLines[authorLines.length - 1]).width; cx = PAD + lw + pad(14); cy = yy + Math.round((A * 1.1 - chipH) / 2); }
+          else { cx = PAD; cy = yy + alh + pad(4); }
+          ctx.strokeStyle = S.chip; ctx.lineWidth = Math.max(1.5, pad(2));
           rrect(ctx, cx, cy, chipW, chipH, chipH / 2); ctx.stroke();
-          ctx.fillStyle = CORAL; ctx.font = `700 ${cs}px ${SANS}`; ctx.textBaseline = "top";
-          ctx.fillText(label, cx + chipPadX, cy + px(6));
+          ctx.fillStyle = CORAL; ctx.font = `700 ${cs}px ${SANS}`; ctx.textBaseline = "middle";
+          ctx.fillText(label, cx + chipPadX, cy + Math.round(chipH / 2) + 1);
         }
       }});
 
