@@ -83,6 +83,7 @@ const I18N = {
     pwFeatFuture: "Every future pack, included",
     pwCta: "Notify me when it's ready", pwCtaDone: "✓ You're on the list", pwLater: "Maybe later",
     tNotifyMe: "Noted — you'll be first to know",
+    moreTitle: "More", mNote: "Add a note", mSurprise: "Surprise me", mCopy: "Copy quote",
     about: "About Hitaarth", aboutSub: "The story behind the name",
     aboutP1: "When our son was born, we named him Hitaarth: a Sanskrit word meaning one whose purpose is to do good.",
     aboutP2: "Becoming a father changed what I noticed about my own days. Social media gave me endless information, but almost nothing that stayed. Every once in a while, though, a single sentence would change how I handled a conversation, a hard decision, an ordinary day.",
@@ -130,6 +131,7 @@ async function applyLanguage(lng) {
 init();
 async function init() {
   applySettings();
+  document.body.dataset.screen = "reader";
   track("open");
   window.addEventListener("appinstalled", () => track("install"));
   // First-open splash cleans itself out of the DOM once its exit animation is done.
@@ -186,8 +188,8 @@ const GENRE_SLUG = {
 };
 // Long quotes render as thought groups — split at sentence pauses (. ; ! ? … and the
 // Hindi danda ।) so each idea breathes. Fragments merge into their neighbour; short
-// quotes stay a single block. Returns escaped HTML, one <p class="text"> per group.
-function thoughtGroupsHTML(text) {
+// quotes stay a single block. Shared by the reader and every share-card renderer.
+function thoughtGroups(text) {
   const t = String(text).trim();
   const parts = (t.match(/[^.;!?।…]+[.;!?।…]*["'”’»)]*\s*/g) || [t]).map(s => s.trim()).filter(Boolean);
   const groups = [];
@@ -195,8 +197,10 @@ function thoughtGroupsHTML(text) {
     if (groups.length && (p.length < 12 || groups[groups.length - 1].length < 12)) groups[groups.length - 1] += " " + p;
     else groups.push(p);
   }
-  const use = (t.length > 90 && groups.length > 1) ? groups : [t];
-  return use.map(g => `<p class="text">${escapeHTML(g)}</p>`).join("");
+  return (t.length > 90 && groups.length > 1) ? groups : [t];
+}
+function thoughtGroupsHTML(text) {
+  return thoughtGroups(text).map(g => `<p class="text">${escapeHTML(g)}</p>`).join("");
 }
 
 function renderFeed() {
@@ -275,6 +279,14 @@ function bindReaderGestures() {
   const feed = $("#feed");
   let lastTap = 0, pressTimer = null, startX = 0, startY = 0;
 
+  // reading first: the toolbar steps aside while scrolling, returns when the page settles
+  let barTimer = null;
+  feed.addEventListener("scroll", () => {
+    document.body.classList.add("bar-hide");
+    clearTimeout(barTimer);
+    barTimer = setTimeout(() => document.body.classList.remove("bar-hide"), 850);
+  }, { passive: true });
+
   feed.addEventListener("pointerdown", (e) => {
     startX = e.clientX; startY = e.clientY;
     pressTimer = setTimeout(() => { pressTimer = null; copyQuote(); }, 500); // long-press = copy
@@ -304,9 +316,15 @@ function bindReaderGestures() {
 function bindActions() {
   $("#favBtn").onclick = favoriteWithPop;
   $("#shareBtn").onclick = openShareMenu;
-  $("#noteBtn").onclick = toggleNote;
   const spk = $("#speakBtn"); if (spk) spk.onclick = toggleSpeak;
-  const sb = $("#surpriseBtn"); if (sb) sb.onclick = surpriseMe;
+  // everything not used many times per session lives in the More sheet
+  const sheet = $("#moreSheet");
+  $("#moreBtn").onclick = () => { track("more"); sheet.showModal(); };
+  const via = (fn) => () => { sheet.close(); fn(); };
+  $("#noteBtn").onclick = via(toggleNote);
+  $("#surpriseBtn").onclick = via(surpriseMe);
+  $("#copyBtn").onclick = via(copyQuote);
+  $$("[data-nav]", sheet).forEach(b => b.onclick = () => { sheet.close(); showScreen(b.dataset.nav); });
 }
 function refreshActionBar() {
   const q = currentQuote(); if (!q) return;
@@ -496,22 +514,48 @@ function loadQR() {
     img.src = "icons/qr.png";
   });
 }
+// Brand imprint — a quiet publisher signature, QR as metadata rather than a call-to-action.
 function drawBrandFooter(ctx, W, H, PAD, SANS, qr, S = CARD_STYLES.noir) {
-  const footY = H - 210;
+  const footY = H - 190;
   ctx.strokeStyle = S.line;
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 1.5;
   ctx.beginPath(); ctx.moveTo(PAD, footY); ctx.lineTo(W - PAD, footY); ctx.stroke();
-  if (qr) {                                  // QR bottom-right on a white quiet-zone
-    const qs = 130, qx = W - PAD - qs, qy = H - PAD - qs - 4;
-    ctx.fillStyle = "#ffffff"; ctx.fillRect(qx - 12, qy - 12, qs + 24, qs + 24);
+  if (qr) {                                  // QR bottom-right, centered in the band, quiet
+    const qs = 100, qx = W - PAD - qs, qy = footY + 45;
+    ctx.fillStyle = "#ffffff"; ctx.fillRect(qx - 10, qy - 10, qs + 20, qs + 20);
     ctx.drawImage(qr, qx, qy, qs, qs);
   }
   ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
-  ctx.fillStyle = S.fg; ctx.font = `800 36px ${SANS}`;
-  ctx.fillText("Hitaarth", PAD, footY + 66);
-  ctx.fillStyle = S.muted; ctx.font = `600 25px ${SANS}`;
-  ctx.fillText(SITE, PAD, footY + 106);
-  ctx.fillText("One idea. One move. Every day.", PAD, footY + 142);
+  ctx.fillStyle = S.fg; ctx.font = `700 30px ${SANS}`;
+  ctx.fillText("Hitaarth", PAD, footY + 62);
+  ctx.fillStyle = S.muted; ctx.font = `500 22px ${SANS}`;
+  ctx.fillText("One idea. One move. Every day.", PAD, footY + 98);
+  ctx.fillText(SITE, PAD, footY + 130);
+}
+// Fit a thought-grouped quote into a box — shared by the card renderers. Caps the measure
+// at a book column (~the reader's 32ch), then steps the size down until everything fits.
+function layoutQuoteBlock(ctx, text, boxW, maxH, startSize, minSize, font) {
+  const groups = thoughtGroups(text);
+  const ratio = isDevanagari(text) ? 1.72 : 1.68;
+  let size = startSize;
+  for (;;) {
+    ctx.font = `440 ${size}px ${font}`;
+    const measure = Math.min(boxW, Math.round(ctx.measureText("0").width * 34));
+    const lineH = Math.round(size * ratio);
+    const gap = Math.round(size * 0.85);
+    const laid = groups.map(g => wrapText(ctx, g, measure));
+    const totalH = laid.reduce((s, l) => s + l.length, 0) * lineH + (laid.length - 1) * gap;
+    if (totalH <= maxH || size <= minSize) return { size, lineH, gap, laid, totalH };
+    size = Math.max(minSize, size - 2);
+  }
+}
+function drawQuoteBlock(ctx, fit, x, y, color, font) {
+  ctx.fillStyle = color; ctx.font = `440 ${fit.size}px ${font}`; ctx.textBaseline = "top";
+  for (const lines of fit.laid) {
+    for (const line of lines) { ctx.fillText(line, x, y); y += fit.lineH; }
+    y += fit.gap;
+  }
+  return y - fit.gap;                        // bottom edge of the block
 }
 async function renderQuoteImage(q) {
   try { await document.fonts.ready; } catch {}
@@ -526,33 +570,26 @@ async function renderQuoteImage(q) {
     const ctx = canvas.getContext("2d");
 
     S.paint(ctx, W, H);
+    ctx.textAlign = "left";
 
-    // opening quote mark
-    ctx.fillStyle = S.accent;
-    ctx.globalAlpha = 0.5;
-    ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
-    ctx.font = `700 220px ${SERIF}`;
-    ctx.fillText("“", PAD - 8, PAD + 150);
-    ctx.globalAlpha = 1;
-
-    // quote text — auto-fit into the available box (above the footer band)
-    const maxW = W - PAD * 2;
-    const topY = PAD + 200;
-    const footY = H - 210;
-    const maxTextH = footY - topY - 150;       // leave room for the author line
+    // editorial poster: mark + grouped quote + author, vertically centered above the imprint
     const qtext = tq(q, "text");
     const QFONT = cardFont(qtext);
-    const fit = fitText(ctx, qtext, maxW, maxTextH, 64, 28, isDevanagari(qtext) ? 1.6 : 1.32, QFONT, 600);
-    ctx.fillStyle = S.fg;
-    ctx.font = `600 ${fit.size}px ${QFONT}`;
-    ctx.textBaseline = "top";
-    let y = topY;
-    fit.lines.forEach(line => { ctx.fillText(line, PAD, y); y += fit.lineH; });
+    const footY = H - 190;
+    const markH = 120, authorH = 100;
+    const fit = layoutQuoteBlock(ctx, qtext, W - PAD * 2, footY - PAD - markH - authorH - 90, qtext.length < 80 ? 84 : 66, 30, QFONT);
+    let y = PAD + Math.max(0, (footY - PAD - (markH + fit.totalH + authorH)) / 2);
 
-    // author
-    ctx.fillStyle = S.accent2;
-    ctx.font = `700 38px ${SANS}`;
-    ctx.fillText(`— ${q.author}`, PAD, y + 34);
+    ctx.fillStyle = S.accent; ctx.globalAlpha = 0.65;
+    ctx.textBaseline = "alphabetic"; ctx.font = `700 ${Math.round(fit.size * 2.4)}px ${SERIF}`;
+    ctx.fillText("“", PAD - 8, y + Math.round(fit.size * 1.25));
+    ctx.globalAlpha = 1;
+    y += markH;
+
+    y = drawQuoteBlock(ctx, fit, PAD, y, S.fg, QFONT);
+
+    ctx.fillStyle = S.accent2; ctx.font = `700 36px ${SANS}`; ctx.textBaseline = "top";
+    ctx.fillText(`— ${q.author}`, PAD, y + 52);
 
     drawBrandFooter(ctx, W, H, PAD, SANS, qr, S);
     canvas.toBlob(b => resolve(b), "image/png");
@@ -575,25 +612,21 @@ async function renderQuoteImageStatus(q) {
     S.paint(ctx, W, H);
     ctx.textAlign = "left";
 
-    const maxW = W - PAD * 2;
-    const footY = H - 210;
-    const markH = 200, authorH = 120;
-    const maxTextH = footY - PAD - markH - authorH - 120;
-    const fit = fitText(ctx, qtext, maxW, maxTextH, 78, 32, isDevanagari(qtext) ? 1.62 : 1.42, QFONT, 600);
-    const blockH = markH + fit.lines.length * fit.lineH + authorH;
-    let y = PAD + Math.max(0, (footY - PAD - blockH) / 2);
+    const footY = H - 190;
+    const markH = 140, authorH = 110;
+    const fit = layoutQuoteBlock(ctx, qtext, W - PAD * 2, footY - PAD - markH - authorH - 110, qtext.length < 80 ? 96 : 76, 34, QFONT);
+    let y = PAD + Math.max(0, (footY - PAD - (markH + fit.totalH + authorH)) / 2);
 
-    ctx.fillStyle = S.accent; ctx.globalAlpha = 0.5;
-    ctx.textBaseline = "alphabetic"; ctx.font = `700 250px ${SERIF}`;
-    ctx.fillText("“", PAD - 8, y + 170);
+    ctx.fillStyle = S.accent; ctx.globalAlpha = 0.65;
+    ctx.textBaseline = "alphabetic"; ctx.font = `700 ${Math.round(fit.size * 2.4)}px ${SERIF}`;
+    ctx.fillText("“", PAD - 8, y + Math.round(fit.size * 1.25));
     ctx.globalAlpha = 1;
     y += markH;
 
-    ctx.fillStyle = S.fg; ctx.font = `600 ${fit.size}px ${QFONT}`; ctx.textBaseline = "top";
-    fit.lines.forEach(line => { ctx.fillText(line, PAD, y); y += fit.lineH; });
+    y = drawQuoteBlock(ctx, fit, PAD, y, S.fg, QFONT);
 
-    ctx.fillStyle = S.accent2; ctx.font = `700 42px ${SANS}`;
-    ctx.fillText(`— ${q.author}`, PAD, y + 44);
+    ctx.fillStyle = S.accent2; ctx.font = `700 40px ${SANS}`; ctx.textBaseline = "top";
+    ctx.fillText(`— ${q.author}`, PAD, y + 56);
 
     drawBrandFooter(ctx, W, H, PAD, SANS, qr, S);
     canvas.toBlob(b => resolve(b), "image/png");
@@ -605,8 +638,9 @@ function rrect(ctx, x, y, w, h, r) {
   ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
   ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
 }
-// Full-card image: mirrors the app card (selected quote font, white author + coral category chip,
-// coral lesson accent, Did-it pill, kicker hierarchy) and centers the content block in the card.
+// Full-card image: editorial poster of the app card (selected quote font, white author + coral
+// category chip, coral lesson accent, kicker hierarchy) with the content block centered.
+// No interactive UI is drawn — this is an artwork, not a screenshot.
 async function renderQuoteImageFull(q) {
   try { await document.fonts.ready; } catch {}
   const qr = await loadQR();
@@ -615,7 +649,7 @@ async function renderQuoteImageFull(q) {
     const SERIF = 'Georgia, "Times New Roman", serif';
     const SANS = '-apple-system, system-ui, "Segoe UI", Roboto, sans-serif';
     const QFONT = cardFont(tq(q, "text"));
-    const QRATIO = isDevanagari(tq(q, "text")) ? 1.6 : 1.34;
+    const QRATIO = isDevanagari(tq(q, "text")) ? 1.72 : 1.68;
     const S = activeCardStyle();
     const FG = S.fg, MUTED = S.muted, CORAL = S.accent;
     const canvas = document.createElement("canvas");
@@ -625,12 +659,12 @@ async function renderQuoteImageFull(q) {
     ctx.textAlign = "left";
     const maxW = W - PAD * 2;
     const topY = PAD;
-    const footTop = H - 210;
+    const footTop = H - 200;
     const availH = footTop - topY - 16;
 
     function build(scale) {
       const px = n => Math.max(8, Math.round(n * scale));
-      const Q = px(54), A = px(38), K = px(21), L = px(33), Mv = px(32), Src = px(26);
+      const Q = px(56), A = px(38), K = px(21), L = px(33), Mv = px(33), Src = px(28);
       const els = [];
 
       // quote mark
@@ -639,13 +673,16 @@ async function renderQuoteImageFull(q) {
         ctx.font = `700 ${px(116)}px ${SERIF}`; ctx.fillText("“", PAD - 6, y + px(84)); ctx.globalAlpha = 1;
       }});
 
-      // quote text (app font)
-      ctx.font = `600 ${Q}px ${QFONT}`;
-      const ql = wrapText(ctx, tq(q, "text"), maxW);
-      const qlh = Math.round(Q * QRATIO);
-      els.push({ gap: px(16), h: ql.length * qlh, draw: (y) => {
-        ctx.fillStyle = FG; ctx.font = `600 ${Q}px ${QFONT}`; ctx.textBaseline = "top";
-        let yy = y; ql.forEach(l => { ctx.fillText(l, PAD, yy); yy += qlh; });
+      // quote text — thought-grouped, book measure, reader typography
+      ctx.font = `440 ${Q}px ${QFONT}`;
+      const qMeasure = Math.min(maxW, Math.round(ctx.measureText("0").width * 34));
+      const qGroups = thoughtGroups(tq(q, "text")).map(g => wrapText(ctx, g, qMeasure));
+      const qlh = Math.round(Q * QRATIO), qGap = Math.round(Q * 0.8);
+      const qH = qGroups.reduce((s, l) => s + l.length, 0) * qlh + (qGroups.length - 1) * qGap;
+      els.push({ gap: px(14), h: qH, draw: (y) => {
+        ctx.fillStyle = FG; ctx.font = `440 ${Q}px ${QFONT}`; ctx.textBaseline = "top";
+        let yy = y;
+        qGroups.forEach(lines => { lines.forEach(l => { ctx.fillText(l, PAD, yy); yy += qlh; }); yy += qGap; });
       }});
 
       // byline: author (white) + category chip (coral outline)
@@ -659,7 +696,7 @@ async function renderQuoteImageFull(q) {
       const chipW = label ? ctx.measureText(label).width + chipPadX * 2 : 0;
       const inline = label && (lastW + px(16) + chipW) <= maxW;
       const bylineH = (authorLines.length - 1) * alh + Math.max(A, inline ? chipH : 0) + (label && !inline ? chipH + px(12) : 0);
-      els.push({ gap: px(26), h: bylineH, draw: (y) => {
+      els.push({ gap: px(36), h: bylineH, draw: (y) => {
         ctx.textBaseline = "top"; ctx.fillStyle = FG; ctx.font = `700 ${A}px ${SANS}`;
         let yy = y;
         for (let i = 0; i < authorLines.length; i++) { ctx.fillText(authorLines[i], PAD, yy); if (i < authorLines.length - 1) yy += alh; }
@@ -679,9 +716,9 @@ async function renderQuoteImageFull(q) {
         const indent = px(18);
         ctx.font = `italic 400 ${L}px ${SANS}`;
         const ll = wrapText(ctx, tq(q, "lesson"), maxW - indent);
-        const klh = Math.round(K * 1.55), llh = Math.round(L * 1.34);
+        const klh = Math.round(K * 1.55), llh = Math.round(L * 1.42);
         const h = klh + ll.length * llh;
-        els.push({ gap: px(26), h, draw: (y) => {
+        els.push({ gap: px(32), h, draw: (y) => {
           ctx.strokeStyle = CORAL; ctx.lineWidth = 3;
           ctx.beginPath(); ctx.moveTo(PAD + 1.5, y + px(1)); ctx.lineTo(PAD + 1.5, y + h - px(2)); ctx.stroke();
           ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
@@ -695,11 +732,13 @@ async function renderQuoteImageFull(q) {
       if (q.action) {
         ctx.font = `600 ${Mv}px ${SANS}`;
         const ml = wrapText(ctx, tq(q, "action"), maxW);
-        const klh = Math.round(K * 1.55), mlh = Math.round(Mv * 1.3);
+        const klh = Math.round(K * 1.55), mlh = Math.round(Mv * 1.38);
         const h = klh + ml.length * mlh;
-        els.push({ gap: px(24), h, draw: (y) => {
-          ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
+        els.push({ gap: px(32), h, draw: (y) => {
+          ctx.textBaseline = "top"; ctx.font = `800 ${K}px ${SANS}`;
+          ctx.fillStyle = S.accent2; ctx.globalAlpha = 0.8;   // warmed kicker — the strongest secondary element
           ctx.fillText(t("moveLabel").toUpperCase(), PAD, y);
+          ctx.globalAlpha = 1;
           ctx.fillStyle = FG; ctx.font = `600 ${Mv}px ${SANS}`;
           let yy = y + klh; ml.forEach(l => { ctx.fillText(l, PAD, yy); yy += mlh; });
         }});
@@ -709,9 +748,9 @@ async function renderQuoteImageFull(q) {
       if (q.source) {
         ctx.font = `400 ${Src}px ${SANS}`;
         const sl = wrapText(ctx, q.source, maxW);
-        const klh = Math.round(K * 1.55), slh = Math.round(Src * 1.3);
+        const klh = Math.round(K * 1.55), slh = Math.round(Src * 1.38);
         const h = klh + sl.length * slh;
-        els.push({ gap: px(24), h, draw: (y) => {
+        els.push({ gap: px(30), h, draw: (y) => {
           ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
           ctx.fillText(t("sourceLabel").toUpperCase(), PAD, y);
           ctx.fillStyle = MUTED; ctx.font = `400 ${Src}px ${SANS}`;
@@ -724,7 +763,7 @@ async function renderQuoteImageFull(q) {
     }
 
     let scale = 1, layout = build(1);
-    while (layout.blockH > availH && scale > 0.5) { scale -= 0.05; layout = build(scale); }
+    while (layout.blockH > availH && scale > 0.42) { scale -= 0.05; layout = build(scale); }
     let y = topY + Math.max(0, (availH - layout.blockH) / 2);   // vertically centered
     for (const e of layout.els) { y += e.gap; e.draw(y); y += e.h; }
 
@@ -772,17 +811,6 @@ async function shareStreak() {
   if (!blob) { toast(t("tCantImage")); return; }
   await shareCanvasBlob(blob, `hitaarth-day-${n}`, `Day ${n} of my practice.\n\nvia Hitaarth · ${SITE}/?s=streak`);
 }
-// Shrink font until wrapped text fits the box; returns { size, lineH, lines }.
-function fitText(ctx, text, maxW, maxH, startSize, minSize, lineRatio, family, weight) {
-  for (let size = startSize; size >= minSize; size -= 2) {
-    ctx.font = `${weight} ${size}px ${family}`;
-    const lines = wrapText(ctx, text, maxW);
-    const lineH = size * lineRatio;
-    if (lines.length * lineH <= maxH) return { size, lineH, lines };
-  }
-  ctx.font = `${weight} ${minSize}px ${family}`;
-  return { size: minSize, lineH: minSize * lineRatio, lines: wrapText(ctx, text, maxW) };
-}
 function wrapText(ctx, text, maxW) {
   const words = String(text).split(/\s+/);
   const lines = []; let line = "";
@@ -812,6 +840,7 @@ function bindTabs() {
   $$(".tab").forEach(tb => tb.onclick = () => showScreen(tb.dataset.screen, tb));
 }
 function showScreen(name, tabEl) {
+  document.body.dataset.screen = name;            // reader hides the tab bar (single-toolbar model)
   stopSpeech();                                   // don't keep reading after leaving the reader
   $$(".screen").forEach(s => { s.hidden = (s.id !== name); s.classList.toggle("active", s.id === name); });
   $$(".tab").forEach(tb => tb.classList.remove("active"));

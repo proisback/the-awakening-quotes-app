@@ -45,6 +45,7 @@
     <symbol id="i-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></symbol>
   </svg>
 
   <!-- First-open moment: brand splash that fades into the reader -->
@@ -54,14 +55,12 @@
   <main id="reader" class="screen active" aria-label="Quotes">
     <div id="feed" class="feed"><!-- quote sections injected here --></div>
 
-    <button type="button" id="surpriseBtn" class="surprise" aria-label="Surprise me" title="Surprise me"><svg class="ic-svg" aria-hidden="true"><use href="#i-shuffle"/></svg></button>
-
-    <!-- per-quote actions (toggle with a tap) -->
+    <!-- the single reading toolbar (auto-hides while scrolling; tap = immersive) -->
     <div class="actions" id="actions">
       <button class="act" id="favBtn" aria-label="Favorite"><svg class="ic-svg ic-heart" aria-hidden="true"><use href="#i-heart"/></svg></button>
-      <button class="act" id="noteBtn" aria-label="Add note"><svg class="ic-svg" aria-hidden="true"><use href="#i-pen"/></svg></button>
       <button class="act" id="speakBtn" aria-label="Read aloud"><svg class="ic-svg ic-vol" aria-hidden="true"><use href="#i-volume"/></svg><svg class="ic-svg ic-fill ic-stop" aria-hidden="true"><use href="#i-stop"/></svg></button>
       <button class="act" id="shareBtn" aria-label="Share"><svg class="ic-svg" aria-hidden="true"><use href="#i-share"/></svg></button>
+      <button class="act" id="moreBtn" aria-label="More"><svg class="ic-svg ic-fill" aria-hidden="true"><use href="#i-more"/></svg></button>
     </div>
   </main>
 
@@ -207,6 +206,21 @@
       <textarea id="noteText" rows="4" data-i18n-ph="notePh" placeholder="A thought on this quote…"></textarea>
       <div class="sheet-actions"><button value="cancel" data-i18n="cancel">Cancel</button><button value="save" id="noteSave" data-i18n="save">Save</button></div>
     </form>
+  </dialog>
+
+  <!-- More sheet: everything not used many times per session -->
+  <dialog id="moreSheet">
+    <h3 data-i18n="moreTitle">More</h3>
+    <div class="share-opts">
+      <button type="button" id="noteBtn" class="share-opt"><span class="share-ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-pen"/></svg></span> <span data-i18n="mNote">Add a note</span></button>
+      <button type="button" id="surpriseBtn" class="share-opt"><span class="share-ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-shuffle"/></svg></span> <span data-i18n="mSurprise">Surprise me</span></button>
+      <button type="button" id="copyBtn" class="share-opt"><span class="share-ic"><svg class="ic-svg ic-fill" aria-hidden="true"><use href="#i-quote"/></svg></span> <span data-i18n="mCopy">Copy quote</span></button>
+      <div class="sheet-div" aria-hidden="true"></div>
+      <button type="button" class="share-opt" data-nav="browse"><span class="share-ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-grid"/></svg></span> <span data-i18n="browseTitle">Browse</span></button>
+      <button type="button" class="share-opt" data-nav="saved"><span class="share-ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-bookmark"/></svg></span> <span data-i18n="savedTitle">Saved</span></button>
+      <button type="button" class="share-opt" data-nav="settings"><span class="share-ic"><svg class="ic-svg" aria-hidden="true"><use href="#i-sliders"/></svg></span> <span data-i18n="settingsTitle">Settings</span></button>
+    </div>
+    <form method="dialog" class="sheet-actions"><button value="cancel" data-i18n="cancel">Cancel</button></form>
   </dialog>
 
   <!-- Share sheet -->

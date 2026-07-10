@@ -45,7 +45,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .chev .ic-svg{width:18px;height:18px}
 .share-ic .ic-svg{width:20px;height:20px;margin:0 auto}
 .note-del .ic-svg{width:14px;height:14px}
-.surprise .ic-svg{width:18px;height:18px}
 
 .screen{display:none}
 .screen.active{display:block;animation:screenIn .24s cubic-bezier(.16,.68,.3,1)}
@@ -70,7 +69,7 @@ html[data-theme="light"] #reader::after{background:none}
 .feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
 .feed::-webkit-scrollbar{display:none}
 .quote{height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-start;
-  padding:0 28px;padding-top:calc(var(--safe-top) + 9vh);padding-bottom:calc(var(--safe-bottom) + 150px);
+  padding:0 28px;padding-top:calc(var(--safe-top) + 9vh);padding-bottom:calc(var(--safe-bottom) + 118px);
   background:radial-gradient(85% 55% at 50% 32%, var(--tint, transparent), transparent 72%)}
 /* per-genre ambient wash — barely-there color that shifts as you scroll between genres */
 .quote[data-g="stoic"]{--tint:rgba(122,150,186,.07)}
@@ -98,8 +97,10 @@ html[data-theme="light"] .quote{background:none}
 .source{font-size:calc(var(--quote-size) * 0.6);color:var(--muted);line-height:1.5}
 .kicker{display:block;font-style:normal;font-weight:800;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 
-.actions{position:fixed;left:0;right:0;bottom:calc(64px + var(--safe-bottom));display:flex;justify-content:space-around;
-  padding:0 36px;transition:opacity .25s;font-size:24px}
+.actions{position:fixed;left:0;right:0;bottom:calc(20px + var(--safe-bottom));display:flex;justify-content:center;
+  gap:clamp(28px, 9vw, 72px);font-size:21px;transition:opacity .25s,transform .25s}
+body.bar-hide .actions{opacity:0;transform:translateY(10px);pointer-events:none}
+body[data-screen="reader"] #tabbar{display:none}
 .act.on{color:var(--accent2)}
 
 /* distraction-free: a tap hides chrome */
@@ -272,10 +273,8 @@ dialog[open]{animation:sheetIn .22s cubic-bezier(.16,.68,.3,1)}
 .browse-back{color:var(--accent2);font-weight:600;padding:6px 2px;margin-bottom:8px}
 .browse-head{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:2px 2px 14px}
 
-/* surprise me */
-.surprise{position:fixed;top:calc(var(--safe-top) + 14px);right:14px;z-index:6;width:42px;height:42px;border-radius:50%;background:color-mix(in srgb,var(--bg) 68%, transparent);backdrop-filter:blur(10px);border:1px solid var(--line);font-size:20px;line-height:1;color:var(--fg);display:grid;place-items:center;transition:opacity .25s,transform .2s}
-.surprise:active{transform:scale(.88)}
-body.immersive .surprise{opacity:0;pointer-events:none}
+.sheet-div{height:1px;background:var(--line);margin:4px 0}
+.share-opt.on{color:var(--accent2)}
 
 /* today's move (practice loop) */
 .today-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#1a1205;background:var(--accent1);border-radius:999px;padding:4px 11px;margin-bottom:16px}
