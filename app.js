@@ -841,7 +841,7 @@ function surpriseMe() {
   if (cards.length < 2) return;
   const curPos = cards.findIndex(c => +c.dataset.i === state.current);
   let pos; do { pos = Math.floor(Math.random() * cards.length); } while (pos === curPos);
-  feed.scrollTo({ top: pos * feed.clientHeight, behavior: "smooth" });
+  feed.scrollTo({ top: cards[pos].offsetTop, behavior: "smooth" });   // offsetTop: cards vary in height
   state.current = +cards[pos].dataset.i; refreshActionBar();
   haptic();
 }
@@ -883,7 +883,7 @@ function deleteNote(id) {
 }
 
 // ---------- browse (by genre / by author) ----------
-const GENRE_ORDER = ["Stoicism", "Eastern Wisdom", "Building & Startups", "Systems & Science", "Strategy & Money", "Craft & Creativity", "Mind & Character", "Cinema"];
+const GENRE_ORDER = ["Stoicism", "Eastern Wisdom", "Building & Startups", "Systems & Science", "Strategy & Money", "Craft & Creativity", "Mind & Character", "Cinema", "Television"];
 let browseMode = "genre", browseSel = null, browseQuery = "";
 function openQuote(id) {
   const idx = state.quotes.findIndex(q => q.id === id);
@@ -892,7 +892,7 @@ function openQuote(id) {
   showScreen("reader");
   const feed = $("#feed"); const cards = $$(".quote", feed);
   const pos = cards.findIndex(c => +c.dataset.i === idx);
-  if (pos >= 0) feed.scrollTo({ top: pos * feed.clientHeight, behavior: "auto" });
+  if (pos >= 0) feed.scrollTo({ top: cards[pos].offsetTop, behavior: "auto" });   // offsetTop: cards vary in height
   refreshActionBar();
 }
 function bindBrowse() {
