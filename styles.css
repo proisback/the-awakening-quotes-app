@@ -80,6 +80,7 @@ html[data-theme="light"] #reader::after{background:none}
 .quote[data-g="craft"]{--tint:rgba(188,140,226,.06)}
 .quote[data-g="mind"]{--tint:rgba(238,142,152,.05)}
 .quote[data-g="cinema"]{--tint:rgba(134,122,255,.07)}
+.quote[data-g="tv"]{--tint:rgba(255,150,120,.06)}
 html[data-theme="light"] .quote{background:none}
 @media (prefers-color-scheme: light){ html[data-theme="system"] .quote{background:none} }
 .quote .inner{width:100%;max-width:640px;margin:0 auto}

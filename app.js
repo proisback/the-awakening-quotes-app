@@ -58,6 +58,8 @@ const I18N = {
     shareTitle: "Share quote", saveImageStatus: "Status image — WhatsApp story", saveImageBig: "Big image — full card", saveImageSmall: "Small image — quote only", shareTextOpt: "Share as text",
     cardStyle: "Card style",
     lessonLabel: "Lesson", moveLabel: "Today's move", sourceLabel: "Source", noteLabel: "Note",
+    srcBook: "Book", srcScripture: "Scripture", srcMovie: "Movie", srcTv: "TV Show", srcSpeech: "Speech",
+    srcInterview: "Interview", srcPodcast: "Podcast", srcEssay: "Essay", srcLetter: "Letter", srcPoem: "Poem", srcAphorism: "Aphorism",
     todayBadge: "Today's idea", didIt: "Did it", doneToday: "✓ Done today", translated: "translated",
     dayOne: "{n} day", dayMany: "{n} days",
     levelTo: "Level {level} — to {m}",
@@ -184,8 +186,15 @@ function dayKey(d) {
 const GENRE_SLUG = {
   "Stoicism": "stoic", "Eastern Wisdom": "eastern", "Building & Startups": "startup",
   "Systems & Science": "science", "Strategy & Money": "money", "Craft & Creativity": "craft",
-  "Mind & Character": "mind", "Cinema": "cinema"
+  "Mind & Character": "mind", "Cinema": "cinema", "Television": "tv"
 };
+// Source-type taxonomy: the source kicker names the medium (Book / TV Show / Speech …).
+const SRC_TYPE_KEY = {
+  "Book": "srcBook", "Scripture": "srcScripture", "Movie": "srcMovie", "TV Show": "srcTv",
+  "Speech": "srcSpeech", "Interview": "srcInterview", "Podcast": "srcPodcast",
+  "Essay": "srcEssay", "Letter": "srcLetter", "Poem": "srcPoem", "Aphorism": "srcAphorism"
+};
+function srcLabel(q) { return t(SRC_TYPE_KEY[q.sourceType] || "sourceLabel"); }
 // Long quotes render as thought groups — split at sentence pauses (. ; ! ? … and the
 // Hindi danda ।) so each idea breathes. Fragments merge into their neighbour; short
 // quotes stay a single block. Shared by the reader and every share-card renderer.
@@ -220,7 +229,7 @@ function renderFeed() {
           <div class="byline"><span class="author">${escapeHTML(q.author)}</span>${q.category ? `<span class="chip">${escapeHTML(q.category)}</span>` : ""}${isTranslated(q) ? `<span class="tr-badge">${t("translated")}</span>` : ""}</div>
           ${q.lesson ? `<div class="lesson"><span class="kicker">${t("lessonLabel")}</span>${escapeHTML(tq(q, "lesson"))}</div>` : ""}
           ${q.action ? `<div class="todo"><span class="kicker">${t("moveLabel")}</span><span class="todo-text">${escapeHTML(tq(q, "action"))}</span><button type="button" class="todo-done${isActionDone(q.id) ? " on" : ""}" data-done="${escapeHTML(q.id)}">${isActionDone(q.id) ? t("doneToday") : t("didIt")}</button></div>` : ""}
-          ${q.source ? `<div class="source"><span class="kicker">${t("sourceLabel")}</span>${escapeHTML(q.source)}</div>` : ""}
+          ${q.source ? `<div class="source"><span class="kicker">${srcLabel(q)}</span>${escapeHTML(q.source)}</div>` : ""}
         </div>
       </div>
     </article>`).join("");
@@ -752,7 +761,7 @@ async function renderQuoteImageFull(q) {
         const h = klh + sl.length * slh;
         els.push({ gap: px(30), h, draw: (y) => {
           ctx.textBaseline = "top"; ctx.fillStyle = MUTED; ctx.font = `800 ${K}px ${SANS}`;
-          ctx.fillText(t("sourceLabel").toUpperCase(), PAD, y);
+          ctx.fillText(srcLabel(q).toUpperCase(), PAD, y);
           ctx.fillStyle = MUTED; ctx.font = `400 ${Src}px ${SANS}`;
           let yy = y + klh; sl.forEach(l => { ctx.fillText(l, PAD, yy); yy += slh; });
         }});
