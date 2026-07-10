@@ -21,6 +21,10 @@ Updated 2026-07-08. Operating thesis: **distribution before monetization.** The 
 6. **"Widgets" in premium copy** - KILLED. PWA widgets do not meaningfully exist on Android/iOS; the promise could not ship. Copy now reads "Unlock theme packs & fonts" in all locales; the dead widgets toast string was removed.
 7. **es/fr locale expansion** - KILLED. India thesis; new locales are maintenance tax with no user behind them. Existing es/fr files stay maintained for current UI keys, but no new locales and no locale-specific features.
 
+## Shipped since (2026-07-11)
+
+- **Ideas Library expansion**: 151 → 569 quotes in four languages; sourceType taxonomy (the source kicker names the medium); TV pack (67 quotes) added at the owner's direction — copyright posture recorded in the vault ADR (20260711), review-before-charging still open.
+
 ## Watching (build only on signal)
 
 8. **Notes as micro-journal** - if analytics show notes growing, "quote + my note" share cards become the UGC play.
