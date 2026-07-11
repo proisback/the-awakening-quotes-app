@@ -5,7 +5,11 @@
       "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
     },
     {
-      "source": "/manifest.webmanifest",
+      "source": "/read/service-worker.js",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    },
+    {
+      "source": "/read/manifest.webmanifest",
       "headers": [{ "key": "Content-Type", "value": "application/manifest+json" }]
     }
   ]

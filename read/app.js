@@ -542,7 +542,7 @@ function loadQR() {
     const img = new Image();
     img.onload = () => { _qrImg = img; res(img); };
     img.onerror = () => { _qrImg = null; res(null); };
-    img.src = "icons/qr.png";
+    img.src = "/icons/qr.png";
   });
 }
 // Brand imprint — a quiet publisher signature, QR as metadata rather than a call-to-action.

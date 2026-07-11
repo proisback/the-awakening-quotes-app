@@ -9,18 +9,18 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const LANGS = ["hi", "es", "fr"];
 
-const quotes = JSON.parse(fs.readFileSync(path.join(root, "quotes.json"), "utf8"));
+const quotes = JSON.parse(fs.readFileSync(path.join(root, "read", "quotes.json"), "utf8"));
 const ids = quotes.map(q => q.id);
 
 // English UI keys are the source of truth, declared in app.js (I18N.en { ... }).
-const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
+const app = fs.readFileSync(path.join(root, "read", "app.js"), "utf8");
 const enBlock = (app.match(/en:\s*\{([\s\S]*?)\n  \}/) || [])[1] || "";
 // keys are `name: "..."` — matches multiple-per-line, ignores `word:` inside string values
 const enKeys = [...enBlock.matchAll(/([A-Za-z][A-Za-z0-9]*):\s*"/g)].map(m => m[1]);
 
 let failed = false;
 for (const l of LANGS) {
-  const file = path.join(root, "i18n", `${l}.json`);
+  const file = path.join(root, "read", "i18n", `${l}.json`);
   let d;
   try { d = JSON.parse(fs.readFileSync(file, "utf8")); }
   catch (e) { console.error(`[${l}] INVALID JSON: ${e.message}`); failed = true; continue; }
