@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <title>Hitaarth: one meaningful thought, one small action, every day</title>
   <meta name="description" content="One idea worth carrying into your day. A free daily reading practice in English and Hindi: one hand-picked thought, a lesson worth keeping, one small action. No ads, no account, works offline." />
   <link rel="canonical" href="https://the-awakening-quotes-app.vercel.app/" />
@@ -65,6 +65,8 @@
     @font-face{font-family:"Spectral";src:url(/fonts/Spectral-600.woff2) format("woff2");font-weight:600;font-display:swap}
 
     *{box-sizing:border-box}
+    /* pinch/double-tap zoom locked (same as the app); no sideways scroll, ever */
+    html,body{overflow-x:hidden;touch-action:pan-x pan-y}
     html{scroll-behavior:smooth}
     @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
     body{
@@ -81,14 +83,14 @@
     .skip:focus{left:0}
 
     /* ---------- top strip + sticky bar ---------- */
-    .topstrip{display:flex;align-items:baseline;justify-content:space-between;padding:26px 0 0}
+    .topstrip{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 18px;padding:calc(30px + env(safe-area-inset-top, 0px)) 0 0}
     .wordmark{display:inline-flex;align-items:baseline;gap:9px;font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:21px;letter-spacing:.01em;text-decoration:none}
     .wordmark .deva{font-size:.88em;color:var(--muted);font-weight:400}
     .builders-link{font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--micro);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
     .builders-link:hover{color:var(--fg)}
     .stickybar{
       position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
-      padding:10px 20px;background:color-mix(in srgb, var(--bg) 78%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+      padding:10px 20px;padding-top:calc(10px + env(safe-area-inset-top, 0px));background:color-mix(in srgb, var(--bg) 78%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
       border-bottom:1px solid var(--line);opacity:0;transform:translateY(-100%);transition:opacity .3s,transform .3s;pointer-events:none;
     }
     body.past-hero .stickybar{opacity:1;transform:none;pointer-events:auto}
@@ -175,7 +177,7 @@
 
     /* library (ch 4) */
     .source-rail{margin:40px 0 0;font-family:"Fraunces",Georgia,serif;font-size:clamp(17px,2.4vw,22px);line-height:2;letter-spacing:.01em;max-width:46ch}
-    .source-rail .dot{color:var(--accent2);padding:0 .45em}
+    .source-rail .dot{color:var(--accent2);padding:0 .2em}
     .lang-line{margin-top:36px;max-width:52ch;color:var(--muted)}
     .pair{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px;max-width:760px}
     @media (max-width:700px){ .pair{grid-template-columns:1fr} }
@@ -259,11 +261,11 @@
     .decisions p{margin:0;color:var(--appendix-muted);font-size:16px;line-height:1.6}
     .facts{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:13px;line-height:2.1;color:var(--appendix-muted);
       border-top:1px solid var(--appendix-line);border-bottom:1px solid var(--appendix-line);padding:16px 0;margin-bottom:40px}
-    .facts .dot{color:var(--accent2);padding:0 .6em}
+    .facts .dot{color:var(--accent2);padding:0 .3em}
     .appendix-links{font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:14.5px;font-weight:600}
     .appendix-links a{color:var(--appendix-fg);text-decoration:none;border-bottom:1px solid color-mix(in srgb, var(--accent2) 55%, transparent);padding-bottom:2px}
     .appendix-links a:hover{color:var(--accent2)}
-    .appendix-links span{color:var(--appendix-muted);padding:0 .9em}
+    .appendix-links span{color:var(--appendix-muted);padding:0 .45em}
 
     footer{padding:64px 0 54px;text-align:center;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;
       font-size:13px;color:var(--muted)}
@@ -369,7 +371,7 @@
         <span class="kicker">Chapter four</span>
         <h2 id="c4h"><span data-qcount>569</span> ideas, chosen by hand.</h2>
         <p class="prose">Every idea is picked and checked by hand, then given a lesson and a small action. Nothing arrives by algorithm.</p>
-        <p class="source-rail" aria-label="Sources">Scripture<span class="dot">·</span>Aphorisms<span class="dot">·</span>Poems<span class="dot">·</span>Letters<span class="dot">·</span>Speeches<span class="dot">·</span>Books<span class="dot">·</span>Essays<span class="dot">·</span>Interviews<span class="dot">·</span>Cinema<span class="dot">·</span>Television</p>
+        <p class="source-rail" aria-label="Sources">Scripture <span class="dot">·</span> Aphorisms <span class="dot">·</span> Poems <span class="dot">·</span> Letters <span class="dot">·</span> Speeches <span class="dot">·</span> Books <span class="dot">·</span> Essays <span class="dot">·</span> Interviews <span class="dot">·</span> Cinema <span class="dot">·</span> Television</p>
         <p class="lang-line">Every idea, its lesson, and its action, in English, Hindi, Spanish, and French. Hindi is written in Devanagari, not transliterated.</p>
         <div class="pair" id="pair">
           <div class="mini-card">
@@ -498,9 +500,9 @@
               <p>An early premium promise (home-screen widgets) died when the platform couldn't deliver it. The copy was corrected everywhere the same day.</p>
             </div>
           </div>
-          <p class="facts">Vanilla HTML, CSS, and JavaScript<span class="dot">·</span>Zero dependencies<span class="dot">·</span>No build step<span class="dot">·</span><span data-qcount>569</span> ideas in 4 languages<span class="dot">·</span>Built to stay lightweight<span class="dot">·</span>Open metrics</p>
+          <p class="facts">Vanilla HTML, CSS, and JavaScript <span class="dot">·</span> Zero dependencies <span class="dot">·</span> No build step <span class="dot">·</span> <span data-qcount>569</span> ideas in 4 languages <span class="dot">·</span> Built to stay lightweight <span class="dot">·</span> Open metrics</p>
           <p class="appendix-links">
-            <a href="/metrics.md">What we measure and why</a><span>·</span><a href="https://www.linkedin.com/in/prateek-mehta-xlri" rel="author">Built by Prateek Mehta</a>
+            <a href="/metrics.md">What we measure and why</a> <span>·</span> <a href="https://www.linkedin.com/in/prateek-mehta-xlri" rel="author">Built by Prateek Mehta</a>
           </p>
         </div>
       </section>
