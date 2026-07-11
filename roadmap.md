@@ -4,7 +4,7 @@ Updated 2026-07-08. Operating thesis: **distribution before monetization.** The 
 
 ## Now (building)
 
-1. **Privacy-first analytics** - BUILT 2026-07-08. Events: open, read, save, note, did-it, share (per format), share-streak, paywall, reminder-on, install. Local day-counters always (`hitaarthStats()` in the console); remote aggregation activates when the GoatCounter site code is set in `GC_SITE` in `app.js` (free account, 2-minute signup). Respects Do Not Track, never pings from localhost. OPEN ITEM: create the GoatCounter account and fill in `GC_SITE`.
+1. **Privacy-first analytics** - BUILT 2026-07-08. Events: open, read, save, note, did-it, share (per format), share-streak, paywall, reminder-on, install. Local day-counters always (`hitaarthStats()` in the console); remote aggregation activates when the GoatCounter site code is set in `GC_SITE` in `app.js` (free account, 2-minute signup). Respects Do Not Track, never pings from localhost. GoatCounter account DONE (`GC_SITE = "prateek-mehta"`, dashboard prateek-mehta.goatcounter.com) — the roadmap said this was open long after the code shipped; corrected 2026-07-12.
 2. **WhatsApp Status share card** - BUILT 2026-07-08. 1080x1920 vertical render, top option in the share sheet, vertically centered quote block, brand footer + QR.
 3. **Hindi share cards** - BUILT 2026-07-08. Devanagari-aware canvas font stack (Noto Serif Devanagari → Mangal → Nirmala UI) and taller line ratios (1.6+) on all three card formats.
 
@@ -24,6 +24,7 @@ Updated 2026-07-08. Operating thesis: **distribution before monetization.** The 
 ## Shipped since (2026-07-11)
 
 - **Ideas Library expansion**: 151 → 569 quotes in four languages; sourceType taxonomy (the source kicker names the medium); TV pack (67 quotes) added at the owner's direction — copyright posture recorded in the vault ADR (20260711), review-before-charging still open.
+- **Landing page + /read/ migration (2026-07-12)**: the app moved to `/read/` (manifest `id` unchanged, root SW replaced by a self-destructing stub); a Chapter Zero landing page took the root per the approved spec (vault: `2026-07-12-landing-page-spec.md`). New GoatCounter events: land-open, land-cta-hero, land-cta-begin, land-toggle-hi, land-builders. TODO ~2026-08-11: delete the root SW stub (`/service-worker.js`) once legacy installs have cycled. AFTER FIRST DEPLOY: confirm `land-open` / `arrive-landing` / `arrive-qr` appear in the GoatCounter dashboard.
 
 ## Watching (build only on signal)
 
