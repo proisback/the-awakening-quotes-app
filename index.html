@@ -112,6 +112,7 @@
       padding:15px 30px;border-radius:999px;transition:transform .18s,box-shadow .18s}
     .btn:hover{transform:translateY(-1px);box-shadow:0 10px 34px color-mix(in srgb, var(--accent2) 26%, transparent)}
     .micro-line{margin:16px 0 0;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:13.5px;font-weight:600;color:var(--micro)}
+    .refusal-line{margin-top:7px;color:var(--muted)}
 
     /* live card — mirrors the reader's anatomy */
     .live-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 30px 26px;
@@ -251,7 +252,13 @@
     .begin p{margin-left:auto;margin-right:auto}
     .begin .prose{max-width:52ch}
     .begin .btn{font-size:17px;padding:17px 36px}
-    .install-nudge{margin-top:20px;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:13.5px;color:var(--muted);max-width:44ch !important}
+    /* .begin prefix: must out-rank the generic .ch p margin rule, or the gap silently collapses */
+    .begin .install-nudge{margin:34px auto 0;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:13.5px;color:var(--muted);max-width:44ch !important}
+    .install-how{margin:12px auto 0;max-width:46ch;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:13px;color:var(--muted)}
+    .install-how summary{cursor:pointer;list-style:none;display:inline-block;font-weight:600;border-bottom:1px dotted var(--muted);padding-bottom:1px}
+    .install-how summary::-webkit-details-marker{display:none}
+    .install-how summary:hover{color:var(--fg);border-bottom-color:var(--fg)}
+    .install-how p{margin:12px 0 0;line-height:1.7}
 
     /* appendix */
     .appendix{background:var(--appendix-bg);color:var(--appendix-fg);border-radius:26px;padding:9vh 0;margin:6vh 0 0}
@@ -316,7 +323,8 @@
           <p class="subline">Feeds give you endless information, and almost nothing that stays. Hitaarth gives you one carefully chosen idea each day, with one small action to carry into your life. In English and Hindi.</p>
           <div class="cta-row">
             <a class="btn" id="ctaHero" href="/read/?s=landing" data-track="land-cta-hero">Read today's thought</a>
-            <p class="micro-line">About two minutes a day · Free · No account · Works offline</p>
+            <p class="micro-line">About two minutes a day · Free · Works offline</p>
+            <p class="micro-line refusal-line">No feed · No algorithm · No ads · No account</p>
           </div>
         </div>
         <div class="live-card" id="liveCard">
@@ -494,6 +502,11 @@
         <div class="cta-row">
           <a class="btn" id="ctaBegin" href="/read/?s=landing" data-track="land-cta-begin">Read today's thought</a>
           <p class="install-nudge">Keep Hitaarth close. Add it to your home screen and it opens like any other app, even offline.</p>
+          <details class="install-how">
+            <summary data-track="land-install-how">Show me how</summary>
+            <p>iPhone: open Hitaarth in Safari, tap the Share button, then "Add to Home Screen".<br />
+               Android: open it in Chrome, tap the &#8942; menu, then "Add to Home screen" or "Install app".</p>
+          </details>
         </div>
       </section>
 
