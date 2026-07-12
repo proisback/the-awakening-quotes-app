@@ -288,13 +288,27 @@ dialog[open]{animation:sheetIn .22s cubic-bezier(.16,.68,.3,1)}
 
 /* today's move (practice loop) */
 .today-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#1a1205;background:var(--accent1);border-radius:999px;padding:4px 11px;margin-bottom:16px}
-.todo{margin-top:12px}
+.todo{margin-top:14px;padding:14px 16px 16px;border:1px solid color-mix(in srgb, var(--accent1) 26%, transparent);border-radius:16px;background:color-mix(in srgb, var(--accent1) 6%, transparent)}
 .todo .kicker{font-size:11px;color:color-mix(in srgb, var(--accent1) 60%, var(--muted))}
 .todo .todo-text{display:block;font-size:calc(var(--quote-size) * 0.66);font-weight:600;margin:6px 0 14px;line-height:1.45}
 .todo-done{border:1px solid var(--accent1);color:var(--accent1);border-radius:999px;padding:8px 18px;font-size:14px;font-weight:700;letter-spacing:.3px;transition:background .15s}
 .todo-done.on{background:var(--accent1);color:#1a1205;border-color:var(--accent1)}
 .streak-share{margin-top:12px}
 #streakFreeze,#actionsStat{margin-top:8px}
+
+/* your note, kept visible on the card itself */
+.qnote{padding:2px 0 2px 14px;border-left:2px dashed var(--line);font-size:calc(var(--quote-size) * 0.62);line-height:1.5}
+.qnote .qnote-text{font-style:italic;opacity:.9}
+
+/* one-time gesture coach mark (first open only) */
+.gesture-hint{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(88px + var(--safe-bottom));z-index:8;
+  max-width:min(92vw,420px);text-align:center;padding:10px 18px;border-radius:16px;
+  background:color-mix(in srgb, var(--bg) 72%, transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);color:var(--muted);font-size:13px;font-weight:600;pointer-events:none;
+  animation:hintIn .4s ease backwards;transition:opacity .35s,transform .35s}
+.gesture-hint.out,body.immersive .gesture-hint{opacity:0;transform:translate(-50%,8px)}
+@keyframes hintIn{from{opacity:0;transform:translate(-50%,8px)}}
+@media (prefers-reduced-motion: reduce){.gesture-hint{animation:none}}
 
 /* share sheet */
 .share-opts{display:flex;flex-direction:column;gap:10px;margin-top:6px}
@@ -308,6 +322,12 @@ dialog[open]{animation:sheetIn .22s cubic-bezier(.16,.68,.3,1)}
 .sw-cdusk{background:linear-gradient(160deg,#1a1030,#07070a 75%)}
 .share-opt .share-ic{font-size:20px;width:24px;text-align:center}
 .share-opt:active{background:rgba(127,127,127,.22)}
+/* one obvious share path — Status leads, the rest stay a tap away */
+.share-opt.share-primary{border:1px solid color-mix(in srgb, var(--accent2) 45%, transparent);background:color-mix(in srgb, var(--accent2) 10%, transparent)}
+
+/* language row inside the More sheet */
+.sheet-kicker{margin:14px 2px 2px}
+dialog .seg{justify-content:flex-start;padding:8px 0 2px}
 
 /* sheets + toast */
 dialog{border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--fg);width:min(92vw,420px);padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
@@ -315,4 +335,5 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 dialog textarea{width:100%;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:10px;margin-top:8px}
 .sheet-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
 .sheet-actions button{padding:8px 16px;border-radius:10px;background:rgba(127,127,127,.15)}
+.sheet-actions #noteSave{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#1a1205;font-weight:700}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(100px + var(--safe-bottom));background:var(--fg);color:var(--bg);padding:12px 20px;border-radius:999px;font-size:14px;font-weight:700;z-index:9999;box-shadow:0 6px 20px rgba(0,0,0,.45);max-width:80%;text-align:center}

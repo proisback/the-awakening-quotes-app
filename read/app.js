@@ -44,6 +44,7 @@ let localeData = null;
 const I18N = {
   en: {
     savedTitle: "Saved", savedEmpty: "Double-tap a quote, or tap ♡, to save it here.",
+    keptOne: "1 kept", keptMany: "{n} kept",
     settingsTitle: "Settings", streak: "STREAK", shareStreak: "Share streak ↗",
     language: "Language", languageSub: "App language",
     appearance: "Appearance", appearanceSub: "Light / Dark / System",
@@ -61,6 +62,7 @@ const I18N = {
     srcBook: "Book", srcScripture: "Scripture", srcMovie: "Movie", srcTv: "TV Show", srcSpeech: "Speech",
     srcInterview: "Interview", srcPodcast: "Podcast", srcEssay: "Essay", srcLetter: "Letter", srcPoem: "Poem", srcAphorism: "Aphorism",
     todayBadge: "Today's idea", didIt: "Did it", doneToday: "✓ Done today", translated: "translated",
+    hintGestures: "Swipe right to keep · swipe left to note",
     dayOne: "{n} day", dayMany: "{n} days",
     levelTo: "Level {level} — to {m}",
     nextMilestone: "Next milestone in {n} day", nextMilestoneN: "Next milestone in {n} days",
@@ -72,20 +74,20 @@ const I18N = {
     noMoves: "No moves yet — do today's one move.",
     remNote: "Reminders only fire while the app is open or running in the background — the browser may not deliver them once it's fully closed.",
     langNote: "Quotes in another language are machine-translated and marked.",
-    tCopied: "Copied", tMoveLogged: "Move logged ✓", tImageSaved: "Image saved",
+    tCopied: "Copied", tMoveLogged: "Move logged ✓", tDoneTomorrow: "Day {n} done. See you tomorrow.", tImageSaved: "Image saved",
     tRendering: "Rendering image…", tCantImage: "Couldn't make image",
     tCopiedClip: "Copied to clipboard", tCantShare: "Couldn't share",
     tRemUnsupported: "Reminders aren't supported on this browser",
     tNoTTS: "Read aloud isn't supported on this browser",
     browseTitle: "Browse", byGenre: "By genre", byAuthor: "By author", browseBack: "← Back", searchPh: "Search quotes, authors…", resultOne: "result", resultMany: "results", noResults: "No matches",
     skins: "Themes",
-    pwSub: "Own the full editorial experience.",
+    pwSub: "More themes, more fonts. Every future pack included.",
     pwFeatThemes: "All theme packs — Dawn, Ink, Forest",
     pwFeatFonts: "The complete font library",
     pwFeatFuture: "Every future pack, included",
-    pwCta: "Notify me when it's ready", pwCtaDone: "✓ You're on the list", pwLater: "Maybe later",
-    tNotifyMe: "Noted — you'll be first to know",
-    moreTitle: "More", mNote: "Add a note", mSurprise: "Surprise me", mCopy: "Copy quote",
+    pwCta: "I want this", pwCtaDone: "✓ Noted", pwLater: "Maybe later",
+    tNotifyMe: "Noted — this helps decide what gets built next.",
+    moreTitle: "More", mNote: "Add a note", mSurprise: "Open at random", mCopy: "Copy quote",
     about: "About Hitaarth", aboutSub: "The story behind the name",
     aboutP1: "When our son was born, we named him Hitaarth: a Sanskrit word meaning one whose purpose is to do good.",
     aboutP2: "Becoming a father changed what I noticed about my own days. Social media gave me endless information, but almost nothing that stayed. Every once in a while, though, a single sentence would change how I handled a conversation, a hard decision, an ordinary day.",
@@ -152,6 +154,7 @@ async function init() {
   bindSettings();
   computeStreak();
   applyStaticI18n();
+  showGestureHint();
   scheduleReminder();
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js").catch(() => {});
   // Ask the browser to keep our data — stops eviction of localStorage/cache under storage pressure.
@@ -167,6 +170,25 @@ async function init() {
   else if (go === "browse") showScreen("browse");
   else if (go === "surprise") surpriseMe();
   // "today"/absent → default reader screen, no action
+}
+
+// One-time coach mark: the landing page promises the swipe gestures, so the first
+// open teaches them once, then gets out of the way forever.
+function showGestureHint() {
+  if (store.get("hintSeen", false) || !state.quotes.length) return;
+  setTimeout(() => {
+    if (document.body.dataset.screen !== "reader") return;   // don't teach over a deep-linked screen
+    store.set("hintSeen", true);
+    const el = document.createElement("div");
+    el.className = "gesture-hint";
+    el.textContent = t("hintGestures");
+    document.body.appendChild(el);
+    const hide = () => { el.classList.add("out"); setTimeout(() => el.remove(), 400); };
+    const feed = $("#feed");
+    feed.addEventListener("pointerdown", hide, { once: true });
+    feed.addEventListener("scroll", hide, { once: true, passive: true });
+    setTimeout(hide, 9000);
+  }, 2100);                                                  // after the splash has faded
 }
 
 // Deterministic "idea of the day": same idea all day, a different one tomorrow.
@@ -230,6 +252,7 @@ function renderFeed() {
           ${q.lesson ? `<div class="lesson"><span class="kicker">${t("lessonLabel")}</span>${escapeHTML(tq(q, "lesson"))}</div>` : ""}
           ${q.action ? `<div class="todo"><span class="kicker">${t("moveLabel")}</span><span class="todo-text">${escapeHTML(tq(q, "action"))}</span><button type="button" class="todo-done${isActionDone(q.id) ? " on" : ""}" data-done="${escapeHTML(q.id)}">${isActionDone(q.id) ? t("doneToday") : t("didIt")}</button></div>` : ""}
           ${q.source ? `<div class="source"><span class="kicker">${srcLabel(q)}</span>${escapeHTML(q.source)}</div>` : ""}
+          ${hasNote(q.id) ? `<div class="qnote"><span class="kicker">${t("noteLabel")}</span><span class="qnote-text">${escapeHTML(state.notes[q.id])}</span></div>` : ""}
         </div>
       </div>
     </article>`).join("");
@@ -264,7 +287,13 @@ function toggleActionDone(btn) {
   } else {
     state.actions[key] = new Date().toISOString();
     btn.classList.add("on"); btn.textContent = t("doneToday");
-    toast(t("tMoveLogged"));
+    // Today's own move closes the loop: day count + "see you tomorrow" is the whole reward.
+    if (state.quotes.length && state.quotes[dayIndex()].id === id) {
+      const n = store.get("streak", { count: 1 }).count || 1;
+      toast(t("tDoneTomorrow").replace("{n}", n), 2400);
+    } else {
+      toast(t("tMoveLogged"));
+    }
     track("did-it");
   }
   store.set("actions", state.actions);
@@ -497,7 +526,7 @@ function toggleNote() {
   const dlg = $("#noteSheet"), ta = $("#noteText");
   ta.value = state.notes[q.id] || "";
   dlg.showModal();
-  $("#noteSave").onclick = () => { state.notes[q.id] = ta.value.trim(); if (state.notes[q.id]) track("note"); store.set("notes", state.notes); refreshActionBar(); renderSaved(); };
+  $("#noteSave").onclick = () => { state.notes[q.id] = ta.value.trim(); if (state.notes[q.id]) track("note"); store.set("notes", state.notes); refreshActionBar(); renderSaved(); updateCardNote(q.id); };
 }
 
 // ---------- quote -> shareable PNG (1080x1350, vanilla canvas) ----------
@@ -888,9 +917,14 @@ function hasNote(id) { return !!(state.notes[id] && state.notes[id].trim()); }
 function renderSaved() {
   const wrap = $("#savedList"); if (!wrap) return;
   // Show anything the user has acted on: a favorite, a note, or both.
-  const items = state.quotes.filter(q => state.favorites.has(q.id) || hasNote(q.id));
+  // Newest kept first (favorites store in insertion order), then note-only quotes.
+  const byId = new Map(state.quotes.map(q => [q.id, q]));
+  const items = [...state.favorites].reverse().map(id => byId.get(id)).filter(Boolean)
+    .concat(state.quotes.filter(q => !state.favorites.has(q.id) && hasNote(q.id)));
   $("#savedEmpty").hidden = items.length > 0;
-  wrap.innerHTML = items.map(q => {
+  const head = items.length
+    ? `<div class="browse-head">${items.length === 1 ? t("keptOne") : t("keptMany").replace("{n}", items.length)}</div>` : "";
+  wrap.innerHTML = head + items.map(q => {
     const note = hasNote(q.id)
       ? `<div class="note"><span class="kicker">${t("noteLabel")}</span><span class="note-text">${escapeHTML(state.notes[q.id])}</span><button class="note-del" data-del="${escapeHTML(q.id)}" aria-label="Delete note"><svg class="ic-svg" aria-hidden="true"><use href="#i-x"/></svg></button></div>`
       : "";
@@ -902,7 +936,22 @@ function renderSaved() {
 function deleteNote(id) {
   delete state.notes[id];
   store.set("notes", state.notes);
-  refreshActionBar(); renderSaved(); haptic();
+  refreshActionBar(); renderSaved(); updateCardNote(id); haptic();
+}
+// Keep the reader card's inline note in sync without rebuilding the feed (scroll survives).
+function updateCardNote(id) {
+  const idx = state.quotes.findIndex(q => q.id === id); if (idx < 0) return;
+  const meta = $(`.quote[data-i="${idx}"] .meta`); if (!meta) return;
+  let el = $(".qnote", meta);
+  if (hasNote(id)) {
+    if (!el) {
+      el = document.createElement("div"); el.className = "qnote";
+      el.innerHTML = `<span class="kicker"></span><span class="qnote-text"></span>`;
+      meta.appendChild(el);
+    }
+    $(".kicker", el).textContent = t("noteLabel");
+    $(".qnote-text", el).textContent = state.notes[id];
+  } else if (el) el.remove();
 }
 
 // ---------- browse (by genre / by author) ----------
@@ -1146,4 +1195,4 @@ function haptic() {
   if (navigator.userActivation && !navigator.userActivation.hasBeenActive) return;
   try { navigator.vibrate?.(8); } catch {}
 }
-function toast(msg) { const el = $("#toast"); el.textContent = msg; el.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => el.hidden = true, 1300); }
+function toast(msg, ms = 1300) { const el = $("#toast"); el.textContent = msg; el.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => el.hidden = true, ms); }

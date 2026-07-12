@@ -14,7 +14,7 @@ Updated 2026-07-08. Operating thesis: **distribution before monetization.** The 
 
 ## Parked
 
-5. **Payment rails** (Razorpay Payment Links or Gumroad license keys) - do not build on zero demand signal. CHEAP TEST BUILT 2026-07-08: paywall CTA is now "Notify me when it's ready" - one tap per user, counted as `notify-me`, persists as "You're on the list". Read the paywall→notify-me conversion after two weeks of traffic, then decide on rails.
+5. **Payment rails** (Razorpay Payment Links or Gumroad license keys) - do not build on zero demand signal. CHEAP TEST BUILT 2026-07-08: paywall CTA is a one-tap demand signal, counted as `notify-me`. RENAMED 2026-07-12 for honesty (nothing could actually notify anyone - no email, no push): CTA now reads "I want this", persists as "✓ Noted", confirmation toast "Noted — this helps decide what gets built next." Event name and localStorage key unchanged, so the metric series is continuous. Read the paywall→notify-me conversion after two weeks of traffic, then decide on rails.
 
 ## Killed (decided 2026-07-08)
 
