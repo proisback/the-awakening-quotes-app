@@ -6,8 +6,8 @@
   <title>Hitaarth: one meaningful thought, one small action, every day</title>
   <meta name="description" content="One idea worth carrying into your day. A free daily reading practice in English and Hindi: one hand-picked thought, a lesson worth keeping, one small action. No ads, no account, works offline." />
   <link rel="canonical" href="https://the-awakening-quotes-app.vercel.app/" />
-  <meta property="og:title" content="Hitaarth" />
-  <meta property="og:description" content="One idea worth carrying into your day. A free daily reading practice in English and Hindi." />
+  <meta property="og:title" content="Hitaarth — one meaningful thought, one small action, every day" />
+  <meta property="og:description" content="Read less. Carry more. One idea worth carrying into your day — a free daily reading practice in English and Hindi." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://the-awakening-quotes-app.vercel.app/" />
   <meta property="og:image" content="https://the-awakening-quotes-app.vercel.app/icons/og.png" />
@@ -36,6 +36,7 @@
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "Is it free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The whole library, all four languages, offline use, share cards: everything you see today is free. A small set of extra themes and fonts may become paid later; the daily practice stays free either way." } },
+      { "@type": "Question", "name": "How is this different from a quotes app?", "acceptedAnswer": { "@type": "Answer", "text": "A quotes app hands you an endless pile to scroll. Hitaarth gives you one hand-picked thought a day, with a lesson and one small action attached, then sends you back to your day. The library is finite, chosen by hand, and nothing is decided by an algorithm." } },
       { "@type": "Question", "name": "Do I need an account?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is nothing to sign up for. Your favorites, notes, and streak live on your device." } },
       { "@type": "Question", "name": "How do I install it without an app store?", "acceptedAnswer": { "@type": "Answer", "text": "Hitaarth is a web app. Open it in your browser, then choose \"Add to Home Screen\" (iPhone: Share button; Android: Install app in the browser menu). It opens like any other app afterward." } },
       { "@type": "Question", "name": "Does it work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. After your first visit, everything works without internet, including Hindi." } },
@@ -110,7 +111,7 @@
       text-decoration:none;color:#131017;background:linear-gradient(90deg,var(--accent1),var(--accent2));
       padding:15px 30px;border-radius:999px;transition:transform .18s,box-shadow .18s}
     .btn:hover{transform:translateY(-1px);box-shadow:0 10px 34px color-mix(in srgb, var(--accent2) 26%, transparent)}
-    .micro-line{margin:16px 0 0;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:13.5px;color:var(--muted)}
+    .micro-line{margin:16px 0 0;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:13.5px;font-weight:600;color:var(--micro)}
 
     /* live card — mirrors the reader's anatomy */
     .live-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 30px 26px;
@@ -118,10 +119,12 @@
     @media (prefers-color-scheme: light){ .live-card{box-shadow:0 20px 55px rgba(29,25,18,.12)} }
     .lc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
     .lc-label{font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:10.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--micro)}
-    .lang-toggle{font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.4px;color:var(--micro);
-      background:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;transition:color .2s,border-color .2s}
-    .lang-toggle[aria-pressed="true"], .lang-toggle:hover{color:var(--fg);border-color:color-mix(in srgb, var(--accent2) 45%, transparent)}
-    html:not(.js) .lang-toggle{display:none}
+    .lang-seg{display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px}
+    .lang-seg .lt{font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.4px;
+      color:var(--micro);background:none;border:none;border-radius:999px;padding:4px 11px;cursor:pointer;transition:color .2s,background .2s}
+    .lang-seg .lt:hover{color:var(--fg)}
+    .lang-seg .lt[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+    html:not(.js) .lang-seg{display:none}
     .lc-qmark{font-family:"Fraunces",Georgia,serif;font-size:58px;line-height:.5;height:.5em;color:var(--accent2);opacity:.75;margin:0 0 12px -2px}
     .lc-text{font-family:"Fraunces",Georgia,serif;font-size:21px;line-height:1.68;font-weight:440;text-wrap:balance;max-width:32ch;margin:0}
     .lc-text + .lc-text{margin-top:1.05em}
@@ -178,7 +181,10 @@
     /* library (ch 4) */
     .source-rail{margin:40px 0 0;font-family:"Fraunces",Georgia,serif;font-size:clamp(17px,2.4vw,22px);line-height:2;letter-spacing:.01em;max-width:46ch}
     .source-rail .dot{color:var(--accent2);padding:0 .2em}
-    .lang-line{margin-top:36px;max-width:52ch;color:var(--muted)}
+    .lang-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+    .lang-badge{font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:13px;font-weight:600;
+      border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+    .lang-line{margin-top:14px;max-width:52ch;color:var(--muted)}
     .pair{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px;max-width:760px}
     @media (max-width:700px){ .pair{grid-template-columns:1fr} }
     .mini-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;min-height:190px}
@@ -244,6 +250,7 @@
     .begin .kicker::after{margin-left:auto;margin-right:auto}
     .begin p{margin-left:auto;margin-right:auto}
     .begin .prose{max-width:52ch}
+    .begin .btn{font-size:17px;padding:17px 36px}
     .install-nudge{margin-top:20px;font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:13.5px;color:var(--muted);max-width:44ch !important}
 
     /* appendix */
@@ -298,7 +305,6 @@
   <div class="wrap">
     <header class="topstrip">
       <span class="wordmark">Hitaarth <span class="deva" lang="hi">हितार्थ</span></span>
-      <a class="builders-link" href="#builders">For curious builders</a>
     </header>
 
     <main id="main">
@@ -307,16 +313,19 @@
         <div>
           <p class="quiet-line" id="quietLine"></p>
           <h1>One meaningful thought.<br />One small action.<br />Every day.</h1>
-          <p class="subline">Hitaarth gives you one carefully chosen idea each day, a lesson worth keeping, and one small action to carry into your life. In English and Hindi.</p>
+          <p class="subline">Feeds give you endless information, and almost nothing that stays. Hitaarth gives you one carefully chosen idea each day, with one small action to carry into your life. In English and Hindi.</p>
           <div class="cta-row">
             <a class="btn" id="ctaHero" href="/read/?s=landing" data-track="land-cta-hero">Read today's thought</a>
-            <p class="micro-line">About two minutes a day. Free. No account. Works offline.</p>
+            <p class="micro-line">About two minutes a day · Free · No account · Works offline</p>
           </div>
         </div>
         <div class="live-card" id="liveCard">
           <div class="lc-top">
             <span class="lc-label">Today · <span id="lcDate"></span></span>
-            <button type="button" class="lang-toggle" id="langToggle" aria-pressed="false" aria-label="Show today's thought in Hindi">EN | <span lang="hi">हिं</span></button>
+            <div class="lang-seg" id="langSeg" role="group" aria-label="Language for today's thought">
+              <button type="button" class="lt" data-lt="en" aria-pressed="true">EN</button>
+              <button type="button" class="lt" data-lt="hi" aria-pressed="false" lang="hi">हिं</button>
+            </div>
           </div>
           <div class="lc-qmark" aria-hidden="true">&#8220;</div>
           <div id="lcBody" class="lc-skeleton" aria-live="polite">
@@ -372,7 +381,13 @@
         <h2 id="c4h"><span data-qcount>569</span> ideas, chosen by hand.</h2>
         <p class="prose">Every idea is picked and checked by hand, then given a lesson and a small action. Nothing arrives by algorithm.</p>
         <p class="source-rail" aria-label="Sources">Scripture <span class="dot">·</span> Aphorisms <span class="dot">·</span> Poems <span class="dot">·</span> Letters <span class="dot">·</span> Speeches <span class="dot">·</span> Books <span class="dot">·</span> Essays <span class="dot">·</span> Interviews <span class="dot">·</span> Cinema <span class="dot">·</span> Television</p>
-        <p class="lang-line">Every idea, its lesson, and its action, in English, Hindi, Spanish, and French. Hindi is written in Devanagari, not transliterated.</p>
+        <div class="lang-badges" aria-label="Languages">
+          <span class="lang-badge">English</span>
+          <span class="lang-badge" lang="hi">हिन्दी</span>
+          <span class="lang-badge">Español</span>
+          <span class="lang-badge">Français</span>
+        </div>
+        <p class="lang-line">Every idea, its lesson, and its action, in all four. Hindi is written in Devanagari, not transliterated.</p>
         <div class="pair" id="pair">
           <div class="mini-card">
             <span class="lc-label">English</span>
@@ -389,7 +404,7 @@
       <section class="ch" aria-labelledby="c5h">
         <span class="kicker">Chapter five</span>
         <h2 id="c5h">Made to be given away.</h2>
-        <p class="prose">Some thoughts belong to someone you know. Hitaarth turns any idea into a card made for WhatsApp Status, in three styles: Noir, Paper, and Dusk. Just the thought and a quiet imprint.</p>
+        <p class="prose">Some thoughts belong to someone you know. Hitaarth turns any idea into a card made for WhatsApp Status, in three styles: Noir, Paper, and Dusk. Just the thought and a quiet imprint. Send someone the one line they need today.</p>
         <div class="postcards" id="postcards">
           <div class="postcard pc-noir">
             <div class="pc-qmark" aria-hidden="true">&#8220;</div>
@@ -445,6 +460,10 @@
             <p>Yes. The whole library, all four languages, offline use, share cards: everything you see today is free. A small set of extra themes and fonts may become paid later; the daily practice stays free either way.</p>
           </details>
           <details>
+            <summary>How is this different from a quotes app?</summary>
+            <p>A quotes app hands you an endless pile to scroll. Hitaarth gives you one hand-picked thought a day, with a lesson and one small action attached, then sends you back to your day. The library is finite, chosen by hand, and nothing is decided by an algorithm.</p>
+          </details>
+          <details>
             <summary>Do I need an account?</summary>
             <p>No. There is nothing to sign up for. Your favorites, notes, and streak live on your device.</p>
           </details>
@@ -489,7 +508,7 @@
           <div class="decisions">
             <div>
               <h3>Demand before rails.</h3>
-              <p>The premium screen is a notify-me button, not a checkout. Payment infrastructure gets built if 20% of the first 50+ premium page visitors ask for it. Not before.</p>
+              <p>The premium screen is a single "I want this" button, not a checkout. Payment infrastructure gets built if 20% of the first 50+ premium page visitors ask for it. Not before.</p>
             </div>
             <div>
               <h3>Measure without watching.</h3>
@@ -509,7 +528,8 @@
     </main>
 
     <footer>
-      <p>Hitaarth · © 2026 Prateek Mehta</p>
+      <p><a class="builders-link" href="#builders">For curious builders</a></p>
+      <p style="margin-top:18px">Hitaarth · © 2026 Prateek Mehta</p>
       <p class="fm">See you tomorrow.</p>
     </footer>
   </div>
@@ -690,21 +710,30 @@
     if (document.readyState === "complete") setTimeout(loadQuotes, 0);
     else window.addEventListener("load", function () { setTimeout(loadQuotes, 0); });
 
-    // ---------- EN | हिं toggle ----------
-    var toggle = document.getElementById("langToggle");
+    // ---------- EN / हिं segmented toggle ----------
+    var seg = document.getElementById("langSeg");
     var showingHi = false, trackedHi = false;
-    if (toggle) toggle.addEventListener("click", function () {
-      if (!todayQ) return;
-      if (showingHi) {
+    function setLangUI() {
+      if (!seg) return;
+      Array.prototype.forEach.call(seg.querySelectorAll(".lt"), function (b) {
+        b.setAttribute("aria-pressed", String((b.getAttribute("data-lt") === "hi") === showingHi));
+      });
+    }
+    if (seg) seg.addEventListener("click", function (e) {
+      var b = e.target.closest(".lt");
+      if (!b || !todayQ) return;
+      var wantHi = b.getAttribute("data-lt") === "hi";
+      if (wantHi === showingHi) return;
+      if (!wantHi) {
         showingHi = false;
-        toggle.setAttribute("aria-pressed", "false");
+        setLangUI();
         renderLiveCard(todayQ, false);
         return;
       }
       loadHindi().then(function (d) {
         if (!d) return;
         showingHi = true;
-        toggle.setAttribute("aria-pressed", "true");
+        setLangUI();
         renderLiveCard(todayQ, true);
         fillPair();
         if (!trackedHi) { trackedHi = true; track("land-toggle-hi"); }
