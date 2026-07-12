@@ -108,8 +108,12 @@ html[data-theme="light"] .quote{background:none}
 .kicker{display:block;font-style:normal;font-weight:800;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 
 .actions{position:fixed;left:0;right:0;bottom:calc(20px + var(--safe-bottom));display:flex;justify-content:center;
-  gap:clamp(28px, 9vw, 72px);font-size:21px;transition:opacity .25s,transform .25s}
-body.bar-hide .actions{opacity:0;transform:translateY(10px);pointer-events:none}
+  gap:clamp(28px, 9vw, 72px);font-size:21px;transition:opacity .25s,transform .25s;
+  pointer-events:none}   /* the strip is transparent between buttons — never swallow taps on content beneath */
+.actions :where(button,a,input,select,label){pointer-events:auto}
+body.bar-hide .actions{opacity:0;transform:translateY(10px)}
+body.bar-hide .actions :where(button,a,input,select,label),
+body.immersive .actions :where(button,a,input,select,label){pointer-events:none}
 body[data-screen="reader"] #tabbar{display:none}
 .act.on{color:var(--accent2)}
 
