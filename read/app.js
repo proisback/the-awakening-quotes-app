@@ -287,6 +287,7 @@ function toggleActionDone(btn) {
   } else {
     state.actions[key] = new Date().toISOString();
     btn.classList.add("on"); btn.textContent = t("doneToday");
+    celebrateDone(btn);
     // Today's own move closes the loop: day count + "see you tomorrow" is the whole reward.
     if (state.quotes.length && state.quotes[dayIndex()].id === id) {
       const n = store.get("streak", { count: 1 }).count || 1;
@@ -298,6 +299,30 @@ function toggleActionDone(btn) {
   }
   store.set("actions", state.actions);
   updateActionsStat(); haptic();
+}
+// A quiet spark from the pill itself — the heart-pop's register, not a celebration screen.
+// Fires only when marking done (never on unmark); suppressed under reduced motion.
+function celebrateDone(btn) {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  btn.classList.remove("celebrate"); void btn.offsetWidth; btn.classList.add("celebrate");
+  // timer, not animationend — occluded tabs pause CSS animations and the event never fires
+  setTimeout(() => btn.classList.remove("celebrate"), 600);
+  const r = btn.getBoundingClientRect();
+  const wrap = document.createElement("div");
+  wrap.className = "sparks";
+  wrap.style.left = `${r.left + r.width / 2}px`;
+  wrap.style.top = `${r.top + 2}px`;
+  for (let i = 0; i < 6; i++) {
+    const s = document.createElement("span");
+    const a = ((-90 + (i - 2.5) * 24) * Math.PI) / 180;   // an upward fan over the pill
+    const d = 26 + (i % 3) * 8;
+    s.style.setProperty("--dx", `${Math.cos(a) * d}px`);
+    s.style.setProperty("--dy", `${Math.sin(a) * d}px`);
+    s.style.animationDelay = `${(i % 3) * 40}ms`;
+    wrap.appendChild(s);
+  }
+  document.body.appendChild(wrap);
+  setTimeout(() => wrap.remove(), 700);
 }
 function actionStats() {
   const keys = Object.keys(state.actions);

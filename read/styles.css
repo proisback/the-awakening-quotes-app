@@ -298,6 +298,16 @@ dialog[open]{animation:sheetIn .22s cubic-bezier(.16,.68,.3,1)}
 .todo .todo-text{display:block;font-size:calc(var(--quote-size) * 0.66);font-weight:600;margin:6px 0 14px;line-height:1.45}
 .todo-done{border:1px solid var(--accent1);color:var(--accent1);border-radius:999px;padding:8px 18px;font-size:14px;font-weight:700;letter-spacing:.3px;transition:background .15s}
 .todo-done.on{background:var(--accent1);color:#1a1205;border-color:var(--accent1)}
+/* quiet spark on "Did it" — accent-colored, local to the pill, gone in ~600ms */
+.todo-done.celebrate{animation:donePulse .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes donePulse{0%{transform:scale(1)}35%{transform:scale(1.08)}100%{transform:scale(1)}}
+.sparks{position:fixed;z-index:9998;pointer-events:none}
+.sparks span{position:absolute;left:-3px;top:-3px;width:6px;height:6px;border-radius:50%;background:var(--accent1);
+  opacity:0;animation:sparkFly .55s ease-out forwards}
+.sparks span:nth-child(even){background:var(--accent2)}
+@keyframes sparkFly{0%{opacity:1;transform:none}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.35)}}
+@media (prefers-reduced-motion: reduce){.todo-done.celebrate{animation:none}.sparks{display:none}}
+
 .streak-share{margin-top:12px}
 #streakFreeze,#actionsStat{margin-top:8px}
 
