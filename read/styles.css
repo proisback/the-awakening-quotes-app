@@ -69,7 +69,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 html[data-theme="light"] #reader::after{background:none}
 @media (prefers-color-scheme: light){ html[data-theme="system"] #reader::after{background:none} }
 .feed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;
-  -webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+  -webkit-touch-callout:none;-webkit-user-select:none;user-select:none;
+  touch-action:pan-y}  /* vertical pan stays native; horizontal moves reach the pointer handlers (keep/note swipes) */
 .back-pill{position:fixed;top:calc(var(--safe-top) + 14px);left:14px;z-index:6;padding:9px 16px;border-radius:999px;
   background:color-mix(in srgb,var(--bg) 68%, transparent);backdrop-filter:blur(10px);border:1px solid var(--line);
   font-size:13px;font-weight:600;color:var(--fg);transition:opacity .25s}

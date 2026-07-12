@@ -327,34 +327,39 @@ function bindReaderGestures() {
     barTimer = setTimeout(() => document.body.classList.remove("bar-hide"), 850);
   }, { passive: true });
 
-  let longPress = false;
+  let longPress = false, tracking = false;
   feed.addEventListener("pointerdown", (e) => {
+    tracking = true;
     startX = e.clientX; startY = e.clientY; longPress = false;
     // long-press = copy; the copy itself runs on release so it lives inside a real user
     // gesture (mobile clipboards reject writes from timers)
     pressTimer = setTimeout(() => { pressTimer = null; longPress = true; haptic(); }, 500);
   });
-  feed.addEventListener("pointermove", (e) => {                    // movement means scroll/rest, not a long-press
+  feed.addEventListener("pointermove", (e) => {                    // movement means scroll/swipe, not a long-press
     if (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10) {
       if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
       longPress = false;
     }
   });
   feed.addEventListener("pointerup", (e) => {
+    if (!tracking) return;                                         // the browser claimed this gesture (a scroll)
+    tracking = false;
     if (longPress) { longPress = false; copyQuote(); return; }
-    if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; } else return;
+    if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
     const dx = e.clientX - startX, dy = e.clientY - startY;
     if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy)) {        // horizontal swipe
       if (dx > 0) toggleFavorite(); else toggleNote();
       return;
     }
     if (Math.abs(dx) < 12 && Math.abs(dy) < 12) {                  // a tap
+      // taps on interactive controls are clicks, not reading gestures — never toggle immersive
+      if (e.target.closest('button, a, input, select, label, [role="button"]')) return;
       const now = Date.now();
       if (now - lastTap < 280) { lastTap = 0; favoriteWithPop(); }  // double tap = favorite
       else { lastTap = now; setTimeout(() => { if (lastTap) { document.body.classList.toggle("immersive"); lastTap = 0; } }, 280); }
     }
   });
-  feed.addEventListener("pointercancel", () => { if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; } longPress = false; });
+  feed.addEventListener("pointercancel", () => { tracking = false; if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; } longPress = false; });
 }
 
 // ---------- actions ----------
