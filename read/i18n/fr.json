@@ -2954,5 +2954,515 @@
     "text": "Élève ton moi si haut qu'avant d'écrire chaque destin, Dieu lui-même demande à sa créature : dis-moi, quelle est ta volonté ?",
     "lesson": "Bâtissez le moi à un niveau où le destin vous consulte ; l'agentivité siège en amont de la chance.",
     "action": "Réécrivez un objectif pour que son issue dépende de votre effort, non d'une permission ou de la chance, puis faites son premier pas."
+  },
+  "krishnamurti-pathless-land": {
+    "text": "La vérité est une terre sans chemin, et tu ne peux l'atteindre par aucune voie, aucune religion, aucune secte.",
+    "lesson": "Dès qu'un enseignement se fige en institution avec des gardiens et des règles, il cesse d'être la vérité pour devenir un bien immobilier.",
+    "action": "Choisis une croyance que tu tiens surtout parce qu'une autorité te l'a dite, et passe la journée à la tester par ta propre observation directe."
+  },
+  "krishnamurti-thought-cunning": {
+    "text": "La pensée est si rusée, si habile, qu'elle déforme tout pour sa propre convenance.",
+    "lesson": "Ton propre raisonnement n'est pas un arbitre neutre ; c'est un avocat qui plaide pour la conclusion qui t'arrange le plus.",
+    "action": "La prochaine fois que tu justifies une décision, écris cette justification, puis demande-toi ce que tu voulais faire avant même d'y penser."
+  },
+  "krishnamurti-attention-concentration": {
+    "text": "L'attention n'est pas la même chose que la concentration. La concentration est exclusion ; l'attention, qui est une conscience totale, n'exclut rien.",
+    "lesson": "La concentration rétrécit le monde pour en exclure des choses ; l'attention véritable l'élargit assez pour tout laisser entrer sans perdre le centre.",
+    "action": "Assieds-toi deux minutes et, au lieu de te concentrer sur une seule chose, laisse-toi remarquer le son, le corps et la pensée en même temps, sans en privilégier aucun."
+  },
+  "krishnamurti-truth-liberates": {
+    "text": "C'est la vérité qui libère, non ton effort pour être libre.",
+    "lesson": "La volonté qui vise à « devenir libre » est encore la cage qui parle ; c'est voir une chose clairement, telle qu'elle est, qui libère vraiment.",
+    "action": "Choisis une habitude que tu essaies sans cesse d'abandonner, et contente-toi aujourd'hui d'observer, sans jugement, exactement quand et pourquoi elle survient."
+  },
+  "krishnamurti-refuse-to-be-part": {
+    "text": "Si, en vivant dans le monde, tu refuses d'en faire partie, tu aideras les autres à sortir de ce chaos, non dans le futur, non demain, mais maintenant.",
+    "lesson": "Tu n'as pas besoin d'attendre un mouvement ou un mandat pour cesser de participer à quelque chose que tu sais brisé ; le refus est déjà la contribution.",
+    "action": "Nomme une petite norme dysfonctionnelle au travail ou à la maison à laquelle tu te plies depuis longtemps, et retire-t'en aujourd'hui, ouvertement."
+  },
+  "krishnamurti-face-fear": {
+    "text": "Si tu affrontes ce qui est, si tu le regardes, si tu y entres même si cela t'apporte de la souffrance, et que tu le comprennes, tu découvriras que ton esprit devient extraordinairement simple, clair ; et c'est dans cette clarté même que la peur cesse.",
+    "lesson": "La peur ne se dissout pas en la raisonnant à distance ; elle se dissout quand tu t'approches vraiment et regardes en face ce que tu évitais.",
+    "action": "Écris en une phrase la peur précise que tu esquives cette semaine, puis passe cinq minutes à regarder directement ce qui se passerait réellement si elle se réalisait."
+  },
+  "yogananda-god-simple": {
+    "text": "Dieu est simple. Tout le reste est complexe. Ne cherche pas de valeurs absolues dans le monde relatif de la nature.",
+    "lesson": "Poursuivre des certitudes dans les relations, la carrière ou l'argent te décevra toujours, car ce monde n'a jamais été fait pour contenir l'absolu.",
+    "action": "Choisis un domaine où tu exiges un résultat garanti (une relation, une offre d'emploi, un projet) et note l'éventail de résultats acceptables plutôt qu'un seul résultat fixe."
+  },
+  "yogananda-continual-study-vanity": {
+    "text": "L'étude intellectuelle continue finit en vanité et en fausse satisfaction d'un savoir non digéré.",
+    "lesson": "Accumuler encore plus d'informations sans jamais rien en appliquer n'est qu'une forme plus respectable de procrastination.",
+    "action": "Avant de consommer un livre, un article ou une vidéo de plus sur un sujet que tu étudies, va appliquer aujourd'hui, dans une situation réelle, la dernière chose que tu as apprise."
+  },
+  "yogananda-attachment-blinding": {
+    "text": "L'attachement aveugle ; il donne à l'objet du désir un halo imaginaire de séduction.",
+    "lesson": "Ce que tu es obsédé à obtenir semble presque toujours bien mieux vu de l'extérieur qu'une fois que ce sera à toi ; le désir fabrique son propre éclat.",
+    "action": "Prends ce que tu désires le plus en ce moment et note trois façons dont ta vie restera exactement la même, défauts compris, une fois que tu l'auras obtenu."
+  },
+  "yogananda-look-fear-in-face": {
+    "text": "Regarde la peur en face et elle cessera de te tourmenter.",
+    "lesson": "La peur survit grâce à la distance ; ce que tu continues de regarder du coin de l'œil sans jamais l'examiner de face est exactement ce qui continue de gagner.",
+    "action": "Avance directement vers la plus petite version de ce qui te fait peur aujourd'hui : passe l'appel, envoie le message, ouvre le relevé de compte."
+  },
+  "yogananda-unfulfilled-desires-slavery": {
+    "text": "Le pouvoir des désirs inassouvis est la racine de tout l'esclavage de l'homme.",
+    "lesson": "Ce ne sont pas tant tes circonstances qui te piègent que ces choses précises que tu ne t'es jamais autorisé à cesser de désirer.",
+    "action": "Liste les trois désirs inaccomplis qui occupent le plus de place dans ton esprit en ce moment, et choisis-en un à poursuivre activement ou à relâcher consciemment cette semaine."
+  },
+  "sadhguru-look-within-not-around": {
+    "text": "Quand la douleur, la détresse ou la colère surviennent, c'est le moment de regarder en toi, pas autour de toi.",
+    "lesson": "Ta réaction se fabrique en toi, elle ne t'est pas livrée par les embouteillages, ton patron ou ta famille ; blâmer le déclencheur ne fait que retarder la solution.",
+    "action": "La prochaine fois qu'une chose t'irrite aujourd'hui, marque une pause avant de réagir et nomme ce qui se passe dans ta propre chimie intérieure, pas ce que l'autre personne a fait."
+  },
+  "sadhguru-reactivity-responsibility": {
+    "text": "La réactivité est un asservissement. La responsabilité est une liberté.",
+    "lesson": "Chaque fois que tu laisses une situation te faire changer d'humeur, tu lui as remis le volant ; assumer ta réponse est la seule vraie indépendance.",
+    "action": "Repère aujourd'hui un moment où tu sens l'envie de réagir instantanément, et attends délibérément dix secondes avant de dire ou de faire quoi que ce soit."
+  },
+  "sadhguru-learning-to-listen": {
+    "text": "Apprendre à écouter est l'essence même de vivre intelligemment.",
+    "lesson": "La plupart des gens voient la conversation comme leur tour de parler ensuite ; la véritable intelligence se voit dans ta capacité à recevoir pleinement ce qui est réellement dit.",
+    "action": "Lors de ta prochaine conversation, tiens tout l'échange sans préparer ta réponse pendant que l'autre personne parle encore."
+  },
+  "sadhguru-right-things": {
+    "text": "Tant que tu ne fais pas les bonnes choses, les bonnes choses ne t'arriveront pas.",
+    "lesson": "Espérer un meilleur résultat tout en répétant le même comportement, c'est de la pensée magique déguisée en patience.",
+    "action": "Identifie un résultat que tu continues d'espérer, et accomplis aujourd'hui l'action concrète que tu remettais à plus tard pour y arriver."
+  },
+  "sadhguru-death-nothing-to-lose": {
+    "text": "Si tu comprends qu'il n'y a rien à perdre, puisque de toute façon tu es venu sans rien, la peur de la mort n'aura plus lieu d'être.",
+    "lesson": "La plupart de ta peur de perdre est en réalité la peur de perdre des choses qui n'ont jamais vraiment été à toi, tu les as seulement tenues un moment.",
+    "action": "Liste tout ce que tu crains de perdre en ce moment, et écris à côté de chaque élément « emprunté, pas possédé » pour voir comment la peur se transforme."
+  },
+  "osho-coward-courageous": {
+    "text": "Au début, il n'y a pas beaucoup de différence entre le lâche et la personne courageuse. La seule différence est que le lâche écoute ses peurs et les suit, tandis que la personne courageuse les met de côté et avance. La personne courageuse s'aventure dans l'inconnu malgré toutes ses peurs.",
+    "lesson": "Le courage n'a jamais été l'absence de peur dans la pièce ; c'est simplement la personne qui a continué à marcher pendant que la peur parlait.",
+    "action": "Fais aujourd'hui la chose que tu évites par peur, au même niveau de peur, sans attendre qu'elle disparaisse d'abord."
+  },
+  "osho-truthful-courageous": {
+    "text": "Tu ne peux pas être sincère si tu n'es pas courageux. Tu ne peux pas être aimant si tu n'es pas courageux. Tu ne peux pas être confiant si tu n'es pas courageux.",
+    "lesson": "Chaque vertu que tu admires chez les gens, honnêteté, amour, confiance, a un prix d'entrée, et ce prix est toujours le risque.",
+    "action": "Dis aujourd'hui, dans une relation, la vérité honnête que tu adoucissais ou évitais, clairement et avec bienveillance."
+  },
+  "osho-fear-future": {
+    "text": "La peur porte toujours sur quelque chose dans le futur. La peur n'existe jamais dans l'instant présent.",
+    "lesson": "Ce que tu redoutes ne se produit jamais vraiment maintenant ; c'est une bande-annonce que ton esprit projette d'un film qui n'a pas encore été tourné.",
+    "action": "Quand l'anxiété surgit aujourd'hui, demande-toi à voix haute « est-ce que cela se passe maintenant, à cette minute précise ? » et remarque combien de fois la réponse est non."
+  },
+  "osho-ego-fear-death": {
+    "text": "Seule l'idée de l'ego crée la peur de la mort. Là où il n'y a pas d'ego, il n'y a pas de mort.",
+    "lesson": "Ce que tu défends vraiment quand tu crains la mort, ce n'est pas ta vie, c'est l'histoire que tu as construite d'être quelqu'un de permanent et de séparé.",
+    "action": "Pendant cinq minutes aujourd'hui, fais quelque chose sans le mentionner, sans le documenter, et sans avoir besoin que quiconque sache que tu l'as fait."
+  },
+  "osho-worry-empty-future": {
+    "text": "L'inquiétude est une façon de remplir l'espace vide du futur.",
+    "lesson": "L'inquiétude paraît productive parce qu'elle occupe, mais ce n'est en réalité que le bruit que ton esprit génère pour éviter de s'asseoir avec un résultat inconnu.",
+    "action": "Quand tu te surprends à t'inquiéter aujourd'hui, remplace-la par une action concrète que tu peux faire immédiatement, aussi petite soit-elle."
+  },
+  "osho-meditation-just-to-be": {
+    "text": "La méditation, c'est juste être, ne rien faire, ni action, ni pensée, ni émotion.",
+    "lesson": "On t'a appris que méditer est une tâche de plus à bien exécuter, mais c'est en réalité le seul moment où tu es autorisé à cesser complètement de jouer un rôle.",
+    "action": "Assieds-toi trois minutes aujourd'hui avec la consigne explicite de ne rien accomplir, pas même te détendre."
+  },
+  "rumi-song-of-reed": {
+    "text": "Écoute le roseau raconter son histoire, se plaignant des séparations : depuis qu'on m'a arraché à la roselière, ma plainte a fait gémir hommes et femmes.",
+    "lesson": "La douleur que tu ressens à faire un travail coupé de ce pour quoi tu es réellement fait n'est pas une faiblesse, c'est une information sur ta vraie place.",
+    "action": "Identifie la seule activité qui te faisait auparavant perdre la notion du temps et réserve-lui trente minutes cette semaine."
+  },
+  "rumi-chickpea-cook": {
+    "text": "Bous bien et ne fuis pas celui qui allume le feu. Je ne te fais pas bouillir parce que tu me déplais, mais pour que tu gagnes goût et substance, pour que tu deviennes nourriture et te mêles à l'esprit vital.",
+    "lesson": "Une pression qui a un dessein derrière elle, un patron exigeant, une échéance brutale, une tâche ingrate, est en train de te cuire pour te rendre utile, pas de te punir d'exister.",
+    "action": "Identifie la chose difficile que tu évites en ce moment et écris précisément quelle compétence elle est en train de forger en toi."
+  },
+  "rumi-elephant-dark": {
+    "text": "L'éléphant était dans une pièce sombre. La main de l'un tomba sur sa trompe : « Cette créature ressemble à un tuyau. » Un autre toucha son oreille : « C'est comme un éventail. » Un autre sa patte : « Comme un pilier. » Un autre son dos : « Comme un trône. » Chacun ne comprenait que la partie qu'avait touchée sa propre main.",
+    "lesson": "Ta lecture de tout grand problème ambigu, un marché, une personne, une entreprise, n'est qu'un fait partiel et vrai qui se fait passer pour l'animal entier.",
+    "action": "Avant de valider ta prochaine grande décision, demande à deux personnes ayant touché une autre partie du même problème ce qu'elles ont perçu."
+  },
+  "rumi-raw-cooked-burnt": {
+    "text": "Le bilan de ma vie tient en trois mots : j'étais cru, je suis devenu cuit, j'ai été brûlé.",
+    "lesson": "La croissance n'avance pas en ligne droite vers la maîtrise, elle passe par être brut, puis fonctionnel, puis épuisé, et chaque étape est réelle, pas un blocage.",
+    "action": "Reconnais honnêtement dans lequel des trois états, cru, cuit ou brûlé, tu te trouves réellement, plutôt que de prétendre être plus avancé."
+  },
+  "rumi-moses-shepherd-burning-heart": {
+    "text": "Je ne regarde pas les mots prononcés, mais le cœur qui les offre. Je n'ai pas besoin de belles paroles, je veux un cœur brûlant.",
+    "lesson": "Le poli d'un pitch, d'un CV ou d'excuses compte moins que sa vérité; une culture obsédée par la forme punit l'effort sincère mais brut qui a pourtant du fond.",
+    "action": "Avant de peaufiner le ton de ton prochain message, vérifie que le contenu reste honnête, puis envoie cette version honnête même si elle est brute."
+  },
+  "kabir-chalti-chakki": {
+    "text": "En voyant tourner la meule, Kabir pleura : entre ses deux pierres, rien d'entier ne survit.",
+    "lesson": "Tout le monde autour de toi est broyé entre deux forces qu'il n'a pas choisies, l'échéance et le désir, le devoir et l'amour, et croire que tu es l'exception ne fait que retarder ton propre broyage.",
+    "action": "Identifie les deux pressions opposées qui te broient en ce moment et décide de laquelle tu relâcheras délibérément la prise cette semaine."
+  },
+  "kabir-guru-govind": {
+    "text": "Le gourou et Dieu se tiennent tous deux devant moi, devant qui m'incliner en premier? Gloire à mon gourou, car c'est lui qui m'a révélé Dieu.",
+    "lesson": "La personne qui t'a orienté vers ce dont tu t'attribues aujourd'hui le mérite, un mentor, un professeur, une présentation faite par un ami, mérite le premier remerciement, pas une pensée après coup.",
+    "action": "Écris à la personne précise qui t'a introduit sur ton chemin actuel et dis-lui exactement ce que cela t'a ouvert."
+  },
+  "kabir-maati-kumhar": {
+    "text": "L'argile dit au potier : pourquoi me piétines-tu? Un jour viendra où c'est moi qui te piétinerai.",
+    "lesson": "Celui sur qui tu fais valoir ton avantage en ce moment, un junior, un fournisseur, un partenaire avec moins de pouvoir, finira par détenir cet avantage, alors traite l'échange comme temporaire, pas permanent.",
+    "action": "Choisis une personne sur qui tu as actuellement l'avantage et change une condition en sa faveur avant qu'elle n'ait à le demander."
+  },
+  "kabir-jab-main-tha": {
+    "text": "Quand j'étais, Hari n'était pas; maintenant Hari est, et je ne suis plus; toute l'obscurité s'est dissipée quand j'ai vu la lampe allumée en moi.",
+    "lesson": "La plupart de ce que tu appelles clarté n'arrive que lorsque tu cesses d'avoir besoin d'être le personnage principal de la situation.",
+    "action": "Lors de ton prochain désaccord, énonce à voix haute le meilleur argument de l'autre avant d'exposer le tien."
+  },
+  "laotzu-ch17-leader": {
+    "text": "Leur tâche fut accomplie et leurs entreprises réussirent, tandis que le peuple disait : « Nous sommes tels que nous sommes, par nous-mêmes! »",
+    "lesson": "Le meilleur geste de leadership est souvent celui que personne ne remarque, si l'équipe croit que la victoire lui revient entièrement, tu as bien fait ton travail, pas de façon invisible.",
+    "action": "Lors de ta prochaine réussite, note quel mérite tu choisis délibérément de ne pas prendre et attribue-le à la personne qui a réellement exécuté le travail."
+  },
+  "laotzu-ch44-contentment": {
+    "text": "Qui s'attache à la renommée rejette ce qui est plus grand; qui aime les grandes richesses renonce à l'état le plus riche. Qui se contente n'a rien à craindre de la honte. Qui sait s'arrêter n'encourt aucun blâme.",
+    "lesson": "Dès l'instant où poursuivre un indicateur, un titre, des abonnés, une valorisation, commence à te coûter ce que cet indicateur était censé représenter, tu as déjà dépassé le taux de change qui avait du sens.",
+    "action": "Identifie un chiffre que tu es en train d'optimiser et note le point précis où le poursuivre davantage coûterait plus qu'il ne vaut."
+  },
+  "laotzu-ch71-knowing": {
+    "text": "Savoir tout en pensant que l'on ne sait pas est la plus haute réussite; ne pas savoir tout en pensant que l'on sait est une maladie.",
+    "lesson": "La personne la plus dangereuse dans une pièce n'est pas celle qui ignore quelque chose, c'est celle qui ignore qu'elle l'ignore et qui prend la décision en ce moment même.",
+    "action": "Avant ta prochaine affirmation assurée en réunion, identifie silencieusement un point précis du sujet sur lequel tu n'es en réalité pas sûr."
+  },
+  "laotzu-ch81-true-words": {
+    "text": "Les paroles vraies ne sont pas belles; les paroles belles ne sont pas vraies.",
+    "lesson": "Le discours poli jusqu'à ce que chaque phrase paraisse impressionnante cache souvent l'unique phrase simple qui aiderait vraiment à décider.",
+    "action": "Réécris ta prochaine mise à jour en supprimant tous les adjectifs et en ne gardant que les phrases contenant un chiffre ou une décision."
+  },
+  "chanakya-parenting": {
+    "text": "Choie ton fils jusqu'à ses cinq ans, use de fermeté pendant les dix années suivantes, mais quand il atteint seize ans, traite-le en ami.",
+    "lesson": "Le contrôle que tu exerces sur quelqu'un devrait diminuer selon un calendrier fixe, pas rester constant, sinon tu géreras encore un coéquipier qui méritait d'être ton égal depuis des années.",
+    "action": "Choisis une personne que tu gères encore étroitement par habitude et confie-lui cette semaine une décision entière sans validation."
+  },
+  "chanakya-wealth-hierarchy": {
+    "text": "Il faut épargner sa richesse pour les temps difficiles; sacrifier sa richesse pour sauver son épouse; mais sacrifier richesse et épouse pour se sauver soi-même.",
+    "lesson": "Décide ton véritable ordre de sacrifice, épargne, relation, respect de soi, avant la crise, pas pendant, sinon tu improviseras le mauvais ordre sous pression.",
+    "action": "Écris ton véritable ordre de sacrifice pour l'argent, la relation et la santé, puis vérifie si les décisions du mois dernier y correspondaient."
+  },
+  "chanakya-arthashastra-king": {
+    "text": "Dans le bonheur de ses sujets réside le bonheur du roi; dans leur bien-être, le sien; il ne doit pas juger bon ce qui lui plaît à lui, mais ce qui plaît à ses sujets.",
+    "lesson": "Si tu diriges quoi que ce soit, l'indicateur n'est pas ton confort, c'est le résultat pour les personnes que tu sers, et le jour où les deux s'opposent, tu sais déjà lequel l'emporte.",
+    "action": "Identifie une décision prise ce mois-ci pour ton propre confort et vérifie si elle a réellement servi les personnes envers qui tu es responsable."
+  },
+  "chanakya-straight-trees": {
+    "text": "Un homme ne doit pas être trop honnête. Les arbres droits sont coupés en premier, et les honnêtes sont les premiers exploités.",
+    "lesson": "La transparence naïve dans un environnement qui ne l'a pas méritée n'est pas une vertu, c'est simplement céder ton avantage à qui se soucie le moins de l'équité.",
+    "action": "Avant ta prochaine divulgation totalement transparente au travail, demande-toi qui en profite si tu en dis moins."
+  },
+  "chanakya-deeds-not-birth": {
+    "text": "Un homme n'est pas grand par sa naissance, mais par ses propres actes.",
+    "lesson": "Ton diplôme, ton titre précédent ou ton pedigree t'ont ouvert la porte, pas obtenu le résultat, alors arrête de t'appuyer dessus une fois passé le seuil.",
+    "action": "Retire la ligne sur ton pedigree de ta prochaine présentation personnelle et remplace-la par ton résultat concret le plus récent."
+  },
+  "screast-dhammapada-fool-tormented": {
+    "text": "« Ces fils m'appartiennent, et cette richesse m'appartient », c'est avec de telles pensées que l'insensé se tourmente. Il ne s'appartient même pas à lui-même ; combien moins les fils et la richesse.",
+    "lesson": "Les choses que tu appelles \"miennes\" sont empruntées, y compris ton propre corps, alors les serrer plus fort ne fait que fabriquer davantage de souffrance.",
+    "action": "Identifie aujourd'hui une chose à laquelle tu t'accroches - un bien, un rôle, un résultat - et relâche consciemment ta prise pendant la prochaine heure."
+  },
+  "screast-dhammapada-world-burning": {
+    "text": "Comment peut-il y avoir rire, comment peut-il y avoir joie, quand ce monde brûle sans cesse ? Pourquoi ne cherches-tu pas une lumière, toi qui es entouré de ténèbres ?",
+    "lesson": "La distraction ressemble à un soulagement, mais ce n'est qu'une façon d'éviter le travail de trouver une vraie clarté ; le divertissement n'est pas de la lucidité.",
+    "action": "Remplace aujourd'hui une session de scroll par dix minutes assis avec l'inconfort que tu évites depuis longtemps."
+  },
+  "screast-dhammapada-house-builder": {
+    "text": "Cherchant le bâtisseur de ce tabernacle, j'ai couru à travers de nombreuses naissances sans le trouver, et douloureux est de naître encore et encore. Mais maintenant, bâtisseur du tabernacle, tu as été vu ; tu ne reconstruiras plus ce tabernacle. Toutes tes poutres sont brisées, ta poutre faîtière est détruite ; l'esprit, s'approchant de l'éternel, a atteint l'extinction de tout désir.",
+    "lesson": "Chaque problème récurrent dans ta vie a un \"bâtisseur\" qui revient - une habitude ou un désir qui le reconstruit sans cesse - trouve celui-là, pas la dernière version du problème.",
+    "action": "Choisis un problème qui revient sans cesse et note la seule habitude qui le reconstruit à chaque fois, plutôt que de résoudre à nouveau la version de cette semaine."
+  },
+  "screast-dhammapada-bubble-mirage": {
+    "text": "Regarde le monde comme une bulle, regarde-le comme un mirage : le roi de la mort ne voit pas celui qui regarde ainsi le monde de haut.",
+    "lesson": "Traiter ta crise actuelle comme permanente est ce qui te fait écraser sous son poids ; la voir comme une intempérie passagère est ce qui te permet d'agir avec clarté à l'intérieur.",
+    "action": "Écris aujourd'hui ta plus grande inquiétude sur papier, puis ajoute les mots \"temporaire et changeante\" avant de la ranger."
+  },
+  "screast-dhammapada-teaching-of-awakened": {
+    "text": "Ne commettre aucun mal, faire le bien et purifier son esprit, telle est l'enseignement de tous les Éveillés.",
+    "lesson": "L'éthique n'est pas compliquée - elle se résume à trois gestes : arrêter de nuire, faire le bien, nettoyer son propre esprit - la plupart des gens n'en tiennent qu'un sur les trois.",
+    "action": "Avant de dormir ce soir, vérifie lequel des trois - pas de tort, du bien fait, esprit plus calme - tu as vraiment tenu aujourd'hui."
+  },
+  "screast-gita-contacts-of-matter": {
+    "text": "Les contacts de la matière, ô fils de Kunti, qui donnent le froid et le chaud, le plaisir et la douleur, vont et viennent, impermanents ; supporte-les avec courage, ô Bharata.",
+    "lesson": "Chaque sensation inconfortable - anxiété, critique, mauvaise humeur - est un système météo passager qui traverse ton être, pas un verdict sur ta vie.",
+    "action": "La prochaine fois qu'une émotion forte survient aujourd'hui, règle un minuteur de dix minutes et laisse-la simplement passer avant de réagir."
+  },
+  "screast-gita-equal-victory-defeat": {
+    "text": "Considérant à égalité le plaisir et la douleur, le gain et la perte, la victoire et la défaite, prépare-toi au combat ; ainsi tu n'encourras pas de faute.",
+    "lesson": "Si tu ne t'engages que dans les choses difficiles dont tu es sûr de sortir vainqueur, tu ne t'engageras presque jamais dans rien ; décide avant de connaître le résultat.",
+    "action": "Dis oui aujourd'hui à cette unique opportunité incertaine qui se présente, avant même de savoir si elle réussira."
+  },
+  "screast-gita-own-duty-imperfect": {
+    "text": "Mieux vaut son propre devoir, même dépourvu de mérite, que le devoir d'autrui bien accompli. Mieux vaut mourir en accomplissant son propre devoir ; le devoir d'autrui est plein de danger.",
+    "lesson": "Mal faire son propre travail sans éclat vaut mieux que bien faire le travail brillant de quelqu'un d'autre ; les chemins empruntés ont un coût qu'on ne voit pas avant d'y être enfoncé.",
+    "action": "Annule aujourd'hui un engagement qui appartient à la version du succès de quelqu'un d'autre, pas à la tienne."
+  },
+  "screast-gita-regulated-living": {
+    "text": "Le yoga n'est pas pour celui qui mange trop, ni pour celui qui s'abstient trop, ni pour celui qui dort trop, ni même pour celui qui veille trop, Arjuna. Le yoga détruit toute douleur pour celui qui est réglé dans le manger et les loisirs, réglé dans l'action, réglé dans le sommeil et l'éveil.",
+    "lesson": "La discipline n'est pas un extrême dans un sens ou dans l'autre - te priver ou te gaver, t'épuiser au travail ou t'effondrer - c'est trouver le juste milieu réglé et y rester.",
+    "action": "Fixe aujourd'hui une heure de sommeil et de repas précise, et tiens les deux, sans exception ni surcorrection."
+  },
+  "screast-gita-act-as-you-choose": {
+    "text": "Ainsi cette sagesse, plus secrète que tout secret, t'a été déclarée par Moi ; après y avoir pleinement réfléchi, agis comme tu le choisis.",
+    "lesson": "Même le meilleur conseil s'arrête à ta porte ; aucun maître, mentor ou cadre ne peut prendre la décision à ta place, il peut seulement l'éclairer.",
+    "action": "Après avoir demandé un avis sur ton dilemme actuel, fixe-toi aujourd'hui une échéance pour trancher toi-même."
+  },
+  "india-vivekananda-strength-is-life": {
+    "text": "La force est vie, la faiblesse est mort.",
+    "lesson": "La faiblesse n'est pas un trait de caractère, c'est l'habitude d'éviter la réponse la plus difficile et la plus vraie, et elle te coûte plus que l'inconfort qu'elle esquive.",
+    "action": "Repère aujourd'hui le seul endroit où tu es faible par habitude et prends à la place l'action la plus forte, même si c'est inconfortable."
+  },
+  "india-vivekananda-all-power-within": {
+    "text": "Tout le pouvoir est en toi ; tu peux faire n'importe quoi et tout.",
+    "lesson": "Le plafond contre lequel tu butes sans cesse est généralement une croyance que tu as toi-même installée, pas un fait sur ta capacité.",
+    "action": "Essaie aujourd'hui, ne serait-ce que vingt minutes, la tâche pour laquelle tu te dis que tu n'es \"pas du genre\" à réussir."
+  },
+  "india-vivekananda-condemn-none": {
+    "text": "Ne condamne personne ; si tu peux tendre une main secourable, fais-le. Si tu ne le peux pas, joins les mains, bénis tes frères, et laisse-les suivre leur propre chemin.",
+    "lesson": "Face à ceux avec qui tu es en désaccord, tu n'as que deux options honnêtes - les aider ou les laisser tranquilles - le mépris n'est ni l'une ni l'autre et n'aide personne, encore moins toi.",
+    "action": "Remplace aujourd'hui une pensée de jugement envers quelqu'un par une offre d'aide ou par une décision sincère de lâcher prise."
+  },
+  "india-vivekananda-potentially-divine": {
+    "text": "Chaque âme est potentiellement divine. Le but est de manifester cette divinité intérieure en maîtrisant la nature, externe et interne.",
+    "lesson": "Ta tâche n'est pas de devenir quelqu'un de nouveau, c'est d'arrêter de laisser les circonstances et les impulsions diriger la personne qui est déjà là.",
+    "action": "Choisis aujourd'hui une impulsion - une réaction à chaud, une habitude de scroll, un accès de colère - et neutralise-la consciemment, ne serait-ce qu'une fois."
+  },
+  "india-vivekananda-truth-needs-no-torch": {
+    "text": "La vérité doit être jugée par la vérité et par rien d'autre. Faire le bien n'est pas la preuve de la vérité ; le Soleil n'a besoin d'aucune torche pour être vu.",
+    "lesson": "N'attends pas l'approbation, les likes ou de bons résultats pour valider que tu as fait ce qu'il fallait ; la justesse doit tenir debout par elle-même.",
+    "action": "Fais aujourd'hui la chose juste mais impopulaire, sans l'expliquer ni la justifier à personne."
+  },
+  "screast-dogen-fish-and-bird": {
+    "text": "Un poisson nage dans l'océan, et aussi loin qu'il nage, il n'y a pas de fin à l'eau. Un oiseau vole dans le ciel, et aussi loin qu'il vole, il n'y a pas de fin au ciel.",
+    "lesson": "La maîtrise n'a pas de ligne d'arrivée à franchir, seulement un milieu dans lequel continuer à avancer - arrête d'attendre d'\"arriver\" et commence à nager.",
+    "action": "Fais aujourd'hui une répétition de plus dans ton métier sans vérifier si tu as déjà \"réussi\"."
+  },
+  "screast-dogen-boat-and-shore": {
+    "text": "Quand tu es en bateau et que tu regardes le rivage, tu peux croire que c'est le rivage qui bouge. Mais quand tu gardes les yeux fixés sur le bateau, tu vois que c'est le bateau qui bouge.",
+    "lesson": "Quand tout autour de toi semble changer, vérifie d'abord toi-même - c'est généralement toi qui as bougé.",
+    "action": "Avant de blâmer aujourd'hui une relation ou une situation qui a changé, écris une ligne honnête sur ce que toi, tu as changé."
+  },
+  "screast-dogen-time-itself-is-being": {
+    "text": "Le temps lui-même est être, et tout être est temps.",
+    "lesson": "Tu ne \"dépenses\" pas le temps sur ta vie comme une monnaie à part, ta vie EST le temps, donc une heure gâchée n'est pas de l'argent perdu, c'est un morceau de toi qui s'en va.",
+    "action": "Regarde aujourd'hui ton agenda et supprime un créneau qui n'est pas vraiment ta vie, juste du bruit qui la remplit."
+  },
+  "screast-dogen-birth-death-nirvana": {
+    "text": "Comprends simplement que naissance-et-mort est en soi le nirvana. Il n'y a pas de naissance et de mort à éviter ; il n'y a pas de nirvana à rechercher.",
+    "lesson": "Arrête de traiter les fins comme l'ennemi de la paix, la fin et la paix sont le même événement vu sous deux angles.",
+    "action": "Nomme une fin à laquelle tu résistes en ce moment et écris ce qu'elle est réellement en train de libérer comme place."
+  },
+  "screast-dogen-continuous-practice": {
+    "text": "Par la pratique continue de tous les bouddhas et ancêtres, ta pratique s'actualise et ta grande voie s'ouvre.",
+    "lesson": "Ta discipline d'aujourd'hui n'est pas un acte solitaire, c'est un relais qui repose sur chaque répétition de tous ceux qui se sont entraînés avant toi et qui se transmet à tous ceux qui s'entraîneront après.",
+    "action": "Fais la pratique d'aujourd'hui précisément comme un maillon de cette chaîne, pas comme un acte isolé, même si tu n'en as pas envie."
+  },
+  "bodhidharma-three-realms-mind": {
+    "text": "Tout ce qui apparaît dans les trois royaumes provient de l'esprit.",
+    "lesson": "Ta réalité est façonnée par ton esprit avant de l'être par les circonstances — change ce à quoi tu prêtes attention, et le monde que tu vis change avec toi.",
+    "action": "Repère aujourd'hui une plainte récurrente, puis retrouve son origine dans l'interprétation que tu y ajoutes, pas dans le fait lui-même."
+  },
+  "bodhidharma-beyond-this-mind": {
+    "text": "Cet esprit est le bouddha, et le bouddha est l'esprit. Au-delà de cet esprit, tu ne trouveras jamais d'autre bouddha.",
+    "lesson": "Arrête de sous-traiter ta clarté à des gourous, des applications ou le plan en cinq étapes de quelqu'un d'autre — la capacité que tu cherches est déjà installée en toi.",
+    "action": "Avant de demander un avis extérieur aujourd'hui, prends deux minutes pour écrire ce que tu sais déjà être vrai sur cette décision."
+  },
+  "bodhidharma-see-your-nature": {
+    "text": "Pour trouver un bouddha, il faut voir sa propre nature. Celui qui voit sa nature est un bouddha.",
+    "lesson": "L'éveil n'est pas une récompense qu'on gagne ailleurs ; c'est ce qui reste quand on arrête de se méprendre sur qui l'on est vraiment.",
+    "action": "Écris une phrase qui te décrit sans mentionner ton poste, ta situation amoureuse ni aucune réussite."
+  },
+  "bodhidharma-mind-like-space": {
+    "text": "Cet esprit n'a ni forme ni caractéristiques. Il est comme l'espace. On ne peut pas le saisir.",
+    "lesson": "Plus tu serres fort une identité, une humeur ou un résultat, plus il t'échappe — l'attention fonctionne comme une main ouverte, pas comme un poing.",
+    "action": "Choisis une émotion que tu es en train de serrer (anxiété, excitation, colère) et desserre physiquement les poings en la nommant à voix haute."
+  },
+  "milarepa-conquer-self-mind": {
+    "text": "Si l'on cherche à vaincre ses ennemis dans le monde extérieur, ils se multiplient. Si l'on vainc son propre esprit intérieur, tous ses ennemis disparaissent bientôt.",
+    "lesson": "Le collègue, l'ex ou le troll que tu essaies de vaincre est rarement le véritable adversaire — c'est la dispute que tu rejoues sans cesse dans ta tête.",
+    "action": "La prochaine fois que tu répètes une réplique cinglante contre quelqu'un qui t'a blessé, redirige cette énergie vers l'identification de ce qui te fait vraiment peur."
+  },
+  "milarepa-black-deeds-innocence": {
+    "text": "Dans ma jeunesse, j'ai commis des actes sombres. Dans ma maturité, j'ai pratiqué l'innocence.",
+    "lesson": "Ton pire chapitre n'a pas de droit de vote permanent sur qui tu deviens — le caractère est une pratique, pas un verdict.",
+    "action": "Note une action passée pour laquelle tu te punis encore, puis écris le choix précis et différent que tu as fait la fois suivante où la situation s'est représentée."
+  },
+  "milarepa-guard-morals-prayer": {
+    "text": "Pour ceux qui ne veillent pas sur leur conduite morale, les prières ne sont que des vœux pieux.",
+    "lesson": "Les affirmations positives et les tableaux de vision ne remplacent pas la tâche disciplinée et peu glorieuse qu'il faut réellement accomplir chaque jour.",
+    "action": "Supprime une habitude que tu te contentes de « manifester » sans jamais agir, et remplace-la aujourd'hui par une version de cinq minutes que tu feras vraiment."
+  },
+  "milarepa-studying-mind-within": {
+    "text": "J'acquiers tout mon savoir en étudiant mon propre esprit intérieur.",
+    "lesson": "La source la plus fiable pour comprendre tes propres schémas n'est pas un test de personnalité, mais une attention honnête portée à ton esprit en temps réel.",
+    "action": "Ce soir, note dans ton journal le moment de la journée où ta propre réaction t'a surpris, et demande-toi ce qu'elle a révélé."
+  },
+  "nagarjuna-dependent-origination-emptiness": {
+    "text": "Tout ce qui naît de façon interdépendante est ce que l'on nomme vacuité. Et cela, étant une désignation dépendante, est précisément la voie du milieu.",
+    "lesson": "Rien de ce que tu es, possèdes ou crains n'existe isolément — cela n'existe qu'en relation avec tout ce qui l'entoure, ce qui veut dire que presque rien n'est aussi figé qu'il n'y paraît.",
+    "action": "Prends une étiquette que tu t'attribues (« je suis nul en X ») et liste trois conditions extérieures qui la façonnent en réalité."
+  },
+  "nagarjuna-contentment-wealth": {
+    "text": "Parmi toutes les richesses, le contentement est la meilleure. Si tu connais le contentement, même sans posséder aucune richesse, tu seras parfaitement riche.",
+    "lesson": "Le solde bancaire et la paix intérieure se tiennent sur deux registres distincts — tu peux faire exploser l'un et rester en faillite sur l'autre.",
+    "action": "Avant ton prochain achat non essentiel aujourd'hui, arrête-toi et nomme l'émotion que tu essaies vraiment d'acheter."
+  },
+  "nagarjuna-patience-anger": {
+    "text": "Puisqu'aucune épreuve n'égale la patience, il ne faut jamais laisser une chance à la colère.",
+    "lesson": "La colère donne une impression de puissance sur le moment, mais elle te coûte la dispute, la relation ou l'accord dès le lendemain matin.",
+    "action": "La prochaine fois que tu sens la colère monter, retarde ta réponse d'une heure avant de l'envoyer."
+  },
+  "nagarjuna-three-kinds-speech": {
+    "text": "Considère que les paroles des gens sont de trois sortes : comme le miel, comme les fleurs, ou comme l'excrément.",
+    "lesson": "Avant de parler, classe tes propres mots dans ces trois mêmes catégories — la plupart des conflits inutiles viennent du fait de puiser dans la troisième.",
+    "action": "Lors de ton prochain désaccord, supprime de ta réponse une phrase qui ne sert qu'à blesser, pas à communiquer."
+  },
+  "charvaka-live-joyously": {
+    "text": "Tant que la vie est tienne, vis-la joyeusement ; nul n'échappe au regard scrutateur de la Mort. Une fois ce corps réduit en cendres, comment reviendrait-il jamais ?",
+    "lesson": "Personne n'est jamais revenu confirmer qu'il existe un après, alors la joie que tu remets à 'plus tard' est la seule qui t'appartienne vraiment.",
+    "action": "Fais aujourd'hui même ce plaisir que tu gardais pour un 'meilleur moment', sans attendre de permission."
+  },
+  "charvaka-berries-of-paddy": {
+    "text": "Le plaisir qui vient à l'homme par contact avec les sens ne doit pas être rejeté simplement parce qu'il s'accompagne d'un peu de douleur — c'est le raisonnement des sots. Le riz, riche de son grain blanc, quel homme cherchant son véritable intérêt le jetterait parce qu'il est couvert de balle et de poussière ?",
+    "lesson": "Toute bonne chose arrive avec un inconvénient attaché ; rejeter toute l'expérience à cause de l'emballage, c'est ainsi que les sots restent affamés.",
+    "action": "Identifie cette bonne chose que tu évites à cause d'un désagrément mineur, et fais-la quand même cette semaine."
+  },
+  "charvaka-livelihood-of-priests": {
+    "text": "L'Agnihotra, les trois Vedas, les trois bâtons de l'ascète et le fait de s'enduire de cendres — dit Brihaspati, ce ne sont que des gagne-pain pour ceux qui manquent à la fois de courage et de bon sens.",
+    "lesson": "Certains rituels persistent non pas parce qu'ils fonctionnent, mais parce qu'ils paient le loyer de quelqu'un ; regarde qui en profite avant d'appeler quelque chose sacré.",
+    "action": "Choisis une habitude que tu suis 'parce que c'est la tradition' et demande-toi tout haut à qui profite le fait que tu la maintiennes."
+  },
+  "mahavira-all-beings-love-life": {
+    "text": "Tous les êtres aiment la vie, apprécient le plaisir, détestent la douleur, fuient la destruction, aiment vivre et aspirent à vivre longtemps. Pour tous, la vie est précieuse.",
+    "lesson": "La personne que tu es sur le point d'écarter veut exactement ce que tu veux : se sentir bien, éviter la douleur, continuer d'avancer — c'est toute la base de l'empathie, sans besoin de religion.",
+    "action": "Avant ton prochain désaccord aujourd'hui, nomme en silence ce que l'autre personne protège et que tu protégerais toi aussi."
+  },
+  "mahavira-do-not-slay": {
+    "text": "Aucune créature qui respire, existe, vit et ressent ne doit être tuée, ni traitée avec violence, ni maltraitée, ni tourmentée, ni chassée.",
+    "lesson": "La non-violence, ce n'est pas seulement ne pas frapper quelqu'un ; c'est aussi ne pas humilier, exploiter ou exclure celui qui n'a aucun moyen de se défendre.",
+    "action": "Identifie aujourd'hui une personne ou un groupe sur lequel tu as du pouvoir, et utilise ce pouvoir pour aider plutôt que pour faire pression."
+  },
+  "mahavira-as-it-would-be-unto-thee": {
+    "text": "Ce qui serait pour toi, l'est aussi pour celui que tu t'apprêtes à tuer, à tyranniser, à tourmenter ou à punir. L'homme juste qui vit selon ce sentiment ne tue ni ne fait tuer par autrui.",
+    "lesson": "Avant d'exercer un pouvoir sur quelqu'un, applique le test d'inversion : accepterais-tu ce traitement si les rôles étaient inversés ?",
+    "action": "La prochaine fois que tu t'apprêtes à punir, réprimander ou dominer quelqu'un, arrête-toi et demande-toi si tu accepterais la même chose venant d'eux."
+  },
+  "mahavira-self-is-knower": {
+    "text": "Le Soi est le connaisseur, et le connaisseur est le Soi. Ce par quoi l'on connaît, c'est le Soi.",
+    "lesson": "Tu n'es ni ton poste, ni tes opinions, ni ton humeur du jour — tu es la conscience qui remarque tout cela aller et venir.",
+    "action": "Assieds-toi deux minutes et observe simplement tes pensées arriver et repartir, sans en étiqueter aucune comme 'moi'."
+  },
+  "nisargadatta-only-true-statement": {
+    "text": "La seule affirmation vraie est 'je suis'. Tout le reste n'est que déduction.",
+    "lesson": "Presque tout ce que tu crois sur toi-même est une histoire construite sur le seul fait que tu peux réellement vérifier : que tu existes en ce moment même.",
+    "action": "Écris trois croyances sur toi-même, puis distingue lesquelles sont des faits directs et lesquelles sont des déductions jamais mises à l'épreuve."
+  },
+  "nisargadatta-love-wisdom-flow": {
+    "text": "L'amour dit : 'Je suis tout.' La sagesse dit : 'Je ne suis rien.' Entre les deux, ma vie s'écoule.",
+    "lesson": "Un ego sain vit entre deux vérités : tu comptes entièrement pour ceux qui t'aiment, et tu ne comptes pas du tout pour l'univers en général.",
+    "action": "Aujourd'hui, fais une chose qui n'a de sens que si 'je compte', et une autre qui n'a de sens que si 'je ne suis pas le centre de tout ça'."
+  },
+  "nisargadatta-abandon-the-false": {
+    "text": "C'est toujours le faux qui te fait souffrir : les faux désirs et les fausses peurs, les fausses valeurs et idées, les fausses relations entre les gens. Abandonne le faux et tu seras libéré de la douleur ; la vérité rend heureux, la vérité libère.",
+    "lesson": "La plupart de tes douleurs récurrentes remontent à quelque chose que tu fais semblant de croire vrai — au sujet d'une relation, d'une valeur ou d'un désir — et qui, silencieusement, ne l'est pas.",
+    "action": "Choisis ta frustration légère la plus persistante et écris l'unique phrase honnête à ce sujet que tu évites depuis un moment."
+  },
+  "nisargadatta-desire-fear-memory": {
+    "text": "Le désir est le souvenir du plaisir, et la peur est le souvenir de la douleur.",
+    "lesson": "La plupart de ce que tu désires ou redoutes aujourd'hui n'est en réalité qu'un vieux souvenir qui se rejoue, pas une information fraîche sur le présent.",
+    "action": "La prochaine fois qu'une envie ou une peur forte survient, demande-toi quelle expérience passée elle rejoue avant d'agir en conséquence."
+  },
+  "nisargadatta-self-ultimate-teacher": {
+    "text": "Ton propre soi est ton maître ultime. Le maître extérieur n'est qu'une étape sur le chemin.",
+    "lesson": "Mentors, formations et gourous sont des jalons, pas la destination — le vrai test est ce qui tient face à ta propre expérience vécue.",
+    "action": "Prends un conseil que tu as suivi les yeux fermés et confronte-le à ta propre expérience cette semaine avant de lui faire davantage confiance."
+  },
+  "ramana-who-am-i-funeral-pyre": {
+    "text": "La pensée 'Qui suis-je ?' détruira toutes les autres pensées, et comme le bâton utilisé pour attiser le bûcher funéraire, elle finira elle-même par se consumer. Alors viendra la Réalisation du Soi.",
+    "lesson": "Une seule question honnête, posée encore et encore, peut consumer un esprit rempli de bruit — et ensuite tu n'as même plus besoin de la question.",
+    "action": "La prochaine fois que ton esprit s'emballe, interromps-le avec une question —'qui s'inquiète en ce moment ?'— et reste simplement dans le silence qui suit."
+  },
+  "ramana-happiness-is-your-nature": {
+    "text": "Le bonheur est ta nature. Il n'est pas mal de le désirer. Ce qui est mal, c'est de le chercher à l'extérieur alors qu'il est à l'intérieur.",
+    "lesson": "Tu n'as pas tort de vouloir te sentir bien — tu vises simplement vers l'extérieur une chose qui n'allait jamais te l'offrir, parce que la source n'a jamais été extérieure.",
+    "action": "Remarque le prochain achat ou projet que tu fais 'pour te sentir mieux', et demande-toi quel état intérieur tu poursuis réellement avant de t'y engager."
+  },
+  "ramana-your-duty-is-to-be": {
+    "text": "Ton devoir est d'être, et non d'être ceci ou cela. 'Je suis celui que je suis' résume toute la vérité ; la méthode se résume à 'Reste immobile'.",
+    "lesson": "La partie épuisante de la plupart des journées, c'est de jouer un rôle — compétent, sympathique, impressionnant — plutôt que d'être simplement présent.",
+    "action": "Choisis une réunion ou une conversation aujourd'hui et arrête d'y jouer un rôle ; présente-toi tel que tu es vraiment."
+  },
+  "ramana-silence-most-potent": {
+    "text": "Le silence est la forme de travail la plus puissante. Aussi vastes et emphatiques que soient les écritures, elles échouent dans leur effet. Le Guru est silencieux et la paix règne en tous. Son silence est plus vaste et plus emphatique que toutes les écritures réunies.",
+    "lesson": "Parfois, le geste le plus persuasif dans une pièce, c'est d'arrêter d'argumenter et de simplement rester stable — la présence change les gens plus vite que les mots.",
+    "action": "Lors de ton prochain désaccord, essaie de rester silencieux et ancré pendant une minute complète avant de répondre."
+  },
+  "ramana-reality-loss-of-ego": {
+    "text": "La réalité n'est autre que la perte de l'ego. Détruis l'ego en cherchant son identité. Comme l'ego n'est pas une entité réelle, il disparaîtra automatiquement et la Réalité brillera d'elle-même.",
+    "lesson": "Le 'je' défensif qui s'embrase quand on te critique ne survit généralement pas à un regard direct et honnête sur ce qu'il est réellement.",
+    "action": "La prochaine fois que tu te sens sur la défensive, arrête-toi et demande 'qu'est-ce qui est vraiment menacé ici ?' plutôt que de réagir."
+  },
+  "gurdjieff-man-is-a-machine": {
+    "text": "L'homme tel que nous le connaissons est une machine.",
+    "lesson": "La majeure partie de ta journée s'est déjà déroulée en pilote automatique avant que tu ne décides quoi que ce soit volontairement.",
+    "action": "Choisis aujourd'hui une tâche routinière, te brosser les dents ou préparer un café, et fais-la en observant chaque geste, sans ton téléphone."
+  },
+  "gurdjieff-self-knowledge-slave": {
+    "text": "Sans connaissance de soi, sans comprendre le fonctionnement de sa machine, l'homme ne peut être libre, il ne peut se gouverner lui-même et restera toujours un esclave.",
+    "lesson": "Tu ne peux pas maîtriser une habitude, un accès de colère ou une boucle de scroll infini que tu n'as jamais vraiment observé en toi.",
+    "action": "Note le déclencheur exact, la pensée et l'émotion derrière la dernière habitude que tu aimerais mieux maîtriser."
+  },
+  "gurdjieff-verify-for-yourself": {
+    "text": "Je vous demande de ne rien croire que vous ne puissiez vérifier par vous-même.",
+    "lesson": "Les croyances empruntées sur ta valeur ou tes limites s'effondrent dès que la vie les met vraiment à l'épreuve; celles que tu as vérifiées tiennent bon.",
+    "action": "Prends une croyance que tu as sur toi-même, comme être mauvais avec l'argent, et confronte-la aux preuves réelles du dernier mois."
+  },
+  "gurdjieff-clean-sheet-of-paper": {
+    "text": "Tout homme arrive au monde comme une feuille de papier vierge, puis les gens et les circonstances qui l'entourent rivalisent pour salir cette feuille et la couvrir d'écriture.",
+    "lesson": "Une grande partie de ce que tu appelles ta personnalité est en fait l'écriture d'autres personnes, sur une page que tu n'as jamais pu garder vierge.",
+    "action": "Identifie une opinion que tu as héritée plutôt que choisie, et prends cinq minutes pour la réexaminer vraiment."
+  },
+  "neemkarolibaba-sub-ek-four-teachings": {
+    "text": "Aime tout le monde, sers tout le monde, souviens-toi de Dieu, et dis la vérité.",
+    "lesson": "Quatre instructions couvrent plus d'une bonne vie que n'importe quelle méthode payante: se connecter, contribuer, rester ancré, ne pas mentir.",
+    "action": "Avant de dormir ce soir, vérifie-toi sur ces quatre points: qui as-tu aimé, qui as-tu servi, avec quoi es-tu resté ancré, et à qui as-tu dit la vérité."
+  },
+  "neemkarolibaba-see-god-in-everything": {
+    "text": "Il vaut mieux voir Dieu en toute chose que d'essayer de tout comprendre.",
+    "lesson": "Certaines situations n'ont pas besoin d'être résolues, juste accueillies avec respect plutôt qu'avec un tableau Excel.",
+    "action": "Choisis un problème que tu essaies de résoudre depuis des semaines et laisse-le simplement non résolu pendant une journée."
+  },
+  "neemkarolibaba-love-strongest-medicine": {
+    "text": "L'amour est le remède le plus puissant. Il est plus puissant que l'électricité.",
+    "lesson": "Aucune astuce de productivité ne vaut un vrai appel téléphonique à quelqu'un qui traverse une épreuve.",
+    "action": "Appelle, plutôt que d'écrire un message, une personne aujourd'hui qui traverse un moment difficile."
+  },
+  "thichnhathanh-peace-is-every-step": {
+    "text": "La paix est dans chaque pas. Elle transforme le chemin sans fin en joie.",
+    "lesson": "La paix n'est pas la récompense qui attend une fois la liste de tâches terminée; elle est disponible dans le pas que tu fais maintenant.",
+    "action": "Fais tes dix prochains pas, vers la cuisine ou ton bureau, à la moitié de ta vitesse habituelle, en portant attention à chacun."
+  },
+  "thichnhathanh-kissing-the-earth": {
+    "text": "Marche comme si tu embrassais la Terre avec tes pieds.",
+    "lesson": "Considérer le sol sous tes pieds comme digne d'être touché avec douceur, c'est une remise à zéro de cinq secondes face à la précipitation de ta propre vie.",
+    "action": "Lors de ta prochaine marche dehors, ralentis délibérément le pas et sens chaque pied se poser avant de repartir plus vite."
+  },
+  "thichnhathanh-breathing-smile": {
+    "text": "En inspirant, j'apaise mon corps et mon esprit. En expirant, je souris. Demeurant dans l'instant présent, je sais que c'est un moment merveilleux.",
+    "lesson": "Un sourire délibéré associé à une respiration lente peut arrêter une spirale bien plus vite que d'essayer d'en sortir par la réflexion.",
+    "action": "La prochaine fois que tu sens une tension, prends une respiration lente, souris délibérément en expirant, et observe ce qui change."
+  },
+  "thichnhathanh-wash-the-dishes": {
+    "text": "En faisant la vaisselle, on ne devrait que faire la vaisselle, ce qui signifie qu'en la faisant, on devrait être pleinement conscient du fait qu'on la fait.",
+    "lesson": "Faire une seule chose à la fois, pleinement, est une rébellion silencieuse contre une vie vécue à moitié présente entre cinq onglets ouverts.",
+    "action": "Fais aujourd'hui une tâche, la vaisselle ou plier le linge, avec ton téléphone dans une autre pièce et rien d'autre en cours."
+  },
+  "thichnhathanh-mud-and-lotus": {
+    "text": "La plupart des gens ont peur de la souffrance. Mais la souffrance est une sorte de boue qui aide la fleur de lotus du bonheur à pousser.",
+    "lesson": "L'année difficile que tu préférerais oublier est aussi le compost dont ta prochaine bonne année pousse silencieusement.",
+    "action": "Écris une façon précise dont une période difficile du passé améliore actuellement quelque chose dans ta vie."
+  },
+  "thichnhathanh-mindfulness-true-freedom": {
+    "text": "La pleine conscience n'est ni une évasion ni une fuite. Elle signifie être ici, présent, et totalement vivant.",
+    "lesson": "Méditer, ce n'est pas fuir tes problèmes; c'est la seule façon d'être vraiment présent pour eux.",
+    "action": "Règle un minuteur de 3 minutes, assieds-toi immobile, et dis simplement à voix haute ce que tu ressens maintenant sans essayer de le réparer."
   }
 }
